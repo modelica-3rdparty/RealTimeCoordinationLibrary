@@ -4,12 +4,12 @@ LibraryInfoMenuSeparator(
 
 LibraryInfoMenuCommand(
   category="libraries",
-  text="RealTimeCoordination",
-  reference="RealTimeCoordination",
+  text="RealTimeCoordinationLibrary",
+  reference="RealTimeCoordinationLibrary",
   version="1.0.0",
   isModel=true,
   description="RealTimeCoordination Library (1.0.0) by FG SWT, HNI Paderborn",
   ModelicaVersion="3.2",
   pos=1011)
 
-// LibraryInfoPreload(reference="RealTimeCoordination")
+// LibraryInfoPreload(reference="RealTimeCoordinationLibrary")

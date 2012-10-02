@@ -1,5 +1,5 @@
 within ;
-package RealTimeCoordination
+package RealTimeCoordinationLibrary
   "Components for defining clocks, time constraints, and invariants."
 
 package UsersGuide "User's Guide"
@@ -871,7 +871,7 @@ end UsersGuide;
         "First example of an asynchronous communication with two parameters of type integer."
         extends Modelica.Icons.Example;
 
-        RealTimeCoordination.Transition T2(
+        RealTimeCoordinationLibrary.Transition T2(
           use_syncReceive=false,
           numberOfMessageIntegers=2,
           use_messageReceive=true,
@@ -889,8 +889,8 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{-66,-22},{-58,-14}})));
         Step step5(nIn=1)
           annotation (Placement(transformation(extent={{26,-22},{34,-14}})));
-        RealTimeCoordination.Message message(numberOfMessageIntegers=2, nIn=
-             1)
+        RealTimeCoordinationLibrary.Message message(numberOfMessageIntegers=2,
+            nIn=1)
           annotation (Placement(transformation(extent={{-46,-4},{-26,16}})));
         Mailbox mailbox(
           numberOfMessageIntegers=2,
@@ -902,7 +902,7 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{-124,30},{-104,50}})));
         Modelica.Blocks.Sources.IntegerExpression integerExpression1(y=3)
           annotation (Placement(transformation(extent={{-124,14},{-104,34}})));
-        RealTimeCoordination.Transition T1(
+        RealTimeCoordinationLibrary.Transition T1(
           use_firePort=true,
           use_after=true,
           afterTime=1)
@@ -972,7 +972,7 @@ end UsersGuide;
       model SecondExample "Second example for testing the MailBox capacity."
         extends Modelica.Icons.Example;
 
-        RealTimeCoordination.Transition T2(
+        RealTimeCoordinationLibrary.Transition T2(
           use_syncReceive=false,
           numberOfMessageIntegers=2,
           use_messageReceive=true,
@@ -988,8 +988,8 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{-66,-22},{-58,-14}})));
         Modelica_StateGraph2.Step step5(nIn=1, nOut=1)
           annotation (Placement(transformation(extent={{26,-22},{34,-14}})));
-        RealTimeCoordination.Message
-                    message(numberOfMessageIntegers=2, nIn=1)
+        RealTimeCoordinationLibrary.Message message(numberOfMessageIntegers=2,
+            nIn=1)
           annotation (Placement(transformation(extent={{-42,-4},{-22,16}})));
         Mailbox mailbox(
           nIn=1,
@@ -1001,16 +1001,16 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{-124,30},{-104,50}})));
         Modelica.Blocks.Sources.IntegerExpression integerExpression1(y=3)
           annotation (Placement(transformation(extent={{-124,14},{-104,34}})));
-        RealTimeCoordination.Transition T1(use_firePort=true)
+        RealTimeCoordinationLibrary.Transition T1(use_firePort=true)
           annotation (Placement(transformation(extent={{-66,-2},{-58,6}})));
         Modelica_StateGraph2.Step step6(nIn=1)
           annotation (Placement(transformation(extent={{28,-54},{36,-46}})));
-        RealTimeCoordination.Transition T3(
+        RealTimeCoordinationLibrary.Transition T3(
           numberOfMessageReceive=1,
           numberOfMessageIntegers=2,
           use_messageReceive=true)
           annotation (Placement(transformation(extent={{28,-38},{36,-30}})));
-        RealTimeCoordination.Transition T4(use_after=true, afterTime=1)
+        RealTimeCoordinationLibrary.Transition T4(use_after=true, afterTime=1)
           annotation (Placement(transformation(
               extent={{-4,-4},{4,4}},
               rotation=180,
@@ -1102,7 +1102,7 @@ end UsersGuide;
         "Third example with sending two message instances to one MailBox component."
         extends Modelica.Icons.Example;
 
-        RealTimeCoordination.Transition T2(
+        RealTimeCoordinationLibrary.Transition T2(
           use_syncReceive=false,
           numberOfMessageReceive=1,
           use_messageReceive=true,
@@ -1119,8 +1119,8 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{-66,-22},{-58,-14}})));
         Modelica_StateGraph2.Step step5(nIn=1, nOut=1)
           annotation (Placement(transformation(extent={{26,-22},{34,-14}})));
-        RealTimeCoordination.Message
-                    message(numberOfMessageIntegers=3, nIn=1)
+        RealTimeCoordinationLibrary.Message message(numberOfMessageIntegers=3,
+            nIn=1)
           annotation (Placement(transformation(extent={{-46,-4},{-26,16}})));
         Mailbox mailbox(
           nIn=2,
@@ -1132,13 +1132,14 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{-124,30},{-104,50}})));
         Modelica.Blocks.Sources.IntegerExpression integerExpression1(y=3)
           annotation (Placement(transformation(extent={{-124,14},{-104,34}})));
-        RealTimeCoordination.Transition T1(use_firePort=true,
+        RealTimeCoordinationLibrary.Transition T1(
+          use_firePort=true,
           use_after=true,
           afterTime=0.5)
           annotation (Placement(transformation(extent={{-66,0},{-58,8}})));
         Modelica_StateGraph2.Step step6(nIn=1, nOut=1)
           annotation (Placement(transformation(extent={{70,28},{78,36}})));
-        RealTimeCoordination.Transition T3(
+        RealTimeCoordinationLibrary.Transition T3(
           use_messageReceive=true,
           afterTime=0.5,
           numberOfMessageIntegers=3,
@@ -1148,15 +1149,15 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{70,6},{78,14}})));
         Modelica_StateGraph2.Step step7(nIn=1)
           annotation (Placement(transformation(extent={{76,-22},{84,-14}})));
-       RealTimeCoordination.Transition T4(
+       RealTimeCoordinationLibrary.Transition T4(
           use_firePort=true,
           use_after=true,
           afterTime=1)
           annotation (Placement(transformation(extent={{-66,-42},{-58,-34}})));
         Modelica_StateGraph2.Step step8(nIn=1)
           annotation (Placement(transformation(extent={{-64,-58},{-56,-50}})));
-        RealTimeCoordination.Message
-                    message1(   numberOfMessageIntegers=3, nIn=1)
+        RealTimeCoordinationLibrary.Message message1(numberOfMessageIntegers=3,
+            nIn=1)
           annotation (Placement(transformation(extent={{-34,-34},{-14,-14}})));
         Modelica.Blocks.Sources.IntegerExpression integerExpression2(y=1)
           annotation (Placement(transformation(extent={{-102,-28},{-82,-8}})));
@@ -1164,7 +1165,7 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{-104,-40},{-84,-20}})));
         Modelica_StateGraph2.Step step9(nIn=1)
           annotation (Placement(transformation(extent={{30,-48},{38,-40}})));
-        RealTimeCoordination.Transition T5(
+        RealTimeCoordinationLibrary.Transition T5(
           use_messageReceive=true,
           numberOfMessageIntegers=3,
           numberOfMessageReceive=1)
@@ -1300,22 +1301,22 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{-84,50},{-76,58}})));
         Modelica_StateGraph2.Step step3(nIn=1, nOut=1)
           annotation (Placement(transformation(extent={{-18,50},{-10,58}})));
-        RealTimeCoordination.Transition T1(
+        RealTimeCoordinationLibrary.Transition T1(
           use_firePort=true,
           use_after=true,
           afterTime=3)
           annotation (Placement(transformation(extent={{-82,30},{-74,38}})));
         Modelica_StateGraph2.Step step4(nIn=1)
           annotation (Placement(transformation(extent={{-80,14},{-72,22}})));
-        RealTimeCoordination.Message
-                    message(nIn=1)
+        RealTimeCoordinationLibrary.Message message(nIn=1)
           annotation (Placement(transformation(extent={{-54,-8},{-34,12}})));
-        RealTimeCoordination.Transition T3(use_messageReceive=true,
-            numberOfMessageReceive=1,
+        RealTimeCoordinationLibrary.Transition T3(
+          use_messageReceive=true,
+          numberOfMessageReceive=1,
           use_syncReceive=true,
           numberOfSyncReceive=1)
           annotation (Placement(transformation(extent={{-4,8},{4,16}})));
-        RealTimeCoordination.Mailbox mailbox(       nOut=1, nIn=1)
+        RealTimeCoordinationLibrary.Mailbox mailbox(nOut=1, nIn=1)
           annotation (Placement(transformation(extent={{-28,-10},{-8,10}})));
         Modelica_StateGraph2.Step step6(nIn=1)
           annotation (Placement(transformation(extent={{-4,-10},{4,-2}})));
@@ -1325,7 +1326,7 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{32,-42},{108,64}})));
         Modelica_StateGraph2.Step step9(nOut=1, nIn=1)
           annotation (Placement(transformation(extent={{64,40},{72,48}})));
-        RealTimeCoordination.Transition T2(
+        RealTimeCoordinationLibrary.Transition T2(
           afterTime=2,
           use_syncReceive=false,
           use_syncSend=true,
@@ -1425,23 +1426,23 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{-84,50},{-76,58}})));
         Modelica_StateGraph2.Step step3(nIn=1, nOut=1)
           annotation (Placement(transformation(extent={{-18,50},{-10,58}})));
-        RealTimeCoordination.Transition T1(
+        RealTimeCoordinationLibrary.Transition T1(
           use_firePort=true,
           use_after=true,
           afterTime=3)
           annotation (Placement(transformation(extent={{-82,30},{-74,38}})));
         Modelica_StateGraph2.Step step4(nIn=1)
           annotation (Placement(transformation(extent={{-80,14},{-72,22}})));
-        RealTimeCoordination.Message
-                    message(nIn=1)
+        RealTimeCoordinationLibrary.Message message(nIn=1)
           annotation (Placement(transformation(extent={{-54,-8},{-34,12}})));
-        RealTimeCoordination.Transition T3(use_messageReceive=true,
-            numberOfMessageReceive=1,
+        RealTimeCoordinationLibrary.Transition T3(
+          use_messageReceive=true,
+          numberOfMessageReceive=1,
           use_syncSend=true,
           use_syncReceive=false,
           numberOfSyncSend=1)
           annotation (Placement(transformation(extent={{-4,8},{4,16}})));
-        RealTimeCoordination.Mailbox mailbox(       nOut=1, nIn=1)
+        RealTimeCoordinationLibrary.Mailbox mailbox(nOut=1, nIn=1)
           annotation (Placement(transformation(extent={{-28,-10},{-8,10}})));
         Modelica_StateGraph2.Step step6(nIn=1)
           annotation (Placement(transformation(extent={{-4,-10},{4,-2}})));
@@ -1451,7 +1452,7 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{32,-42},{108,64}})));
         Modelica_StateGraph2.Step step9(nOut=1, nIn=1)
           annotation (Placement(transformation(extent={{64,40},{72,48}})));
-        RealTimeCoordination.Transition T2(
+        RealTimeCoordinationLibrary.Transition T2(
           afterTime=2,
           use_after=false,
           condition=time > 2,
@@ -1550,23 +1551,23 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{-84,50},{-76,58}})));
         Modelica_StateGraph2.Step step3(nIn=1, nOut=1)
           annotation (Placement(transformation(extent={{-18,50},{-10,58}})));
-        RealTimeCoordination.Transition T1(
+        RealTimeCoordinationLibrary.Transition T1(
           use_firePort=true,
           use_after=true,
           afterTime=0.5)
           annotation (Placement(transformation(extent={{-82,30},{-74,38}})));
         Modelica_StateGraph2.Step step4(nIn=1)
           annotation (Placement(transformation(extent={{-80,14},{-72,22}})));
-        RealTimeCoordination.Message
-                    message(nIn=1)
+        RealTimeCoordinationLibrary.Message message(nIn=1)
           annotation (Placement(transformation(extent={{-54,-8},{-34,12}})));
-        RealTimeCoordination.Transition T3(use_messageReceive=true,
-            numberOfMessageReceive=1,
+        RealTimeCoordinationLibrary.Transition T3(
+          use_messageReceive=true,
+          numberOfMessageReceive=1,
           use_syncSend=true,
           use_syncReceive=false,
           numberOfSyncSend=2)
           annotation (Placement(transformation(extent={{-4,8},{4,16}})));
-        RealTimeCoordination.Mailbox mailbox(       nOut=1, nIn=1)
+        RealTimeCoordinationLibrary.Mailbox mailbox(nOut=1, nIn=1)
           annotation (Placement(transformation(extent={{-28,-10},{-8,10}})));
         Modelica_StateGraph2.Step step6(nIn=1)
           annotation (Placement(transformation(extent={{-4,-10},{4,-2}})));
@@ -1576,7 +1577,7 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{34,-6},{108,64}})));
         Modelica_StateGraph2.Step step9(nOut=1, nIn=1)
           annotation (Placement(transformation(extent={{64,40},{72,48}})));
-        RealTimeCoordination.Transition T2(
+        RealTimeCoordinationLibrary.Transition T2(
           afterTime=2,
           use_after=false,
           condition=time > 2,
@@ -1591,7 +1592,7 @@ end UsersGuide;
         Modelica_StateGraph2.Step step11(
                                         nOut=1, nIn=1)
           annotation (Placement(transformation(extent={{72,-42},{80,-34}})));
-        RealTimeCoordination.Transition T4(
+        RealTimeCoordinationLibrary.Transition T4(
           afterTime=2,
           use_after=false,
           condition=time > 2,
@@ -1712,25 +1713,25 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{-110,50},{-102,58}})));
         Modelica_StateGraph2.Step step3(nIn=1, nOut=1)
           annotation (Placement(transformation(extent={{-44,50},{-36,58}})));
-        RealTimeCoordination.Transition T1(
+        RealTimeCoordinationLibrary.Transition T1(
           use_firePort=true,
           use_after=true,
           afterTime=1)
           annotation (Placement(transformation(extent={{-108,30},{-100,38}})));
         Modelica_StateGraph2.Step step4(nIn=1)
           annotation (Placement(transformation(extent={{-106,14},{-98,22}})));
-        RealTimeCoordination.Message
-                    message(nIn=1)
+        RealTimeCoordinationLibrary.Message message(nIn=1)
           annotation (Placement(transformation(extent={{-80,-8},{-60,12}})));
-        RealTimeCoordination.Transition T3(use_messageReceive=true,
-            numberOfMessageReceive=1,
+        RealTimeCoordinationLibrary.Transition T3(
+          use_messageReceive=true,
+          numberOfMessageReceive=1,
           use_syncSend=true,
           use_syncReceive=false,
           numberOfSyncSend=1,
           use_after=true,
           afterTime=2)
           annotation (Placement(transformation(extent={{-30,8},{-22,16}})));
-        RealTimeCoordination.Mailbox mailbox(       nOut=2, nIn=1)
+        RealTimeCoordinationLibrary.Mailbox mailbox(nOut=2, nIn=1)
           annotation (Placement(transformation(extent={{-54,-10},{-34,10}})));
         Modelica_StateGraph2.Step step6(nIn=1)
           annotation (Placement(transformation(extent={{-24,-22},{-16,-14}})));
@@ -1740,7 +1741,7 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{34,-6},{108,64}})));
         Modelica_StateGraph2.Step step9(nOut=1, nIn=1)
           annotation (Placement(transformation(extent={{64,40},{72,48}})));
-        RealTimeCoordination.Transition T2(
+        RealTimeCoordinationLibrary.Transition T2(
           afterTime=2,
           use_after=false,
           use_syncSend=false,
@@ -1754,7 +1755,7 @@ end UsersGuide;
         Modelica_StateGraph2.Step step11(
                                         nOut=1, nIn=1)
           annotation (Placement(transformation(extent={{72,-42},{80,-34}})));
-        RealTimeCoordination.Transition T4(
+        RealTimeCoordinationLibrary.Transition T4(
           afterTime=2,
           use_after=false,
           use_syncSend=false,
@@ -1769,8 +1770,9 @@ end UsersGuide;
         Modelica_StateGraph2.Step step14(
                                         nIn=1)
           annotation (Placement(transformation(extent={{2,-20},{10,-12}})));
-        RealTimeCoordination.Transition T5(use_messageReceive=true,
-            numberOfMessageReceive=1,
+        RealTimeCoordinationLibrary.Transition T5(
+          use_messageReceive=true,
+          numberOfMessageReceive=1,
           use_syncSend=true,
           use_syncReceive=false,
           numberOfSyncSend=1,
@@ -1905,23 +1907,23 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{-110,50},{-102,58}})));
         Modelica_StateGraph2.Step step3(nIn=1, nOut=1)
           annotation (Placement(transformation(extent={{-44,50},{-36,58}})));
-        RealTimeCoordination.Transition T1(
+        RealTimeCoordinationLibrary.Transition T1(
           use_firePort=true,
           afterTime=3,
           use_after=true)
           annotation (Placement(transformation(extent={{-108,30},{-100,38}})));
         Modelica_StateGraph2.Step step4(nIn=1)
           annotation (Placement(transformation(extent={{-106,14},{-98,22}})));
-        RealTimeCoordination.Message
-                    message(nIn=1)
+        RealTimeCoordinationLibrary.Message message(nIn=1)
           annotation (Placement(transformation(extent={{-80,-8},{-60,12}})));
-        RealTimeCoordination.Transition T3(use_messageReceive=true,
-            numberOfMessageReceive=1,
+        RealTimeCoordinationLibrary.Transition T3(
+          use_messageReceive=true,
+          numberOfMessageReceive=1,
           use_syncSend=false,
           use_syncReceive=true,
           numberOfSyncReceive=1)
           annotation (Placement(transformation(extent={{-30,8},{-22,16}})));
-        RealTimeCoordination.Mailbox mailbox(       nOut=2, nIn=1)
+        RealTimeCoordinationLibrary.Mailbox mailbox(nOut=2, nIn=1)
           annotation (Placement(transformation(extent={{-54,-10},{-34,10}})));
         Modelica_StateGraph2.Step step6(nIn=1)
           annotation (Placement(transformation(extent={{-24,-22},{-16,-14}})));
@@ -1931,7 +1933,7 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{34,-6},{108,64}})));
         Modelica_StateGraph2.Step step9(nOut=1, nIn=1)
           annotation (Placement(transformation(extent={{64,40},{72,48}})));
-        RealTimeCoordination.Transition T2(
+        RealTimeCoordinationLibrary.Transition T2(
           afterTime=2,
           use_after=false,
           condition=time > 2,
@@ -1946,7 +1948,7 @@ end UsersGuide;
         Modelica_StateGraph2.Step step11(
                                         nOut=1, nIn=1)
           annotation (Placement(transformation(extent={{72,-42},{80,-34}})));
-        RealTimeCoordination.Transition T4(
+        RealTimeCoordinationLibrary.Transition T4(
           afterTime=2,
           use_after=false,
           condition=time > 2,
@@ -1962,8 +1964,9 @@ end UsersGuide;
         Modelica_StateGraph2.Step step14(
                                         nIn=1)
           annotation (Placement(transformation(extent={{2,-20},{10,-12}})));
-        RealTimeCoordination.Transition T5(use_messageReceive=true,
-            numberOfMessageReceive=1,
+        RealTimeCoordinationLibrary.Transition T5(
+          use_messageReceive=true,
+          numberOfMessageReceive=1,
           use_syncSend=false,
           use_syncReceive=true,
           numberOfSyncReceive=1)
@@ -2100,18 +2103,18 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{-18,50},{-10,58}})));
         Modelica_StateGraph2.Step step4(nIn=1)
           annotation (Placement(transformation(extent={{-86,14},{-78,22}})));
-        RealTimeCoordination.Message
-                    message(nIn=1)
+        RealTimeCoordinationLibrary.Message message(nIn=1)
           annotation (Placement(transformation(extent={{-54,-8},{-34,12}})));
-        RealTimeCoordination.Transition T3(use_messageReceive=true,
-            numberOfMessageReceive=1,
+        RealTimeCoordinationLibrary.Transition T3(
+          use_messageReceive=true,
+          numberOfMessageReceive=1,
           use_syncReceive=true,
           numberOfSyncReceive=1,
           use_conditionPort=true,
           afterTime=2,
           use_after=false)
           annotation (Placement(transformation(extent={{-4,8},{4,16}})));
-        RealTimeCoordination.Mailbox mailbox(       nOut=1, nIn=1)
+        RealTimeCoordinationLibrary.Mailbox mailbox(nOut=1, nIn=1)
           annotation (Placement(transformation(extent={{-28,-10},{-8,10}})));
         Modelica_StateGraph2.Step step6(nIn=1)
           annotation (Placement(transformation(extent={{-4,-10},{4,-2}})));
@@ -2121,7 +2124,7 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{32,-42},{108,64}})));
         Modelica_StateGraph2.Step step9(nOut=1, nIn=1)
           annotation (Placement(transformation(extent={{64,40},{72,48}})));
-        RealTimeCoordination.Transition T2(
+        RealTimeCoordinationLibrary.Transition T2(
           use_syncReceive=false,
           use_syncSend=true,
           numberOfSyncSend=1,
@@ -2131,13 +2134,12 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{62,20},{70,28}})));
         Modelica_StateGraph2.Step step10(nIn=1)
           annotation (Placement(transformation(extent={{62,0},{70,8}})));
-        RealTimeCoordination.TimeElements.Clock
-                                          clock(nu=1)
+        RealTimeCoordinationLibrary.TimeElements.Clock clock(nu=1)
           annotation (Placement(transformation(extent={{-62,38},{-42,58}})));
-        RealTimeCoordination.TimeElements.ClockConstraint.ClockConstraintGreater
-                                          clockConditionGreater(bound=3)
+        RealTimeCoordinationLibrary.TimeElements.ClockConstraint.ClockConstraintGreater
+          clockConditionGreater(bound=3)
           annotation (Placement(transformation(extent={{-42,24},{-22,44}})));
-        RealTimeCoordination.Transition T1(
+        RealTimeCoordinationLibrary.Transition T1(
           use_firePort=true,
           use_after=true,
           afterTime=1)
@@ -2267,17 +2269,16 @@ end UsersGuide;
                 extent={{-4,-4},{4,4}},
                 rotation=90,
                 origin={30,46})));
-          RealTimeCoordination.Transition T1(
+          RealTimeCoordinationLibrary.Transition T1(
             use_firePort=true,
             use_after=true,
             afterTime=0.5) annotation (Placement(transformation(
                 extent={{-4,-4},{4,4}},
                 rotation=90,
                 origin={-8,46})));
-          RealTimeCoordination.Message message(nIn=1)
+          RealTimeCoordinationLibrary.Message message(nIn=1)
             annotation (Placement(transformation(extent={{-4,62},{8,74}})));
-          RealTimeCoordination.MessageInterface.OutputDelegationPort
-                                                 delegationPort1(
+          RealTimeCoordinationLibrary.MessageInterface.OutputDelegationPort delegationPort1(
             redeclare Boolean booleans[0],
             redeclare Real reals[0],
             redeclare Integer integers[0])
@@ -2315,12 +2316,12 @@ end UsersGuide;
                 extent={{-4,-4},{4,4}},
                 rotation=90,
                 origin={26,20})));
-          RealTimeCoordination.Mailbox mailbox(
+          RealTimeCoordinationLibrary.Mailbox mailbox(
             nIn=1,
             numberOfMessageIntegers=0,
             nOut=1)
             annotation (Placement(transformation(extent={{-82,-18},{-66,-2}})));
-          RealTimeCoordination.Transition T2(
+          RealTimeCoordinationLibrary.Transition T2(
             numberOfMessageReceive=1,
             use_messageReceive=true,
             use_after=true,
@@ -2330,8 +2331,8 @@ end UsersGuide;
                 extent={{-4,-4},{4,4}},
                 rotation=90,
                 origin={-16,20})));
-          input RealTimeCoordination.MessageInterface.InputDelegationPort
-                                                 delegationPort(
+          input
+            RealTimeCoordinationLibrary.MessageInterface.InputDelegationPort delegationPort(
             redeclare Boolean booleans[0],
             redeclare Real reals[0],
             redeclare Integer integers[0])
@@ -2391,22 +2392,21 @@ end UsersGuide;
                 extent={{-4,-4},{4,4}},
                 rotation=90,
                 origin={30,46})));
-          RealTimeCoordination.Transition T1(
+          RealTimeCoordinationLibrary.Transition T1(
             use_firePort=true,
             use_after=true,
             afterTime=0.5) annotation (Placement(transformation(
                 extent={{-4,-4},{4,4}},
                 rotation=90,
                 origin={-8,46})));
-          RealTimeCoordination.Message message(numberOfMessageIntegers=2,
+          RealTimeCoordinationLibrary.Message message(numberOfMessageIntegers=2,
               nIn=1)
             annotation (Placement(transformation(extent={{-4,62},{8,74}})));
           Modelica.Blocks.Sources.IntegerExpression integerExpression(y=1)
             annotation (Placement(transformation(extent={{-48,74},{-28,94}})));
           Modelica.Blocks.Sources.IntegerExpression integerExpression1(y=2)
             annotation (Placement(transformation(extent={{-50,60},{-30,80}})));
-          RealTimeCoordination.MessageInterface.OutputDelegationPort
-                                                 delegationPort1(
+          RealTimeCoordinationLibrary.MessageInterface.OutputDelegationPort delegationPort1(
             redeclare Integer integers[2],
             redeclare Boolean booleans[0],
             redeclare Real reals[0])
@@ -2452,13 +2452,13 @@ end UsersGuide;
                 extent={{-4,-4},{4,4}},
                 rotation=90,
                 origin={26,20})));
-          RealTimeCoordination.Mailbox mailbox(
+          RealTimeCoordinationLibrary.Mailbox mailbox(
             numberOfMessageIntegers=2,
             nIn=1,
             queueSize=20,
             nOut=1)
             annotation (Placement(transformation(extent={{-82,-18},{-66,-2}})));
-          RealTimeCoordination.Transition T2(
+          RealTimeCoordinationLibrary.Transition T2(
             numberOfMessageReceive=1,
             use_messageReceive=true,
             numberOfMessageIntegers=2,
@@ -2468,8 +2468,7 @@ end UsersGuide;
                 extent={{-4,-4},{4,4}},
                 rotation=90,
                 origin={-16,20})));
-          RealTimeCoordination.MessageInterface.InputDelegationPort
-                                                 delegationPort(
+          RealTimeCoordinationLibrary.MessageInterface.InputDelegationPort delegationPort(
             redeclare Integer integers[2],
             redeclare Boolean booleans[0],
             redeclare Real reals[0])
@@ -2504,7 +2503,7 @@ end UsersGuide;
         "Example to demonstrate sender and receiver transition of a synchronization."
         extends Modelica.Icons.Example;
 
-        RealTimeCoordination.Transition T1(
+        RealTimeCoordinationLibrary.Transition T1(
           afterTime=0.5,
           use_firePort=false,
           numberOfSyncSend=1,
@@ -2514,7 +2513,9 @@ end UsersGuide;
           use_after=true,
           loopCheck=true)
           annotation (Placement(transformation(extent={{-66,8},{-58,16}})));
-        RealTimeCoordination.Transition T2(use_syncReceive=true, numberOfSyncReceive=1,
+        RealTimeCoordinationLibrary.Transition T2(
+          use_syncReceive=true,
+          numberOfSyncReceive=1,
           use_conditionPort=false)
           annotation (Placement(transformation(extent={{24,6},{32,14}})));
         Modelica_StateGraph2.Parallel step1(initialStep=true, nEntry=2)
@@ -2527,14 +2528,16 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{-66,-22},{-58,-14}})));
         Modelica_StateGraph2.Step step5(nIn=1, nOut=1)
           annotation (Placement(transformation(extent={{26,-22},{34,-14}})));
-        RealTimeCoordination.Transition T3(
+        RealTimeCoordinationLibrary.Transition T3(
           use_syncSend=false,
           use_syncReceive=true,
           numberOfSyncReceive=1)
           annotation (Placement(transformation(extent={{-66,-46},{-58,-38}})));
-        RealTimeCoordination.Step step6(nIn=1)
+        RealTimeCoordinationLibrary.Step step6(nIn=1)
           annotation (Placement(transformation(extent={{-66,-64},{-58,-56}})));
-        RealTimeCoordination.Transition T4(use_after=true, afterTime=3,
+        RealTimeCoordinationLibrary.Transition T4(
+          use_after=true,
+          afterTime=3,
           use_syncSend=true,
           numberOfSyncSend=1)                                      annotation (
             Placement(transformation(
@@ -2609,7 +2612,7 @@ end UsersGuide;
         "Example to demonstrate the priorities of a n:n synchronization."
         extends Modelica.Icons.Example;
 
-        RealTimeCoordination.Transition T1(
+        RealTimeCoordinationLibrary.Transition T1(
           use_firePort=false,
           use_syncSend=true,
           numberOfSyncSend=2,
@@ -2625,7 +2628,7 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{-82,58},{-74,66}})));
         Modelica_StateGraph2.Step step4(nIn=1)
           annotation (Placement(transformation(extent={{-80,18},{-72,26}})));
-        RealTimeCoordination.Transition T3(
+        RealTimeCoordinationLibrary.Transition T3(
           afterTime=0.5,
           use_firePort=false,
           numberOfSyncReceive=2,
@@ -2642,7 +2645,7 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{26,58},{34,66}})));
         Modelica_StateGraph2.Step step9(nIn=1)
           annotation (Placement(transformation(extent={{28,18},{36,26}})));
-        RealTimeCoordination.Transition T5(
+        RealTimeCoordinationLibrary.Transition T5(
           use_firePort=false,
           use_syncSend=true,
           numberOfSyncSend=2,
@@ -2658,7 +2661,7 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{-84,-44},{-76,-36}})));
         Modelica_StateGraph2.Step step14(nIn=1)
           annotation (Placement(transformation(extent={{-82,-84},{-74,-76}})));
-        RealTimeCoordination.Transition T7(
+        RealTimeCoordinationLibrary.Transition T7(
           afterTime=0.5,
           use_firePort=false,
           use_syncSend=false,
@@ -2779,7 +2782,7 @@ end UsersGuide;
         "Example to demonstrate the priorities of a n:1 synchronization."
         extends Modelica.Icons.Example;
 
-        RealTimeCoordination.Transition T1(
+        RealTimeCoordinationLibrary.Transition T1(
           use_firePort=false,
           afterTime=1,
           use_syncSend=true,
@@ -2798,7 +2801,7 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{-68,42},{-60,50}})));
         Modelica_StateGraph2.Parallel step21(          initialStep=true, nEntry=4)
           annotation (Placement(transformation(extent={{-104,-110},{100,92}})));
-        RealTimeCoordination.Transition T2(
+        RealTimeCoordinationLibrary.Transition T2(
           use_firePort=false,
           afterTime=1,
           use_syncSend=true,
@@ -2815,7 +2818,7 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{-68,12},{-60,20}})));
         Modelica_StateGraph2.Step step6(nIn=1)
           annotation (Placement(transformation(extent={{-68,-14},{-60,-6}})));
-        RealTimeCoordination.Transition T3(
+        RealTimeCoordinationLibrary.Transition T3(
           use_firePort=false,
           afterTime=1,
           use_syncSend=true,
@@ -2832,7 +2835,7 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{-66,-54},{-58,-46}})));
         Modelica_StateGraph2.Step step9(nIn=1)
           annotation (Placement(transformation(extent={{-66,-80},{-58,-72}})));
-        RealTimeCoordination.Transition T4(
+        RealTimeCoordinationLibrary.Transition T4(
           use_firePort=false,
           afterTime=1,
           use_syncSend=false,
@@ -2954,7 +2957,7 @@ end UsersGuide;
 
         Modelica_StateGraph2.Parallel step21(          initialStep=true, nEntry=4)
           annotation (Placement(transformation(extent={{-104,-110},{100,92}})));
-        RealTimeCoordination.Transition T2(
+        RealTimeCoordinationLibrary.Transition T2(
           use_firePort=false,
           use_syncSend=true,
           numberOfSyncSend=3,
@@ -2970,7 +2973,7 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{-68,12},{-60,20}})));
         Modelica_StateGraph2.Step step6(nIn=1)
           annotation (Placement(transformation(extent={{-68,-14},{-60,-6}})));
-        RealTimeCoordination.Transition T4(
+        RealTimeCoordinationLibrary.Transition T4(
           use_firePort=false,
           use_syncSend=false,
           use_syncReceive=true,
@@ -2987,7 +2990,7 @@ end UsersGuide;
         Modelica_StateGraph2.Step step12(
                                         nIn=1)
           annotation (Placement(transformation(extent={{46,-24},{54,-16}})));
-        RealTimeCoordination.Transition T1(
+        RealTimeCoordinationLibrary.Transition T1(
           use_firePort=false,
           use_syncSend=false,
           use_syncReceive=true,
@@ -3003,7 +3006,7 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{46,-58},{54,-50}})));
         Modelica_StateGraph2.Step step4(nIn=1)
           annotation (Placement(transformation(extent={{46,-84},{54,-76}})));
-        RealTimeCoordination.Transition T3(
+        RealTimeCoordinationLibrary.Transition T3(
           use_firePort=false,
           use_syncSend=false,
           use_syncReceive=true,
@@ -3126,12 +3129,12 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{24,32},{32,40}})));
         Modelica_StateGraph2.Step step4(nIn=1)
           annotation (Placement(transformation(extent={{26,-30},{34,-22}})));
-        RealTimeCoordination.Transition T2(
+        RealTimeCoordinationLibrary.Transition T2(
           use_conditionPort=true,
           use_firePort=false,
           condition=pre(time) > 5)
           annotation (Placement(transformation(extent={{24,0},{32,8}})));
-        RealTimeCoordination.Transition T1(use_after=true, afterTime=3)
+        RealTimeCoordinationLibrary.Transition T1(use_after=true, afterTime=3)
           annotation (Placement(transformation(extent={{-46,20},{-38,28}})));
         Modelica_StateGraph2.Parallel step1(nEntry=2, initialStep=true)
           annotation (Placement(transformation(extent={{-64,-64},{56,96}})));
@@ -3188,7 +3191,7 @@ end UsersGuide;
         "Simple example demonstrating the reset of a clock."
         extends Modelica.Icons.Example;
 
-        RealTimeCoordination.Transition T1(use_after=true, afterTime=1)
+        RealTimeCoordinationLibrary.Transition T1(use_after=true, afterTime=1)
           annotation (Placement(transformation(extent={{-46,36},{-38,44}})));
         Modelica_StateGraph2.Step step1(
           initialStep=true,
@@ -3197,12 +3200,11 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{-52,66},{-44,74}})));
         Modelica_StateGraph2.Step step2(nIn=1, nOut=1)
           annotation (Placement(transformation(extent={{-46,8},{-38,16}})));
-        RealTimeCoordination.TimeElements.Clock clock(
-                                                     nu=2)
+        RealTimeCoordinationLibrary.TimeElements.Clock clock(nu=2)
           annotation (Placement(transformation(extent={{-2,50},{18,70}})));
         Modelica_StateGraph2.Blocks.MathReal.ShowValue showValue
           annotation (Placement(transformation(extent={{44,50},{64,70}})));
-        RealTimeCoordination.Transition T2(
+        RealTimeCoordinationLibrary.Transition T2(
           use_after=true,
           afterTime=2,
           use_firePort=true)
@@ -3260,7 +3262,7 @@ end UsersGuide;
         "Simple example to demonstrate an invariant."
         extends Modelica.Icons.Example;
 
-        RealTimeCoordination.Transition T1(use_after=true, afterTime=1)
+        RealTimeCoordinationLibrary.Transition T1(use_after=true, afterTime=1)
           annotation (Placement(transformation(extent={{-46,36},{-38,44}})));
         Modelica_StateGraph2.Step step1(
           initialStep=true,
@@ -3273,21 +3275,19 @@ end UsersGuide;
           initialStep=false,
           use_activePort=true)
           annotation (Placement(transformation(extent={{-46,8},{-38,16}})));
-        RealTimeCoordination.TimeElements.Clock clock(
-                                                     nu=2)
+        RealTimeCoordinationLibrary.TimeElements.Clock clock(nu=2)
           annotation (Placement(transformation(extent={{-2,50},{18,70}})));
         Modelica_StateGraph2.Blocks.MathReal.ShowValue showValue
           annotation (Placement(transformation(extent={{44,50},{64,70}})));
-        RealTimeCoordination.Transition T2(
+        RealTimeCoordinationLibrary.Transition T2(
           use_after=true,
           use_firePort=true,
           afterTime=6)
           annotation (Placement(transformation(extent={{-44,-22},{-36,-14}})));
         Modelica_StateGraph2.Step step3(nIn=1)
           annotation (Placement(transformation(extent={{-42,-50},{-34,-42}})));
-        RealTimeCoordination.TimeElements.TimeInvariant.TimeInvariantLessOrEqual
-                                                                   timeInvariantSmallerLess(
-            bound=5)
+        RealTimeCoordinationLibrary.TimeElements.TimeInvariant.TimeInvariantLessOrEqual
+          timeInvariantSmallerLess(bound=5)
           annotation (Placement(transformation(extent={{34,-2},{66,30}})));
       equation
         connect(clock.y, showValue.numberPort) annotation (Line(
@@ -3348,7 +3348,7 @@ end UsersGuide;
         "Extended example demonstrating the clock constraints."
         extends Modelica.Icons.Example;
 
-        RealTimeCoordination.Transition T1(use_after=true, afterTime=1)
+        RealTimeCoordinationLibrary.Transition T1(use_after=true, afterTime=1)
           annotation (Placement(transformation(extent={{-46,36},{-38,44}})));
         Modelica_StateGraph2.Step step1(
           nOut=1,
@@ -3358,17 +3358,16 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{-52,66},{-44,74}})));
         Modelica_StateGraph2.Step step2(nIn=1, nOut=1)
           annotation (Placement(transformation(extent={{-46,8},{-38,16}})));
-        RealTimeCoordination.TimeElements.Clock clock(
-                                                     nu=2)
+        RealTimeCoordinationLibrary.TimeElements.Clock clock(nu=2)
           annotation (Placement(transformation(extent={{-4,18},{16,38}})));
-        RealTimeCoordination.Transition T2(
+        RealTimeCoordinationLibrary.Transition T2(
           use_after=true,
           afterTime=2,
           use_firePort=true)
           annotation (Placement(transformation(extent={{-44,-22},{-36,-14}})));
         Modelica_StateGraph2.Step step3(nIn=1)
           annotation (Placement(transformation(extent={{-42,-50},{-34,-42}})));
-        RealTimeCoordination.Transition T3(use_conditionPort=true)
+        RealTimeCoordinationLibrary.Transition T3(use_conditionPort=true)
           annotation (Placement(transformation(extent={{76,24},{84,32}})));
         Modelica_StateGraph2.Step step4(nOut=1, nIn=1)
           annotation (Placement(transformation(extent={{74,48},{82,56}})));
@@ -3378,15 +3377,13 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{-98,-102},{98,100}})));
         Modelica_StateGraph2.Step step7(nIn=1)
           annotation (Placement(transformation(extent={{76,-50},{84,-42}})));
-        RealTimeCoordination.TimeElements.ClockConstraint.ClockConstraintLessOrEqual
-                                                                    clockConditionLessEqual(
-            bound=4)
+        RealTimeCoordinationLibrary.TimeElements.ClockConstraint.ClockConstraintLessOrEqual
+          clockConditionLessEqual(bound=4)
           annotation (Placement(transformation(extent={{30,-22},{50,-2}})));
-        RealTimeCoordination.Transition T4(use_conditionPort=true)
+        RealTimeCoordinationLibrary.Transition T4(use_conditionPort=true)
           annotation (Placement(transformation(extent={{76,-24},{84,-16}})));
-        RealTimeCoordination.TimeElements.ClockConstraint.ClockConstraintGreaterOrEqual
-                                                 clockConditionGreaterOrEqual(
-            bound=3)
+        RealTimeCoordinationLibrary.TimeElements.ClockConstraint.ClockConstraintGreaterOrEqual
+          clockConditionGreaterOrEqual(bound=3)
           annotation (Placement(transformation(extent={{24,34},{44,54}})));
       equation
         connect(step1.outPort[1], T1.inPort) annotation (Line(
@@ -3482,9 +3479,9 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{-4,4},{4,-4}},
               rotation=0,
               origin={68,58})));
-        RealTimeCoordination.Step FrontConvoy(nIn=1, nOut=1)
+        RealTimeCoordinationLibrary.Step FrontConvoy(nIn=1, nOut=1)
           annotation (Placement(transformation(extent={{-74,2},{-66,-6}})));
-        RealTimeCoordination.Transition T2(
+        RealTimeCoordinationLibrary.Transition T2(
           use_messageReceive=true,
           numberOfMessageReceive=1,
           use_after=true,
@@ -3494,62 +3491,63 @@ end UsersGuide;
           syncChannelName="frontConvoy",
           use_firePort=true)
           annotation (Placement(transformation(extent={{-58,28},{-50,36}})));
-        input RealTimeCoordination.MessageInterface.DelegationPort
-          InStartConvoyDel(
+        input RealTimeCoordinationLibrary.MessageInterface.DelegationPort InStartConvoyDel(
           redeclare Integer integers[0] "integers[0]",
           redeclare Boolean booleans[0] "booelans[0]",
           redeclare Real reals[0] "reals[0]")
           annotation (Placement(transformation(extent={{-102,-14},{-86,0}})));
-        RealTimeCoordination.Mailbox startConvBox(nIn=1, nOut=1)
+        RealTimeCoordinationLibrary.Mailbox startConvBox(nIn=1, nOut=1)
           annotation (Placement(transformation(extent={{-92,6},{-76,14}})));
         Modelica_StateGraph2.Blocks.Interfaces.RealVectorInput frontDistance
           annotation (Placement(transformation(extent={{-48,90},{-30,110}})));
-        RealTimeCoordination.Transition T1(
+        RealTimeCoordinationLibrary.Transition T1(
           use_firePort=true,
           use_after=true,
           afterTime=1e-8,
           use_conditionPort=true,
           condition=frontDistance < 0.1)
           annotation (Placement(transformation(extent={{-22,28},{-30,36}})));
-        RealTimeCoordination.Step ConvoyProposed(nIn=1, nOut=2)
+        RealTimeCoordinationLibrary.Step ConvoyProposed(nIn=1, nOut=2)
           annotation (Placement(transformation(extent={{-46,0},{-38,-8}})));
-        RealTimeCoordination.Message startConvoy(nIn=1)
+        RealTimeCoordinationLibrary.Message startConvoy(nIn=1)
           annotation (Placement(transformation(extent={{-62,64},{-78,76}})));
-        RealTimeCoordination.MessageInterface.DelegationPort OutStartConvoyDel(
+        RealTimeCoordinationLibrary.MessageInterface.DelegationPort OutStartConvoyDel(
           redeclare Integer integers[0] "integers[0]",
           redeclare Boolean booleans[0] "booelans[0]",
           redeclare Real reals[0] "reals[0]")
           annotation (Placement(transformation(extent={{-102,60},{-84,72}})));
         Modelica_StateGraph2.Step front(nIn=3, nOut=3)
           annotation (Placement(transformation(extent={{40,-16},{48,-24}})));
-        RealTimeCoordination.Transition T3(
+        RealTimeCoordinationLibrary.Transition T3(
           use_syncReceive=true,
           numberOfSyncReceive=1,
           syncChannelName="frontConvoy")
           annotation (Placement(transformation(extent={{52,30},{60,38}})));
-        RealTimeCoordination.Transition T4(use_after=true, afterTime=100,
+        RealTimeCoordinationLibrary.Transition T4(
+          use_after=true,
+          afterTime=100,
           use_conditionPort=false)                                        annotation (
            Placement(transformation(
               extent={{-4,-4},{4,4}},
               rotation=180,
               origin={-6,32})));
-        RealTimeCoordination.Step rear(nIn=3, nOut=3)
+        RealTimeCoordinationLibrary.Step rear(nIn=3, nOut=3)
                                               annotation (Placement(transformation(
               extent={{-4,-4},{4,4}},
               rotation=0,
               origin={76,8})));
-        RealTimeCoordination.Transition T5(
+        RealTimeCoordinationLibrary.Transition T5(
           use_syncReceive=true,
           syncChannelName="rearConvoy",
           numberOfSyncReceive=1) annotation (Placement(transformation(
               extent={{-4,-4},{4,4}},
               rotation=0,
               origin={70,34})));
-        RealTimeCoordination.Step RearConvoy(nIn=1, nOut=1)
+        RealTimeCoordinationLibrary.Step RearConvoy(nIn=1, nOut=1)
           annotation (Placement(transformation(extent={{-4,-4},{4,4}},
               rotation=90,
               origin={2,-6})));
-        RealTimeCoordination.Transition T6(
+        RealTimeCoordinationLibrary.Transition T6(
           use_syncSend=true,
           syncChannelName="rearConvoy",
           numberOfSyncSend=1,
@@ -3559,23 +3557,24 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{-4,-4},{4,4}},
               rotation=90,
               origin={-14,-6})));
-        RealTimeCoordination.Message confirm(nIn=1, numberOfMessageIntegers=1)
+        RealTimeCoordinationLibrary.Message confirm(nIn=1,
+            numberOfMessageIntegers=1)
           annotation (Placement(transformation(extent={{-52,-36},{-66,-28}})));
-        output RealTimeCoordination.MessageInterface.DelegationPort OutConfirm(
+        output RealTimeCoordinationLibrary.MessageInterface.DelegationPort OutConfirm(
           redeclare Integer integers[1] "integers[1]",
           redeclare Boolean booleans[0] "booelans[0]",
           redeclare Real reals[0] "reals[0]")
           annotation (Placement(transformation(extent={{-102,-38},{-86,-24}})));
-        input RealTimeCoordination.MessageInterface.DelegationPort InConfirm(
+        input RealTimeCoordinationLibrary.MessageInterface.DelegationPort InConfirm(
           redeclare Integer integers[1] "integers[1]",
           redeclare Boolean booleans[0] "booelans[0]",
           redeclare Real reals[0] "reals[0]")
           annotation (Placement(transformation(extent={{-32,-102},{-18,-92}})));
-        RealTimeCoordination.Mailbox confirmBox(
+        RealTimeCoordinationLibrary.Mailbox confirmBox(
           numberOfMessageIntegers=1,
           nIn=1,
           nOut=1) annotation (Placement(transformation(extent={{-34,-68},{-18,-60}})));
-        RealTimeCoordination.Transition T7(
+        RealTimeCoordinationLibrary.Transition T7(
           use_firePort=true,
           use_after=true,
           use_syncReceive=true,
@@ -3585,20 +3584,20 @@ end UsersGuide;
               extent={{4,-4},{-4,4}},
               rotation=180,
               origin={14,32})));
-        RealTimeCoordination.Message endConvoy(nIn=1)
+        RealTimeCoordinationLibrary.Message endConvoy(nIn=1)
           annotation (Placement(transformation(extent={{12,-66},{26,-54}})));
-        output RealTimeCoordination.MessageInterface.DelegationPort outEndConvoy(
+        output RealTimeCoordinationLibrary.MessageInterface.DelegationPort outEndConvoy(
           redeclare Integer integers[0] "integers[0]",
           redeclare Boolean booleans[0] "booelans[0]",
           redeclare Real reals[0] "reals[0]")
           annotation (Placement(transformation(extent={{-2,-102},{14,-92}}),
               iconTransformation(extent={{-2,-102},{16,-90}})));
-        input RealTimeCoordination.MessageInterface.DelegationPort inEndConvoy(
+        input RealTimeCoordinationLibrary.MessageInterface.DelegationPort inEndConvoy(
           redeclare Integer integers[0] "integers[0]",
           redeclare Boolean booleans[0] "booelans[0]",
           redeclare Real reals[0] "reals[0]")
           annotation (Placement(transformation(extent={{-102,20},{-86,32}})));
-        RealTimeCoordination.Transition T8(
+        RealTimeCoordinationLibrary.Transition T8(
           use_messageReceive=true,
           numberOfMessageReceive=1,
           use_after=true,
@@ -3610,9 +3609,9 @@ end UsersGuide;
               extent={{4,-4},{-4,4}},
               rotation=180,
               origin={-68,42})));
-        RealTimeCoordination.Mailbox endConvoyBox(nIn=1, nOut=1)
+        RealTimeCoordinationLibrary.Mailbox endConvoyBox(nIn=1, nOut=1)
           annotation (Placement(transformation(extent={{-96,36},{-78,44}})));
-        RealTimeCoordination.Transition T9(
+        RealTimeCoordinationLibrary.Transition T9(
           syncChannelName="noFrontConvoy",
           use_syncSend=false,
           use_syncReceive=true,
@@ -3622,7 +3621,7 @@ end UsersGuide;
               extent={{-4,-4},{4,4}},
               rotation=180,
               origin={40,34})));
-        RealTimeCoordination.Transition T10(
+        RealTimeCoordinationLibrary.Transition T10(
           use_after=true,
           afterTime=1e-8,
           use_conditionPort=true,
@@ -3641,7 +3640,8 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{-10,-10},{10,10}},
               rotation=270,
               origin={80,-100})));
-        RealTimeCoordination.Transition T11(use_conditionPort=true,
+        RealTimeCoordinationLibrary.Transition T11(
+          use_conditionPort=true,
           use_firePort=true,
           use_after=true,
           afterTime=1e-8,
@@ -3650,26 +3650,26 @@ end UsersGuide;
               extent={{-4,-4},{4,4}},
               rotation=180,
               origin={42,-50})));
-        RealTimeCoordination.Message halt(nIn=1)
+        RealTimeCoordinationLibrary.Message halt(nIn=1)
           annotation (Placement(transformation(extent={{-6,-5},{6,5}},
               rotation=0,
               origin={42,-67})));
-        output RealTimeCoordination.MessageInterface.DelegationPort outHalt(
+        output RealTimeCoordinationLibrary.MessageInterface.DelegationPort outHalt(
           redeclare Integer integers[0] "integers[0]",
           redeclare Boolean booleans[0] "booelans[0]",
           redeclare Real reals[0] "reals[0]")
           annotation (Placement(transformation(extent={{30,-102},{46,-92}})));
-        input RealTimeCoordination.MessageInterface.DelegationPort InHalt(
+        input RealTimeCoordinationLibrary.MessageInterface.DelegationPort InHalt(
           redeclare Boolean booleans[0] "booelans[0]",
           redeclare Real reals[0] "reals[0]",
           redeclare Integer integers[0] "integers[0]")
           annotation (Placement(transformation(extent={{96,-18},{112,-6}})));
-        RealTimeCoordination.Mailbox haltBox(
+        RealTimeCoordinationLibrary.Mailbox haltBox(
           nIn=1,
           nOut=1,
           numberOfMessageIntegers=0)
                   annotation (Placement(transformation(extent={{94,-16},{82,-10}})));
-        RealTimeCoordination.Transition T12(
+        RealTimeCoordinationLibrary.Transition T12(
           use_after=true,
           afterTime=1e-8,
           use_messageReceive=true,
@@ -3677,7 +3677,8 @@ end UsersGuide;
               extent={{-4,-4},{4,4}},
               rotation=90,
               origin={80,-8})));
-        RealTimeCoordination.Transition T13(use_conditionPort=true,
+        RealTimeCoordinationLibrary.Transition T13(
+          use_conditionPort=true,
           use_after=true,
           afterTime=1e-8,
           condition=pre(speed) > 0)
@@ -3685,7 +3686,8 @@ end UsersGuide;
               extent={{4,-4},{-4,4}},
               rotation=0,
               origin={96,60})));
-        RealTimeCoordination.Transition T14(use_conditionPort=true,
+        RealTimeCoordinationLibrary.Transition T14(
+          use_conditionPort=true,
           use_after=true,
           afterTime=1e-8,
           condition=pre(speed) == 0)
@@ -3702,7 +3704,7 @@ end UsersGuide;
               extent={{-11,-11},{11,11}},
               rotation=270,
               origin={63,103})));
-        RealTimeCoordination.Transition T15(
+        RealTimeCoordinationLibrary.Transition T15(
           use_conditionPort=true,
           use_after=true,
           afterTime=1e-8,
@@ -3712,16 +3714,16 @@ end UsersGuide;
               extent={{-4,-4},{4,4}},
               rotation=270,
               origin={68,-24})));
-        output RealTimeCoordination.MessageInterface.DelegationPort outDrive(
+        output RealTimeCoordinationLibrary.MessageInterface.DelegationPort outDrive(
           redeclare Integer integers[0] "integers[0]",
           redeclare Boolean booleans[0] "booelans[0]",
           redeclare Real reals[0] "reals[0]")
           annotation (Placement(transformation(extent={{96,-48},{112,-38}})));
-        RealTimeCoordination.Message drive(nIn=1)
+        RealTimeCoordinationLibrary.Message drive(nIn=1)
           annotation (Placement(transformation(extent={{82,-38},{94,-26}})));
-        RealTimeCoordination.Mailbox driveBox(nOut=1, nIn=1)
+        RealTimeCoordinationLibrary.Mailbox driveBox(nOut=1, nIn=1)
           annotation (Placement(transformation(extent={{102,26},{92,30}})));
-        RealTimeCoordination.Transition T16(
+        RealTimeCoordinationLibrary.Transition T16(
           use_after=true,
           use_messageReceive=true,
           afterTime=1e-8,
@@ -3729,7 +3731,7 @@ end UsersGuide;
               extent={{-4,-4},{4,4}},
               rotation=270,
               origin={98,16})));
-        input RealTimeCoordination.MessageInterface.DelegationPort inDrive1(
+        input RealTimeCoordinationLibrary.MessageInterface.DelegationPort inDrive1(
           redeclare Integer integers[0] "integers[0]",
           redeclare Boolean booleans[0] "booelans[0]",
           redeclare Real reals[0] "reals[0]")
@@ -4091,13 +4093,11 @@ this class contains a timing constraint that the state PlatoonProposed is no lon
 
       model BeBotSystem
 
-        RealTimeCoordination.Examples.Application.BeBot_SW_Main
-                      front
+        RealTimeCoordinationLibrary.Examples.Application.BeBot_SW_Main front
           annotation (Placement(transformation(extent={{-34,8},{-72,40}})));
         Modelica.Blocks.Sources.RealExpression realExpression(y=1000)
           annotation (Placement(transformation(extent={{-52,48},{-46,52}})));
-        RealTimeCoordination.Examples.Application.BeBot_SW_Main
-                      rear
+        RealTimeCoordinationLibrary.Examples.Application.BeBot_SW_Main rear
           annotation (Placement(transformation(extent={{-12,10},{36,34}})));
         Modelica.Blocks.Sources.BooleanConstant stop(k=false)
           annotation (Placement(transformation(extent={{-3,-3},{3,3}},
@@ -5281,18 +5281,18 @@ model Transition
   output Boolean preFire "= true, if transition could fire";
   Boolean hasFired "true for 0.3 seconds if transition fires";
 
-  RealTimeCoordination.Internal.Interfaces.Synchron.sender sender[
+  RealTimeCoordinationLibrary.Internal.Interfaces.Synchron.sender sender[
       numberOfSyncSend] if use_syncSend "send port for synchronization channel"
     annotation (Placement(visible=use_numberOfSyncSend,transformation(extent={{61,91},{81,111}}),
         iconTransformation(extent={{47,84},{83,119}})));
-  RealTimeCoordination.Internal.Interfaces.Synchron.receiver receiver[
+  RealTimeCoordinationLibrary.Internal.Interfaces.Synchron.receiver receiver[
       numberOfSyncReceive] if use_syncReceive
       "receive port for synchronization channel"
     annotation (Placement(visible=true, transformation(extent={{-71,90},{-51,110}}),
         iconTransformation(extent={{-88,83},{-53,118}})));
 
-  RealTimeCoordination.Internal.Interfaces.Asynchron.transition_input_port transition_input_port[
-      numberOfMessageReceive](
+  RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.transition_input_port
+      transition_input_port[numberOfMessageReceive](
       redeclare Integer integers[numberOfMessageIntegers],
       redeclare Boolean booleans[numberOfMessageBooleans],
       redeclare Real reals[numberOfMessageReals]) if use_messageReceive
@@ -5309,12 +5309,12 @@ model Transition
   Modelica.Blocks.Interfaces.BooleanInput localCondition;
 
   Boolean messageFire;
-  RealTimeCoordination.Internal.Interfaces.Synchron.sender localSender[
+  RealTimeCoordinationLibrary.Internal.Interfaces.Synchron.sender localSender[
       numberOfSyncSend];
-  RealTimeCoordination.Internal.Interfaces.Synchron.receiver localReceiver[
+  RealTimeCoordinationLibrary.Internal.Interfaces.Synchron.receiver localReceiver[
       numberOfSyncReceive];
-  RealTimeCoordination.Internal.Interfaces.Asynchron.transition_input_port localtransition_input_port[
-      numberOfMessageReceive](
+  RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.transition_input_port
+      localtransition_input_port[numberOfMessageReceive](
       redeclare Integer integers[numberOfMessageIntegers],
       redeclare Boolean booleans[numberOfMessageBooleans],
       redeclare Real reals[numberOfMessageReals]);
@@ -5776,7 +5776,8 @@ end Step;
     annotation (
        Placement(transformation(extent={{-128,-22},{-88,18}}),
          iconTransformation(extent={{-130,-20},{-90,20}})));
-  RealTimeCoordination.Internal.Interfaces.Asynchron.message_output_port message_output_port(
+  RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.message_output_port
+      message_output_port(
       redeclare Integer integers[numberOfMessageIntegers],
       redeclare Boolean booleans[numberOfMessageBooleans],
       redeclare Real reals[numberOfMessageReals])
@@ -5855,10 +5856,12 @@ end Step;
 
  model Mailbox "Receives and stores message instances in a FIFO queue."
 
-    import RealTimeCoordination.Internal.Interfaces.Asynchron.IntQueue;
-    import RealTimeCoordination.Internal.Interfaces.Asynchron.RealQueue;
-    import RealTimeCoordination.Internal.Interfaces.Asynchron.BooleanQueue;
-    import RealTimeCoordination.Internal.Interfaces.Asynchron.StringQueue;
+    import RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.IntQueue;
+    import RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.RealQueue;
+    import
+      RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.BooleanQueue;
+    import
+      RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.StringQueue;
 
    parameter Integer nOut(min=0)=0 "Number of output connections"
                                                              annotation(Dialog(__Dymola_connectorSizing=true), HideResult=false);
@@ -5877,7 +5880,8 @@ end Step;
    parameter Integer numberOfMessageReals(min=0)=0
       "number of real parameters of a message";
 
-   RealTimeCoordination.Internal.Interfaces.Asynchron.mailbox_output_port mailbox_output_port[nOut](
+   RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.mailbox_output_port
+      mailbox_output_port[nOut](
       redeclare Integer integers[numberOfMessageIntegers],
       redeclare Boolean booleans[numberOfMessageBooleans],
       redeclare Real reals[numberOfMessageReals])
@@ -5885,18 +5889,18 @@ end Step;
      annotation (Placement(transformation(extent={{80,0},{100,20}}),
           iconTransformation(extent={{80,-20},{100,0}})));
  // Queues which are required for storing message elements like parameters, sendng time, instanceId, and ownerId
-   RealTimeCoordination.Internal.Interfaces.Asynchron.IntQueue.Queue int_q(queueSize=
-         queueSize*numberOfMessageIntegers);
-   RealTimeCoordination.Internal.Interfaces.Asynchron.RealQueue.Queue real_q(queueSize=
-         queueSize*numberOfMessageReals);
-   RealTimeCoordination.Internal.Interfaces.Asynchron.RealQueue.Queue time_q(queueSize=
-         queueSize);
-   RealTimeCoordination.Internal.Interfaces.Asynchron.BooleanQueue.Queue boolean_q(queueSize=
-         queueSize*numberOfMessageBooleans);
-      RealTimeCoordination.Internal.Interfaces.Asynchron.IntQueue.Queue instanceId_q(queueSize=
-         queueSize);
-      RealTimeCoordination.Internal.Interfaces.Asynchron.IntQueue.Queue ownerId_q(queueSize=
-         queueSize);
+   RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.IntQueue.Queue int_q(queueSize
+        =queueSize*numberOfMessageIntegers);
+   RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.RealQueue.Queue real_q(queueSize
+        =queueSize*numberOfMessageReals);
+   RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.RealQueue.Queue time_q(queueSize
+        =queueSize);
+   RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.BooleanQueue.Queue
+      boolean_q(queueSize=queueSize*numberOfMessageBooleans);
+      RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.IntQueue.Queue instanceId_q(queueSize
+        =queueSize);
+      RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.IntQueue.Queue ownerId_q(queueSize
+        =queueSize);
 
  //Temp Variables which are used for dequeuing
    Integer intTemp[nOut*numberOfMessageIntegers];
@@ -5915,7 +5919,8 @@ end Step;
    Boolean output_active[nOut]
       "Stores if a message receiving transition is enable to fire";
 
-    RealTimeCoordination.Internal.Interfaces.Asynchron.mailbox_input_port mailbox_input_port[nIn](
+    RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.mailbox_input_port
+      mailbox_input_port[nIn](
       redeclare Integer integers[numberOfMessageIntegers],
       redeclare Boolean booleans[numberOfMessageBooleans],
       redeclare Real reals[numberOfMessageReals])
@@ -5992,7 +5997,9 @@ end Step;
                                    or (numberOfMessageReals > 0 and boolean_q.filling_level > 0)) then
          for j in 1:numberOfMessageIntegers loop
 
-            (int_q.vec,intTemp[numberOfMessageIntegers*(i - 1) + j],int_q.tail,int_q.head) := RealTimeCoordination.Internal.Interfaces.Asynchron.IntQueue.dequeue(
+            (int_q.vec,intTemp[numberOfMessageIntegers*(i - 1) + j],int_q.tail,
+              int_q.head) :=
+              RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.IntQueue.dequeue(
                int_q.vec,
                int_q.tail,
                int_q.head);
@@ -6001,7 +6008,7 @@ end Step;
          for j in 1:numberOfMessageReals loop
             (real_q.vec,realTemp[numberOfMessageReals*(i - 1) + j],real_q.tail,
               real_q.head) :=
-              RealTimeCoordination.Internal.Interfaces.Asynchron.RealQueue.dequeue(
+              RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.RealQueue.dequeue(
                real_q.vec,
                real_q.tail,
                real_q.head);
@@ -6009,7 +6016,7 @@ end Step;
          for j in 1:numberOfMessageBooleans loop
             (boolean_q.vec,booleanTemp[numberOfMessageBooleans*(i - 1) + j],
               boolean_q.tail,boolean_q.head) :=
-              RealTimeCoordination.Internal.Interfaces.Asynchron.BooleanQueue.dequeue(
+              RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.BooleanQueue.dequeue(
                boolean_q.vec,
                boolean_q.tail,
                boolean_q.head);
@@ -6020,20 +6027,20 @@ end Step;
 
  //Dequeue available and required meta variables
         (time_q.vec,timeTemp[i],time_q.tail,time_q.head) :=
-          RealTimeCoordination.Internal.Interfaces.Asynchron.RealQueue.dequeue(
+          RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.RealQueue.dequeue(
            time_q.vec,
            time_q.tail,
            time_q.head);
 
         (instanceId_q.vec,instaceIdTemp[i],instanceId_q.tail,instanceId_q.head)
           :=
-          RealTimeCoordination.Internal.Interfaces.Asynchron.IntQueue.dequeue(
+          RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.IntQueue.dequeue(
            instanceId_q.vec,
            instanceId_q.tail,
            instanceId_q.head);
 
         (ownerId_q.vec,ownerIdTemp[i],ownerId_q.tail,ownerId_q.head) :=
-          RealTimeCoordination.Internal.Interfaces.Asynchron.IntQueue.dequeue(
+          RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.IntQueue.dequeue(
            ownerId_q.vec,
            ownerId_q.tail,
            ownerId_q.head);
@@ -6047,33 +6054,33 @@ end Step;
        if mailbox_input_port[i].fire then
          //read message instanceId and ownerId from the head of the queue
         testInstanceIdTemp :=
-          RealTimeCoordination.Internal.Interfaces.Asynchron.IntQueue.readQueue(
+          RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.IntQueue.readQueue(
            instanceId_q.vec,
            instanceId_q.tail,
            instanceId_q.head);
         testOwnerIdTemp :=
-          RealTimeCoordination.Internal.Interfaces.Asynchron.IntQueue.readQueue(
+          RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.IntQueue.readQueue(
            ownerId_q.vec,
            ownerId_q.tail,
            ownerId_q.head);
          //test if message instance of the same owner is already in the queue
          if (not (mailbox_input_port[i].instanceId == testInstanceIdTemp and i == testOwnerIdTemp)) then
           (ownerId_q.vec,ownerId_q.tail,ownerId_q.head) :=
-            RealTimeCoordination.Internal.Interfaces.Asynchron.IntQueue.enqueue(
+            RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.IntQueue.enqueue(
              ownerId_q.vec,
              i,
              ownerId_q.tail,
              ownerId_q.head);
          //enqueue  metavariables
           (instanceId_q.vec,instanceId_q.tail,instanceId_q.head) :=
-            RealTimeCoordination.Internal.Interfaces.Asynchron.IntQueue.enqueue(
+            RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.IntQueue.enqueue(
              instanceId_q.vec,
              mailbox_input_port[i].instanceId,
              instanceId_q.tail,
              instanceId_q.head);
 
           (time_q.vec,time_q.tail,time_q.head) :=
-            RealTimeCoordination.Internal.Interfaces.Asynchron.RealQueue.enqueue(
+            RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.RealQueue.enqueue(
              time_q.vec,
              mailbox_input_port[i].t,
              time_q.tail,
@@ -6081,7 +6088,7 @@ end Step;
          //enqueue  parameters
            for j in 1:numberOfMessageIntegers loop
             (int_q.vec,int_q.tail,int_q.head) :=
-              RealTimeCoordination.Internal.Interfaces.Asynchron.IntQueue.enqueue(
+              RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.IntQueue.enqueue(
                int_q.vec,
                mailbox_input_port[i].integers[j],
                int_q.tail,
@@ -6089,7 +6096,7 @@ end Step;
            end for;
            for j in 1:numberOfMessageReals loop
             (real_q.vec,real_q.tail,real_q.head) :=
-              RealTimeCoordination.Internal.Interfaces.Asynchron.RealQueue.enqueue(
+              RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.RealQueue.enqueue(
                real_q.vec,
                mailbox_input_port[i].reals[j],
                real_q.tail,
@@ -6097,7 +6104,7 @@ end Step;
            end for;
            for j in 1:numberOfMessageBooleans loop
             (boolean_q.vec,boolean_q.tail,boolean_q.head) :=
-              RealTimeCoordination.Internal.Interfaces.Asynchron.BooleanQueue.enqueue(
+              RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.BooleanQueue.enqueue(
                boolean_q.vec,
                mailbox_input_port[i].booleans[j],
                boolean_q.tail,
@@ -6924,7 +6931,8 @@ package Internal "Internal utility models (should usually not be used by user)"
      end port;
 
      connector mailbox_output_port
-          extends RealTimeCoordination.Internal.Interfaces.Asynchron.port;
+          extends
+            RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.port;
           input Boolean fire;
           output Boolean hasMessage;
           input Boolean active;
@@ -6941,7 +6949,8 @@ package Internal "Internal utility models (should usually not be used by user)"
      end mailbox_output_port;
 
      connector transition_input_port
-          extends RealTimeCoordination.Internal.Interfaces.Asynchron.port;
+          extends
+            RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.port;
           output Boolean fire;
           input Boolean hasMessage;
           output Boolean active;
@@ -7014,4 +7023,4 @@ end Internal;
 <p><br/><b>Licensed under the Modelica License 2</b></p>
 <p><i>This Modelica package is <u>free</u> software and the use is completely at <u>your own risk</u>; it can be redistributed and/or modified under the terms of the Modelica license 2, see the license conditions (including the disclaimer of warranty) <a href=\"modelica://RealTimeCoordination.UsersGuide.ModelicaLicense2\">here</a> or at <a href=\"http://www.Modelica.org/licenses/ModelicaLicense2\">http://www.Modelica.org/licenses/ModelicaLicense2</a>.</i> </p>
 </html>"));
-end RealTimeCoordination;
+end RealTimeCoordinationLibrary;
