@@ -1,6 +1,6 @@
 within ;
-package RealTimeCoordinationLibrary
-  "Components for defining clocks, time constraints, and invariants."
+package RealTimeCoordinationLibrary "Components for defining clocks, time constraints, and invariants."
+
 
 package UsersGuide "User's Guide"
 
@@ -9,34 +9,34 @@ package UsersGuide "User's Guide"
     class Message_Mailbox "Message and Mailbox"
 
       annotation (Documentation(info="<html>
-<p>Examples are specified at: &QUOT;<a href=\"modelica://RealTimeCoordination.Examples.AsynchronousCommunication\">Examples.AsynchronousCommunication</a>&QUOT; and &QUOT;<a href=\"modelica://RealTimeCoordination.Examples.InteractingComponents\">Examples.InteractingComponents</a>&QUOT;.</p>
+<p>Examples are specified at: &QUOT;<a href=\"modelica://RealTimeCoordinationLibrary.Examples.AsynchronousCommunication\">Examples.AsynchronousCommunication</a>&QUOT; and &QUOT;<a href=\"modelica://RealTimeCoordinationLibrary.Examples.InteractingComponents\">Examples.InteractingComponents</a>&QUOT;.</p>
 <p>We use messages to model asynchronous communication between different state graphs. Message defines the type of asynchronous messages.</p>
-<p><img src=\"modelica://RealTimeCoordination/images/message.jpg\"/></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/images/message.jpg\"/></p>
 <p>A message has parameters that transfer information from its sender to its receiver. The signature of the message type defines which parameter the message has. The parameters have a call by value semantics. The sender transition binds concrete values to the parameters that can be accessed by the receiver transition. In StateGraph2 models, the defined messages can be used as raise messages by a sender transition. A raise message is a message which is raised when a transition fires. A raise message is sent via the associated output delegation port of the State Graph2 class. This port is connected to an input delegation port which itself has a StateGraph2 model and a receiver mailbox and a receiver transition.</p>
-<p><img src=\"modelica://RealTimeCoordination/images/messageExample.jpg\"/></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/images/messageExample.jpg\"/></p>
 <p>In StateGraph2 models, we use the messages defined within the receiver input delegation port, mailbox and receiver transition as trigger messages. A trigger message is a message which can enable a transition when it is available and all other required conditions for enabling a transition are true.</p>
-<p><img src=\"modelica://RealTimeCoordination/images/triggerMessage.jpg\"/></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/images/triggerMessage.jpg\"/></p>
 <p>The mailbox of the StateGraph2 model stores incoming messages. The mailbox is a FIFO queue. The queue size is determined by the parameter <b>queueSize</b>.</p>
 <p>Furthermore, the user must specify how many Integer, Boolean, and Real parameters the messages have. Therefore, the parameters <b>numberofMessageIntegers</b>, <b>numberOfMessageBooleans</b>, and <b>numberOfMessageReals</b> must be set. </p>
-<p><img src=\"modelica://RealTimeCoordination/images/mailbox.jpg\"/> </p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/images/mailbox.jpg\"/> </p>
 <p>When a transition uses a message to fire then this message is dispatched and deleted from the mailbox. </p>
 <p>For each message only one transition can fire and dispatch the message. Messages have no specified duration of life. This means, they remain in the mailbox until they are dispatched or the mailbox is full. The handling of a mailbox overflow is handled by a assert function. </p>
-<p><img src=\"modelica://RealTimeCoordination/images/receive.jpg\"/></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/images/receive.jpg\"/></p>
 <p>The receiver transition must set the check box <b>use_messageReceive</b>.</p>
-<p><img src=\"modelica://RealTimeCoordination/images/transitionReceive.jpg\"/></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/images/transitionReceive.jpg\"/></p>
 </html>"));
     end Message_Mailbox;
 
     class Synchronization "Synchronization"
 
       annotation (Documentation(info="<html>
-<p>Examples are specified at: &QUOT;<a href=\"modelica://RealTimeCoordination.Examples.Synchronization\">Examples.Synchronization</a>&QUOT;.</p>
+<p>Examples are specified at: &QUOT;<a href=\"modelica://RealTimeCoordinationLibrary.Examples.Synchronization\">Examples.Synchronization</a>&QUOT;.</p>
 <p>A common use case when modeling orthogonal regions is to allow two regions to change their state only in an atomic way. This means either both transitions are allowed to fire or both transition are not allowed to fire. Sending and receiving synchronizations via synchronization channels synchronize the firing of transitions of parallel regions. A synchronization channel has to be specified at a common ancestor state of the parallel regions and serves as the type for the synchronizations using it.</p>
-<p><img src=\"modelica://RealTimeCoordination/images/sync.jpg\"/></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/images/sync.jpg\"/></p>
 <p>Sending a synchronization via the synchronization channel from one <b>sender transition</b> </p>
-<p><img src=\"modelica://RealTimeCoordination/images/syncSendDialog.jpg\"/></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/images/syncSendDialog.jpg\"/></p>
 <p>to a <b>receiver transition</b> performs a synchronization. We allow only a receiving synchronization or sending synchronization per transition.</p>
-<p><img src=\"modelica://RealTimeCoordination/images/syncReceiveDialog.jpg\"/></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/images/syncReceiveDialog.jpg\"/></p>
 <p>A synchronization affects the prioritization and execution order of parallel transitions as described in the following. The sender transition is executed before the receiver transition because a synchronization is directed from sender to receiver. This may violate region priorities when the sender transition is in a region with a lower priority than the region of the receiver transition because without the sending and the receiving of synchronizations between them the transition in the region with the higher priority would be executed first. </p>
 </html>"));
     end Synchronization;
@@ -44,60 +44,60 @@ package UsersGuide "User's Guide"
     class Transition "Transition"
 
       annotation (Documentation(info="<html>
-<p>Examples are specified at: &QUOT;<a href=\"modelica://RealTimeCoordination.Examples\">Examples</a>&QUOT;.</p>
+<p>Examples are specified at: &QUOT;<a href=\"modelica://RealTimeCoordinationLibrary.Examples\">Examples</a>&QUOT;.</p>
 <p>Transitions of StateGraph2 are used to change the Step (i.e., the state) of a StateGraph2 model. When the Step connected to the input of a Transition is active and the Transition condition becomes true, then the Transition fires. This means that the Step connected to the input to the Transition is deactivated and the Step connected to the output of the Transition is activated. </p>
 <p>We changed the transition of StateGraph2 as follows. Instead of <i>delayTransition </i>and<i> waitTime</i> we added the <b>use_after </b>and<b> afterTime </b>parameters. The after time construct differs from the delay time in the original version of the StateGraph2 library in that at least the after time must have expired to let the transition fire. In contrast, the semantics of the delay time is that exactly the after time must have expired in order to let the transition fire. We introduced the after time semantics because it might happen that for two transitions that need to synchronize the time instants in which they are allowed to fire might not match due to their delay time.</p>
 <p>We extended the transition of StateGraph2 as follows. We added the parameters <b>use_syncSend</b>,<b> use_syncReceive</b>,<b> use_messageReceive</b>,<b> numberOfMessageIntegers</b>,<b> numberOfMessageBooleans</b>,<b> numberOfMessageReals</b>, and<b> syncChannelName</b>. </p>
-<p>We use these parameters to synchronize the firing of parallel transitions as described in &QUOT;<a href=\"modelica://RealTimeCoordination.UsersGuide.Elements.Synchronization\">Synchronization</a>&QUOT; and to receive asynchronous messages as described in &QUOT;<a href=\"modelica://RealTimeCoordination.UsersGuide.Elements.Message_Mailbox\">Message and Mailbox</a>&QUOT;.</p>
-<p><img src=\"modelica://RealTimeCoordination/images/transition.jpg\"/></p>
+<p>We use these parameters to synchronize the firing of parallel transitions as described in &QUOT;<a href=\"modelica://RealTimeCoordinationLibrary.UsersGuide.Elements.Synchronization\">Synchronization</a>&QUOT; and to receive asynchronous messages as described in &QUOT;<a href=\"modelica://RealTimeCoordinationLibrary.UsersGuide.Elements.Message_Mailbox\">Message and Mailbox</a>&QUOT;.</p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/images/transition.jpg\"/></p>
 </html>"));
     end Transition;
 
     class Clock "Clock"
 
       annotation (Documentation(info="<html>
-<p>Examples are specified at: &QUOT;<a href=\"modelica://RealTimeCoordination.Examples.Clock\">Examples.Clock</a>&QUOT;.</p>
+<p>Examples are specified at: &QUOT;<a href=\"modelica://RealTimeCoordinationLibrary.Examples.Clock\">Examples.Clock</a>&QUOT;.</p>
 <p>A StateGraph2 model has a finite number of clocks. A clock models the elapsing of time during the execution of a system. Time elapses continuously, not in discrete steps. A clock can be reset to zero when it&apos;s input port <i>u</i>. The time value represented by a clock is relative to the last point in time when the clock has been reset. </p>
-<p><img src=\"modelica://RealTimeCoordination/images/clock.jpg\"/></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/images/clock.jpg\"/></p>
 </html>"));
     end Clock;
 
     class Invariant "Invariant"
 
       annotation (Documentation(info="<html>
-<p>Examples are specified at: &QUOT;<a href=\"modelica://RealTimeCoordination.Examples.Invariant\">Examples.Invariant</a>&QUOT;.</p>
-<p>An invariant is an inequation that specifies an upper <b>bound</b> on a clock, e.g., c &LT; 2 or c &LT;= 2 where c is a <a href=\"modelica://RealTimeCoordination.UsersGuide.Elements.Clock\">Clock</a>. Invariants are assigned to generalized steps and are used to specify a time span in which this generalized step is allowed to be active. </p>
-<p><img src=\"modelica://RealTimeCoordination/images/invariant.jpg\"/></p>
+<p>Examples are specified at: &QUOT;<a href=\"modelica://RealTimeCoordinationLibrary.Examples.Invariant\">Examples.Invariant</a>&QUOT;.</p>
+<p>An invariant is an inequation that specifies an upper <b>bound</b> on a clock, e.g., c &LT; 2 or c &LT;= 2 where c is a <a href=\"modelica://RealTimeCoordinationLibrary.UsersGuide.Elements.Clock\">Clock</a>. Invariants are assigned to generalized steps and are used to specify a time span in which this generalized step is allowed to be active. </p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/images/invariant.jpg\"/></p>
 </html>"));
     end Invariant;
 
     class ClockConstraint "ClockConstraint"
 
       annotation (Documentation(info="<html>
-<p>Examples are specified at: &QUOT;<a href=\"modelica://RealTimeCoordination.Examples.ClockConstraint\">Examples.ClockConstraint</a>&QUOT;.</p>
-<p>A clock constraint might be any kind of inequation specifying a <b>bound</b> on a certain clock, e.g., c &GT; 2, c &GT;= 5, c &LT; 2, c &LT;= 5, where c is a <a href=\"modelica://RealTimeCoordination.UsersGuide.Elements.Clock\">Clock</a>. Clock constraints are assigned to transitions in order to restrict the time span in which a transition is allowed to fire.</p>
-<p><img src=\"modelica://RealTimeCoordination/images/clockCondition.jpg\"/></p>
+<p>Examples are specified at: &QUOT;<a href=\"modelica://RealTimeCoordinationLibrary.Examples.ClockConstraint\">Examples.ClockConstraint</a>&QUOT;.</p>
+<p>A clock constraint might be any kind of inequation specifying a <b>bound</b> on a certain clock, e.g., c &GT; 2, c &GT;= 5, c &LT; 2, c &LT;= 5, where c is a <a href=\"modelica://RealTimeCoordinationLibrary.UsersGuide.Elements.Clock\">Clock</a>. Clock constraints are assigned to transitions in order to restrict the time span in which a transition is allowed to fire.</p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/images/clockCondition.jpg\"/></p>
 </html>"));
     end ClockConstraint;
 
     class DelegationPort "DelegationPort"
 
       annotation (Documentation(info="<html>
-<p>Examples are specified at: &QUOT;<a href=\"modelica://RealTimeCoordination.Examples.InteractingComponents\">Examples.InteractingComponents</a>&QUOT;.</p>
+<p>Examples are specified at: &QUOT;<a href=\"modelica://RealTimeCoordinationLibrary.Examples.InteractingComponents\">Examples.InteractingComponents</a>&QUOT;.</p>
 <p>If two extended StateGraph2 models are included in different component instances they might still communicate asynchronously across the boundaries of these component instances with the help of delegation ports. Therefore, one component defines an output delegation port and the other defines an input delegation port. Both delegation ports are connected. Then, the component instance containing the message type connects the message type to the output delegation ports and the component instance containing the Mailbox instance connects the Mailbox instance to the input delegation port. </p>
 <p>It is necessary that instances of DelegationPort redeclare the variables Integers, Booleans and Reals with the required array size as shown in the Figure below. Connected DelegationPorts must always have the same redeclaration. </p>
-<p><br/><img src=\"modelica://RealTimeCoordination/images/DelegationPort.jpg\"/></p>
+<p><br/><img src=\"modelica://RealTimeCoordinationLibrary/images/DelegationPort.jpg\"/></p>
 </html>"));
     end DelegationPort;
     annotation (__Dymola_DocumentationClass=true, Documentation(info="<html>
 <p><ol>
-<li>&QUOT;<a href=\"modelica://RealTimeCoordination.UsersGuide.Elements.Message_Mailbox\">Message and Mailbox</a>&QUOT; gives an overview about the elements: Message and Mailbox.</li>
-<li>&QUOT;<a href=\"modelica://RealTimeCoordination.UsersGuide.Elements.Synchronization\">Synchronization</a>&QUOT; gives an overview about the element: Synchronization.</li>
-<li>&QUOT;<a href=\"modelica://RealTimeCoordination.UsersGuide.Elements.Transition\">Transition</a>&QUOT; gives an overview about the element: Transition.</li>
-<li>&QUOT;<a href=\"modelica://RealTimeCoordination.UsersGuide.Elements.Clock\">Clock</a>&QUOT; gives an overview about the element: Clock.</li>
-<li>&QUOT;<a href=\"modelica://RealTimeCoordination.UsersGuide.Elements.Invariant\">Invariant</a>&QUOT; gives an overview about the element: Invariant. </li>
-<li>&QUOT;<a href=\"modelica://RealTimeCoordination.UsersGuide.Elements.ClockConstraint\">ClockConstraint</a>&QUOT; gives an overview about the element: ClockConstraint. </li>
-<li>&QUOT;<a href=\"modelica://RealTimeCoordination.UsersGuide.Elements.DelegationPort\">DelegationPort</a>&QUOT; gives an overview about the element: DelegationPort. </li>
+<li>&QUOT;<a href=\"modelica://RealTimeCoordinationLibrary.UsersGuide.Elements.Message_Mailbox\">Message and Mailbox</a>&QUOT; gives an overview about the elements: Message and Mailbox.</li>
+<li>&QUOT;<a href=\"modelica://RealTimeCoordinationLibrary.UsersGuide.Elements.Synchronization\">Synchronization</a>&QUOT; gives an overview about the element: Synchronization.</li>
+<li>&QUOT;<a href=\"modelica://RealTimeCoordinationLibrary.UsersGuide.Elements.Transition\">Transition</a>&QUOT; gives an overview about the element: Transition.</li>
+<li>&QUOT;<a href=\"modelica://RealTimeCoordinationLibrary.UsersGuide.Elements.Clock\">Clock</a>&QUOT; gives an overview about the element: Clock.</li>
+<li>&QUOT;<a href=\"modelica://RealTimeCoordinationLibrary.UsersGuide.Elements.Invariant\">Invariant</a>&QUOT; gives an overview about the element: Invariant. </li>
+<li>&QUOT;<a href=\"modelica://RealTimeCoordinationLibrary.UsersGuide.Elements.ClockConstraint\">ClockConstraint</a>&QUOT; gives an overview about the element: ClockConstraint. </li>
+<li>&QUOT;<a href=\"modelica://RealTimeCoordinationLibrary.UsersGuide.Elements.DelegationPort\">DelegationPort</a>&QUOT; gives an overview about the element: DelegationPort. </li>
 </ol></p>
 </html>"));
   end Elements;
@@ -108,6 +108,9 @@ package UsersGuide "User's Guide"
 <p><h4>Version 1.0.0, 2012-05-21</h4></p>
 <p>Uses Modelica Standard Library 3.2 </p>
 <p>First version of the real-time coordination library based on StateGraph2, Modelica.StateGraph and the prototype ModeGraph library from Martin Malmheden. </p>
+<p><br/><h4>Version 1.0.1, 2012-10-08</h4></p>
+<p>Changed Transition Class</p>
+<p>firePort = fire -&GT; firePort = pre(fire) // Avoid algebraic loop when two outgoing transitions of a state send and receive a message.</p>
 </html>"));
   end ReleaseNotes;
 
@@ -844,31 +847,32 @@ way. This package contains the <b>User's Guide</b> for
 the library and has the following content:
 </p>
 <ol>
-<li>&quot;<a href=\"modelica://RealTimeCoordination.UsersGuide.Elements\">Elements</a>&quot;
+<li>&quot;<a href=\"modelica://RealTimeCoordinationLibrary.UsersGuide.Elements\">Elements</a>&quot;
      gives an overview of the most important aspects of the Real-Time Coordination library.</li>
-<li> &quot;<a href=\"modelica://RealTimeCoordination.UsersGuide.ReleaseNotes\">Release Notes</a>&quot;
+<li> &quot;<a href=\"modelica://RealTimeCoordinationLibrary.UsersGuide.ReleaseNotes\">Release Notes</a>&quot;
     summarizes the version of this library.</li>
-<li> &quot;<a href=\"modelica://RealTimeCoordination.UsersGuide.Literature\">Literature</a>&quot;
+<li> &quot;<a href=\"modelica://RealTimeCoordinationLibrary.UsersGuide.Literature\">Literature</a>&quot;
     provides references that have been used to design and implement this
     library.</li>
-<li> &quot;<a href=\"modelica://RealTimeCoordination.UsersGuide.ModelicaLicense2\">Modelica License 2</a>&quot;
+<li> &quot;<a href=\"modelica://RealTimeCoordinationLibrary.UsersGuide.ModelicaLicense2\">Modelica License 2</a>&quot;
     is the license under which this package and all of its subpackages is
     released.</li>
-<li> &quot;<a href=\"modelica://RealTimeCoordination.UsersGuide.Contact\">Contact</a>&quot;
+<li> &quot;<a href=\"modelica://RealTimeCoordinationLibrary.UsersGuide.Contact\">Contact</a>&quot;
     provides information about the authors of the library as well as
     acknowledgments.</li>
 </ol>
-<p>For an application example have a look at: <a href=\"modelica://RealTimeCoordination.Examples.Application.BeBotSystem\">BeBotSystem</a> </p>
+<p>For an application example have a look at: <a href=\"modelica://RealTimeCoordinationLibrary.Examples.Application.BeBotSystem\">BeBotSystem</a> </p>
 
 </html>"));
 end UsersGuide;
 
+
   package Examples
-    "Examples to demonstrate the usage of the Real-Time Coordination library"
+  "Examples to demonstrate the usage of the Real-Time Coordination library"
 
     package AsynchronousCommunication
       model FirstExample
-        "First example of an asynchronous communication with two parameters of type integer."
+      "First example of an asynchronous communication with two parameters of type integer."
         extends Modelica.Icons.Example;
 
         RealTimeCoordinationLibrary.Transition T2(
@@ -1099,7 +1103,7 @@ end UsersGuide;
       end SecondExample;
 
       model ThirdExample
-        "Third example with sending two message instances to one MailBox component."
+      "Third example with sending two message instances to one MailBox component."
         extends Modelica.Icons.Example;
 
         RealTimeCoordinationLibrary.Transition T2(
@@ -1290,7 +1294,7 @@ end UsersGuide;
       end ThirdExample;
 
       model SyncExample
-        "Example to demontrate asynchronous and synchronous communication at one transition instance."
+      "Example to demontrate asynchronous and synchronous communication at one transition instance."
         extends Modelica.Icons.Example;
 
         Modelica_StateGraph2.Parallel step1(                  nEntry=2,
@@ -1415,7 +1419,7 @@ end UsersGuide;
       end SyncExample;
 
       model Sync2Example
-        "Example to demontrate asynchronous and synchronous communication at one transition instance."
+      "Example to demontrate asynchronous and synchronous communication at one transition instance."
         extends Modelica.Icons.Example;
 
         Modelica_StateGraph2.Parallel step1(                  nEntry=2,
@@ -1540,7 +1544,7 @@ end UsersGuide;
       end Sync2Example;
 
       model SyncPrioExample
-        "Example to demontrate the priorities at synchronization."
+      "Example to demontrate the priorities at synchronization."
         extends Modelica.Icons.Example;
 
         Modelica_StateGraph2.Parallel step1(                  nEntry=2,
@@ -1702,7 +1706,7 @@ end UsersGuide;
       end SyncPrioExample;
 
       model SyncPrio2Example
-        "Example to demontrate the priorities at synchronization."
+      "Example to demontrate the priorities at synchronization."
         extends Modelica.Icons.Example;
 
         Modelica_StateGraph2.Parallel step1(                  nEntry=3,
@@ -1896,7 +1900,7 @@ end UsersGuide;
       end SyncPrio2Example;
 
       model SyncPrio3Example
-        "Example to demontrate the priorities at synchronization."
+      "Example to demontrate the priorities at synchronization."
         extends Modelica.Icons.Example;
 
         Modelica_StateGraph2.Parallel step1(                  nEntry=3,
@@ -2088,7 +2092,7 @@ end UsersGuide;
       end SyncPrio3Example;
 
       model SyncAndTimeExample
-        "Example to demontrate time constraints including asynchronous and synchronous communication at one transition instance."
+      "Example to demontrate time constraints including asynchronous and synchronous communication at one transition instance."
         extends Modelica.Icons.Example;
 
         Modelica_StateGraph2.Parallel step1(                  nEntry=2,
@@ -2238,9 +2242,9 @@ end UsersGuide;
 
     package InteractingComponents
       package FirstExample
-        "Example demonstrating the delegation port, sending a message instance without parameters between two components."
+      "Example demonstrating the delegation port, sending a message instance without parameters between two components."
         model system
-          "Component with the instantiation of the example components."
+        "Component with the instantiation of the example components."
 
           extends Modelica.Icons.Example;
 
@@ -2332,7 +2336,7 @@ end UsersGuide;
                 rotation=90,
                 origin={-16,20})));
           input
-            RealTimeCoordinationLibrary.MessageInterface.InputDelegationPort delegationPort(
+          RealTimeCoordinationLibrary.MessageInterface.InputDelegationPort   delegationPort(
             redeclare Boolean booleans[0],
             redeclare Real reals[0],
             redeclare Integer integers[0])
@@ -2361,9 +2365,9 @@ end UsersGuide;
       end FirstExample;
 
       package SecondExample
-        "Example demonstrating the delegation port, sending a message instance with parameters between two components."
+      "Example demonstrating the delegation port, sending a message instance with parameters between two components."
         model system
-          "Component with the instantiation of the example components."
+        "Component with the instantiation of the example components."
 
           extends Modelica.Icons.Example;
 
@@ -2500,7 +2504,7 @@ end UsersGuide;
 
     package Synchronization
       model FirstExample
-        "Example to demonstrate sender and receiver transition of a synchronization."
+      "Example to demonstrate sender and receiver transition of a synchronization."
         extends Modelica.Icons.Example;
 
         RealTimeCoordinationLibrary.Transition T1(
@@ -2609,7 +2613,7 @@ end UsersGuide;
       end FirstExample;
 
       model SecondExample
-        "Example to demonstrate the priorities of a n:n synchronization."
+      "Example to demonstrate the priorities of a n:n synchronization."
         extends Modelica.Icons.Example;
 
         RealTimeCoordinationLibrary.Transition T1(
@@ -2779,7 +2783,7 @@ end UsersGuide;
       end SecondExample;
 
       model ThirdExample
-        "Example to demonstrate the priorities of a n:1 synchronization."
+      "Example to demonstrate the priorities of a n:1 synchronization."
         extends Modelica.Icons.Example;
 
         RealTimeCoordinationLibrary.Transition T1(
@@ -2952,7 +2956,7 @@ end UsersGuide;
       end ThirdExample;
 
       model ForthExample
-        "Example to demonstrate the priorities of a 1:n synchronization."
+      "Example to demonstrate the priorities of a 1:n synchronization."
         extends Modelica.Icons.Example;
 
         Modelica_StateGraph2.Parallel step21(          initialStep=true, nEntry=4)
@@ -3119,7 +3123,7 @@ end UsersGuide;
 
     package Transition
       model FirstExampleNewTransitionCondition
-        "Simple example demonstrating the new Transition condition. This is evaluatated differently in comparison to StateGraph2."
+      "Simple example demonstrating the new Transition condition. This is evaluatated differently in comparison to StateGraph2."
         extends Modelica.Icons.Example;
 
         Modelica_StateGraph2.Step step3(
@@ -3188,7 +3192,7 @@ end UsersGuide;
 
     package Clock
       model FirstExampleClockReset
-        "Simple example demonstrating the reset of a clock."
+      "Simple example demonstrating the reset of a clock."
         extends Modelica.Icons.Example;
 
         RealTimeCoordinationLibrary.Transition T1(use_after=true, afterTime=1)
@@ -3259,7 +3263,7 @@ end UsersGuide;
     package Invariant
 
       model FirstExampleInvariantError
-        "Simple example to demonstrate an invariant."
+      "Simple example to demonstrate an invariant."
         extends Modelica.Icons.Example;
 
         RealTimeCoordinationLibrary.Transition T1(use_after=true, afterTime=1)
@@ -3345,7 +3349,7 @@ end UsersGuide;
     package ClockConstraint
 
       model FirstExampleClockConstraint
-        "Extended example demonstrating the clock constraints."
+      "Extended example demonstrating the clock constraints."
         extends Modelica.Icons.Example;
 
         RealTimeCoordinationLibrary.Transition T1(use_after=true, afterTime=1)
@@ -4357,28 +4361,28 @@ The brake-message is transmitted to the rear driving Be Bot that is going to bra
       package Parts "Parts of BeBot"
 
         model DCMotorCtrl_V4
-          "DC-Motor model based on data from Faulhaber 1724 006 SR"
-          import SI = Modelica.SIunits;
+        "DC-Motor model based on data from Faulhaber 1724 006 SR"
+        import SI = Modelica.SIunits;
           parameter Real k=0.1 "proportional gain";
           parameter Real Ti=1/10 "time constant of integral";
           parameter Real Td=0 "time constant of derivative";
           parameter Real Nd=1000
-            "High value represents a more ideal derivative block. Reciprocal is equivalent time constant of a PT1";
+          "High value represents a more ideal derivative block. Reciprocal is equivalent time constant of a PT1";
           parameter Real ystart=0 "integrator start value";
           parameter Real outMax=6 "voltage limit in V";
           parameter Real f_exp(final unit="s/rad", final min=0)=0.05
-            "Exponential decay";
+          "Exponential decay";
           parameter Real R_w(final unit="N.m.s/rad", final min=0) = 1e-4
-            "viscous friction coeeficient in N.m.rad/s";
+          "viscous friction coeeficient in N.m.rad/s";
           parameter SI.ElectricalTorqueConstant k_emf = 6.59e-3
-            "torque constant";
+          "torque constant";
           parameter SI.Resistance R_res = 3.41 "terminal resistance";
           parameter SI.Inductance I_ind = 75e-6 "Rotor inductance";
           //parameter SI.Torque M_fric = 1.3e-4 "Friction torque";
           parameter SI.Torque M_cou = 3e-4 "1.3e-4 Coulomb friction ";
           parameter SI.Torque M_str = 6e-4 "7e-5 Stribeck friction";
           parameter SI.Inertia J_rot = 1.14e-7
-            "inertia of rotor 1 gcm2, inertia of code disc 0.09 gcm2, inertia of gear=0.05 gcm2 (estimated based on Maxon gearhead)";
+          "inertia of rotor 1 gcm2, inertia of code disc 0.09 gcm2, inertia of gear=0.05 gcm2 (estimated based on Maxon gearhead)";
           Modelica.SIunits.AngularVelocity w;
           Modelica.SIunits.AngularAcceleration a;
 
@@ -4398,11 +4402,11 @@ The brake-message is transmitted to the rear driving Be Bot that is going to bra
           Modelica.Electrical.Analog.Sensors.CurrentSensor currentSensor
             annotation (Placement(transformation(extent={{-5,-15},{5,-5}})));
           Modelica.Mechanics.Rotational.Interfaces.Flange_b Flange
-            "Interface to rotational parts"
+          "Interface to rotational parts"
             annotation (Placement(transformation(extent={{90,-10},{110,10}}),
                 iconTransformation(extent={{90,-10},{110,10}})));
           Modelica.Blocks.Interfaces.RealInput DesSp
-            "Desired angular speed of motor"
+          "Desired angular speed of motor"
             annotation (Placement(transformation(extent={{-110,-10},{-90,10}}),
                 iconTransformation(extent={{-100,-20},{-60,20}})));
           Modelica.Blocks.Interfaces.RealOutput Current "Current of motor"
@@ -4421,7 +4425,7 @@ The brake-message is transmitted to the rear driving Be Bot that is going to bra
                 rotation=180,
                 origin={-72,0})));
           Modelica.Mechanics.Rotational.Sensors.SpeedSensor SpSen
-            "Speed sensor"
+          "Speed sensor"
             annotation (Placement(transformation(extent={{5,35},{-5,45}})));
           LimPI limPI(kp=k, ki=1/Ti,
             y_start=ystart,
@@ -4623,10 +4627,10 @@ V1.3 <br>
         end DCMotorCtrl_V4;
 
         model LimPI
-          import SI = Modelica.SIunits;
-          import Modelica.Blocks.Types.Init;
+        import SI = Modelica.SIunits;
+        import Modelica.Blocks.Types.Init;
           parameter Modelica.Blocks.Types.Init initType=Modelica.Blocks.Types.Init.InitialState
-            "Type of initialization (1: no init, 2: steady state, 3,4: initial output)";
+          "Type of initialization (1: no init, 2: steady state, 3,4: initial output)";
           parameter Real outMax(start=1) "Upper limit of output";
           parameter Real outMin=-outMax "Lower limit of output";
           parameter Real kp=1 "Proportional gain of controller";
@@ -4706,46 +4710,46 @@ When limit is exceeded, the integrator is clamped.
         end LimPI;
 
         model inertia_StCoFric
-          "Inertia with frictional torque (Coulomb and Stribeck friction), modelled with finite state"
+        "Inertia with frictional torque (Coulomb and Stribeck friction), modelled with finite state"
           /* Initial mode has to be defined manually or else the model does not work properly 
   The concept is based on mass with friction
   Friction is made up of Coulomb and Stribeck 
   A finite state model is used to determine the state of frictional torque, i.e.
   */
-          import SI = Modelica.SIunits;
+        import SI = Modelica.SIunits;
 
           Modelica.Mechanics.Rotational.Interfaces.Flange_a flange_a
-            "Left flange of shaft"
+          "Left flange of shaft"
             annotation (Placement(transformation(extent={{-110,-10},{-90,10}},
                   rotation=0)));
           Modelica.Mechanics.Rotational.Interfaces.Flange_b flange_b
-            "Right flange of shaft"
+          "Right flange of shaft"
             annotation (Placement(transformation(extent={{90,-10},{110,10}},
                   rotation=0)));
           //parameter SI.Torque M_fric=0.5 "Friction torque";
           // J_rotor = 1 gcm2, J_impulsscheibe = 0.09 gcm2
           parameter SI.Torque M_coulomb= 3e-4
-            "Coulomb friction torque (1.3e-4)";
+          "Coulomb friction torque (1.3e-4)";
           parameter SI.Torque M_stribeck= 6e-4
-            "Stribeck friction torque (7e-5)";
+          "Stribeck friction torque (7e-5)";
           parameter Real R_prop(final unit="N.m.s/rad", final min=0)= 1e-4
-            "Viscous friction coefficient";
+          "Viscous friction coefficient";
           parameter SI.Inertia J(min=0, start=1)=1.09e-7 "Moment of inertia";
           parameter Real fexp(final unit="s/rad", final min=0)=1
-            "Exponential decay";
+          "Exponential decay";
           parameter StateSelect stateSelect=StateSelect.default
-            "Priority to use phi and w as states" annotation(HideResult=true,Dialog(tab="Advanced"));
+          "Priority to use phi and w as states"   annotation(HideResult=true,Dialog(tab="Advanced"));
           SI.Angle phi(stateSelect=stateSelect)
-            "Absolute rotation angle of component" annotation(Dialog(group="Initialization", __Dymola_initialDialog=true));
+          "Absolute rotation angle of component"   annotation(Dialog(group="Initialization", __Dymola_initialDialog=true));
           SI.AngularVelocity w(stateSelect=stateSelect)
-            "Absolute angular velocity of component (= der(phi))" annotation(Dialog(group="Initialization", __Dymola_initialDialog=true));
+          "Absolute angular velocity of component (= der(phi))"   annotation(Dialog(group="Initialization", __Dymola_initialDialog=true));
           SI.AngularAcceleration a
-            "Absolute angular acceleration of component (= der(w))" annotation(Dialog(group="Initialization", __Dymola_initialDialog=true));
+          "Absolute angular acceleration of component (= der(w))"   annotation(Dialog(group="Initialization", __Dymola_initialDialog=true));
           SI.Torque M_tau "auxiliary variable for driving torque";
           SI.Torque tau_fric;
           SI.Torque M_fric "sum of Coulomb and stribeck friction";
           Real sa(unit="1")
-            "Path parameter of friction characteristic tau = tau(a_relfric)";
+          "Path parameter of friction characteristic tau = tau(a_relfric)";
 
           // 5 different modes for finite state model
           constant Integer stuck = 0 "if w_rel=0 and not sliding";
@@ -4756,7 +4760,7 @@ When limit is exceeded, the integrator is clamped.
 
           Integer mode(final min=backward, final max=forward, start=0, fixed=true);
 
-        protected
+      protected
           constant SI.AngularAcceleration unitAcceleration = 1;
           constant SI.Torque unitTorque = 1;
 
@@ -4866,22 +4870,22 @@ V1.6 Viscous friction is added to the model. <br>
           parameter Modelica.SIunits.Radius r_wheel=0.0155 "radius of wheel";
           parameter Modelica.SIunits.Mass m_wheel=0.02 "mass of one wheel";
           parameter Modelica.SIunits.Inertia I_axis_wheel=2.6e-6
-            "inertia along axis of wheel";
+          "inertia along axis of wheel";
           parameter Modelica.SIunits.Inertia I_long_wheel=8e-7
-            "inertia along longitudinal direction of wheel";
+          "inertia along longitudinal direction of wheel";
           parameter Modelica.SIunits.Distance d_wheel=0.09
-            "distance between the centre of two wheels";
+          "distance between the centre of two wheels";
           parameter Modelica.SIunits.Mass m_chassis=0.20 "mass of chassis";
           parameter Modelica.SIunits.Inertia Ix_chassis=7.5e-5
-            "inertia of chassis in x-axis, based on CAD model";
+          "inertia of chassis in x-axis, based on CAD model";
           parameter Modelica.SIunits.Inertia Iy_chassis=7.5e-5
-            "inertia of chassis in y-axis, based on CAD model";
+          "inertia of chassis in y-axis, based on CAD model";
           parameter Modelica.SIunits.Inertia Iz_chassis=1e-4
-            "inertia of chassis in z-axis, the vertical axis";
+          "inertia of chassis in z-axis, the vertical axis";
             parameter Modelica.SIunits.Position xstart_wmr=0
-            "start position of x-coordinate of robot";
+          "start position of x-coordinate of robot";
             parameter Modelica.SIunits.Position ystart_wmr=0
-            "start position of y-coordinate of robot";
+          "start position of y-coordinate of robot";
           Modelica.Mechanics.MultiBody.Parts.RollingWheelSet wheelSet(
             wheelRadius=r_wheel,
             wheelMass=m_wheel,
@@ -4895,10 +4899,10 @@ V1.6 Viscous friction is added to the model. <br>
             y(start=ystart_wmr, fixed=true))
             annotation (Placement(transformation(extent={{-10,-20},{10,0}})));
           Modelica.Blocks.Interfaces.RealInput omegaL_des
-            "Desired angular speed of left motor"
+          "Desired angular speed of left motor"
             annotation (Placement(transformation(extent={{-160,-20},{-120,20}})));
           Modelica.Blocks.Interfaces.RealInput omegaR_des
-            "Desired angular speed of right motor"
+          "Desired angular speed of right motor"
             annotation (Placement(transformation(extent={{160,-20},{120,20}})));
           Modelica.Mechanics.MultiBody.Interfaces.Frame_a Frame annotation (
               Placement(transformation(
@@ -5007,22 +5011,22 @@ Version History
 
         model LossyPlanetary "Lossy planetary gear box"
           parameter Real ratio(start=72/5)=14.4
-            "number of ring_teeth/sun_teeth (e.g. ratio=100/50)";
+          "number of ring_teeth/sun_teeth (e.g. ratio=100/50)";
           parameter Real eta = 0.78 "efficiency of gearhead";
           // M_out = M_in * ratio * efficiency
           Modelica.SIunits.AngularVelocity w;
           Modelica.SIunits.AngularAcceleration a;
           // kinematic relationship
           Modelica.Mechanics.Rotational.Interfaces.Flange_a sun
-            "Flange of sun shaft"
+          "Flange of sun shaft"
             annotation (Placement(transformation(extent={{-110,-10},{-90,10}},
                   rotation=0)));
           Modelica.Mechanics.Rotational.Interfaces.Flange_a planet
-            "Flange of carrier shaft"
+          "Flange of carrier shaft"
             annotation (Placement(transformation(extent={{-110,30},{-90,50}},
                   rotation=0)));
           Modelica.Mechanics.Rotational.Interfaces.Flange_b ring
-            "Flange of ring shaft"
+          "Flange of ring shaft"
             annotation (Placement(transformation(extent={{90,-10},{110,10}}, rotation=
                    0)));
 
@@ -5211,70 +5215,71 @@ Generally, the teeth of the gears are related as follows (assuming number of tee
       end Parts;
     end Application;
     annotation (Documentation(info="<html>
-<p>For an application examples have a look at: <a href=\"modelica://RealTimeCoordination.Examples.Application.BeBotSystem\">BeBotSystem</a> </p>
+<p>For an application examples have a look at: <a href=\"modelica://RealTimeCoordinationLibrary.Examples.Application.BeBotSystem\">BeBotSystem</a> </p>
 
 </html>"));
   end Examples;
 
+
 model Transition
-    "Transition between steps (optionally with delayed transition and/or condition input port and/or synchronization and/or receiver connector of asynchronous communication)"
+  "Transition between steps (optionally with delayed transition and/or condition input port and/or synchronization and/or receiver connector of asynchronous communication)"
   parameter Boolean use_conditionPort = false
-      "= true, if conditionPort enabled"
+    "= true, if conditionPort enabled"
     annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true));
 
   input Boolean condition = true
-      "Fire condition (time varying Boolean expression)"
+    "Fire condition (time varying Boolean expression)"
     annotation(Dialog(enable=true));
   parameter Boolean use_after = false
-      "= true, if after construct should be enabled."
+    "= true, if after construct should be enabled."
     annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true));
   parameter Modelica.SIunits.Time afterTime = 0
-      "Wait time before transition can fire after the source state has been enabled."
+    "Wait time before transition can fire after the source state has been enabled."
     annotation(Dialog(enable=use_after));
 
   parameter Boolean use_firePort = false "= true, if firePort enabled"
     annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true));
 
   parameter Boolean   use_syncSend = false
-      "= true, if using synchronization of kind SEND"
+    "= true, if using synchronization of kind SEND"
     annotation(Dialog(enable=not (use_syncReceive),Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true)));
   parameter Boolean use_syncReceive = false
-      "= true, if using synchronization of kind SEND"
+    "= true, if using synchronization of kind SEND"
      annotation(Dialog(enable=not (use_syncSend),Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true)));
   parameter Boolean use_messageReceive = false
-      "= true, if using asynchron messages of kind TRIGGER"
+    "= true, if using asynchron messages of kind TRIGGER"
     annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true));
   parameter Boolean loopCheck = true
-      "= true, if one after transition per loop required"
+    "= true, if one after transition per loop required"
     annotation(Evaluate=true, HideResult=true, Dialog(tab="Advanced"), choices(__Dymola_checkBox=true));
   parameter Integer numberOfSyncSend(min=0)=0 annotation(Dialog(__Dymola_connectorSizing=true), HideResult=true);
   parameter Integer numberOfSyncReceive(min=0)=0 annotation(Dialog(__Dymola_connectorSizing=true), HideResult=true);
   parameter Integer numberOfMessageReceive(min=0)=0 annotation(Dialog(__Dymola_connectorSizing=true), HideResult=true);
   parameter Integer numberOfMessageIntegers(min=0)=0
-      "size of the Integer parameter array of a received message";
+    "size of the Integer parameter array of a received message";
   parameter Integer numberOfMessageBooleans(min=0)=0
-      "size of the Boolean parameter array of a received message";
+    "size of the Boolean parameter array of a received message";
   parameter Integer numberOfMessageReals(min=0)=0
-      "size of the Real parameter array of a received message";
+    "size of the Real parameter array of a received message";
   parameter String syncChannelName= "channelName" if  (use_syncSend or use_syncReceive)
-      "name of the synchronization channel"
+    "name of the synchronization channel"
                                          annotation(Dialog(enable=(use_syncSend or use_syncReceive)));
 
   Modelica_StateGraph2.Internal.Interfaces.Transition_in inPort
-      "Input port of transition (exactly one connection to this port is required)"
+    "Input port of transition (exactly one connection to this port is required)"
     annotation (Placement(transformation(extent={{-17,83},{17,117}})));
 
   Modelica_StateGraph2.Internal.Interfaces.Transition_out outPort
-      "Output port of transition (exactly one connection from this port is required)"
+    "Output port of transition (exactly one connection from this port is required)"
     annotation (Placement(transformation(extent={{-25,-150},{25,-100}})));
 
   Modelica.Blocks.Interfaces.BooleanInput conditionPort if use_conditionPort
-      "Fire condition as Boolean input."
+    "Fire condition as Boolean input."
     annotation (
       Placement(transformation(extent={{-150,-25},{-100,25}})));
 
-  Modelica.Blocks.Interfaces.BooleanOutput firePort = fire if use_firePort
-      "= true, if transition fires"
+  Modelica.Blocks.Interfaces.BooleanOutput firePort = pre(fire) if use_firePort
+    "= true, if transition fires"
     annotation (Placement(transformation(extent={{90,-15},{120,15}})));
 
   output Boolean fire "= true, if transition fires";
@@ -5287,7 +5292,7 @@ model Transition
         iconTransformation(extent={{47,84},{83,119}})));
   RealTimeCoordinationLibrary.Internal.Interfaces.Synchron.receiver receiver[
       numberOfSyncReceive] if use_syncReceive
-      "receive port for synchronization channel"
+    "receive port for synchronization channel"
     annotation (Placement(visible=true, transformation(extent={{-71,90},{-51,110}}),
         iconTransformation(extent={{-88,83},{-53,118}})));
 
@@ -5296,16 +5301,16 @@ model Transition
       redeclare Integer integers[numberOfMessageIntegers],
       redeclare Boolean booleans[numberOfMessageBooleans],
       redeclare Real reals[numberOfMessageReals]) if use_messageReceive
-      "port for trigger message"
+    "port for trigger message"
     annotation (Placement(visible=use_messageReceive, transformation(extent={{-145,33},
               {-100,73}})));
 
-  protected
+protected
      Real hasFiredTime "last time when state was activated";
 
   constant Modelica.SIunits.Time minimumAfterTime = 100*Modelica.Constants.eps;
   Modelica.SIunits.Time t_start
-      "Time instant at which the transition would fire, if afterTime would be zero";
+    "Time instant at which the transition would fire, if afterTime would be zero";
   Modelica.Blocks.Interfaces.BooleanInput localCondition;
 
   Boolean messageFire;
@@ -5487,8 +5492,8 @@ equation
 <p>Transitions are used to change the state of a StateGraph2. When the Step connected to the input of a Transition is active and the Transition condition becomes true, then the Transition fires. This means that the Step connected to the input to the Transition is deactivated and the Step connected to the output of the Transition is activated. </p>
 <p>We changed the transition of StateGraph2 as follows. Instead of <i>delayTransition </i>and<i> delayTime</i> we added the <b>use_after </b>and<b> afterTime </b>parameter. The after time construct differs from the delay time in the original version of the StateGraph2 library in that at least the after time must have expired to let the transition fire. In contrast, the semantics of the delay time is that exactly the after time must have expired in order to let the transition fire. We introduced the after time semantics because it might happen that for two transitions that need to synchronize the time instants in which they are allowed to fire might not match due to their delay time.</p>
 <p>We extended the transition of StateGraph2 as follows. We added the parameters <b>use_syncSend, use_syncReceive, use_messageReceive, numberOfMessageIntegers, numberOfMessageBooleans, numberOfMessageReals, and syncChannelName</b>. </p>
-<p>We use this parameters to syncronize the firing of parallel transitions as described in &QUOT;<a href=\"modelica://RealTimeCoordination.UsersGuide.Elements.Synchronization\">Synchronization</a>&QUOT; and to receive asynchronous messages as described in &QUOT;<a href=\"modelica://RealTimeCoordination.UsersGuide.Elements.Message_Mailbox\">Message and Mailbox</a>&QUOT;.</p>
-<p><img src=\"modelica://RealTimeCoordination/images/transition.jpg\"/></p>
+<p>We use this parameters to syncronize the firing of parallel transitions as described in &QUOT;<a href=\"modelica://RealTimeCoordinationLibrary.UsersGuide.Elements.Synchronization\">Synchronization</a>&QUOT; and to receive asynchronous messages as described in &QUOT;<a href=\"modelica://RealTimeCoordinationLibrary.UsersGuide.Elements.Message_Mailbox\">Message and Mailbox</a>&QUOT;.</p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/images/transition.jpg\"/></p>
 </html>"),
     Diagram(coordinateSystem(
         preserveAspectRatio=true,
@@ -5496,39 +5501,40 @@ equation
         grid={1,1}), graphics));
 end Transition;
 
+
 model Step
-    "Step from StateGraph2 with Helper Variable wasActive. This allows tracing activated Steps."
+  "Step from StateGraph2 with Helper Variable wasActive. This allows tracing activated Steps."
   parameter Integer nIn(min=0)=0 "Number of input connections"
                                                              annotation(Dialog(__Dymola_connectorSizing=true), HideResult=true);
   parameter Integer nOut(min=0)=0 "Number of output connections"
                                                                annotation(Dialog(__Dymola_connectorSizing=true), HideResult=true);
   parameter Boolean initialStep = false
-      "=true, if initial step (graph starts at this step)"
+    "=true, if initial step (graph starts at this step)"
         annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true));
   parameter Boolean use_activePort = false "=true, if activePort enabled"
         annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true));
 
   Modelica_StateGraph2.Internal.Interfaces.Step_in inPort[nIn]
-      "Port for zero, one, or more input transitions"
+    "Port for zero, one, or more input transitions"
     annotation (Placement(transformation(extent={{-50,85},{50,115}})));
   Modelica_StateGraph2.Internal.Interfaces.Step_out outPort[nOut]
-      "Port for zero, one, or more output transitions"
+    "Port for zero, one, or more output transitions"
     annotation (Placement(transformation(extent={{-50,-130},{50,-100}})));
   Modelica.Blocks.Interfaces.BooleanOutput activePort = active if use_activePort
-      "= true if step is active, otherwise the step is not active"
+    "= true if step is active, otherwise the step is not active"
     annotation (Placement(transformation(extent={{100,-18},{136,18}})));
   output Boolean active
-      "= true if step is active, otherwise the step is not active";
+    "= true if step is active, otherwise the step is not active";
 Boolean wasActive "true for 0.3 seconds if state gets activated";
-  protected
+protected
   Real wasActiveTime "last time when state was activated";
   Boolean newActive(start=initialStep, fixed=true)
-      "Value of active in the next iteration";
+    "Value of active in the next iteration";
   Boolean oldActive(start=initialStep, fixed=true)
-      "Value of active when CompositeStep was aborted";
+    "Value of active when CompositeStep was aborted";
 
   Modelica_StateGraph2.Internal.Interfaces.Node node
-      "Handles rootID as well as suspend and resume transitions from a Modelica_StateGraph2";
+    "Handles rootID as well as suspend and resume transitions from a Modelica_StateGraph2";
 
   Boolean inport_fire;
   Boolean outport_fire;
@@ -5744,35 +5750,36 @@ in the tutorial.
         grid={1,1}),        graphics));
 end Step;
 
+
  model Message
-    "Defines a message type and sends a message instance on Boolean input signal."
+  "Defines a message type and sends a message instance on Boolean input signal."
 
   parameter Integer nIn(min=0)=0
    annotation(Dialog(__Dymola_connectorSizing=true), HideResult=true);
   input Modelica.Blocks.Interfaces.BooleanInput conditionPort[nIn]
-      "trigger input port for sending messages"
+    "trigger input port for sending messages"
      annotation (Placement(transformation(extent={{-140,-116},{-100,-76}})));
 
    parameter Integer numberOfMessageIntegers(min=0)=0
-      "Number of Integer input connections"
+    "Number of Integer input connections"
        annotation(Dialog(__Dymola_connectorSizing=true), HideResult=true);
    parameter Integer numberOfMessageReals(min=0)=0
-      "Number of Real input connections"
+    "Number of Real input connections"
        annotation(Dialog(__Dymola_connectorSizing=true), HideResult=true);
    parameter Integer numberOfMessageBooleans(min=0)=0
-      "Number of Boolean input connections"
+    "Number of Boolean input connections"
        annotation(Dialog(__Dymola_connectorSizing=true), HideResult=true);
    Modelica_StateGraph2.Blocks.Interfaces.IntegerVectorInput u_integers[numberOfMessageIntegers]
-      "Integer parameters of message"
+    "Integer parameters of message"
       annotation (Placement(transformation(extent={{-128,112},{-88,72}}),
          iconTransformation(extent={{-130,112},{-90,72}})));
    Modelica_StateGraph2.Blocks.Interfaces.BooleanVectorInput u_booleans[numberOfMessageBooleans]
-      "Boolean parameters of message"
+    "Boolean parameters of message"
     annotation (
        Placement(transformation(extent={{-130,26},{-90,66}}), iconTransformation(
            extent={{-130,26},{-90,66}})));
    Modelica_StateGraph2.Blocks.Interfaces.RealVectorInput u_reals[numberOfMessageReals]
-      "Real parameters of message"
+    "Real parameters of message"
     annotation (
        Placement(transformation(extent={{-128,-22},{-88,18}}),
          iconTransformation(extent={{-130,-20},{-90,20}})));
@@ -5781,7 +5788,7 @@ end Step;
       redeclare Integer integers[numberOfMessageIntegers],
       redeclare Boolean booleans[numberOfMessageBooleans],
       redeclare Real reals[numberOfMessageReals])
-      "output port for sending message"              annotation (
+    "output port for sending message"                annotation (
        Placement(transformation(extent={{80,-20},{100,0}}), iconTransformation(
            extent={{80,-20},{100,0}})));
  algorithm
@@ -5849,10 +5856,11 @@ end Step;
            textString="%name")}),
      Documentation(info="<html>
 <p>We use messages to model asynchronous communication between different state graphs. Message define the type of asynchronous messages.</p>
-<p><img src=\"modelica://RealTimeCoordination/images/message.jpg\"/></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/images/message.jpg\"/></p>
 <p>A message has parameters which transfer information from its sender to its receiver. The signature of the message type defines which parameter the message has. The parameters have a call by value semantics. The sender transition binds concrete values to the parameters which can be accessed by the receiver transition. In State Graph the defined messages can be used as raise message-events by a sender transition. A raise message-event is a message-event which is raised when a transition fires. A raise message-event is sent via the associated output delegation port of the State Graph2 class. This port is connected to an input delegation port which itself has a State Graph2 model and a receiver mailbox and a receiver transition.</p>
 </html>"));
  end Message;
+
 
  model Mailbox "Receives and stores message instances in a FIFO queue."
 
@@ -5874,33 +5882,33 @@ end Step;
 
    // Size of the parameter arrays
    parameter Integer numberOfMessageIntegers(min=0)=0
-      "number of integer parameters of a message";
+    "number of integer parameters of a message";
    parameter Integer numberOfMessageBooleans(min=0)=0
-      "number of boolean parameters of a message";
+    "number of boolean parameters of a message";
    parameter Integer numberOfMessageReals(min=0)=0
-      "number of real parameters of a message";
+    "number of real parameters of a message";
 
    RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.mailbox_output_port
       mailbox_output_port[nOut](
       redeclare Integer integers[numberOfMessageIntegers],
       redeclare Boolean booleans[numberOfMessageBooleans],
       redeclare Real reals[numberOfMessageReals])
-      "Interface for sending messages with parameters"
+    "Interface for sending messages with parameters"
      annotation (Placement(transformation(extent={{80,0},{100,20}}),
           iconTransformation(extent={{80,-20},{100,0}})));
  // Queues which are required for storing message elements like parameters, sendng time, instanceId, and ownerId
-   RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.IntQueue.Queue int_q(queueSize
-        =queueSize*numberOfMessageIntegers);
-   RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.RealQueue.Queue real_q(queueSize
-        =queueSize*numberOfMessageReals);
-   RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.RealQueue.Queue time_q(queueSize
-        =queueSize);
+   RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.IntQueue.Queue int_q(queueSize=
+         queueSize*numberOfMessageIntegers);
+   RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.RealQueue.Queue real_q(queueSize=
+         queueSize*numberOfMessageReals);
+   RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.RealQueue.Queue time_q(queueSize=
+         queueSize);
    RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.BooleanQueue.Queue
       boolean_q(queueSize=queueSize*numberOfMessageBooleans);
-      RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.IntQueue.Queue instanceId_q(queueSize
-        =queueSize);
-      RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.IntQueue.Queue ownerId_q(queueSize
-        =queueSize);
+      RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.IntQueue.Queue instanceId_q(queueSize=
+         queueSize);
+      RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.IntQueue.Queue ownerId_q(queueSize=
+         queueSize);
 
  //Temp Variables which are used for dequeuing
    Integer intTemp[nOut*numberOfMessageIntegers];
@@ -5915,16 +5923,16 @@ end Step;
    Integer testOwnerIdTemp;
 
    Boolean fire_out[nOut]
-      "Tells the transition that a message has been dequeud";
+    "Tells the transition that a message has been dequeud";
    Boolean output_active[nOut]
-      "Stores if a message receiving transition is enable to fire";
+    "Stores if a message receiving transition is enable to fire";
 
     RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.mailbox_input_port
       mailbox_input_port[nIn](
       redeclare Integer integers[numberOfMessageIntegers],
       redeclare Boolean booleans[numberOfMessageBooleans],
       redeclare Real reals[numberOfMessageReals])
-      "Interface for receiving messages with parameters"                                                           annotation (Placement(transformation(extent=
+    "Interface for receiving messages with parameters"                                                             annotation (Placement(transformation(extent=
               {{-100,0},{-80,20}}), iconTransformation(extent={{-100,-20},{-80,0}})));
  equation
  // Stores if a connected message receiving transition is enable to fire
@@ -6154,12 +6162,13 @@ end Step;
      Documentation(info="<html>
 <p>The mailbox of the State Graph2 model stores incoming message-events. The mailbox is a FIFO queue. The queue size is determined by the parameter <b>queueSize</b>.</p>
 <p>Futher the user must specify how many integer, boolean, and real parameters the messages which should be buffered have. Therefore, the parameters <b>numberofMessageIntegers</b>, <b>numberOfMessageBooleans</b>, and <b>numberOfMessageReals</b> must be set. </p>
-<p><img src=\"modelica://RealTimeCoordination/images/mailbox.jpg\"/> </p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/images/mailbox.jpg\"/> </p>
 </html>"));
  end Mailbox;
 
+
   package TimeElements
-    "Components for defining clocks, time constraints and invariants."
+  "Components for defining clocks, time constraints and invariants."
     block Clock "Set output signal to a time varying Real expression"
        parameter Integer nu(min=0)=0 "Number of input connections"
                                                                 annotation(Dialog(__Dymola_connectorSizing=true), HideResult=true);
@@ -6171,7 +6180,7 @@ end Step;
       Modelica.Blocks.Interfaces.BooleanVectorInput u[nu]
         annotation (Placement(transformation(extent={{-120,70},{-80,-70}}),
             iconTransformation(extent={{-114,34},{-88,-34}})));
-    protected
+  protected
       Modelica.SIunits.Time diff_time(start = 0);
     algorithm
       when Modelica_StateGraph2.Blocks.BooleanFunctions.anyTrue(u) then
@@ -6265,7 +6274,7 @@ Variable <b>y</b> is both a variable and a connector.
 
     package TimeInvariant
       block TimeInvariantLessOrEqual
-        "Set output signal to a time varying Real expression"
+      "Set output signal to a time varying Real expression"
 
         parameter Real bound;
 
@@ -6273,7 +6282,7 @@ Variable <b>y</b> is both a variable and a connector.
           annotation (Placement(transformation(extent={{-140,-116},{-100,-76}}),
               iconTransformation(extent={{-132,-56},{-92,-16}})));
         Modelica.Blocks.Interfaces.RealInput clockValue
-          "Number to be shown in diagram layer if use_numberPort = true"
+        "Number to be shown in diagram layer if use_numberPort = true"
           annotation (Placement(transformation(extent={{-130,-15},{-100,15}}),
               iconTransformation(extent={{-15,-15},{15,15}},
               rotation=0,
@@ -6334,7 +6343,7 @@ Variable <b>y</b> is both a variable and a connector.
       end TimeInvariantLessOrEqual;
 
       block TimeInvariantLess
-        "Set output signal to a time varying Real expression"
+      "Set output signal to a time varying Real expression"
 
         parameter Real bound;
 
@@ -6342,7 +6351,7 @@ Variable <b>y</b> is both a variable and a connector.
           annotation (Placement(transformation(extent={{-140,-116},{-100,-76}}),
               iconTransformation(extent={{-132,-56},{-92,-16}})));
         Modelica.Blocks.Interfaces.RealInput clockValue
-          "Number to be shown in diagram layer if use_numberPort = true"
+        "Number to be shown in diagram layer if use_numberPort = true"
           annotation (Placement(transformation(extent={{-130,-15},{-100,15}}),
               iconTransformation(extent={{-130,25},{-100,55}})));
 
@@ -6402,19 +6411,19 @@ Variable <b>y</b> is both a variable and a connector.
 
     package ClockConstraint
       block ClockConstraintLess
-        "Set output signal to a time varying Real expression"
+      "Set output signal to a time varying Real expression"
 
         parameter Real bound;
 
         Modelica.Blocks.Interfaces.RealInput clockValue
-          "Number to be shown in diagram layer if use_numberPort = true"
+        "Number to be shown in diagram layer if use_numberPort = true"
           annotation (Placement(transformation(extent={{-130,-15},{-100,15}}),
               iconTransformation(extent={{-130,-3},{-100,27}})));
         Modelica.Blocks.Interfaces.BooleanOutput firePort
-          "= true, if transition fires"
+        "= true, if transition fires"
           annotation (Placement(transformation(extent={{90,-15},{120,15}}),
               iconTransformation(extent={{100,-5},{130,25}})));
-      protected
+    protected
         Boolean localFire;
       equation
        localFire =  clockValue < bound;
@@ -6482,19 +6491,19 @@ Variable <b>y</b> is both a variable and a connector.
       end ClockConstraintLess;
 
       block ClockConstraintLessOrEqual
-        "Set output signal to a time varying Real expression"
+      "Set output signal to a time varying Real expression"
 
         parameter Real bound;
 
        Modelica.Blocks.Interfaces.RealInput clockValue
-          "Number to be shown in diagram layer if use_numberPort = true"
+        "Number to be shown in diagram layer if use_numberPort = true"
           annotation (Placement(transformation(extent={{-130,-15},{-100,15}}),
               iconTransformation(extent={{-130,-3},{-100,27}})));
         Modelica.Blocks.Interfaces.BooleanOutput firePort
-          "= true, if transition fires"
+        "= true, if transition fires"
           annotation (Placement(transformation(extent={{90,-15},{120,15}}),
               iconTransformation(extent={{100,-5},{130,25}})));
-      protected
+    protected
         Boolean localFire;
       equation
        localFire =  clockValue <= bound;
@@ -6563,19 +6572,19 @@ Variable <b>y</b> is both a variable and a connector.
       end ClockConstraintLessOrEqual;
 
       block ClockConstraintGreater
-        "Set output signal to a time varying Real expression"
+      "Set output signal to a time varying Real expression"
 
         parameter Real bound;
 
         Modelica.Blocks.Interfaces.RealInput clockValue
-          "Number to be shown in diagram layer if use_numberPort = true"
+        "Number to be shown in diagram layer if use_numberPort = true"
           annotation (Placement(transformation(extent={{-130,-15},{-100,15}}),
               iconTransformation(extent={{-130,-3},{-100,27}})));
         Modelica.Blocks.Interfaces.BooleanOutput firePort
-          "= true, if transition fires"
+        "= true, if transition fires"
           annotation (Placement(transformation(extent={{90,-15},{120,15}}),
               iconTransformation(extent={{100,-5},{130,25}})));
-      protected
+    protected
         Boolean localFire;
       equation
        localFire =  clockValue > bound;
@@ -6644,19 +6653,19 @@ Variable <b>y</b> is both a variable and a connector.
       end ClockConstraintGreater;
 
       block ClockConstraintGreaterOrEqual
-        "Set output signal to a time varying Real expression"
+      "Set output signal to a time varying Real expression"
 
         parameter Real bound;
 
         Modelica.Blocks.Interfaces.RealInput clockValue
-          "Number to be shown in diagram layer if use_numberPort = true"
+        "Number to be shown in diagram layer if use_numberPort = true"
           annotation (Placement(transformation(extent={{-130,-15},{-100,15}}),
               iconTransformation(extent={{-130,-3},{-100,27}})));
         Modelica.Blocks.Interfaces.BooleanOutput firePort
-          "= true, if transition fires"
+        "= true, if transition fires"
           annotation (Placement(transformation(extent={{90,-15},{120,15}}),
               iconTransformation(extent={{100,-5},{130,25}})));
-      protected
+    protected
         Boolean localFire;
 
       equation
@@ -6727,6 +6736,7 @@ Variable <b>y</b> is both a variable and a connector.
     end ClockConstraint;
   end TimeElements;
 
+
   package MessageInterface "Connectors for asynchronous communication."
     connector DelegationPort
     Boolean fire;
@@ -6735,19 +6745,19 @@ Variable <b>y</b> is both a variable and a connector.
     replaceable Integer integers[:]
     annotation(choices(
     choice(redeclare Integer integers[0] "integers[0]"),choice(redeclare Integer integers[1]
-              "integers[1]"),                                                                               choice(redeclare Integer integers[2]
-              "integers[2]")));
+            "integers[1]"),                                                                                 choice(redeclare Integer integers[2]
+            "integers[2]")));
     replaceable Boolean booleans[:]
     annotation(choices(
     choice(redeclare Boolean booleans[0] "booelans[0]"),choice(redeclare Boolean booleans[1]
-              "booleans[1]"),                                                                 choice(redeclare Boolean booleans[2]
-              "booleans[2]")));
+            "booleans[1]"),                                                                   choice(redeclare Boolean booleans[2]
+            "booleans[2]")));
     replaceable Real reals[:]
     annotation(choices(
     choice(redeclare Real reals[0] "reals[0]"),
                                             choice(redeclare Real reals[1]
-              "reals[1]"),                                                             choice(redeclare Real reals[2]
-              "reals[2]")));
+            "reals[1]"),                                                               choice(redeclare Real reals[2]
+            "reals[2]")));
 
         annotation (Diagram(graphics), Icon(graphics={Rectangle(
                 extent={{-100,80},{100,-82}},
@@ -6786,6 +6796,7 @@ Variable <b>y</b> is both a variable and a connector.
                 fillPattern=FillPattern.Solid,
                 fillColor={255,255,255})}));
   end MessageInterface;
+
 
 package Internal "Internal utility models (should usually not be used by user)"
 
@@ -6839,7 +6850,7 @@ package Internal "Internal utility models (should usually not be used by user)"
        output Element vecOut[size(vecIn,1)];
        output Integer tailOut;
        output Integer headOut;
-          protected
+        protected
        Integer filling_level=0;
      algorithm
 
@@ -6869,7 +6880,7 @@ package Internal "Internal utility models (should usually not be used by user)"
          output Element e;
          output Integer tailOut;
          output Integer headOut;
-          protected
+        protected
          Integer filling_level=0;
        algorithm
          // get current filling level
@@ -6907,7 +6918,7 @@ package Internal "Internal utility models (should usually not be used by user)"
          input Integer headIn;
          output Element e;
 
-          protected
+        protected
          Integer filling_level=0;
        algorithm
          // get current filling level
@@ -6932,7 +6943,7 @@ package Internal "Internal utility models (should usually not be used by user)"
 
      connector mailbox_output_port
           extends
-            RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.port;
+          RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.port;
           input Boolean fire;
           output Boolean hasMessage;
           input Boolean active;
@@ -6950,7 +6961,7 @@ package Internal "Internal utility models (should usually not be used by user)"
 
      connector transition_input_port
           extends
-            RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.port;
+          RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.port;
           output Boolean fire;
           input Boolean hasMessage;
           output Boolean active;
@@ -7003,24 +7014,30 @@ package Internal "Internal utility models (should usually not be used by user)"
 
 end Internal;
 
-  annotation (uses(Modelica(version="3.2"), RealTimeCoordination(version=
-            "1.0.0"),
+
+  annotation (uses(Modelica(version="3.2"), RealTimeCoordinationLibrary(version=
+            "1.0.1"),
       Modelica_StateGraph2(version="2.0.1")),
     preferredView="info",
-    version="1.0.0",
+    version="1.0.1",
     versionBuild=1,
-    versionDate="2012-05-13",
-    dateModified = "2012-05-13 ",
-    revisionId="$Id:: package.mo 1 2012-05-21 10:18:47Z #$",
+    versionDate="2012-10-08",
+    dateModified = "2012-10-08",
+    revisionId="$Id:: package.mo 1 2012-10-08 10:18:47Z #$",
     Documentation(info="<html>
-<p>Library <b>RealTimeCoordination</b> is a <b>free</b> Modelica package providing components to model <b>real-time</b>, <b>reactive</b>, <b>hybrid</b> and, <b>asynchronous communicating</b> systems in a convenient way with <b>statecharts/b&GT;. </b></p>
+<p><b>RealTimeCoordinationLibrary</b> is a <b>free</b> Modelica package providing components to model <b>real-time</b>, <b>reactive</b>, <b>hybrid</b> and, <b>asynchronous communicating</b> systems in a convenient way with <b>statecharts/b&GT;. </b></p>
 <p>For an introduction, have especially a look at: </p>
 <p><ul>
-<li><a href=\"modelica://RealTimeCoordination.UsersGuide.Elements\">Elements</a> provide an overview of the library inside the User&apos;s Guide.</li>
-<li><a href=\"modelica://RealTimeCoordination.Examples\">Examples</a> provide simple introductory examples as well as involved application examples. </li>
+<li><a href=\"modelica://RealTimeCoordinationLibrary.UsersGuide.Elements\">Elements</a> provide an overview of the library inside the User&apos;s Guide.</li>
+<li><a href=\"modelica://RealTimeCoordinationLibrary.Examples\">Examples</a> provide simple introductory examples as well as involved application examples. </li>
 </ul></p>
-<p>For an application example have a look at: <a href=\"modelica://RealTimeCoordination.Examples.Application.BeBotSystem\">BeBotSystem</a> </p>
+<p>For an application example have a look at: <a href=\"modelica://RealTimeCoordinationLibrary.Examples.Application.BeBotSystem\">BeBotSystem</a> </p>
 <p><br/><b>Licensed under the Modelica License 2</b></p>
-<p><i>This Modelica package is <u>free</u> software and the use is completely at <u>your own risk</u>; it can be redistributed and/or modified under the terms of the Modelica license 2, see the license conditions (including the disclaimer of warranty) <a href=\"modelica://RealTimeCoordination.UsersGuide.ModelicaLicense2\">here</a> or at <a href=\"http://www.Modelica.org/licenses/ModelicaLicense2\">http://www.Modelica.org/licenses/ModelicaLicense2</a>.</i> </p>
+<p><i>This Modelica package is <u>free</u> software and the use is completely at <u>your own risk</u>; it can be redistributed and/or modified under the terms of the Modelica license 2, see the license conditions (including the disclaimer of warranty) <a href=\"modelica://RealTimeCoordinationLibrary.UsersGuide.ModelicaLicense2\">here</a> or at <a href=\"http://www.Modelica.org/licenses/ModelicaLicense2\">http://www.Modelica.org/licenses/ModelicaLicense2</a>.</i> </p>
+</html>", revisions="<html>
+<p>Name: RealTimeCoordinationLibrary</p>
+<p>Path: RealTimeCoordinationLibrary</p>
+<p>Version: 1.0.1, 2012-10-08, build 1 (2012-10-08)</p>
+<p>Uses:Modelica (version=&QUOT;3.2&QUOT;), RealTimeCoordinationLibrary (version=&QUOT;1.0.1&QUOT;), Modelica_StateGraph2 (version=&QUOT;2.0.1&QUOT;)</p>
 </html>"));
 end RealTimeCoordinationLibrary;
