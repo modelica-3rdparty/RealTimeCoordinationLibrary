@@ -6001,8 +6001,8 @@ end Step;
   for i in 1:nOut loop
        if pre(output_active[i]) and Modelica_StateGraph2.Blocks.BooleanFunctions.firstTrueIndex(pre(output_active)) == i and not fire_out[i] and time_q.filling_level > 0 then
          if ((numberOfMessageIntegers > 0 and int_q.filling_level > 0)
-                                   or (numberOfMessageBooleans > 0 and real_q.filling_level > 0)
-                                   or (numberOfMessageReals > 0 and boolean_q.filling_level > 0)) then
+                                   or (numberOfMessageBooleans > 0 and boolean_q.filling_level > 0)
+                                   or (numberOfMessageReals > 0 and real_q.filling_level > 0)) then
          for j in 1:numberOfMessageIntegers loop
 
             (int_q.vec,intTemp[numberOfMessageIntegers*(i - 1) + j],int_q.tail,
