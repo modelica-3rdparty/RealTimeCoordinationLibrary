@@ -133,73 +133,73 @@ based on the following references:</p>
 <P>W. Sch&auml;fer, J. Suck, O. Sudmann, and M. Tichy. The mechatronicuml method -process, syntax, and semantics. Technical Report tr-ri-12-318, Software Engineering Group, Heinz Nixdorf Institute University of Paderborn, 2012. </P>
 <P>[3] Lionel C. Briand and Alexander L. Wolf, editors. </P>
 <P><I>Internationa</I><I>l </I><I>Conferenc</I><I>e </I><I>o</I><I>n </I><I>Softwar</I><I>e </I><I>Engineering</I><I>, </I><I>ISC</I><I>E </I><I>2007</I><I>, </I><I>Worksho</I><I>p </I><I>o</I><I>n </I><I>th</I><I>e </I><I>Futur</I><I>e </I><I>o</I><I>f </I><I>Softwar</I><I>e </I><I>Engi</I><I></I><I>neering</I><I>, </I><I>FOS</I><I>E </I><I>2007</I><I>, </I><I>Ma</I><I>y </I><I>23-25</I><I>, </I><I>2007</I><I>, </I><I>Minneapolis</I><I>, </I><I>MN</I><I>, </I><I>USA</I>, 2007. </P>
-<P 
+<P
 
 >[4] U. Donath, J. Haufe, T. Blochwitz, and T. Neidhold. A new approach for modeling and veri&#64257;cation of discrete control components within a Modelica environment. In <I>Proceeding</I><I>s </I><I>o</I><I>f </I><I>th</I><I>e </I><I>6t</I><I>h </I><I>Modelic</I><I>a </I><I>Conference</I><I>, </I><I>Bielefeld</I>, pages 269&ndash;276, 2008. </P
-><P 
+><P
 
 >[5] Christof Ebert and Capers Jones. Embedded software: Facts, &#64257;gures, and future. <I>IEE</I><I>E </I><I>Computer</I>, 42(4):42&ndash; 52, 2009. </P
-><P 
+><P
 
 >[6] Peter Fritzson.         <I>Principle</I><I>s </I><I>o</I><I>f </I><I>Object-Oriente</I><I>d </I><I>Model</I><I></I><I>in</I><I>g </I><I>an</I><I>d </I><I>Simulatio</I><I>n </I><I>wit</I><I>h </I><I>Modelic</I><I>a </I><I>2.1</I>. Wiley-IEEE Press, 1st edition, 2004. </P
-><P 
+><P
 
 >[7] Object Management Group. Omg uni&#64257;ed modeling language (omg uml), superstructure, v2.4.1. Technical report, 2011. </P
-><P 
+><P
 
 >[8] D. Harel.         Statecharts: A visual formalism for complex systems. <I>Scienc</I><I>e </I><I>o</I><I>f </I><I>compute</I><I>r </I><I>programming</I>, 8(3):231&ndash;274, 1987. </P
-><P 
+><P
 
 >[9] C. Heinzemann, U. Pohlmann, J. Rieke, W. Sch&auml;fer, </P
-><P 
+><P
 
 >O. Sudmann, and M. Tichy. Generating simulink and state&#64258;ow models from software speci&#64257;cations. In <I>Pro</I><I></I><I>ceeding</I><I>s </I><I>o</I><I>f </I><I>th</I><I>e </I><I>Internationa</I><I>l </I><I>Desig</I><I>n </I><I>Conference</I><I>, </I><I>DE</I><I></I><I>SIG</I><I>N </I><I>2012</I><I>, </I><I>Dubrovnik</I><I>, </I><I>Croatia</I>, May 2012. </P
-><P 
+><P
 
 >[10] S. Herbrechtsmeier,         U. Witkowski, and U. R&uuml;ckert. Bebot: A modular mobile miniature robot platform supporting hardware recon&#64257;guration and multistandard communication. In <I>Progres</I><I>s </I><I>i</I><I>n </I><I>Robotics</I><I>, </I></P
-><P 
+><P
 
 ><I>Communication</I><I>s </I><I>i</I><I>n </I><I>Compute</I><I>r </I><I>an</I><I>d </I><I>Informatio</I><I>n </I><I>Sci</I><I></I><I>ence</I><I>. </I><I>Proceeding</I><I>s </I><I>o</I><I>f </I><I>th</I><I>e </I><I>FIR</I><I>A </I><I>RoboWorl</I><I>d </I><I>Congres</I><I>s </I><I>2009</I>, volume 44, pages 346&ndash;356, Incheon, Korea, 2009. Springer. </P
-><P 
+><P
 
 >[11] I. Kaiser, T. Kaulmann, J. Gausemeier, and </P
-><P 
+><P
 
 >U. Witkowski. Miniaturization of autonomous robots by the new technology molded interconnected devices (mid). In <I>Proceeding</I><I>s </I><I>o</I><I>f </I><I>th</I><I>e </I><I>4t</I><I>h </I><I>Internationa</I><I>l </I><I>Sym</I><I></I><I>posiu</I><I>m </I><I>o</I><I>n </I><I>Autonomou</I><I>s </I><I>Minirobot</I><I>s </I><I>fo</I><I>r </I><I>Researc</I><I>h </I><I>an</I><I>d </I><I>Edutainment</I>, October 2007. </P
-><P 
+><P
 
 >[12] C. C. Loh and A. Tr&auml;chtler.         Laser-sintered platform with optical sensor for a mobile robot used in cooperative load transport. In <I>Proceeding</I><I>s </I><I>o</I><I>f </I><I>th</I><I>e </I><I>37t</I><I>h </I><I>An</I><I></I><I>nua</I><I>l </I><I>Conferenc</I><I>e </I><I>o</I><I>n </I><I>IEE</I><I>E </I><I>Industria</I><I>l </I><I>Electronic</I><I>s </I><I>Soci</I><I></I><I>ety</I>, pages 888&ndash;893, November 2011. </P
-><P 
+><P
 
 >[13] M. Malmheden, Hilding Elmqvist, S.E. Mattsson, </P
-><P 
+><P
 
 >D. Henriksson, and M. Otter. ModeGraph-A Modelica Library for Embedded Control Based on Mode-Automata. In <I>i</I><I>n </I><I>Proc</I><I>. </I><I>o</I><I>f </I><I>Modelic</I><I>a </I><I>200</I><I>8 </I><I>conference</I><I>, </I><I>Bielefeld</I><I>, </I><I>Germany.</I>, 2008. </P
-><P 
+><P
 
 >[14] M. Otter, K-E. &Aring;rz&eacute;n, and I. Dressler. StateGraph&ndash;A Modelica Library for Hierarchical State Machines. In <I>Proceeding</I><I>s </I><I>o</I><I>f </I><I>th</I><I>e </I><I>4t</I><I>h </I><I>Internationa</I><I>l </I><I>Modelic</I><I>a </I><I>Con</I><I></I><I>ferenc</I><I>e </I><I>(Modelic</I><I>a </I><I>2005)</I><I>, </I><I>Hamburg</I><I>, </I><I>Germany</I>, 2005. </P
-><P 
+><P
 
 >[15] M. Otter, M. Malmheden, H. Elmqvist, S.E. Mattsson, </P
-><P 
+><P
 
 >C. Johnsson, D. Syst&egrave;mes, and S.D. Lund. A new formalism for modeling of reactive and hybrid systems. In <I>Proceeding</I><I>s </I><I>o</I><I>f </I><I>th</I><I>e </I><I>7t</I><I>h </I><I>Modelica&rsquo;200</I><I>9 </I><I>Conference</I><I>, </I><I>Como</I><I>, </I><I>Italy</I>, 2009. </P
-><P 
+><P
 
 >[16] M. Pajic, Z. Jiang, I. Lee, O. Sokolsky, and R. Mangharam. From veri&#64257;cation to implementation: A model translation tool and a pacemaker case study. In <I>Pro</I><I></I><I>ceeding</I><I>s </I><I>o</I><I>f </I><I>th</I><I>e </I><I>18t</I><I>h </I><I>IEE</I><I>E </I><I>Real-Tim</I><I>e </I><I>an</I><I>d </I><I>Embed</I><I></I><I>de</I><I>d </I><I>Technolog</I><I>y </I><I>an</I><I>d </I><I>Application</I><I>s </I><I>Symposiu</I><I>m </I><I>(RTA</I><I>S </I><I>2012)</I><I>, </I><I>Beijing</I><I>, </I><I>China</I>, April 2012. </P
-><P 
+><P
 
 >[17] U. Pohlmann and M. Tichy. Modelica code generation from ModelicaML state machines extended by asynchronous communication. In <I>Proceeding</I><I>s </I><I>o</I><I>f </I><I>th</I><I>e </I><I>4t</I><I>h </I><I>Internationa</I><I>l </I><I>Worksho</I><I>p </I><I>o</I><I>n </I><I>Equation-Base</I><I>d </I><I>Object-Oriente</I><I>d </I><I>Modelin</I><I>g </I><I>Language</I><I>s </I><I>an</I><I>d </I><I>Tools</I><I>, </I><I>EOOL</I><I>T </I><I>2011</I><I>, </I><I>Zurich</I><I>, </I><I>Switzerland</I>, 2011. </P
-><P 
+><P
 
 >[18] W.         Sch&auml;fer and H. Wehrheim. The Challenges of Building Advanced Mechatronic Systems. In Briand and Wolf [3], pages 72&ndash;84. </P
-><P 
+><P
 
 >[19] W. Schamai.         Modelica modeling language (ModelicaML) : A UML pro&#64257;le for Modelica. Technical report, Link&ouml;ping University, Department of Computer and Information Science, The Institute of Technology, 2009. </P
-><P 
+><P
 
 >[20] W. Schamai, U. Pohlmann, P. Fritzson, C. J.J. Paredis, P. Helle, and C. Strobel. Execution of uml state machines using modelica. In <I>Proceeding</I><I>s </I><I>o</I><I>f </I><I>EOOLT</I>, pages 1&ndash;10, 2010. </P
-><P 
+><P
 
 >[21] C. Wei&szlig;. V2X communication in Europe -From research projects towards standardization and &#64257;eld testing of vehicle communication technology. <I>Compute</I><I>r </I><I>Networks</I>, 55(14):3103&ndash;3119, 2011. </P
 >
@@ -789,8 +789,8 @@ Heinz Nixdorf Institute<br>
   Paderborn<br>
    Germany<br>
    email:jsuck (at) mail.upb.de</td>
-   
-<td valign=\"middle\">&nbsp;&nbsp;and&nbsp;&nbsp;</td>    
+
+<td valign=\"middle\">&nbsp;&nbsp;and&nbsp;&nbsp;</td>
 <td>
 Boris Wolf</a><br>
     Software Engineering Group<br>
@@ -799,9 +799,9 @@ Heinz Nixdorf Institute<br>
   Paderborn<br>
    Germany<br>
    email:borisw (at) mail.upb.de</td>
-   
+
 <td valign=\"middle\">&nbsp;&nbsp;and&nbsp;&nbsp;</td>
-<td>   
+<td>
 <a href=\"http://www.cse.chalmers.se/~tichy/\">Matthias Tichy</a><br>
     Chalmers University of Technology and University of Gothenburg<br>
     Gothenburg<br>
@@ -4562,15 +4562,15 @@ The brake-message is transmitted to the rear driving Be Bot that is going to bra
                 Documentation(info="<HTML>
 <p>
 <i>Version 1.3 <br> Created: 14.12.2010 <br>Last modified: 11.07.2011 </i> <br><br>
-Model of a Faulhaber 1724 006 SR motor. The parameters shown below are taken from data sheet of the motor. Some properties of the model are as follows:<br> 
-- The motor is attached to an inertia model with frictional torque which is modelled using finite state chart concept. 
+Model of a Faulhaber 1724 006 SR motor. The parameters shown below are taken from data sheet of the motor. Some properties of the model are as follows:<br>
+- The motor is attached to an inertia model with frictional torque which is modelled using finite state chart concept.
 - The motor is attached to a lossy gear with adjustable gear ratio and also efficiency. By default it has a ratio of 14.4 and an efficiency of 78%
-- An ideal gear is attached to the lossy gear to correct the direction of movement of the 
-A PI controller with anti-windup measure is used to control the speed of the motor. 
+- An ideal gear is attached to the lossy gear to correct the direction of movement of the
+A PI controller with anti-windup measure is used to control the speed of the motor.
 Clamping of integrator is applied when limit of 6V is exceeded. <br>
 V1.3 <br>
 - viscous friction added to friction model of inertia
-</p> 
+</p>
 <br>
 <table>
 <tr>
@@ -4662,12 +4662,12 @@ V1.3 <br>
           annotation (    Documentation(info="
 <HTML>
 <p>
-This block represents a PI controller with simple anti-windup measure. 
+This block represents a PI controller with simple anti-windup measure.
 When limit is exceeded, the integrator is clamped.
 </p>
 <pre>
    y = yp + yi
-              ki      
+              ki
      = kp*u + --*u
               s
 </pre>
@@ -4711,9 +4711,9 @@ When limit is exceeded, the integrator is clamped.
 
         model inertia_StCoFric
         "Inertia with frictional torque (Coulomb and Stribeck friction), modelled with finite state"
-          /* Initial mode has to be defined manually or else the model does not work properly 
+          /* Initial mode has to be defined manually or else the model does not work properly
   The concept is based on mass with friction
-  Friction is made up of Coulomb and Stribeck 
+  Friction is made up of Coulomb and Stribeck
   A finite state model is used to determine the state of frictional torque, i.e.
   */
         import SI = Modelica.SIunits;
@@ -4778,7 +4778,7 @@ When limit is exceeded, the integrator is clamped.
           // variables to indicate the start of forward/backward/locked movement, when w=0
           /*startforward = pre(mode)==stuck and M_tau>M_fric and w>=0;
   startbackward = pre(mode)==stuck and M_tau<-M_fric and w<=0;
-  locked = not 
+  locked = not
               (startforward or startbackward or pre(mode)==forward or pre(mode)==backward);*/
 
           // finite state with 5 different modes
@@ -4862,8 +4862,8 @@ V1.6 Viscous friction is added to the model. <br>
         end inertia_StCoFric;
 
         model Robot_V3 "V3"
-          /* PID(s) = k + (k/Ti)/s + k*Td*s/(Td/Nd*s+1)  = kp + ki/s + kd*s/(Ts+1) 
-     ki = k/Ti, 
+          /* PID(s) = k + (k/Ti)/s + k*Td*s/(Td/Nd*s+1)  = kp + ki/s + kd*s/(Ts+1)
+     ki = k/Ti,
      kd = k*Td
      T  = Td/Nd */
 
@@ -5041,7 +5041,7 @@ Version History
           annotation (
             Documentation(info="<HTML>
 <p>
-The LossyPlanetary gear box is derived from the IdealPlanetary gear box from the standard Modelica Library. 
+The LossyPlanetary gear box is derived from the IdealPlanetary gear box from the standard Modelica Library.
 It is made up of an inner <b>sun</b> wheel, an outer <b>ring</b> wheel and a
 <b>planet</b> wheel located between sun and ring wheel. The bearing
 of the planet wheel shaft is fixed in the planet <b>carrier</b>. The component can be connected to other elements at the
@@ -5052,7 +5052,7 @@ The kinematic equations involving all three gears can be described as follows:
 <pre>
   <b>N_sun/N_ring = (w_planet - w_ring)/(w_sun - w_planet)</b>
 </pre><br>
-with <b>ratio=N_ring/N_sun</b>, the equation above can be simplified to<br> 
+with <b>ratio=N_ring/N_sun</b>, the equation above can be simplified to<br>
 <pre>
   <b>(1+ratio)*w_planet = w_sun + ratio*w_ring</b>
 </pre><br>
