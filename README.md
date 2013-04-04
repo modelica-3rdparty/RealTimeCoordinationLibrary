@@ -25,8 +25,11 @@ For the modeling of real-time behavior according to timed automata, we extended 
 Download [Latest development version](../../archive/master.zip)
 
 #### Release notes
+* [Version v1.0.2 (2013-04-04)]
+ * Added SelfTransition Class
+ * Fixed SelfTransitions in Example/Application
 
-* [Version v1.0.1 (2012-10-08)](../../archive/v1.0.1.zip)
+* [Version v1.0.1 (2012-10-08)]
  * Changed Transition Class
  * `firePort = fire` &rarr; `firePort = pre(fire)` *(Avoid algebraic loop when two outgoing transitions of a state send and receive a message)*
 
