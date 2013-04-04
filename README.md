@@ -46,7 +46,7 @@ it can be redistributed and/or modified under the terms of the [Modelica License
 ## Development and contribution
  Main developer:
  > [Uwe Pohlmann](mailto:uwe.pohlmann@ipt.fraunhofer.de)<br>
- > Research Fellow
+ > Research Fellow<br>
  > Fraunhofer Institute for Production Technology IPT<br>
  > Project Group Mechatronic Systems Design<br>
  > Software Engineering<br>
@@ -60,14 +60,14 @@ it can be redistributed and/or modified under the terms of the [Modelica License
  Additional contributors:
   
   > [Stefan Dziwok] (mailto:xell@upb.de)<br>
-  > Research Fellow
+  > Research Fellow<br>
   > Heinz Nixdorf Institute<br>
   > Software Engineering Group<br>
   > Zukunftsmeile 1<br>
   > 33102 Paderborn<br>
   
  Student assistants:
-  > Boris Wolf
+  > Boris Wolf<br>
   > Sebastian Thiele
 
 You may report any issues with using the [Issues](../../issues) button.
