@@ -34,6 +34,7 @@ Download [Latest development version](../../archive/master.zip)
  * `firePort = fire` &rarr; `firePort = pre(fire)` *(Avoid algebraic loop when two outgoing transitions of a state send and receive a message)*
 
 * [Version v1.0 (2012-05-21)](../../archive/v1.0.zip)
+ * [Modelica library award (2nd prize) at the Modelica conference 2012](https://www.modelica.org/publications/newsletters/2012-3#item164) 
  * Initial version, uses Modelica Standard Library 3.2
    - First version of the real-time coordination library based on StateGraph2, Modelica.StateGraph and the prototype ModeGraph library from Martin Malmheden.
 
@@ -46,18 +47,28 @@ it can be redistributed and/or modified under the terms of the [Modelica License
  Main developer:
  > [Uwe Pohlmann](mailto:uwe.pohlmann@ipt.fraunhofer.de)<br>
  > Research Fellow
-
-Address:
-> Fraunhofer Institute for Production Technology IPT<br>
-> Project Group Mechatronic Systems Design<br>
-> Software Engineering<br>
-> Zukunftsmeile 1<br>
-> 33102 Paderborn<br>
->
-> Phone: +49 5251 5465-174<br>
-> Fax: +49 5251 5465-102<br>
-> Room: 02-48
-
+ > Fraunhofer Institute for Production Technology IPT<br>
+ > Project Group Mechatronic Systems Design<br>
+ > Software Engineering<br>
+ > Zukunftsmeile 1<br>
+ > 33102 Paderborn<br>
+ >
+ > Phone: +49 5251 5465-174<br>
+ > Fax: +49 5251 5465-102<br>
+ > Room: 02-48
+ 
+ Additional contributors:
+  
+  > [Stefan Dziwok] (mailto:xell@upb.de)<br>
+  > Research Fellow
+  > Heinz Nixdorf Institute<br>
+  > Software Engineering Group<br>
+  > Zukunftsmeile 1<br>
+  > 33102 Paderborn<br>
+  
+ Student assistants:
+  > Boris Wolf
+  > Sebastian Thiele
 
 You may report any issues with using the [Issues](../../issues) button.
 
@@ -69,6 +80,7 @@ This work was partially developed in the Leading-Edge Cluster
 ’Intelligent Technical Systems OstWestfalenLippe’ (it’s
 OWL). The Leading-Edge Cluster is funded by the German
 Federal Ministry of Education and Research (BMBF).
+
 This work was partially developed in the project ‘ENTIME:
 Entwurfstechnik Intelligente Mechatronik’ (Design Methods
 for Intelligent Mechatronic Systems). The project ENTIME
