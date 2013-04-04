@@ -2930,7 +2930,7 @@ end UsersGuide;
 
         connect(T3.sender[1], T4.receiver[1]) annotation (Line(
             points={{-59.4,-57.94},{-12.7,-57.94},{-12.7,-2.44667},{47.18,
-                -2.44667}},
+              -2.44667}},
             color={255,128,0},
             smooth=Smooth.None));
         connect(T2.sender[1], T4.receiver[2]) annotation (Line(
@@ -3474,6 +3474,7 @@ end UsersGuide;
 
     package Application
       model BeBot_SW_Main
+      import RealTimeCoordinationLibrary;
 
          Modelica_StateGraph2.Step NoConvoy(nIn=4, nOut=2)
           annotation (Placement(transformation(extent={{-60,50},{-52,58}})));
@@ -3644,12 +3645,13 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{-10,-10},{10,10}},
               rotation=270,
               origin={80,-100})));
-        RealTimeCoordinationLibrary.Transition T11(
+        RealTimeCoordinationLibrary.SelfTransition
+                                               T11(
           use_conditionPort=true,
           use_firePort=true,
           use_after=true,
-          afterTime=1e-8,
-          condition=pre(speed) > 0)
+          condition=pre(speed) > 0,
+        afterTime=1e-8)
                  annotation (Placement(transformation(
               extent={{-4,-4},{4,4}},
               rotation=180,
@@ -3673,7 +3675,8 @@ end UsersGuide;
           nOut=1,
           numberOfMessageIntegers=0)
                   annotation (Placement(transformation(extent={{94,-16},{82,-10}})));
-        RealTimeCoordinationLibrary.Transition T12(
+        RealTimeCoordinationLibrary.SelfTransition
+                                               T12(
           use_after=true,
           afterTime=1e-8,
           use_messageReceive=true,
@@ -3681,40 +3684,42 @@ end UsersGuide;
               extent={{-4,-4},{4,4}},
               rotation=90,
               origin={80,-8})));
-        RealTimeCoordinationLibrary.Transition T13(
+        RealTimeCoordinationLibrary.SelfTransition
+                                               T13(
           use_conditionPort=true,
-          use_after=true,
-          afterTime=1e-8,
-          condition=pre(speed) > 0)
+        use_after=true,
+        afterTime=1e-8,
+        condition=pre(speed) > 0)
                  annotation (Placement(transformation(
               extent={{4,-4},{-4,4}},
               rotation=0,
-              origin={96,60})));
-        RealTimeCoordinationLibrary.Transition T14(
+              origin={124,60})));
+        RealTimeCoordinationLibrary.SelfTransition
+                                               T14(
           use_conditionPort=true,
-          use_after=true,
-          afterTime=1e-8,
-          condition=pre(speed) == 0)
+        afterTime=1e-8,
+        use_after=true,
+        condition=pre(speed) == 0)
                  annotation (Placement(transformation(
               extent={{-4,-4},{4,4}},
               rotation=0,
               origin={40,62})));
         Modelica.Blocks.MathBoolean.Not nor1 annotation (Placement(transformation(
               extent={{-4,-4},{4,4}},
-              rotation=90,
-              origin={106,86})));
+              rotation=180,
+              origin={118,82})));
         Modelica.Blocks.Interfaces.IntegerInput cruisingSpeed annotation (Placement(
               transformation(
               extent={{-11,-11},{11,11}},
               rotation=270,
               origin={63,103})));
-        RealTimeCoordinationLibrary.Transition T15(
+        RealTimeCoordinationLibrary.SelfTransition
+                                               T15(
           use_conditionPort=true,
           use_after=true,
-          afterTime=1e-8,
           condition=pre(speed) == 0,
-          use_firePort=true)
-                          annotation (Placement(transformation(
+          use_firePort=true,
+        afterTime=1e-8)   annotation (Placement(transformation(
               extent={{-4,-4},{4,4}},
               rotation=270,
               origin={68,-24})));
@@ -3727,7 +3732,8 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{82,-38},{94,-26}})));
         RealTimeCoordinationLibrary.Mailbox driveBox(nOut=1, nIn=1)
           annotation (Placement(transformation(extent={{102,26},{92,30}})));
-        RealTimeCoordinationLibrary.Transition T16(
+        RealTimeCoordinationLibrary.SelfTransition
+                                               T16(
           use_after=true,
           use_messageReceive=true,
           afterTime=1e-8,
@@ -3820,7 +3826,7 @@ end UsersGuide;
             smooth=Smooth.None));
         connect(T2.sender[1], T3.receiver[1]) annotation (Line(
             points={{-51.4,36.06},{-48,36.06},{-48,38},{2,38},{2,38.02},{53.18,
-                38.02}},
+              38.02}},
             color={255,128,0},
             smooth=Smooth.None,
             visible=sync_visible));
@@ -3906,7 +3912,7 @@ end UsersGuide;
             smooth=Smooth.None));
         connect(T9.inPort, front.outPort[1]) annotation (Line(
             points={{40,30},{40,8},{46,8},{46,-16},{44,-16},{44,-15.4},{42.6667,
-                -15.4}},
+              -15.4}},
             color={0,0,0},
             smooth=Smooth.None));
         connect(T9.outPort, NoConvoyV.inPort[2]) annotation (Line(
@@ -3915,7 +3921,7 @@ end UsersGuide;
             smooth=Smooth.None));
         connect(T8.sender[1], T9.receiver[1]) annotation (Line(
             points={{-65.4,37.94},{-65.4,20},{-122,20},{-122,88},{42.82,88},{
-                42.82,29.98}},
+              42.82,29.98}},
             color={255,128,0},
             smooth=Smooth.None,
             visible=false));
@@ -3938,19 +3944,19 @@ end UsersGuide;
             smooth=Smooth.None,
             visible=sync_visible));
         connect(front.outPort[2], T11.inPort) annotation (Line(
-            points={{44,-15.4},{44,-14},{36,-14},{36,-54},{42,-54}},
+            points={{44,-15.4},{44,-14},{36,-14},{36,-54.4},{42,-54.4}},
             color={0,0,0},
             smooth=Smooth.None));
         connect(T11.outPort, front.inPort[2]) annotation (Line(
-            points={{42,-45},{42,-30},{44,-30},{44,-24}},
+            points={{42,-45.4},{42,-30},{44,-30},{44,-24}},
             color={0,0,0},
             smooth=Smooth.None));
         connect(T11.conditionPort, stop) annotation (Line(
-            points={{47,-50},{90,-50},{90,102},{76,102}},
+            points={{47,-52.4},{90,-52.4},{90,102},{76,102}},
             color={255,0,255},
             smooth=Smooth.None));
         connect(T11.firePort, halt.conditionPort[1]) annotation (Line(
-            points={{37.8,-50},{32,-50},{32,-71.8},{34.8,-71.8}},
+            points={{37.4,-52.4},{32,-52.4},{32,-71.8},{34.8,-71.8}},
             color={255,0,255},
             smooth=Smooth.None));
         connect(halt.message_output_port, outHalt) annotation (Line(
@@ -3962,44 +3968,44 @@ end UsersGuide;
             color={0,0,0},
             smooth=Smooth.None));
         connect(rear.outPort[2], T12.inPort) annotation (Line(
-            points={{76,3.4},{76,-8}},
+            points={{76,3.4},{76,-8},{75.6,-8}},
             color={0,0,0},
             smooth=Smooth.None));
         connect(T12.outPort, rear.inPort[2]) annotation (Line(
-            points={{85,-8},{85,12},{76,12}},
+            points={{84.6,-8},{84.6,12},{76,12}},
             color={0,0,0},
             smooth=Smooth.None));
         connect(T12.transition_input_port[1], haltBox.mailbox_output_port[1])
           annotation (Line(
-            points={{77.88,-12.9},{82.6,-12.9},{82.6,-13.3}},
+            points={{81.96,-12.02},{82.6,-12.02},{82.6,-13.3}},
             color={0,0,0},
             smooth=Smooth.None));
         connect(NoConvoyV.outPort[3], T13.inPort) annotation (Line(
-            points={{68.5,62.6},{70,62},{70,64},{96,64}},
+            points={{68.5,62.6},{70,62},{70,64.4},{124,64.4}},
             color={0,0,0},
             smooth=Smooth.None));
         connect(T13.outPort, NoConvoyV.inPort[4]) annotation (Line(
-            points={{96,55},{96,54},{68.8,54}},
+            points={{124,55.4},{124,54},{68.8,54}},
             color={0,0,0},
             smooth=Smooth.None));
         connect(T13.conditionPort, stop) annotation (Line(
-            points={{101,60},{76,60},{76,102}},
+            points={{129,62.4},{76,62.4},{76,102}},
             color={255,0,255},
             smooth=Smooth.None));
         connect(NoConvoyV.outPort[4], T14.inPort) annotation (Line(
-            points={{69.5,62.6},{68,62},{68,66},{40,66}},
+            points={{69.5,62.6},{68,62},{68,66.4},{40,66.4}},
             color={0,0,0},
             smooth=Smooth.None));
         connect(T14.outPort, NoConvoyV.inPort[5]) annotation (Line(
-            points={{40,57},{40,48},{66,48},{66,54},{69.6,54}},
+            points={{40,57.4},{40,48},{66,48},{66,54},{69.6,54}},
             color={0,0,0},
             smooth=Smooth.None));
         connect(stop, nor1.u) annotation (Line(
-            points={{76,102},{76,92},{106,92},{106,80.4}},
+            points={{76,102},{76,92},{123.6,92},{123.6,82}},
             color={255,0,255},
             smooth=Smooth.None));
         connect(nor1.y, T14.conditionPort) annotation (Line(
-            points={{106,90.8},{35,90.8},{35,62}},
+            points={{113.2,82},{35,82},{35,64.4}},
             color={255,0,255},
             smooth=Smooth.None));
         connect(confirm.u_integers[1], cruisingSpeed) annotation (Line(
@@ -4007,15 +4013,15 @@ end UsersGuide;
             color={255,128,0},
             smooth=Smooth.None));
         connect(T15.inPort, front.outPort[3]) annotation (Line(
-            points={{72,-24},{78,-24},{78,-15.4},{45.3333,-15.4}},
+            points={{72.4,-24},{78,-24},{78,-15.4},{45.3333,-15.4}},
             color={0,0,0},
             smooth=Smooth.None));
         connect(T15.outPort, front.inPort[3]) annotation (Line(
-            points={{63,-24},{45.3333,-24}},
+            points={{63.4,-24},{45.3333,-24}},
             color={0,0,0},
             smooth=Smooth.None));
         connect(T15.conditionPort, nor1.y) annotation (Line(
-            points={{68,-19},{124,-19},{124,90.8},{106,90.8}},
+            points={{70.4,-19},{94,-19},{94,80},{98,80},{98,82},{113.2,82}},
             color={255,0,255},
             smooth=Smooth.None));
         connect(drive.message_output_port, outDrive) annotation (Line(
@@ -4023,20 +4029,20 @@ end UsersGuide;
             color={0,0,0},
             smooth=Smooth.None));
         connect(T15.firePort, drive.conditionPort[1]) annotation (Line(
-            points={{68,-28.2},{68,-37.76},{80.8,-37.76}},
+            points={{70.4,-28.6},{70.4,-37.76},{80.8,-37.76}},
             color={255,0,255},
             smooth=Smooth.None));
         connect(rear.outPort[3], T16.inPort) annotation (Line(
-            points={{77.3333,3.4},{102,3.4},{102,16}},
+            points={{77.3333,3.4},{102.4,3.4},{102.4,16}},
             color={0,0,0},
             smooth=Smooth.None));
         connect(T16.outPort, rear.inPort[3]) annotation (Line(
-            points={{93,16},{77.3333,16},{77.3333,12}},
+            points={{93.4,16},{77.3333,16},{77.3333,12}},
             color={0,0,0},
             smooth=Smooth.None));
         connect(T16.transition_input_port[1], driveBox.mailbox_output_port[1])
           annotation (Line(
-            points={{100.12,20.9},{102,20.9},{102,27.8},{92.5,27.8}},
+            points={{96.04,20.02},{102,20.02},{102,27.8},{92.5,27.8}},
             color={0,0,0},
             smooth=Smooth.None));
         connect(driveBox.mailbox_input_port[1], inDrive1) annotation (Line(
@@ -4044,7 +4050,7 @@ end UsersGuide;
             color={0,0,0},
             smooth=Smooth.None));
         connect(nor1.y, T1.conditionPort) annotation (Line(
-            points={{106,90.8},{-18,90.8},{-18,32},{-21,32}},
+            points={{113.2,82},{-18,82},{-18,32},{-21,32}},
             color={255,0,255},
             smooth=Smooth.None));
         connect(outHalt, outHalt) annotation (Line(
@@ -4182,7 +4188,7 @@ this class contains a timing constraint that the state PlatoonProposed is no lon
         connect(front.OutStartConvoyDel, rear.InStartConvoyDel)          annotation (
             Line(
             points={{-35.33,34.56},{-24,34.56},{-24,22},{-18,22},{-18,21.16},{
-                -10.56,21.16}},
+              -10.56,21.16}},
             color={0,0,0},
             smooth=Smooth.None));
         connect(front.InStartConvoyDel, rear.OutStartConvoyDel)          annotation (
@@ -4241,7 +4247,7 @@ this class contains a timing constraint that the state PlatoonProposed is no lon
             smooth=Smooth.None));
         connect(front.outDrive, rear.inDrive1) annotation (Line(
             points={{-72.76,17.12},{-78,17.12},{-78,58},{42,58},{42,26.8},{
-                36.48,26.8}},
+              36.48,26.8}},
             color={0,0,0},
             smooth=Smooth.None));
         connect(booleanPulse.y, rear.stop) annotation (Line(
@@ -4263,7 +4269,7 @@ this class contains a timing constraint that the state PlatoonProposed is no lon
             smooth=Smooth.None));
         connect(distance1.y, rear.frontDistance) annotation (Line(
             points={{11.6,-52.6},{11.6,-56},{72,-56},{72,50},{2,50},{2,34},{
-                2.64,34}},
+              2.64,34}},
             color={0,0,127},
             smooth=Smooth.None));
         connect(Front_robot_V3a1.Frame, distance1.xpos1) annotation (Line(
@@ -5214,6 +5220,259 @@ Generally, the teeth of the gears are related as follows (assuming number of tee
         end LossyPlanetary;
       end Parts;
     end Application;
+
+    package SelfTransition
+
+      package ExampleSynchronousCommunication
+        model TestSynchronousCommunicationMain
+        import RealTimeCoordinationLibrary;
+          Step step1(
+            initialStep=false,
+            nIn=1,
+          nOut=1)  annotation (Placement(transformation(extent={{-66,64},{-58,72}})));
+          Step step2(nIn=1)
+            annotation (Placement(transformation(extent={{-72,-46},{-64,-38}})));
+          Modelica_StateGraph2.Parallel step3(nEntry=2, initialStep=true)
+            annotation (Placement(transformation(extent={{-108,-114},{116,100}})));
+          Step step4(nIn=1, nOut=1)
+            annotation (Placement(transformation(extent={{46,54},{54,62}})));
+          Step step5(nIn=1, nOut=1)
+            annotation (Placement(transformation(extent={{48,8},{56,16}})));
+          RealTimeCoordinationLibrary.Transition T1(use_after=true, afterTime=1)
+            annotation (Placement(transformation(extent={{50,28},{58,36}})));
+          RealTimeCoordinationLibrary.Step step6(nIn=1)
+            annotation (Placement(transformation(extent={{56,-72},{64,-64}})));
+        RealTimeCoordinationLibrary.SelfTransition
+                                                 transistion2_1(use_syncSend=true,
+            numberOfSyncSend=1)
+          annotation (Placement(transformation(extent={{-60,8},{-48,20}})));
+        RealTimeCoordinationLibrary.SelfTransition
+                                                 transistion2_2(
+            use_syncReceive=true,
+            numberOfSyncReceive=1)
+          annotation (Placement(transformation(extent={{54,-22},{66,-12}})));
+        equation
+          connect(step3.entry[1], step1.inPort[1]) annotation (Line(
+              points={{-1.6,89.3},{-29,89.3},{-29,72},{-62,72}},
+              color={0,0,0},
+              smooth=Smooth.None));
+          connect(step3.entry[2], step4.inPort[1]) annotation (Line(
+              points={{9.6,89.3},{27,89.3},{27,62},{50,62}},
+              color={0,0,0},
+              smooth=Smooth.None));
+          connect(step4.outPort[1], T1.inPort) annotation (Line(
+              points={{50,53.4},{52,53.4},{52,36},{54,36}},
+              color={0,0,0},
+              smooth=Smooth.None));
+          connect(T1.outPort, step5.inPort[1]) annotation (Line(
+              points={{54,27},{54,16},{52,16}},
+              color={0,0,0},
+              smooth=Smooth.None));
+        connect(step1.outPort[1], transistion2_1.inPort) annotation (Line(
+            points={{-62,63.4},{-60,63.4},{-60,20.6},{-54,20.6}},
+            color={0,0,0},
+            smooth=Smooth.None));
+        connect(transistion2_1.outPort, step2.inPort[1]) annotation (Line(
+            points={{-54,7.1},{-64,7.1},{-64,-38},{-68,-38}},
+            color={0,0,0},
+            smooth=Smooth.None));
+        connect(step5.outPort[1], transistion2_2.inPort) annotation (Line(
+            points={{52,7.4},{54,7.4},{54,-11.5},{60,-11.5}},
+            color={0,0,0},
+            smooth=Smooth.None));
+        connect(transistion2_2.outPort, step6.inPort[1]) annotation (Line(
+            points={{60,-22.75},{60,-64}},
+            color={0,0,0},
+            smooth=Smooth.None));
+
+          connect(transistion2_1.sender[1], transistion2_2.receiver[1]) annotation (
+              Line(
+              points={{-50.1,20.09},{2.95,20.09},{2.95,-11.975},{55.77,-11.975}},
+              color={255,128,0},
+              smooth=Smooth.None));
+          annotation (Diagram(graphics));
+        end TestSynchronousCommunicationMain;
+
+      end ExampleSynchronousCommunication;
+
+      package ExampleAnsynchronousMessage
+        model TestAsynchCommMain
+
+        Sender sender
+          annotation (Placement(transformation(extent={{-82,58},{-62,78}})));
+        Receiver receiver
+          annotation (Placement(transformation(extent={{20,58},{40,78}})));
+        equation
+        connect(sender.outputDelegationPort, receiver.inputDelegationPort)
+          annotation (Line(
+            points={{-62.2,72},{-20,72},{-20,71.4},{22.2,71.4}},
+            color={0,0,0},
+            smooth=Smooth.None));
+        annotation (Diagram(graphics));
+        end TestAsynchCommMain;
+
+        model Sender
+        import RealTimeCoordinationLibrary;
+          Step step1(initialStep=true, nOut=1,
+          nIn=1)
+            annotation (Placement(transformation(extent={{-32,72},{-24,80}})));
+          RealTimeCoordinationLibrary.SelfTransition
+                         T1(use_firePort=true,
+          use_after=true,
+          afterTime=1)
+            annotation (Placement(transformation(extent={{-32,36},{-24,44}})));
+          RealTimeCoordinationLibrary.Message message(
+            nIn=1,
+            numberOfMessageIntegers=1,
+            numberOfMessageBooleans=1,
+            numberOfMessageReals=1) annotation (Placement(transformation(
+                extent={{-10,-10},{10,10}},
+                rotation=270,
+                origin={36,42})));
+          RealTimeCoordinationLibrary.MessageInterface.OutputDelegationPort
+            outputDelegationPort(
+            redeclare Integer integers[1] "integers[1]",
+            redeclare Boolean booleans[1] "booleans[1]",
+            redeclare Real reals[1] "reals[1]")
+            annotation (Placement(transformation(extent={{88,30},{108,50}})));
+          Modelica.Blocks.Sources.IntegerExpression integerExpression(y=10) annotation (
+             Placement(transformation(
+                extent={{-10,-10},{10,10}},
+                rotation=270,
+                origin={66,122})));
+          Modelica.Blocks.Sources.BooleanExpression booleanExpression(y=true)
+            annotation (Placement(transformation(
+                extent={{-10,-10},{10,10}},
+                rotation=270,
+                origin={42,120})));
+          Modelica.Blocks.Sources.RealExpression realExpression(y=2.5) annotation (
+              Placement(transformation(
+                extent={{-10,-10},{10,10}},
+                rotation=270,
+                origin={30,122})));
+        equation
+          connect(step1.outPort[1], T1.inPort) annotation (Line(
+              points={{-28,71.4},{-28,44.4}},
+              color={0,0,0},
+              smooth=Smooth.None));
+          connect(T1.firePort, message.conditionPort[1]) annotation (Line(
+              points={{-23.4,42.4},{-6.7,42.4},{-6.7,54},{26.4,54}},
+              color={255,0,255},
+              smooth=Smooth.None));
+          connect(message.message_output_port, outputDelegationPort) annotation (Line(
+              points={{35,33},{64.5,33},{64.5,40},{98,40}},
+              color={0,0,0},
+              smooth=Smooth.None));
+          connect(integerExpression.y, message.u_integers[1]) annotation (Line(
+              points={{66,111},{66,82},{45.2,82},{45.2,53}},
+              color={255,127,0},
+              smooth=Smooth.None));
+          connect(booleanExpression.y, message.u_booleans[1]) annotation (Line(
+              points={{42,109},{40.6,109},{40.6,53}},
+              color={255,0,255},
+              smooth=Smooth.None));
+          connect(realExpression.y, message.u_reals[1]) annotation (Line(
+              points={{30,111},{32,111},{32,53},{36,53}},
+              color={0,0,127},
+              smooth=Smooth.None));
+        connect(T1.outPort, step1.inPort[1]) annotation (Line(
+            points={{-28,35.4},{-30,35.4},{-30,20},{-58,20},{-58,88},{-28,88},{
+                -28,80}},
+            color={0,0,0},
+            smooth=Smooth.None));
+          annotation (Diagram(graphics));
+        end Sender;
+
+        model Receiver
+
+          MessageInterface.InputDelegationPort inputDelegationPort(
+            redeclare Integer integers[1] "integers[1]",
+            redeclare Boolean booleans[1] "booleans[1]",
+            redeclare Real reals[1] "reals[1]")
+            annotation (Placement(transformation(extent={{-88,24},{-68,44}})));
+          Mailbox mailbox(
+            numberOfMessageIntegers=1,
+            numberOfMessageBooleans=1,
+            numberOfMessageReals=1,
+            nOut=1,
+            nIn=1)
+            annotation (Placement(transformation(extent={{-42,28},{-22,48}})));
+          Step step1(nOut=1, initialStep=true,
+          nIn=1)
+            annotation (Placement(transformation(extent={{-8,68},{0,76}})));
+          RealTimeCoordinationLibrary.SelfTransition
+                         T1(
+            use_messageReceive=true,
+            numberOfMessageIntegers=1,
+            numberOfMessageBooleans=1,
+            numberOfMessageReals=1,
+            numberOfMessageReceive=1,
+          use_after=true,
+          afterTime=1.5)
+            annotation (Placement(transformation(extent={{2,34},{10,42}})));
+          Modelica.Blocks.Interfaces.RealOutput y
+            annotation (Placement(transformation(extent={{96,54},{116,74}})));
+          Modelica.Blocks.Interfaces.BooleanOutput y1
+            annotation (Placement(transformation(extent={{96,28},{116,48}})));
+          Modelica.Blocks.Interfaces.IntegerOutput y2
+            annotation (Placement(transformation(extent={{96,6},{116,26}})));
+        algorithm
+          when T1.fire then
+            y2 := T1.transition_input_port[1].integers[1];
+            y := T1.transition_input_port[1].reals[1];
+            y1 := T1.transition_input_port[1].booleans[1];
+          end when;
+
+        equation
+          connect(step1.outPort[1], T1.inPort) annotation (Line(
+              points={{-4,67.4},{0,67.4},{0,42.4},{6,42.4}},
+              color={0,0,0},
+              smooth=Smooth.None));
+          connect(mailbox.mailbox_output_port[1], T1.transition_input_port[1])
+            annotation (Line(
+              points={{-23,37},{-10.5,37},{-10.5,36.04},{1.98,36.04}},
+              color={0,0,0},
+              smooth=Smooth.None));
+          connect(inputDelegationPort, mailbox.mailbox_input_port[1]) annotation (Line(
+              points={{-78,34},{-60,34},{-60,37},{-41,37}},
+              color={0,0,255},
+              smooth=Smooth.None));
+        connect(T1.outPort, step1.inPort[1]) annotation (Line(
+            points={{6,33.4},{6,24},{30,24},{30,84},{-4,84},{-4,76}},
+            color={0,0,0},
+            smooth=Smooth.None));
+          annotation (Diagram(graphics));
+        end Receiver;
+      end ExampleAnsynchronousMessage;
+
+      package ExampleSelfTransition
+        model TestSelfTransitionMain
+        import RealTimeCoordinationLibrary;
+        Step step1(
+          initialStep=true,
+          nOut=1,
+          nIn=1)
+          annotation (Placement(transformation(extent={{-42,56},{-34,64}})));
+        RealTimeCoordinationLibrary.SelfTransition T1(
+          use_after=true,
+          condition=true,
+          afterTime=1) annotation (Placement(transformation(
+              extent={{-4,-4},{4,4}},
+              rotation=90,
+              origin={-8,34})));
+        equation
+        connect(step1.outPort[1], T1.inPort) annotation (Line(
+            points={{-38,55.4},{-38,33.7},{-12.4,33.7},{-12.4,34}},
+            color={0,0,0},
+            smooth=Smooth.None));
+        connect(T1.outPort, step1.inPort[1]) annotation (Line(
+            points={{-3.4,34},{26,34},{26,64},{-38,64}},
+            color={0,0,0},
+            smooth=Smooth.None));
+        annotation (Diagram(graphics), experiment(StopTime=10));
+        end TestSelfTransitionMain;
+      end ExampleSelfTransition;
+    end SelfTransition;
     annotation (Documentation(info="<html>
 <p>For an application examples have a look at: <a href=\"modelica://RealTimeCoordinationLibrary.Examples.Application.BeBotSystem\">BeBotSystem</a> </p>
 
@@ -5500,6 +5759,197 @@ equation
         extent={{-100,-100},{100,100}},
         grid={1,1}), graphics));
 end Transition;
+
+
+model SelfTransition
+  "SelfTransition of a step (optionally with delayed transition and/or condition input port and/or synchronization and/or receiver connector of asynchronous communication)"
+ parameter Boolean use_conditionPort = false "= true, if conditionPort enabled"
+    annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true));
+
+  input Boolean condition = true
+    "Fire condition (time varying Boolean expression)"
+    annotation(Dialog(enable=true));
+  parameter Boolean use_after = false
+    "= true, if after construct should be enabled."
+    annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true));
+  parameter Modelica.SIunits.Time afterTime = 0
+    "Wait time before transition can fire after the source state has been enabled."
+    annotation(Dialog(enable=use_after));
+
+  parameter Boolean use_firePort = false "= true, if firePort enabled"
+    annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true));
+
+  parameter Boolean   use_syncSend = false
+    "= true, if using synchronization of kind SEND"
+    annotation(Dialog(enable=not (use_syncReceive),Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true)));
+  parameter Boolean use_syncReceive = false
+    "= true, if using synchronization of kind SEND"
+     annotation(Dialog(enable=not (use_syncSend),Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true)));
+  parameter Boolean use_messageReceive = false
+    "= true, if using asynchron messages of kind TRIGGER"
+    annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true));
+  parameter Boolean loopCheck = true
+    "= true, if one after transition per loop required"
+    annotation(Evaluate=true, HideResult=true, Dialog(tab="Advanced"), choices(__Dymola_checkBox=true));
+  parameter Integer numberOfSyncSend(min=0)=0 annotation(Dialog(__Dymola_connectorSizing=true), HideResult=true);
+  parameter Integer numberOfSyncReceive(min=0)=0 annotation(Dialog(__Dymola_connectorSizing=true), HideResult=true);
+  parameter Integer numberOfMessageReceive(min=0)=0 annotation(Dialog(__Dymola_connectorSizing=true), HideResult=true);
+  parameter Integer numberOfMessageIntegers(min=0)=0
+    "size of the Integer parameter array of a received message";
+  parameter Integer numberOfMessageBooleans(min=0)=0
+    "size of the Boolean parameter array of a received message";
+  parameter Integer numberOfMessageReals(min=0)=0
+    "size of the Real parameter array of a received message";
+  parameter String syncChannelName= "channelName" if  (use_syncSend or use_syncReceive)
+    "name of the synchronization channel"
+                                         annotation(Dialog(enable=(use_syncSend or use_syncReceive)));
+
+output Boolean fire = T1.fire "= true, if transition fires";
+
+ Transition  T1(condition = condition, use_after = use_after,afterTime = afterTime, use_conditionPort=use_conditionPort, use_firePort=use_firePort, use_syncSend = use_syncSend, use_syncReceive = use_syncReceive,
+ numberOfSyncSend=numberOfSyncSend,  numberOfSyncReceive=numberOfSyncReceive, use_messageReceive=use_messageReceive, numberOfMessageReceive=numberOfMessageReceive,
+ numberOfMessageIntegers= numberOfMessageIntegers,numberOfMessageBooleans= numberOfMessageBooleans, numberOfMessageReals=numberOfMessageReals)
+    annotation (Placement(transformation(extent={{-8,52},{8,68}})));
+  Step step1(nIn=1, nOut=1)
+    annotation (Placement(transformation(extent={{-8,18},{8,34}})));
+  Transition T2(use_messageReceive=false)
+    annotation (Placement(transformation(extent={{-8,-16},{8,0}})));
+  Modelica_StateGraph2.Internal.Interfaces.Transition_in inPort
+    "Input port of transition (exactly one connection to this port is required)"
+    annotation (Placement(transformation(extent={{-17,93},{17,127}})));
+  Modelica_StateGraph2.Internal.Interfaces.Transition_out outPort
+    "Output port of transition (exactly one connection from this port is required)"
+    annotation (Placement(transformation(extent={{-25,-140},{25,-90}})));
+  Modelica.Blocks.Interfaces.BooleanInput conditionPort if use_conditionPort
+    "Fire condition as Boolean input."
+    annotation (
+      Placement(transformation(extent={{-150,35},{-100,85}}),
+        iconTransformation(extent={{-150,35},{-100,85}})));
+  Modelica.Blocks.Interfaces.BooleanOutput firePort if use_firePort
+    "= true, if transition fires"
+    annotation (Placement(transformation(extent={{100,45},{130,75}}),
+        iconTransformation(extent={{100,45},{130,75}})));
+  Internal.Interfaces.Synchron.receiver    receiver[
+      numberOfSyncReceive] if use_syncReceive
+    "receive port for synchronization channel"
+    annotation (Placement(visible=true, transformation(extent={{-77,100},{-57,120}}),
+        iconTransformation(extent={{-88,83},{-53,118}})));
+  Internal.Interfaces.Synchron.sender    sender[
+      numberOfSyncSend] if use_syncSend "send port for synchronization channel"
+    annotation (Placement(visible=true,transformation(extent={{55,101},
+            {75,121}}),
+        iconTransformation(extent={{47,84},{83,119}})));
+  Internal.Interfaces.Asynchron.transition_input_port
+      transition_input_port[numberOfMessageReceive](
+      redeclare Integer integers[numberOfMessageIntegers],
+      redeclare Boolean booleans[numberOfMessageBooleans],
+      redeclare Real reals[numberOfMessageReals]) if use_messageReceive
+    "port for trigger message"
+    annotation (Placement(visible=use_messageReceive, transformation(extent={{-123,
+            -69},{-78,-29}}),
+      iconTransformation(extent={{-123,-69},{-78,-29}})));
+equation
+  connect(T1.outPort, step1.inPort[1]) annotation (Line(
+      points={{0,50},{0,34}},
+      color={0,0,0},
+      smooth=Smooth.None));
+  connect(step1.outPort[1], T2.inPort) annotation (Line(
+      points={{0,16.8},{0,0}},
+      color={0,0,0},
+      smooth=Smooth.None));
+  connect(inPort, T1.inPort) annotation (Line(
+      points={{0,110},{0,68}},
+      color={0,0,0},
+      smooth=Smooth.None));
+  connect(T2.outPort, outPort) annotation (Line(
+      points={{0,-18},{0,-115}},
+      color={0,0,0},
+      smooth=Smooth.None));
+if (use_firePort) then
+connect(T1.firePort, firePort) annotation (Line(
+      points={{8.4,60},{115,60}},
+      color={255,0,255},
+      smooth=Smooth.None));
+end if;
+if (use_conditionPort) then
+ connect(conditionPort, T1.conditionPort) annotation (Line(
+      points={{-125,60},{-10,60}},
+      color={255,0,255},
+      smooth=Smooth.None));
+
+end if;
+if (use_syncSend) then
+connect(sender, T1.sender) annotation (Line(
+      points={{65,111},{33.5,111},{33.5,68.12},{5.2,68.12}},
+      color={255,128,0},
+      smooth=Smooth.None));
+end if;
+if
+  (use_syncReceive) then
+ connect(receiver, T1.receiver) annotation (Line(
+      points={{-67,110},{-38.5,110},{-38.5,68.04},{-5.64,68.04}},
+      color={255,128,0},
+      smooth=Smooth.None));
+end if;
+if (use_messageReceive) then
+connect(transition_input_port, T1.transition_input_port) annotation (Line(
+      points={{-100.5,-49},{-100.5,64},{-10,64},{-9.8,64.24}},
+      color={0,0,0},
+      smooth=Smooth.None));
+
+end if;
+
+  annotation (Diagram(graphics),defaultComponentName="T1", Icon(coordinateSystem(extent={{-100,
+            -100},{100,100}},                                                                                   initialScale=0.04,   preserveAspectRatio=true,
+        grid={1,1}),graphics={
+        Text(
+          visible=use_after,
+          extent={{-200,10},{200,-10}},
+          lineColor={255,0,0},
+          textString="after(%afterTime)",
+          origin={210,-70},
+          rotation=0),
+        Rectangle(
+          extent={{-100,50},{100,70}},
+          lineColor={0,0,0},
+          fillColor={0,0,0},
+          fillPattern=FillPattern.Solid,
+          radius=10),
+        Rectangle(
+          extent={{-50,30},{50,-30}},
+          lineColor={0,0,0},
+          fillColor=DynamicSelect({255,255,255}, if active > 0.5 then {0,255,0}
+               else {255,255,255}),
+          fillPattern=FillPattern.Solid,
+          radius=20),
+        Line(points={{0,-50},{0,-68}}, color={255,0,0}),
+        Line(points={{0,-84},{0,-110}}, color={255,0,0}),
+        Line(
+          points={{-70,-50},{70,-50}},
+          color={0,0,0},
+          smooth=Smooth.None),
+        Line(points={{0,-30},{0,-50}}, color={0,0,0}),
+        Line(points={{0,93},{0,30}}, color={0,0,0}),
+        Text(
+          extent={{-150,-15},{150,15}},
+          textString="%name",
+          lineColor={0,0,255},
+          origin={153,13},
+          rotation=0),
+        Text(
+          extent={{-300,-15},{300,15}},
+          lineColor=DynamicSelect({128,128,128}, if condition > 0.5 then {0,255,
+              0} else {128,128,128}),
+          textString="%condition",
+          origin={-160,61},
+          rotation=90)}),
+    Documentation(info="<html>
+<p>Examples are specified at: &QUOT;<a href=\"modelica://RealTimeCoordinationLibrary.Examples\">Examples</a>&QUOT;.</p>
+<p>SelfTransition works exactly as a  Transition. The only difference to the Transition class is that the use_after construct works also for self transitions. </p>
+<p>We use these parameters to synchronize the firing of parallel transitions as described in &QUOT;<a href=\"modelica://RealTimeCoordinationLibrary.UsersGuide.Elements.Synchronization\">Synchronization</a>&QUOT; and to receive asynchronous messages as described in &QUOT;<a href=\"modelica://RealTimeCoordinationLibrary.UsersGuide.Elements.Message_Mailbox\">Message and Mailbox</a>&QUOT;.</p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/images/selftransition.jpg\"/></p>
+</html>"));
+end SelfTransition;
 
 
 model Step
@@ -5867,9 +6317,9 @@ end Step;
     import RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.IntQueue;
     import RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.RealQueue;
     import
-      RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.BooleanQueue;
+    RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.BooleanQueue;
     import
-      RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.StringQueue;
+    RealTimeCoordinationLibrary.Internal.Interfaces.Asynchron.StringQueue;
 
    parameter Integer nOut(min=0)=0 "Number of output connections"
                                                              annotation(Dialog(__Dymola_connectorSizing=true), HideResult=false);
@@ -7016,16 +7466,16 @@ end Internal;
 
 
   annotation (uses(Modelica(version="3.2"), RealTimeCoordinationLibrary(version=
-            "1.0.1"),
+            "1.0.2"),
       Modelica_StateGraph2(version="2.0.1")),
     preferredView="info",
-    version="1.0.1",
+    version="1.0.2",
     versionBuild=1,
-    versionDate="2012-10-08",
-    dateModified = "2012-10-08",
-    revisionId="$Id:: package.mo 1 2012-10-08 10:18:47Z #$",
+    versionDate="2013-04-04",
+    dateModified = "2012-04-04",
+    revisionId="$Id:: package.mo 1 2013-04-04 16:18:47Z #$",
     Documentation(info="<html>
-<p><b>RealTimeCoordinationLibrary</b> is a <b>free</b> Modelica package providing components to model <b>real-time</b>, <b>reactive</b>, <b>hybrid</b> and, <b>asynchronous communicating</b> systems in a convenient way with <b>statecharts/b&GT;. </b></p>
+<p><b>RealTimeCoordinationLibrary</b> is a <b>free</b> Modelica package providing components to model <b>real-time</b>, <b>reactive</b>, <b>hybrid</b> and, <b>asynchronous communicating</b> systems in a convenient way with <b>statecharts</b>.</p>
 <p>For an introduction, have especially a look at: </p>
 <p><ul>
 <li><a href=\"modelica://RealTimeCoordinationLibrary.UsersGuide.Elements\">Elements</a> provide an overview of the library inside the User&apos;s Guide.</li>
@@ -7037,7 +7487,7 @@ end Internal;
 </html>", revisions="<html>
 <p>Name: RealTimeCoordinationLibrary</p>
 <p>Path: RealTimeCoordinationLibrary</p>
-<p>Version: 1.0.1, 2012-10-08, build 1 (2012-10-08)</p>
-<p>Uses:Modelica (version=&QUOT;3.2&QUOT;), RealTimeCoordinationLibrary (version=&QUOT;1.0.1&QUOT;), Modelica_StateGraph2 (version=&QUOT;2.0.1&QUOT;)</p>
+<p>Version: 1.0.2, 2013-04-04, build 1 (2013-04-04)</p>
+<p>Uses:Modelica (version=&QUOT;3.2&QUOT;), RealTimeCoordinationLibrary (version=&QUOT;1.0.2&QUOT;), Modelica_StateGraph2 (version=&QUOT;2.0.1&QUOT;)</p>
 </html>"));
 end RealTimeCoordinationLibrary;
