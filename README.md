@@ -13,7 +13,7 @@ For the modeling of synchronous communication, we extended transitions by synchr
 
 For the modeling of asynchronous communication, we introduce two new components named Message and Mailbox. Each instance of the Message component has two purposes. On the one hand, it defines a certain message type by specifying an array of formal parameters which might be of type Integer, Boolean or Real. As an example one message type might be defined by the array (Integer[2];Boolean[1];Real[1]). The parameter array of a message type is also called its signature. On the other hand, an instance of the Message component is responsible for sending a message whenever a connected transition fires. A transition is able to signal to a Message component instance to send a message if the firePort of the transition is connected to the condition- Port of the Message component instance.
 
-For the modeling of real-time behavior according to timed automata, we extended the StateGraph2 library by three components named Clock, Invariant and Clock- Constraint. Clocks are real-valued variables whose values increase continuously and synchronously with time. Clocks might be reset to zero upon activation of a generalized step or firing of a transition. An invariant is an inequation that specifies an upper bound on a clock, e.g., `c < 2 or c &le; 2` where c is a clock. Invariants are assigned to generalized steps and are used to specify a time span in which this generalized step is allowed to be active. A clock constraint might be any kind of inequation specifying a bound on a certain clock, e.g., `c > 2, c &ge; 5, c < 2, c &le; 5` where c is a clock. Clock constraints are assigned to transitions in order to restrict the time span in which a transition is allowed to fire.
+For the modeling of real-time behavior according to timed automata, we extended the StateGraph2 library by three components named Clock, Invariant and Clock- Constraint. Clocks are real-valued variables whose values increase continuously and synchronously with time. Clocks might be reset to zero upon activation of a generalized step or firing of a transition. An invariant is an inequation that specifies an upper bound on a clock, e.g., `c < 2 or c <= 2` where c is a clock. Invariants are assigned to generalized steps and are used to specify a time span in which this generalized step is allowed to be active. A clock constraint might be any kind of inequation specifying a bound on a certain clock, e.g., `c > 2, c >= 5, c < 2, c <= 5` where c is a clock. Clock constraints are assigned to transitions in order to restrict the time span in which a transition is allowed to fire.
 
 ### Install Instructions
 1. Copy the folder "`RealTimeCoordinationLibrary`" into the folder of your "`MOELICAPATH`" (e.g., `"C:\Program Files (x86)\Dymola 2013\Modelica\Library`")
@@ -25,11 +25,11 @@ For the modeling of real-time behavior according to timed automata, we extended 
 Download [Latest development version](../../archive/master.zip)
 
 #### Release notes
-* [Version v1.0.2 (2013-04-04)]
+* [Version v1.0.2 (2013-04-04)](../../archive/v1.0.2.zip)
  * Added SelfTransition Class
  * Fixed SelfTransitions in Example/Application
 
-* [Version v1.0.1 (2012-10-08)]
+* [Version v1.0.1 (2012-10-08)](../../archive/v1.0.1.zip)
  * Changed Transition Class
  * `firePort = fire` &rarr; `firePort = pre(fire)` *(Avoid algebraic loop when two outgoing transitions of a state send and receive a message)*
 
