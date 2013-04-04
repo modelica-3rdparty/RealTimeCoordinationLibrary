@@ -41,18 +41,20 @@ it can be redistributed and/or modified under the terms of the [Modelica License
 
 ## Development and contribution
  Main developer:
- > [Uwe Pohl](mailto:upohl@uni-paderborn.de)
+ > [Uwe Pohlmann](mailto:uwe.pohlmann@ipt.fraunhofer.de)<br>
+ > Research Fellow
 
 Address:
-> Fachgruppe Softwaretechnik<br>
-> Heinz Nixdorf Institut<br>
-> Universität Paderborn<br>
+> Fraunhofer Institute for Production Technology IPT<br>
+> Project Group Mechatronic Systems Design<br>
+> Software Engineering<br>
 > Zukunftsmeile 1<br>
 > 33102 Paderborn<br>
 >
-> Phone: +49 5251 - 54 65 156<br>
-> Fax: +49 5251 60-3985<br>
-> Room: ZM1.02-06
+> Phone: +49 5251 5465-174<br>
+> Fax: +49 5251 5465-102<br>
+> Room: 02-48
+
 
 You may report any issues with using the [Issues](../../issues) button.
 
@@ -60,5 +62,13 @@ Contributions in shape of [Pull Requests](../../pulls) are always welcome.
 
 ## Acknowledgments
 
-This work was developed in the project "ENTIME: Entwurfstechnik Intelligente Mechatronik" (Design Methods for Intelligent Mechatronic Systems).
-The project ENTIME is funded by the state of North Rhine-Westphalia (NRW), Germany and the EUROPEAN UNION, European Regional Development Fund, "Investing in your future".
+This work was partially developed in the Leading-Edge Cluster
+’Intelligent Technical Systems OstWestfalenLippe’ (it’s
+OWL). The Leading-Edge Cluster is funded by the German
+Federal Ministry of Education and Research (BMBF).
+This work was partially developed in the project ‘ENTIME:
+Entwurfstechnik Intelligente Mechatronik’ (Design Methods
+for Intelligent Mechatronic Systems). The project ENTIME
+is funded by the state of North Rhine-Westphalia (NRW),
+Germany and the EUROPEAN UNION, European Regional
+Development Fund, ‘Investing in your future’.
