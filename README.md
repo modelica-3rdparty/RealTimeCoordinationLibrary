@@ -16,7 +16,7 @@ For the modeling of asynchronous communication, we introduce two new components 
 For the modeling of real-time behavior according to timed automata, we extended the StateGraph2 library by three components named Clock, Invariant and Clock- Constraint. Clocks are real-valued variables whose values increase continuously and synchronously with time. Clocks might be reset to zero upon activation of a generalized step or firing of a transition. An invariant is an inequation that specifies an upper bound on a clock, e.g., `c < 2 or c <= 2` where c is a clock. Invariants are assigned to generalized steps and are used to specify a time span in which this generalized step is allowed to be active. A clock constraint might be any kind of inequation specifying a bound on a certain clock, e.g., `c > 2, c >= 5, c < 2, c <= 5` where c is a clock. Clock constraints are assigned to transitions in order to restrict the time span in which a transition is allowed to fire.
 
 ### Install Instructions
-1. Copy the folder "`RealTimeCoordinationLibrary`" into the folder of your "`MOELICAPATH`" (e.g., `"C:\Program Files (x86)\Dymola 2013\Modelica\Library`")
+1. Copy the folder "`RealTimeCoordinationLibrary`" into the folder of your "`MODELICAPATH`" (e.g., `"C:\Program Files (x86)\Dymola 2013\Modelica\Library`")
 2. Start Dymola
 3. `File` &rarr; `Libraries` &rarr; `RealTimeCoordinationLibrary`
 
