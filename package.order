@@ -7,4 +7,6 @@ Message
 Mailbox
 TimeElements
 MessageInterface
+CoordinationPatternRepository
+CoordinationProtocols
 Internal
