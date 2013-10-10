@@ -66,7 +66,7 @@ package UsersGuide "User's Guide"
 
       annotation (Documentation(info="<html>
 <p>Examples are specified at: &quot;<a href=\"modelica://RealTimeCoordinationLibrary.Examples.Invariant\">Examples.Invariant</a>&quot;.</p>
-<p>An invariant is an inequation that specifies an upper <b>bound</b> on a clock, e.g., c &LT; 2 or c &LT;= 2 where c is a <a href=\"modelica://RealTimeCoordinationLibrary.UsersGuide.Elements.Clock\">Clock</a>. Invariants are assigned to generalized steps and are used to specify a time span in which this generalized step is allowed to be active. </p>
+<p>An invariant is an inequation that specifies an upper <b>bound</b> on a clock, e.g., c &lt; 2 or c &lt;= 2 where c is a <a href=\"modelica://RealTimeCoordinationLibrary.UsersGuide.Elements.Clock\">Clock</a>. Invariants are assigned to generalized steps and are used to specify a time span in which this generalized step is allowed to be active. </p>
 <p><img src=\"modelica://RealTimeCoordinationLibrary/images/invariant.jpg\"/></p>
 </html>"));
     end Invariant;
@@ -75,7 +75,7 @@ package UsersGuide "User's Guide"
 
       annotation (Documentation(info="<html>
 <p>Examples are specified at: &quot;<a href=\"modelica://RealTimeCoordinationLibrary.Examples.ClockConstraint\">Examples.ClockConstraint</a>&quot;.</p>
-<p>A clock constraint might be any kind of inequation specifying a <b>bound</b> on a certain clock, e.g., c &GT; 2, c &GT;= 5, c &LT; 2, c &LT;= 5, where c is a <a href=\"modelica://RealTimeCoordinationLibrary.UsersGuide.Elements.Clock\">Clock</a>. Clock constraints are assigned to transitions in order to restrict the time span in which a transition is allowed to fire.</p>
+<p>A clock constraint might be any kind of inequation specifying a <b>bound</b> on a certain clock, e.g., c &gt; 2, c &gt;= 5, c &lt; 2, c &lt;= 5, where c is a <a href=\"modelica://RealTimeCoordinationLibrary.UsersGuide.Elements.Clock\">Clock</a>. Clock constraints are assigned to transitions in order to restrict the time span in which a transition is allowed to fire.</p>
 <p><img src=\"modelica://RealTimeCoordinationLibrary/images/clockCondition.jpg\"/></p>
 </html>"));
     end ClockConstraint;
@@ -110,7 +110,7 @@ package UsersGuide "User's Guide"
 <p>First version of the real-time coordination library based on StateGraph2, Modelica.StateGraph and the prototype ModeGraph library from Martin Malmheden. </p>
 <p><br/><h4>Version 1.0.1, 2012-10-08</h4></p>
 <p>Changed Transition Class</p>
-<p>firePort = fire -&GT; firePort = pre(fire) // Avoid algebraic loop when two outgoing transitions of a state send and receive a message.</p>
+<p>firePort = fire -&gt; firePort = pre(fire) // Avoid algebraic loop when two outgoing transitions of a state send and receive a message.</p>
 </html>"));
   end ReleaseNotes;
 
