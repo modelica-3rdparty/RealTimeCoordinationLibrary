@@ -90,7 +90,7 @@ package UsersGuide "User's Guide"
 </html>"));
     end DelegationPort;
     annotation (__Dymola_DocumentationClass=true, Documentation(info="<html>
-<p><ol>
+<ol>
 <li>&quot;<a href=\"modelica://RealTimeCoordinationLibrary.UsersGuide.Elements.Message_Mailbox\">Message and Mailbox</a>&quot; gives an overview about the elements: Message and Mailbox.</li>
 <li>&quot;<a href=\"modelica://RealTimeCoordinationLibrary.UsersGuide.Elements.Synchronization\">Synchronization</a>&quot; gives an overview about the element: Synchronization.</li>
 <li>&quot;<a href=\"modelica://RealTimeCoordinationLibrary.UsersGuide.Elements.Transition\">Transition</a>&quot; gives an overview about the element: Transition.</li>
@@ -98,7 +98,7 @@ package UsersGuide "User's Guide"
 <li>&quot;<a href=\"modelica://RealTimeCoordinationLibrary.UsersGuide.Elements.Invariant\">Invariant</a>&quot; gives an overview about the element: Invariant. </li>
 <li>&quot;<a href=\"modelica://RealTimeCoordinationLibrary.UsersGuide.Elements.ClockConstraint\">ClockConstraint</a>&quot; gives an overview about the element: ClockConstraint. </li>
 <li>&quot;<a href=\"modelica://RealTimeCoordinationLibrary.UsersGuide.Elements.DelegationPort\">DelegationPort</a>&quot; gives an overview about the element: DelegationPort. </li>
-</ol></p>
+</ol>
 </html>"));
   end Elements;
 
@@ -128,81 +128,51 @@ The RealTimeCoordination library is described in detail in
 </dl>
 <P> and is additionally
 based on the following references:</p>
-<P>[1] R. Alur and D.L. Dill.         A theory of timed automata. <I>Theoretica</I><I>l </I><I>compute</I><I>r </I><I>science</I>, 126(2):183&ndash;235, 1994. </P>
+<P>[1] R. Alur and D.L. Dill.         A theory of timed automata. <I>Theoretical computer science</I>, 126(2):183&ndash;235, 1994. </P>
 <P>[2] S.         Becker, C. Brenner, S. Dziwok, T. Gewering, C. Heinzemann, U. Pohlmann, C. Priesterjahn, </P>
 <P>W. Sch&auml;fer, J. Suck, O. Sudmann, and M. Tichy. The mechatronicuml method -process, syntax, and semantics. Technical Report tr-ri-12-318, Software Engineering Group, Heinz Nixdorf Institute University of Paderborn, 2012. </P>
-<P>[3] Lionel C. Briand and Alexander L. Wolf, editors. </P>
-<P><I>Internationa</I><I>l </I><I>Conferenc</I><I>e </I><I>o</I><I>n </I><I>Softwar</I><I>e </I><I>Engineering</I><I>, </I><I>ISC</I><I>E </I><I>2007</I><I>, </I><I>Worksho</I><I>p </I><I>o</I><I>n </I><I>th</I><I>e </I><I>Futur</I><I>e </I><I>o</I><I>f </I><I>Softwar</I><I>e </I><I>Engi</I><I></I><I>neering</I><I>, </I><I>FOS</I><I>E </I><I>2007</I><I>, </I><I>Ma</I><I>y </I><I>23-25</I><I>, </I><I>2007</I><I>, </I><I>Minneapolis</I><I>, </I><I>MN</I><I>, </I><I>USA</I>, 2007. </P>
-<P
+<P>[3] Lionel C. Briand and Alexander L. Wolf, editors. <I>International Conference on Software Engineering, ISCE 2007, Workshop on the Future of Software Engineering, FOSE 2007, May 23-25, 2007, Minneapolis, MN, USA</I>, 2007. </P>
 
->[4] U. Donath, J. Haufe, T. Blochwitz, and T. Neidhold. A new approach for modeling and veri&#64257;cation of discrete control components within a Modelica environment. In <I>Proceeding</I><I>s </I><I>o</I><I>f </I><I>th</I><I>e </I><I>6t</I><I>h </I><I>Modelic</I><I>a </I><I>Conference</I><I>, </I><I>Bielefeld</I>, pages 269&ndash;276, 2008. </P
-><P
 
->[5] Christof Ebert and Capers Jones. Embedded software: Facts, &#64257;gures, and future. <I>IEE</I><I>E </I><I>Computer</I>, 42(4):42&ndash; 52, 2009. </P
-><P
+<p>[4] U. Donath, J. Haufe, T. Blochwitz, and T. Neidhold. A new approach for modeling and veri&#64257;cation of discrete control components within a Modelica environment. In <I>Proceedings of the 6th Modelica Conference, Bielefeld</I>, pages 269&ndash;276, 2008. 
 
->[6] Peter Fritzson.         <I>Principle</I><I>s </I><I>o</I><I>f </I><I>Object-Oriente</I><I>d </I><I>Model</I><I></I><I>in</I><I>g </I><I>an</I><I>d </I><I>Simulatio</I><I>n </I><I>wit</I><I>h </I><I>Modelic</I><I>a </I><I>2.1</I>. Wiley-IEEE Press, 1st edition, 2004. </P
-><P
+<p>[5] Christof Ebert and Capers Jones. Embedded software: Facts, &#64257;gures, and future. <I>IEEE Computer</I>, 42(4):42&ndash; 52, 2009. 
 
->[7] Object Management Group. Omg uni&#64257;ed modeling language (omg uml), superstructure, v2.4.1. Technical report, 2011. </P
-><P
+<p>[6] Peter Fritzson.         <I>Principles of Object-Oriented Modeling and Simulation with Modelica 2.1</I>. Wiley-IEEE Press, 1st edition, 2004. 
 
->[8] D. Harel.         Statecharts: A visual formalism for complex systems. <I>Scienc</I><I>e </I><I>o</I><I>f </I><I>compute</I><I>r </I><I>programming</I>, 8(3):231&ndash;274, 1987. </P
-><P
+<p>[7] Object Management Group. Omg uni&#64257;ed modeling language (omg uml), superstructure, v2.4.1. Technical report, 2011. 
 
->[9] C. Heinzemann, U. Pohlmann, J. Rieke, W. Sch&auml;fer, </P
-><P
+<p>[8] D. Harel.         Statecharts: A visual formalism for complex systems. <I>Science of computer programming</I>, 8(3):231&ndash;274, 1987. 
 
->O. Sudmann, and M. Tichy. Generating simulink and state&#64258;ow models from software speci&#64257;cations. In <I>Pro</I><I></I><I>ceeding</I><I>s </I><I>o</I><I>f </I><I>th</I><I>e </I><I>Internationa</I><I>l </I><I>Desig</I><I>n </I><I>Conference</I><I>, </I><I>DE</I><I></I><I>SIG</I><I>N </I><I>2012</I><I>, </I><I>Dubrovnik</I><I>, </I><I>Croatia</I>, May 2012. </P
-><P
+<p>[9] C. Heinzemann, U. Pohlmann, J. Rieke, W. Sch&auml;fer, 
+O. Sudmann, and M. Tichy. Generating simulink and state&#64258;ow models from software speci&#64257;cations. In <I>Proceedings of the International Design Conference, DESIGN 2012, Dubrovnik, Croatia</I>, May 2012. </P>
 
->[10] S. Herbrechtsmeier,         U. Witkowski, and U. R&uuml;ckert. Bebot: A modular mobile miniature robot platform supporting hardware recon&#64257;guration and multistandard communication. In <I>Progres</I><I>s </I><I>i</I><I>n </I><I>Robotics</I><I>, </I></P
-><P
+<p>[10] S. Herbrechtsmeier,         U. Witkowski, and U. R&uuml;ckert. Bebot: A modular mobile miniature robot platform supporting hardware recon&#64257;guration and multistandard communication. In <I>Progress in Robotics, </I>
+<I>Communications in Computer and Information Science. Proceedings of the FIRA RoboWorld Congress 2009</I>, volume 44, pages 346&ndash;356, Incheon, Korea, 2009. Springer. </P>
 
-><I>Communication</I><I>s </I><I>i</I><I>n </I><I>Compute</I><I>r </I><I>an</I><I>d </I><I>Informatio</I><I>n </I><I>Sci</I><I></I><I>ence</I><I>. </I><I>Proceeding</I><I>s </I><I>o</I><I>f </I><I>th</I><I>e </I><I>FIR</I><I>A </I><I>RoboWorl</I><I>d </I><I>Congres</I><I>s </I><I>2009</I>, volume 44, pages 346&ndash;356, Incheon, Korea, 2009. Springer. </P
-><P
+<p>[11] I. Kaiser, T. Kaulmann, J. Gausemeier, and U. Witkowski. Miniaturization of autonomous robots by the new technology molded interconnected devices (mid). In <I>Proceedings of the 4th International Symposium on Autonomous Minirobots for Research and Edutainment</I>, October 2007. </p> 
+<p>[12] C. C. Loh and A. Tr&auml;chtler.         Laser-sintered platform with optical sensor for a mobile robot used in cooperative load transport. In <I>Proceedings of the 37th Annual Conference on IEEE Industrial Electronics Society</I>, pages 888&ndash;893, November 2011. </P>
 
->[11] I. Kaiser, T. Kaulmann, J. Gausemeier, and </P
-><P
+<p>[13] M. Malmheden, Hilding Elmqvist, S.E. Mattsson,
+D. Henriksson, and M. Otter. ModeGraph-A Modelica Library for Embedded Control Based on Mode-Automata. In <I>in Proc. of Modelica 2008 conference, Bielefeld, Germany.</I>, 2008. </P>
 
->U. Witkowski. Miniaturization of autonomous robots by the new technology molded interconnected devices (mid). In <I>Proceeding</I><I>s </I><I>o</I><I>f </I><I>th</I><I>e </I><I>4t</I><I>h </I><I>Internationa</I><I>l </I><I>Sym</I><I></I><I>posiu</I><I>m </I><I>o</I><I>n </I><I>Autonomou</I><I>s </I><I>Minirobot</I><I>s </I><I>fo</I><I>r </I><I>Researc</I><I>h </I><I>an</I><I>d </I><I>Edutainment</I>, October 2007. </P
-><P
+<p>[14] M. Otter, K-E. &Aring;rz&eacute;n, and I. Dressler. StateGraph&ndash;A Modelica Library for Hierarchical State Machines. In <I>Proceedings of the 4th International Modelica Conference (Modelica 2005), Hamburg, Germany</I>, 2005. </P>
 
->[12] C. C. Loh and A. Tr&auml;chtler.         Laser-sintered platform with optical sensor for a mobile robot used in cooperative load transport. In <I>Proceeding</I><I>s </I><I>o</I><I>f </I><I>th</I><I>e </I><I>37t</I><I>h </I><I>An</I><I></I><I>nua</I><I>l </I><I>Conferenc</I><I>e </I><I>o</I><I>n </I><I>IEE</I><I>E </I><I>Industria</I><I>l </I><I>Electronic</I><I>s </I><I>Soci</I><I></I><I>ety</I>, pages 888&ndash;893, November 2011. </P
-><P
+<p>[15] M. Otter, M. Malmheden, H. Elmqvist, S.E. Mattsson, 
 
->[13] M. Malmheden, Hilding Elmqvist, S.E. Mattsson, </P
-><P
+<p>C. Johnsson, D. Syst&egrave;mes, and S.D. Lund. A new formalism for modeling of reactive and hybrid systems. In <I>Proceedings of the 7th Modelica&rsquo;2009 Conference, Como, Italy</I>, 2009. </p>
 
->D. Henriksson, and M. Otter. ModeGraph-A Modelica Library for Embedded Control Based on Mode-Automata. In <I>i</I><I>n </I><I>Proc</I><I>. </I><I>o</I><I>f </I><I>Modelic</I><I>a </I><I>200</I><I>8 </I><I>conference</I><I>, </I><I>Bielefeld</I><I>, </I><I>Germany.</I>, 2008. </P
-><P
+<p>[16] M. Pajic, Z. Jiang, I. Lee, O. Sokolsky, and R. Mangharam. From veri&#64257;cation to implementation: A model translation tool and a pacemaker case study. In <I>Proceedings of the 18th IEEE Real-Time and Embedded Technology and Applications Symposium (RTAS 2012), Beijing, China</I>, April 2012. </p>
 
->[14] M. Otter, K-E. &Aring;rz&eacute;n, and I. Dressler. StateGraph&ndash;A Modelica Library for Hierarchical State Machines. In <I>Proceeding</I><I>s </I><I>o</I><I>f </I><I>th</I><I>e </I><I>4t</I><I>h </I><I>Internationa</I><I>l </I><I>Modelic</I><I>a </I><I>Con</I><I></I><I>ferenc</I><I>e </I><I>(Modelic</I><I>a </I><I>2005)</I><I>, </I><I>Hamburg</I><I>, </I><I>Germany</I>, 2005. </P
-><P
+<p>[17] U. Pohlmann and M. Tichy. Modelica code generation from ModelicaML state machines extended by asynchronous communication. In <I>Proceedings of the 4th International Workshop on Equation-Based Object-Oriented Modeling Languages and Tools, EOOLT 2011, Zurich, Switzerland</I>, 2011. </p>
 
->[15] M. Otter, M. Malmheden, H. Elmqvist, S.E. Mattsson, </P
-><P
+<p>[18] W.         Sch&auml;fer and H. Wehrheim. The Challenges of Building Advanced Mechatronic Systems. In Briand and Wolf [3], pages 72&ndash;84. </p>
 
->C. Johnsson, D. Syst&egrave;mes, and S.D. Lund. A new formalism for modeling of reactive and hybrid systems. In <I>Proceeding</I><I>s </I><I>o</I><I>f </I><I>th</I><I>e </I><I>7t</I><I>h </I><I>Modelica&rsquo;200</I><I>9 </I><I>Conference</I><I>, </I><I>Como</I><I>, </I><I>Italy</I>, 2009. </P
-><P
+<p>[19] W. Schamai.         Modelica modeling language (ModelicaML) : A UML pro&#64257;le for Modelica. Technical report, Link&ouml;ping University, Department of Computer and Information Science, The Institute of Technology, 2009. </p>
 
->[16] M. Pajic, Z. Jiang, I. Lee, O. Sokolsky, and R. Mangharam. From veri&#64257;cation to implementation: A model translation tool and a pacemaker case study. In <I>Pro</I><I></I><I>ceeding</I><I>s </I><I>o</I><I>f </I><I>th</I><I>e </I><I>18t</I><I>h </I><I>IEE</I><I>E </I><I>Real-Tim</I><I>e </I><I>an</I><I>d </I><I>Embed</I><I></I><I>de</I><I>d </I><I>Technolog</I><I>y </I><I>an</I><I>d </I><I>Application</I><I>s </I><I>Symposiu</I><I>m </I><I>(RTA</I><I>S </I><I>2012)</I><I>, </I><I>Beijing</I><I>, </I><I>China</I>, April 2012. </P
-><P
+<p>[20] W. Schamai, U. Pohlmann, P. Fritzson, C. J.J. Paredis, P. Helle, and C. Strobel. Execution of uml state machines using modelica. In <I>Proceedings of EOOLT</I>, pages 1&ndash;10, 2010. </p>
 
->[17] U. Pohlmann and M. Tichy. Modelica code generation from ModelicaML state machines extended by asynchronous communication. In <I>Proceeding</I><I>s </I><I>o</I><I>f </I><I>th</I><I>e </I><I>4t</I><I>h </I><I>Internationa</I><I>l </I><I>Worksho</I><I>p </I><I>o</I><I>n </I><I>Equation-Base</I><I>d </I><I>Object-Oriente</I><I>d </I><I>Modelin</I><I>g </I><I>Language</I><I>s </I><I>an</I><I>d </I><I>Tools</I><I>, </I><I>EOOL</I><I>T </I><I>2011</I><I>, </I><I>Zurich</I><I>, </I><I>Switzerland</I>, 2011. </P
-><P
-
->[18] W.         Sch&auml;fer and H. Wehrheim. The Challenges of Building Advanced Mechatronic Systems. In Briand and Wolf [3], pages 72&ndash;84. </P
-><P
-
->[19] W. Schamai.         Modelica modeling language (ModelicaML) : A UML pro&#64257;le for Modelica. Technical report, Link&ouml;ping University, Department of Computer and Information Science, The Institute of Technology, 2009. </P
-><P
-
->[20] W. Schamai, U. Pohlmann, P. Fritzson, C. J.J. Paredis, P. Helle, and C. Strobel. Execution of uml state machines using modelica. In <I>Proceeding</I><I>s </I><I>o</I><I>f </I><I>EOOLT</I>, pages 1&ndash;10, 2010. </P
-><P
-
->[21] C. Wei&szlig;. V2X communication in Europe -From research projects towards standardization and &#64257;eld testing of vehicle communication technology. <I>Compute</I><I>r </I><I>Networks</I>, 55(14):3103&ndash;3119, 2011. </P
->
+<p>[21] C. Wei&szlig;. V2X communication in Europe -From research projects towards standardization and &#64257;eld testing of vehicle communication technology. <I>Computer Networks</I>, 55(14):3103&ndash;3119, 2011.</p>
 </html>
 "));
 
@@ -513,8 +483,6 @@ the answers to the questions below are not a legal interpretation of
 the Modelica License 2. In case of a conflict, the language of the
 license shall prevail.</p>
 
-<p><br>
-</p>
 
 <p><FONT COLOR=\"#008000\"><FONT SIZE=3><b>Using
 or Distributing a Modelica </b></FONT></FONT><FONT COLOR=\"#008000\"><FONT SIZE=3><u><b>Package</b></u></FONT></FONT><FONT COLOR=\"#008000\"><FONT SIZE=3><b>
@@ -757,7 +725,6 @@ end ModelicaLicense2;
     annotation (Documentation(info="<html>
 <dl>
 <dt><b>Main Authors:</b>
-<dd>
 </dl>
 
 <table border=0 cellspacing=0 cellpadding=2>
@@ -817,10 +784,8 @@ Heinz Nixdorf Institute<br>
 
 <p><b>Acknowledgements:</b></p>
 
-<p>
 
-</p>
-<ul>
+
 
 
 <p>
@@ -7465,7 +7430,7 @@ package Internal "Internal utility models (should usually not be used by user)"
 end Internal;
 
 
-  annotation (uses(Modelica(version="3.2"), 
+  annotation (uses(Modelica(version="3.2"),
       Modelica_StateGraph2(version="2.0.1")),
     preferredView="info",
     version="1.0.2",
