@@ -7465,8 +7465,7 @@ package Internal "Internal utility models (should usually not be used by user)"
 end Internal;
 
 
-  annotation (uses(Modelica(version="3.2"), RealTimeCoordinationLibrary(version=
-            "1.0.2"),
+  annotation (uses(Modelica(version="3.2"), 
       Modelica_StateGraph2(version="2.0.1")),
     preferredView="info",
     version="1.0.2",
