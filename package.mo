@@ -105,10 +105,10 @@ package UsersGuide "User's Guide"
   class ReleaseNotes "Release notes"
 
     annotation (Documentation(info="<html>
-<p><h4>Version 1.0.0, 2012-05-21</h4></p>
+<h4>Version 1.0.0, 2012-05-21</h4>
 <p>Uses Modelica Standard Library 3.2 </p>
 <p>First version of the real-time coordination library based on StateGraph2, Modelica.StateGraph and the prototype ModeGraph library from Martin Malmheden. </p>
-<p><br/><h4>Version 1.0.1, 2012-10-08</h4></p>
+<h4>Version 1.0.1, 2012-10-08</h4>
 <p>Changed Transition Class</p>
 <p>firePort = fire -&gt; firePort = pre(fire) // Avoid algebraic loop when two outgoing transitions of a state send and receive a message.</p>
 </html>"));
@@ -123,7 +123,7 @@ The RealTimeCoordination library is described in detail in
 <dl>
 <dt>Uwe Pohlmann, Stefan Dziwok,Julian Suck, Boris Wolf,Chia Choon Loh, Matthias Tichy (2012):</dt>
 <dd>
-     A Modelica Library for Real-Time Coordination Modeling., Modelica 2012</a>
+     A Modelica Library for Real-Time Coordination Modeling., Modelica 2012
       <br>&nbsp;</dd>
 </dl>
 <P> and is additionally
@@ -181,6 +181,8 @@ D. Henriksson, and M. Otter. ModeGraph-A Modelica Library for Embedded Control B
 class ModelicaLicense2 "Modelica License 2"
 
   annotation (Documentation(info="<html>
+<head><title>RealTimeCoordinationLibrary.UsersGuide.Modelica_License_2</title></head>
+<body>
 <p>All files in this directory (Modelica) and in all
 subdirectories, especially all files that build package \"Modelica_StateGraph2\" and all
 files in Modelica\\Images are under the
@@ -468,9 +470,6 @@ action. This section shall survive the termination of this License.</p>
         or be responsible for such uses by You.</li>
 </ol>
 
-<p>
-<br>
-</p>
 
 <hr>
 
@@ -655,8 +654,8 @@ substance to a preexisting work will not qualify the work as a new
 version for such purposes.
 </p>
 
-<p><br>
-</p>
+
+
 <p><FONT COLOR=\"#008000\"><FONT SIZE=3><b>Using
 or Distributing a Modelica </b></FONT></FONT><FONT COLOR=\"#008000\"><FONT SIZE=3><u><b>Document</b></u></FONT></FONT><FONT COLOR=\"#008000\"><FONT SIZE=3><b>
 under the Modelica License 2</b></FONT></FONT></p>
@@ -716,6 +715,7 @@ Modelica Language Specification?</b></p>
 if you are not the copyright-holder, since article 2c) does not allow
 a selling fee for a (in this case physical) copy. However, mere
 printing and shipping costs may be recovered.</p>
+</body>
 </html>"));
 
 end ModelicaLicense2;
@@ -759,7 +759,7 @@ Heinz Nixdorf Institute<br>
 
 <td valign=\"middle\">&nbsp;&nbsp;and&nbsp;&nbsp;</td>
 <td>
-Boris Wolf</a><br>
+Boris Wolf<br>
     Software Engineering Group<br>
 Heinz Nixdorf Institute<br>
  University of Paderborn<br>
@@ -4592,7 +4592,6 @@ V1.3 <br>
 <td valign=\"top\">Current constant</td>
 <td valign=\"top\">0.152</td><td valign=\"top\">A/mNm</td>
 </tr>
-<tr>
 </table>
 </HTML>"));
         end DCMotorCtrl_V4;
@@ -4642,8 +4641,6 @@ When limit is exceeded, the integrator is clamped.
      = kp*u + --*u
               s
 </pre>
-<p>
-</p>
 
 
 </HTML>
@@ -7441,12 +7438,12 @@ end Internal;
     Documentation(info="<html>
 <p><b>RealTimeCoordinationLibrary</b> is a <b>free</b> Modelica package providing components to model <b>real-time</b>, <b>reactive</b>, <b>hybrid</b> and, <b>asynchronous communicating</b> systems in a convenient way with <b>statecharts</b>.</p>
 <p>For an introduction, have especially a look at: </p>
-<p><ul>
+<ul>
 <li><a href=\"modelica://RealTimeCoordinationLibrary.UsersGuide.Elements\">Elements</a> provide an overview of the library inside the User&apos;s Guide.</li>
 <li><a href=\"modelica://RealTimeCoordinationLibrary.Examples\">Examples</a> provide simple introductory examples as well as involved application examples. </li>
-</ul></p>
+</ul>
 <p>For an application example have a look at: <a href=\"modelica://RealTimeCoordinationLibrary.Examples.Application.BeBotSystem\">BeBotSystem</a> </p>
-<p><br/><b>Licensed under the Modelica License 2</b></p>
+<p><b>Licensed under the Modelica License 2</b></p>
 <p><i>This Modelica package is <u>free</u> software and the use is completely at <u>your own risk</u>; it can be redistributed and/or modified under the terms of the Modelica license 2, see the license conditions (including the disclaimer of warranty) <a href=\"modelica://RealTimeCoordinationLibrary.UsersGuide.ModelicaLicense2\">here</a> or at <a href=\"http://www.Modelica.org/licenses/ModelicaLicense2\">http://www.Modelica.org/licenses/ModelicaLicense2</a>.</i> </p>
 </html>", revisions="<html>
 <p>Name: RealTimeCoordinationLibrary</p>
