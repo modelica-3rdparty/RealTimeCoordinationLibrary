@@ -545,10 +545,6 @@ leaved the critical section and the producer can enter it again.
 "));
   end Elements;
 
-
-
-
-
   annotation (__Dymola_DocumentationClass=true, Documentation(info="<html>
 <p>
 Library <b>Real-Time Coordination Pattern</b> is a <b>free</b> Modelica package providing
@@ -2754,7 +2750,6 @@ Two Bebots drive in a line, so one is in front, namely the \"FrontBebot\", and t
 
     package Synchronized_Collaboration
 
-
       package Convoy
         model Port_Master
           extends
@@ -3165,8 +3160,6 @@ Two bebots drive in a line. The front bebot asks wether they should form a convo
 
   package Applications
 
-
-
     package PlatoonExample
       model Refinement
         extends Modelica_StateGraph2.PartialParallel(nEntry=1, nExit=1);
@@ -3291,14 +3284,14 @@ Two bebots drive in a line. The front bebot asks wether they should form a convo
               origin={-76,18})));
         inner Modelica.Mechanics.MultiBody.World world(label2="z", n={0,0,-1})
           annotation (Placement(transformation(extent={{-50,-78},{-40,-68}})));
-        Modelica.Blocks.Sources.BooleanTable booleanTable
-          annotation (Placement(transformation(extent={{78,28},{98,48}})));
-        Modelica.Blocks.Sources.TimeTable velocityOfFront annotation (Placement(
+        Modelica.Blocks.Sources.TimeTable velocityOfFront(table=[0.0,4.0])
+                                                          annotation (Placement(
               transformation(
               extent={{-10,-10},{10,10}},
               rotation=270,
-              origin={44,110})));
-        Modelica.Blocks.Sources.TimeTable velocityOfRear annotation (
+              origin={84,94})));
+        Modelica.Blocks.Sources.TimeTable velocityOfRear(table=[0.0,8.0])
+                                                         annotation (
             Placement(transformation(
               extent={{-10,-10},{10,10}},
               rotation=180,
@@ -3372,10 +3365,12 @@ Two bebots drive in a line. The front bebot asks wether they should form a convo
             smooth=Smooth.None));
         connect(velocityOfFront.y, frontRailCab.cruisingSpeed) annotation (
             Line(
-            points={{44,99},{30,99},{30,76.6},{14.4,76.6}},
+            points={{84,83},{30,83},{30,76.6},{14.4,76.6}},
             color={0,0,127},
             smooth=Smooth.None));
-      annotation (Diagram(graphics));
+      annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{
+                    -100,-100},{100,100}}),
+                          graphics));
       end System;
 
       model Protocol_Master_Role
@@ -3431,6 +3426,25 @@ Two bebots drive in a line. The front bebot asks wether they should form a convo
         Boolean requestDenied;
         Boolean requestTimedOut;
 
+      algorithm
+        Idle.requestRejected := requestDenied;
+      Idle.requestTimedOut := requestTimedOut;
+
+      when T7.fire then
+          requestDenied :=true;
+        elsewhen Idle.T4.fire then
+           requestDenied :=false;
+        end when;
+        when T6.fire then
+          requestTimedOut :=true;
+        elsewhen Idle.T5.fire then
+          requestTimedOut :=false;
+        end when;
+       when T9.fire then
+          v := T9.transition_input_port[1].reals [1];
+        elsewhen T7.fire then
+          v := T7.transition_input_port[1].reals [1];
+        end when;
       equation
         if CollaborationActive.active then
           myVelocity = v;
@@ -3441,24 +3455,6 @@ Two bebots drive in a line. The front bebot asks wether they should form a convo
         else
           myVelocity = cruisingSpeed;
         end if;
-      Idle.requestRejected = requestDenied;
-      Idle.requestTimedOut = requestTimedOut;
-       when T9.fire then
-          v = T9.transition_input_port[1].reals [1];
-        elsewhen T7.fire then
-          v = T7.transition_input_port[1].reals [1];
-        end when;
-
-        when T7.fire then
-          requestDenied = true;
-        elsewhen Idle.T4.fire then
-           requestDenied = false;
-        end when;
-        when T6.fire then
-          requestTimedOut = true;
-        elsewhen Idle.T5.fire then
-          requestTimedOut = false;
-        end when;
 
         annotation (Diagram(graphics));
       end Protocol_Master_Role;
@@ -3516,7 +3512,7 @@ Two bebots drive in a line. The front bebot asks wether they should form a convo
             color={0,0,127},
             smooth=Smooth.None));
         connect(Reject.u_reals[1], cruisingSpeed) annotation (Line(
-            points={{41,82},{-14,82},{-14,104},{-66,104}},
+            points={{41,82},{-16,82},{-16,104},{-66,104}},
             color={0,0,127},
             smooth=Smooth.None));
         annotation (Diagram(graphics));
@@ -4376,7 +4372,6 @@ Two bebots drive in a line. The front bebot asks wether they should form a convo
                 T1(numberOfMessageReals=3),
                 activationProposal(numberOfMessageReals=3),
                 activationProposalInputPort(redeclare Real reals[3] "reals[3]"),
-
                 T2(condition=ready),
                 T5(condition=not ready));
 
@@ -4417,7 +4412,6 @@ Two bebots drive in a line. The front bebot asks wether they should form a convo
                 RealTimeCoordinationLibrary.CoordinationPattern.Examples.Applications.PlayingRobotsExample.SynchronizedCoordinationProtocols.Synchronized_Collaboration.Collaboration_Master(
                 activationProposal(numberOfMessageReals=3),
                 activationProposalOutputPort(redeclare Real reals[3] "reals[3]"),
-
                 activationAccepted(numberOfMessageReals=0),
                 T3(
                   numberOfMessageReals=0,
@@ -4425,6 +4419,7 @@ Two bebots drive in a line. The front bebot asks wether they should form a convo
                   use_syncSend=true),
                 T1(condition=startTransmision and not stopTransmission),
                 T4(condition=stopTransmission));
+
             Modelica.Blocks.Interfaces.RealInput In_Weight annotation (Placement(
                   transformation(
                   extent={{-12,-12},{12,12}},
