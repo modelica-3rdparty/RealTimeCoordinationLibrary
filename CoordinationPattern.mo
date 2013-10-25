@@ -3421,7 +3421,7 @@ Two bebots drive in a line. The front bebot asks wether they should form a convo
               extent={{-20,-20},{20,20}},
               rotation=270,
               origin={-50,112})));
-        Real v;
+        Real velocityOfSlave;
 
         Boolean requestDenied;
         Boolean requestTimedOut;
@@ -3441,15 +3441,15 @@ Two bebots drive in a line. The front bebot asks wether they should form a convo
           requestTimedOut :=false;
         end when;
        when T9.fire then
-          v := T9.transition_input_port[1].reals [1];
+          velocityOfSlave := T9.transition_input_port[1].reals [1];
         elsewhen T7.fire then
-          v := T7.transition_input_port[1].reals [1];
+          velocityOfSlave := T7.transition_input_port[1].reals [1];
         end when;
       equation
         if CollaborationActive.active then
-          myVelocity = v;
+          myVelocity = velocityOfSlave;
        elseif Idle.Rejection.active then
-          myVelocity = v - 5;
+          myVelocity = velocityOfSlave - 5;
         elseif Idle.Timeout.active then
           myVelocity = 0;
         else
