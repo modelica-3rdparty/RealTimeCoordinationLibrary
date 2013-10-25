@@ -57,7 +57,6 @@ package UsersGuide "User's Guide"
 </html>"));
   end ReleaseNotes;
 
-
 class ModelicaLicense2 "Modelica License 2"
   extends Modelica.Icons.Information;
 
@@ -125,7 +124,7 @@ The Modelica License applies to any Original Work that contains the
 following licensing notice adjacent to the copyright notice(s) for
 this Original Work:</p>
 
-<p><b>Licensed by the Modelica Association under the Modelica License 2</b></p>
+<p><b>Licensed by the Heinz Nixdorf Institute and Fraunhofer Institute for Production Technology IPT under the Modelica License 2</b></p>
 
 <p><b>1. Definitions.</b></p>
 <ol type=\"a\">
@@ -693,8 +692,6 @@ Fund, Investing in your future.
 "));
 
   end Contact;
-
-  
 
   annotation (__Dymola_DocumentationClass=true, Documentation(info="<html>
 <head><title>RealTimeCoordinationLibrary.UsersGuide</title></head>
