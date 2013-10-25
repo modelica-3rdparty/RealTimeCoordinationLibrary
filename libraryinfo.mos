@@ -6,9 +6,9 @@ LibraryInfoMenuCommand(
   category="libraries",
   text="RealTimeCoordinationLibrary",
   reference="RealTimeCoordinationLibrary",
-  version="1.0.1",
+  version="1.0.2",
   isModel=true,
-  description="RealTimeCoordination Library (1.0.1) by FG SWT, HNI Paderborn",
+  description="RealTimeCoordination Library (1.0.2) by Fraunhofer IPT, Project Group Mechatronic Design and Software Engineering Group, Heinz Nixdorf Institute Paderborn",
   ModelicaVersion="3.2",
   pos=1011)
 
