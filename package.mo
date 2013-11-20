@@ -2,20 +2,7 @@ within ;
 package RealTimeCoordinationLibrary "Components for defining clocks, time constraints, and invariants."
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-  annotation (uses(Modelica(version="3.2"), RealTimeCoordinationLibrary(version=
-            "1.0.2"),
+  annotation (uses(Modelica(version="3.2"),
       Modelica_StateGraph2(version="2.0.1")),
     preferredView="info",
     version="1.0.2",
@@ -37,6 +24,6 @@ package RealTimeCoordinationLibrary "Components for defining clocks, time constr
 <p>Name: RealTimeCoordinationLibrary</p>
 <p>Path: RealTimeCoordinationLibrary</p>
 <p>Version: 1.0.2, 2013-04-04, build 1 (2013-04-04)</p>
-<p>Uses:Modelica (version=&QUOT;3.2&QUOT;), RealTimeCoordinationLibrary (version=&QUOT;1.0.2&QUOT;), Modelica_StateGraph2 (version=&QUOT;2.0.1&QUOT;)</p>
+<p>Uses:Modelica (version=&QUOT;3.2&QUOT;), Modelica_StateGraph2 (version=&QUOT;2.0.1&QUOT;)</p>
 </html>"));
 end RealTimeCoordinationLibrary;

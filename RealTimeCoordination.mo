@@ -1,48 +1,49 @@
 within RealTimeCoordinationLibrary;
 package RealTimeCoordination
+  "Library Real-Time Coordination is a free Modelica package providing components to model coordination systems in a convenient way."
 package UsersGuide "User's Guide"
-
+extends Modelica.Icons.Information;
   package Elements "Elements"
-
+  extends Modelica.Icons.Information;
     class Message_Mailbox "Message and Mailbox"
-
+    extends Modelica.Icons.Information;
       annotation (Documentation(info="<!DOCTYPE html>
 <html>
-<head><title>RealTimeCoordinationLibrary.UsersGuide.Elements.Messsage_Mailbox</title></head>
+<head><title>RealTimeCoordinationLibrary.RealTimeCoordination.UsersGuide.Elements.Messsage_Mailbox</title></head>
 <body>
-<p>Examples are specified at: &quot;<a href=\"modelica://RealTimeCoordinationLibrary.Examples.AsynchronousCommunication\">Examples.AsynchronousCommunication</a>&quot; and &quot;<a href=\"modelica://RealTimeCoordinationLibrary.Examples.InteractingComponents\">Examples.InteractingComponents</a>&quot;.</p>
+<p>Examples are specified at: &quot;<a href=\"modelica://RealTimeCoordinationLibrary.RealTimeCoordination.Examples.AsynchronousCommunication\">Examples.AsynchronousCommunication</a>&quot; and &quot;<a href=\"modelica://RealTimeCoordinationLibrary.RealTimeCoordination.Examples.InteractingComponents\">Examples.InteractingComponents</a>&quot;.</p>
 <p>We use messages to model asynchronous communication between different state graphs. Message defines the type of asynchronous messages.</p>
-<p><img src=\"modelica://RealTimeCoordinationLibrary/images/message.jpg\"/></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/images/message.jpg\" alt =\"\"/></p>
 <p>A message has parameters that transfer information from its sender to its receiver. The signature of the message type defines which parameter the message has. The parameters have a call by value semantics. The sender transition binds concrete values to the parameters that can be accessed by the receiver transition. In StateGraph2 models, the defined messages can be used as raise messages by a sender transition. A raise message is a message which is raised when a transition fires. A raise message is sent via the associated output delegation port of the State Graph2 class. This port is connected to an input delegation port which itself has a StateGraph2 model and a receiver mailbox and a receiver transition.</p>
-<p><img src=\"modelica://RealTimeCoordinationLibrary/images/messageExample.jpg\"/></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/images/messageExample.jpg\" alt =\"\"/></p>
 <p>In StateGraph2 models, we use the messages defined within the receiver input delegation port, mailbox and receiver transition as trigger messages. A trigger message is a message which can enable a transition when it is available and all other required conditions for enabling a transition are true.</p>
-<p><img src=\"modelica://RealTimeCoordinationLibrary/images/triggerMessage.jpg\"/></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/images/triggerMessage.jpg\" alt =\"\"/></p>
 <p>The mailbox of the StateGraph2 model stores incoming messages. The mailbox is a FIFO queue. The queue size is determined by the parameter <b>queueSize</b>.</p>
 <p>Furthermore, the user must specify how many Integer, Boolean, and Real parameters the messages have. Therefore, the parameters <b>numberofMessageIntegers</b>, <b>numberOfMessageBooleans</b>, and <b>numberOfMessageReals</b> must be set. </p>
-<p><img src=\"modelica://RealTimeCoordinationLibrary/images/mailbox.jpg\"/> </p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/images/mailbox.jpg\" alt =\"\"/> </p>
 <p>When a transition uses a message to fire then this message is dispatched and deleted from the mailbox. </p>
 <p>For each message only one transition can fire and dispatch the message. Messages have no specified duration of life. This means, they remain in the mailbox until they are dispatched or the mailbox is full. The handling of a mailbox overflow is handled by a assert function. </p>
-<p><img src=\"modelica://RealTimeCoordinationLibrary/images/receive.jpg\"/></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/images/receive.jpg\" alt =\"\"/></p>
 <p>The receiver transition must set the check box <b>use_messageReceive</b>.</p>
-<p><img src=\"modelica://RealTimeCoordinationLibrary/images/transitionReceive.jpg\"/></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/images/transitionReceive.jpg\" alt =\"\"/></p>
 </body>
 </html>
 "));
     end Message_Mailbox;
 
     class Synchronization "Synchronization"
-
+    extends Modelica.Icons.Information;
       annotation (Documentation(info="<!DOCTYPE html>
 <html>
-<head><title>RealTimeCoordinationLibrary.UsersGuide.Elements.Synchronization</title></head>
+<head><title>RealTimeCoordinationLibrary.RealTimeCoordination.UsersGuide.Elements.Synchronization</title></head>
 <body>
-<p>Examples are specified at: &quot;<a href=\"modelica://RealTimeCoordinationLibrary.Examples.Synchronization\">Examples.Synchronization</a>&quot;.</p>
+<p>Examples are specified at: &quot;<a href=\"modelica://RealTimeCoordinationLibrary.RealTimeCoordination.Examples.Synchronization\">Examples.Synchronization</a>&quot;.</p>
 <p>A common use case when modeling orthogonal regions is to allow two regions to change their state only in an atomic way. This means either both transitions are allowed to fire or both transition are not allowed to fire. Sending and receiving synchronizations via synchronization channels synchronize the firing of transitions of parallel regions. A synchronization channel has to be specified at a common ancestor state of the parallel regions and serves as the type for the synchronizations using it.</p>
-<p><img src=\"modelica://RealTimeCoordinationLibrary/images/sync.jpg\"/></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/images/sync.jpg\" alt =\"\"/></p>
 <p>Sending a synchronization via the synchronization channel from one <b>sender transition</b> </p>
-<p><img src=\"modelica://RealTimeCoordinationLibrary/images/syncSendDialog.jpg\"/></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/images/syncSendDialog.jpg\" alt =\"\"/></p>
 <p>to a <b>receiver transition</b> performs a synchronization. We allow only a receiving synchronization or sending synchronization per transition.</p>
-<p><img src=\"modelica://RealTimeCoordinationLibrary/images/syncReceiveDialog.jpg\"/></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/images/syncReceiveDialog.jpg\" alt =\"\"/></p>
 <p>A synchronization affects the prioritization and execution order of parallel transitions as described in the following. The sender transition is executed before the receiver transition because a synchronization is directed from sender to receiver. This may violate region priorities when the sender transition is in a region with a lower priority than the region of the receiver transition because without the sending and the receiving of synchronizations between them the transition in the region with the higher priority would be executed first. </p>
 </body>
 </html>
@@ -50,76 +51,79 @@ package UsersGuide "User's Guide"
     end Synchronization;
 
     class Transition "Transition"
-
-      annotation (Documentation(info="<html>
-<head><title>RealTimeCoordinationLibrary.UsersGuide.Elements.Transition</title></head>
+    extends Modelica.Icons.Information;
+      annotation (Documentation(info="<!DOCTYPE html>
+<html>
+<head><title>RealTimeCoordinationLibrary.RealTimeCoordination.UsersGuide.Elements.Transition</title></head>
 <body>
-<p>Examples are specified at: &quot;<a href=\"modelica://RealTimeCoordinationLibrary.Examples\">Examples</a>&quot;.</p>
+<p>Examples are specified at: &quot;<a href=\"modelica://RealTimeCoordinationLibrary.RealTimeCoordination.Examples.Transition\">Examples.Transition</a>&quot;.</p>
 <p>Transitions of StateGraph2 are used to change the Step (i.e., the state) of a StateGraph2 model. When the Step connected to the input of a Transition is active and the Transition condition becomes true, then the Transition fires. This means that the Step connected to the input to the Transition is deactivated and the Step connected to the output of the Transition is activated. </p>
 <p>We changed the transition of StateGraph2 as follows. Instead of <i>delayTransition </i>and<i> waitTime</i> we added the <b>use_after </b>and<b> afterTime </b>parameters. The after time construct differs from the delay time in the original version of the StateGraph2 library in that at least the after time must have expired to let the transition fire. In contrast, the semantics of the delay time is that exactly the after time must have expired in order to let the transition fire. We introduced the after time semantics because it might happen that for two transitions that need to synchronize the time instants in which they are allowed to fire might not match due to their delay time.</p>
 <p>We extended the transition of StateGraph2 as follows. We added the parameters <b>use_syncSend</b>,<b> use_syncReceive</b>,<b> use_messageReceive</b>,<b> numberOfMessageIntegers</b>,<b> numberOfMessageBooleans</b>,<b> numberOfMessageReals</b>, and<b> syncChannelName</b>. </p>
-<p>We use these parameters to synchronize the firing of parallel transitions as described in &quot;<a href=\"modelica://RealTimeCoordinationLibrary.UsersGuide.Elements.Synchronization\">Synchronization</a>&quot; and to receive asynchronous messages as described in &quot;<a href=\"modelica://RealTimeCoordinationLibrary.UsersGuide.Elements.Message_Mailbox\">Message and Mailbox</a>&quot;.</p>
-<p><img src=\"modelica://RealTimeCoordinationLibrary/images/transition.jpg\"/></p>
+<p>We use these parameters to synchronize the firing of parallel transitions as described in &quot;<a href=\"modelica://RealTimeCoordinationLibrary.RealTimeCoordination.UsersGuide.Elements.Synchronization\">Synchronization</a>&quot; and to receive asynchronous messages as described in &quot;<a href=\"modelica://RealTimeCoordinationLibrary.RealTimeCoordination.UsersGuide.Elements.Message_Mailbox\">Message and Mailbox</a>&quot;.</p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/images/transition.jpg\" alt =\"\"/></p>
 </body>
 </html>
 "));
     end Transition;
 
     class Clock "Clock"
-
-      annotation (Documentation(info="<html>
-<head><title>RealTimeCoordinationLibrary.UsersGuide.Elements.Clock</title></head>
+    extends Modelica.Icons.Information;
+      annotation (Documentation(info="<!DOCTYPE html>
+<html>
+<head><title>RealTimeCoordinationLibrary.RealTimeCoordination.UsersGuide.Elements.Clock</title></head>
 <body>
-<p>Examples are specified at: &quot;<a href=\"modelica://RealTimeCoordinationLibrary.Examples.Clock\">Examples.Clock</a>&quot;.</p>
+<p>Examples are specified at: &quot;<a href=\"modelica://RealTimeCoordinationLibrary.RealTimeCoordination.Examples.Clock\">Examples.Clock</a>&quot;.</p>
 <p>A StateGraph2 model has a finite number of clocks. A clock models the elapsing of time during the execution of a system. Time elapses continuously, not in discrete steps. A clock can be reset to zero when it&apos;s input port <i>u</i>. The time value represented by a clock is relative to the last point in time when the clock has been reset. </p>
-<p><img src=\"modelica://RealTimeCoordinationLibrary/images/clock.jpg\"/></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/images/clock.jpg\" alt =\"\"/></p>
 </body>
 </html>
 "));
     end Clock;
 
     class Invariant "Invariant"
-
-      annotation (Documentation(info="<html>
-<head><title>RealTimeCoordinationLibrary.UsersGuide.Elements.Invariant</title></head>
+    extends Modelica.Icons.Information;
+      annotation (Documentation(info="<!DOCTYPE html>
+<html>
+<head><title>RealTimeCoordinationLibrary.RealTimeCoordination.UsersGuide.Elements.Invariant</title></head>
 <body>
-<p>Examples are specified at: &quot;<a href=\"modelica://RealTimeCoordinationLibrary.Examples.Invariant\">Examples.Invariant</a>&quot;.</p>
-<p>An invariant is an inequation that specifies an upper <b>bound</b> on a clock, e.g., c &lt; 2 or c &lt;= 2 where c is a <a href=\"modelica://RealTimeCoordinationLibrary.UsersGuide.Elements.Clock\">Clock</a>. Invariants are assigned to generalized steps and are used to specify a time span in which this generalized step is allowed to be active. </p>
-<p><img src=\"modelica://RealTimeCoordinationLibrary/images/invariant.jpg\"/></p>
+<p>Examples are specified at: &quot;<a href=\"modelica://RealTimeCoordinationLibrary.RealTimeCoordination.Examples.Invariant\">Examples.Invariant</a>&quot;.</p>
+<p>An invariant is an inequation that specifies an upper <b>bound</b> on a clock, e.g., c &lt; 2 or c &lt;= 2 where c is a <a href=\"modelica://RealTimeCoordinationLibrary.RealTimeCoordination.UsersGuide.Elements.Clock\">Clock</a>. Invariants are assigned to generalized steps and are used to specify a time span in which this generalized step is allowed to be active. </p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/images/invariant.jpg\" alt =\"\"/></p>
 </body>
 </html>
-p>Examples are specified at: &QUOT;<a href=\"modelica://RealTimeCoordinationLibrary.Examples.Invariant\">Examples.Invariant</a>&QUOT;.</p>
-<p>An invariant is an inequation that specifies an upper <b>bound</b> on a clock, e.g., c &lt; 2 or c &lt;= 2 where c is a <a href=\"modelica://RealTimeCoordinationLibrary.UsersGuide.Elements.Clock\">Clock</a>. Invariants are assigned to generalized steps and are used to specify a time span in which this generalized step is allowed to be active. </p>
-<p><img src=\"modelica://RealTimeCoordinationLibrary/images/invariant.jpg\"/></p>
-</html>"));
+"));
     end Invariant;
 
     class ClockConstraint "ClockConstraint"
-
-      annotation (Documentation(info="<html>
-<head><title>RealTimeCoordinationLibrary.UsersGuide.Elements.ClockConstraint</title></head>
+    extends Modelica.Icons.Information;
+      annotation (Documentation(info="<!DOCTYPE html>
+<html>
+<head><title>RealTimeCoordinationLibrary.RealTimeCoordination.UsersGuide.Elements.ClockConstraint</title></head>
 <body>
-<p>Examples are specified at: &quot;<a href=\"modelica://RealTimeCoordinationLibrary.Examples.ClockConstraint\">Examples.ClockConstraint</a>&quot;.</p>
-<p>A clock constraint might be any kind of inequation specifying a <b>bound</b> on a certain clock, e.g., c &gt; 2, c &gt;= 5, c &lt; 2, c &lt;= 5, where c is a <a href=\"modelica://RealTimeCoordinationLibrary.UsersGuide.Elements.Clock\">Clock</a>. Clock constraints are assigned to transitions in order to restrict the time span in which a transition is allowed to fire.</p>
-<p><img src=\"modelica://RealTimeCoordinationLibrary/images/clockCondition.jpg\"/></p>
+<p>Examples are specified at: &quot;<a href=\"modelica://RealTimeCoordinationLibrary.RealTimeCoordination.Examples.ClockConstraint\">Examples.ClockConstraint</a>&quot;.</p>
+<p>A clock constraint might be any kind of inequation specifying a <b>bound</b> on a certain clock, e.g., c &gt; 2, c &gt;= 5, c &lt; 2, c &lt;= 5, where c is a <a href=\"modelica://RealTimeCoordinationLibrary.RealTimeCoordination.UsersGuide.Elements.Clock\">Clock</a>. Clock constraints are assigned to transitions in order to restrict the time span in which a transition is allowed to fire.</p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/images/clockCondition.jpg\" alt =\"\"/></p>
 </body>
 </html>
 "));
     end ClockConstraint;
 
     class DelegationPort "DelegationPort"
-
-      annotation (Documentation(info="<html>
-<head><title>RealTimeCoordinationLibrary.UsersGuide.Elements.DelegationPort</title></head>
+    extends Modelica.Icons.Information;
+      annotation (Documentation(info="<!DOCTYPE html>
+<html>
+<head><title>RealTimeCoordinationLibrary.RealTimeCoordination.UsersGuide.Elements.DelegationPort</title></head>
 <body>
-<p>Examples are specified at: &quot;<a href=\"modelica://RealTimeCoordinationLibrary.Examples.InteractingComponents\">Examples.InteractingComponents</a>&quot;.</p>
+<p>Examples are specified at: &quot;<a href=\"modelica://RealTimeCoordinationLibrary.RealTimeCoordination.Examples.InteractingComponents\">Examples.InteractingComponents</a>&quot;.</p>
 <p>If two extended StateGraph2 models are included in different component instances they might still communicate asynchronously across the boundaries of these component instances with the help of delegation ports. Therefore, one component defines an output delegation port and the other defines an input delegation port. Both delegation ports are connected. Then, the component instance containing the message type connects the message type to the output delegation ports and the component instance containing the Mailbox instance connects the Mailbox instance to the input delegation port. </p>
 <p>It is necessary that instances of DelegationPort redeclare the variables Integers, Booleans and Reals with the required array size as shown in the Figure below. Connected DelegationPorts must always have the same redeclaration. </p>
-<p><br/><img src=\"modelica://RealTimeCoordinationLibrary/images/DelegationPort.jpg\"/></p>
+<p><br/><img src=\"modelica://RealTimeCoordinationLibrary/images/DelegationPort.jpg\" alt =\"\"/></p>
 </body>
 </html>"));
     end DelegationPort;
-    annotation (__Dymola_DocumentationClass=true, Documentation(info="<html>
+    annotation (__Dymola_DocumentationClass=true, Documentation(info="<!DOCTYPE html>
+<html>
 <head><title>RealTimeCoordinationLibrary.RealTimeCoordination.UsersGuide.Elements</title></head>
 <body>
 <ol>
@@ -137,8 +141,11 @@ p>Examples are specified at: &QUOT;<a href=\"modelica://RealTimeCoordinationLibr
   end Elements;
 
    class Literature "Literature"
-
-    annotation (Documentation(info="<html>
+   extends Modelica.Icons.Information;
+    annotation (Documentation(info="<!DOCTYPE html>
+<html>
+<head><title>RealTimeCoordinationLibrary.RealTimeCoordination.Literature</title></head>
+<body>
 <p>
 The RealTimeCoordination library is described in detail in
 </p>
@@ -195,13 +202,15 @@ D. Henriksson, and M. Otter. ModeGraph-A Modelica Library for Embedded Control B
 <p>[20] W. Schamai, U. Pohlmann, P. Fritzson, C. J.J. Paredis, P. Helle, and C. Strobel. Execution of uml state machines using modelica. In <I>Proceedings of EOOLT</I>, pages 1&ndash;10, 2010. </p>
 
 <p>[21] C. Wei&szlig;. V2X communication in Europe -From research projects towards standardization and &#64257;eld testing of vehicle communication technology. <I>Computer Networks</I>, 55(14):3103&ndash;3119, 2011.</p>
+</body>
 </html>
 "));
 
    end Literature;
 
-  annotation (__Dymola_DocumentationClass=true, Documentation(info="<html>
-<head><title>RealTimeCoordinationLibrary.UsersGuide</title></head>
+  annotation (__Dymola_DocumentationClass=true, Documentation(info="<!DOCTYPE html>
+<html>
+<head><title>RealTimeCoordinationLibrary.RealTimeCoordination.UsersGuide</title></head>
 <body>
 <p>
 Library <b>Real-Time Coordination</b> is a <b>free</b> Modelica package providing
@@ -211,10 +220,10 @@ way. This package contains the <b>User's Guide</b> for
 the library and has the following content:
 </p>
 <ol>
-<li>&quot;<a href=\"modelica://RealTimeCoordinationLibrary.UsersGuide.Elements\">Elements</a>&quot;
+<li>&quot;<a href=\"modelica://RealTimeCoordinationLibrary.RealTimeCoordination.UsersGuide.Elements\">Elements</a>&quot;
      gives an overview of the most important aspects of the Real-Time Coordination library.</li>
 
-<li> &quot;<a href=\"modelica://RealTimeCoordinationLibrary.UsersGuide.Literature\">Literature</a>&quot;
+<li> &quot;<a href=\"modelica://RealTimeCoordinationLibrary.RealTimeCoordination.UsersGuide.Literature\">Literature</a>&quot;
     provides references that have been used to design and implement this
     library.</li>
 
@@ -1679,7 +1688,7 @@ end UsersGuide;
         end system;
 
         model senderComponent
-        import RealTimeCoordinationLibrary;
+          import RealTimeCoordinationLibrary;
 
           Modelica_StateGraph2.Step Step1(initialStep=true, nOut=1,
           nIn=1)                                                       annotation (
@@ -2737,7 +2746,7 @@ end UsersGuide;
         extends Modelica.Icons.Example;
 
         RealTimeCoordinationLibrary.RealTimeCoordination.Transition
-                                               T1(use_after=true, afterTime=6)
+                                               T1(use_after=true, afterTime=1)
           annotation (Placement(transformation(extent={{-46,36},{-38,44}})));
         Modelica_StateGraph2.Step step1(
           initialStep=true,
@@ -2791,6 +2800,10 @@ end UsersGuide;
             points={{-43.28,70},{-22,70},{-22,61.7},{-2.1,61.7}},
             color={255,0,255},
             smooth=Smooth.None));
+        connect(T2.firePort, clock.u[2]) annotation (Line(
+            points={{-35.8,-18},{-18,-18},{-18,58.3},{-2.1,58.3}},
+            color={255,0,255},
+            smooth=Smooth.None));
         connect(clock.y, timeInvariantSmallerLess.clockValue) annotation (Line(
             points={{19,60},{26,60},{26,19.76},{31.6,19.76}},
             color={0,0,127},
@@ -2800,13 +2813,7 @@ end UsersGuide;
             points={{-37.28,12},{-1.6,12},{-1.6,8.24},{32.08,8.24}},
             color={255,0,255},
             smooth=Smooth.None));
-        connect(step2.activePort, clock.u[2]) annotation (Line(
-            points={{-37.28,12},{-37.28,36},{-2.1,36},{-2.1,58.3}},
-            color={255,0,255},
-            smooth=Smooth.None));
-        annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent=
-                  {{-100,-100},{100,100}}),
-                            graphics), Icon(graphics={
+        annotation (Diagram(graphics), Icon(graphics={
                                                Ellipse(extent={{-100,100},{100,
                     -100}},
                   lineColor={95,95,95},
@@ -2954,7 +2961,7 @@ end UsersGuide;
 
     package Application
       model BeBot_SW_Main
-      import RealTimeCoordinationLibrary;
+        import RealTimeCoordinationLibrary;
 
          Modelica_StateGraph2.Step NoConvoy(nIn=4, nOut=2)
           annotation (Placement(transformation(extent={{-60,50},{-52,58}})));
@@ -3713,7 +3720,7 @@ this class contains a timing constraint that the state PlatoonProposed is no lon
         connect(front.OutStartConvoyDel, rear.InStartConvoyDel)          annotation (
             Line(
             points={{-35.33,34.56},{-24,34.56},{-24,22},{-18,22},{-18,21.16},{
-              -10.56,21.16}},
+                -10.56,21.16}},
             color={0,0,0},
             smooth=Smooth.None));
         connect(front.InStartConvoyDel, rear.OutStartConvoyDel)          annotation (
@@ -3772,7 +3779,7 @@ this class contains a timing constraint that the state PlatoonProposed is no lon
             smooth=Smooth.None));
         connect(front.outDrive, rear.inDrive1) annotation (Line(
             points={{-72.76,17.12},{-78,17.12},{-78,58},{42,58},{42,26.8},{
-              36.48,26.8}},
+                36.48,26.8}},
             color={0,0,0},
             smooth=Smooth.None));
         connect(booleanPulse.y, rear.stop) annotation (Line(
@@ -3794,7 +3801,7 @@ this class contains a timing constraint that the state PlatoonProposed is no lon
             smooth=Smooth.None));
         connect(distance1.y, rear.frontDistance) annotation (Line(
             points={{11.6,-52.6},{11.6,-56},{72,-56},{72,50},{2,50},{2,34},{
-              2.64,34}},
+                2.64,34}},
             color={0,0,127},
             smooth=Smooth.None));
         connect(Front_robot_V3a1.Frame, distance1.xpos1) annotation (Line(
@@ -3893,7 +3900,7 @@ The brake-message is transmitted to the rear driving Be Bot that is going to bra
 
         model DCMotorCtrl_V4
           "DC-Motor model based on data from Faulhaber 1724 006 SR"
-        import SI = Modelica.SIunits;
+          import SI = Modelica.SIunits;
           parameter Real k=0.1 "proportional gain";
           parameter Real Ti=1/10 "time constant of integral";
           parameter Real Td=0 "time constant of derivative";
@@ -4158,8 +4165,8 @@ V1.3 <br>
         end DCMotorCtrl_V4;
 
         model LimPI
-        import SI = Modelica.SIunits;
-        import Modelica.Blocks.Types.Init;
+          import SI = Modelica.SIunits;
+          import Modelica.Blocks.Types.Init;
           parameter Modelica.Blocks.Types.Init initType=Modelica.Blocks.Types.Init.InitialState
             "Type of initialization (1: no init, 2: steady state, 3,4: initial output)";
           parameter Real outMax(start=1) "Upper limit of output";
@@ -4247,7 +4254,7 @@ When limit is exceeded, the integrator is clamped.
   Friction is made up of Coulomb and Stribeck
   A finite state model is used to determine the state of frictional torque, i.e.
   */
-        import SI = Modelica.SIunits;
+          import SI = Modelica.SIunits;
 
           Modelica.Mechanics.Rotational.Interfaces.Flange_a flange_a
             "Left flange of shaft"
@@ -4750,7 +4757,7 @@ Generally, the teeth of the gears are related as follows (assuming number of tee
 
       package ExampleSynchronousCommunication
         model TestSynchronousCommunicationMain
-        import RealTimeCoordinationLibrary;
+          import RealTimeCoordinationLibrary;
           RealTimeCoordinationLibrary.RealTimeCoordination.Step
                step1(
             initialStep=false,
@@ -4843,7 +4850,7 @@ Generally, the teeth of the gears are related as follows (assuming number of tee
         end TestAsynchCommMain;
 
         model Sender
-        import RealTimeCoordinationLibrary;
+          import RealTimeCoordinationLibrary;
           RealTimeCoordinationLibrary.RealTimeCoordination.Step
                step1(initialStep=true, nOut=1,
           nIn=1)
@@ -4982,7 +4989,7 @@ Generally, the teeth of the gears are related as follows (assuming number of tee
 
       package ExampleSelfTransition
         model TestSelfTransitionMain
-        import RealTimeCoordinationLibrary;
+          import RealTimeCoordinationLibrary;
         RealTimeCoordinationLibrary.RealTimeCoordination.Step
              step1(
           initialStep=true,
@@ -5133,7 +5140,8 @@ An element of the inPort connector of this step is not connected. Most likely, t
 has a bug and does not correctly handle the connectorSizing annotation in a particular case.
 You can fix this by removing all input connections to this step and by manually removing
 the line 'nIn=...' in the text layer where this step is declared.
-");  end if;
+");
+     end if;
   end for;
 
   for i in 1:size(outPort,1) loop
@@ -5144,11 +5152,15 @@ An element of the outPort connector of this step is not connected. Most likely, 
 has a bug and does not correctly handle the connectorSizing annotation in a particular case.
 You can fix this by removing all output connections to this step and by manually removing
 the line 'nOut=...' in the text layer where this step is declared.
-");  end if;
+");
+     end if;
   end for;
   annotation (defaultComponentName="step1",
     Coordsys(grid=[1,1], component=[20,20]),
-      Documentation(info="<html>
+      Documentation(info="<!DOCTYPE html>
+<html>
+<head><title>RealTimeCoordinationLibrary.RealTimeCoordination.Step</title></head>
+<body>
 <p>
 A Step is the graphical representation of a state and is said to be either
 active or not active. A StateGraph2 model is comprised of one or more
@@ -5187,14 +5199,14 @@ In the following table different configurations of a Step are shown:
     </tr>
 
 <tr><td> Default step</td>
-    <td><img src=\"../Images/StateGraph/Elements/Step-default.png\"></td>
+    <td><img src=\"../Images/StateGraph/Elements/Step-default.png\" alt =\"\"></td>
     <td> If the step is active, the public Step variable &quot;active&quot; is <b>true</b>
          otherwise, it is <b>false</b>. An active Step is visualized by a green
          fill color in diagram animation.</td>
     </tr>
 
 <tr><td> use_activePort = <b>true</b></td>
-    <td><img src=\"../Images/StateGraph/Elements/Step-use_activePort.png\"></td>
+    <td><img src=\"../Images/StateGraph/Elements/Step-use_activePort.png\" alt =\"\"></td>
     <td>If the step is active, the connector &quot;activePort&quot; is <b>true</b>
         otherwise, it is <b>false</b> (the activePort is the small, violet, triangle
         at the rigth side of the Step icon). Actions may be triggered, e.g., by connecting block
@@ -5202,7 +5214,7 @@ In the following table different configurations of a Step are shown:
         to the activePort.</td></tr>
 
 <tr><td> initialStep = <b>true</b></td>
-    <td><img src=\"../Images/StateGraph/Elements/Step-initial.png\"></td>
+    <td><img src=\"../Images/StateGraph/Elements/Step-initial.png\" alt =\"\"></td>
     <td> Exactly <u>one</u> Step or Parallel component in a StateGraph2 graph
          must have &quot;initialStep = <b>true</b>&quot;. At the first model evaluation
          during initialization, &quot;active&quot; is set to <b>true</b> for
@@ -5218,7 +5230,7 @@ How connections to these ports are automatically handled in a convenient way is 
 <a href=\"modelica://Modelica_StateGraph2.UsersGuide.Tutorial.VectorsOfConnectors\">here</a>
 in the tutorial.
 </p>
-
+</body>
 </html>"),
       Icon(
       coordinateSystem(extent={{-100,-100},{100,100}}, preserveAspectRatio=true,
@@ -5445,14 +5457,13 @@ end if;
           textString="%condition",
           origin={-160,61},
           rotation=90)}),
-    Documentation(info="<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\"
-       \"http://www.w3.org/TR/html4/loose.dtd\">
+    Documentation(info="<!DOCTYPE html>
 <html>
-<head><title>SelfTransition</title></head>
+<head><title>RealTimeCoordinationLibrary.RealTimeCoordination.SelfTransition</title></head>
 <body>
-<p>Examples are specified at: &quot;<a href=\"modelica://RealTimeCoordinationLibrary.Examples\">Examples</a>&quot;.</p>
+<p>Examples are specified at: &quot;<a href=\"modelica://RealTimeCoordinationLibrary.RealTimeCoordination.Examples\">Examples</a>&quot;.</p>
 <p>SelfTransition works exactly as a  Transition. The only difference to the Transition class is that the use_after construct works also for self transitions. </p>
-<p>We use these parameters to synchronize the firing of parallel transitions as described in &quot;<a href=\"modelica://RealTimeCoordinationLibrary.UsersGuide.Elements.Synchronization\">Synchronization</a>&quot; and to receive asynchronous messages as described in &quot;<a href=\"modelica://RealTimeCoordinationLibrary.UsersGuide.Elements.Message_Mailbox\">Message and Mailbox</a>&quot;.</p>
+<p>We use these parameters to synchronize the firing of parallel transitions as described in &quot;<a href=\"modelica://RealTimeCoordinationLibrary.RealTimeCoordination.UsersGuide.Elements.Synchronization\">Synchronization</a>&quot; and to receive asynchronous messages as described in &quot;<a href=\"modelica://RealTimeCoordinationLibrary.RealTimeCoordination.UsersGuide.Elements.Message_Mailbox\">Message and Mailbox</a>&quot;.</p>
 <p><img src=\"modelica://RealTimeCoordinationLibrary/images/selftransition.jpg\" alt =\"selfTransition\"></p>
 </body>
 </html>
@@ -5730,12 +5741,16 @@ equation
           extent={{-100,68},{100,36}},
           lineColor={0,0,255},
           textString="?%syncChannelName")}),
-      Documentation(info="<html>
+      Documentation(info="<!DOCTYPE html>
+<html>
+<head><title>RealTimeCoordinationLibrary.RealTimeCoordination.Transition</title></head>
+<body>
 <p>Transitions are used to change the state of a StateGraph2. When the Step connected to the input of a Transition is active and the Transition condition becomes true, then the Transition fires. This means that the Step connected to the input to the Transition is deactivated and the Step connected to the output of the Transition is activated. </p>
 <p>We changed the transition of StateGraph2 as follows. Instead of <i>delayTransition </i>and<i> delayTime</i> we added the <b>use_after </b>and<b> afterTime </b>parameter. The after time construct differs from the delay time in the original version of the StateGraph2 library in that at least the after time must have expired to let the transition fire. In contrast, the semantics of the delay time is that exactly the after time must have expired in order to let the transition fire. We introduced the after time semantics because it might happen that for two transitions that need to synchronize the time instants in which they are allowed to fire might not match due to their delay time.</p>
 <p>We extended the transition of StateGraph2 as follows. We added the parameters <b>use_syncSend, use_syncReceive, use_messageReceive, numberOfMessageIntegers, numberOfMessageBooleans, numberOfMessageReals, and syncChannelName</b>. </p>
-<p>We use this parameters to syncronize the firing of parallel transitions as described in &QUOT;<a href=\"modelica://RealTimeCoordinationLibrary.UsersGuide.Elements.Synchronization\">Synchronization</a>&QUOT; and to receive asynchronous messages as described in &QUOT;<a href=\"modelica://RealTimeCoordinationLibrary.UsersGuide.Elements.Message_Mailbox\">Message and Mailbox</a>&QUOT;.</p>
-<p><img src=\"modelica://RealTimeCoordinationLibrary/images/transition.jpg\"/></p>
+<p>We use this parameters to syncronize the firing of parallel transitions as described in &QUOT;<a href=\"modelica://RealTimeCoordinationLibrary.RealTimeCoordination.UsersGuide.Elements.Synchronization\">Synchronization</a>&QUOT; and to receive asynchronous messages as described in &QUOT;<a href=\"modelica://RealTimeCoordinationLibrary.RealTimeCoordination.UsersGuide.Elements.Message_Mailbox\">Message and Mailbox</a>&QUOT;.</p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/images/transition.jpg\" alt =\"\"/></p>
+</body>
 </html>"),
     Diagram(coordinateSystem(
         preserveAspectRatio=true,
@@ -5846,10 +5861,14 @@ end Transition;
            extent={{-74,-30},{68,-66}},
            lineColor={0,0,255},
            textString="%name")}),
-     Documentation(info="<html>
+     Documentation(info="<!DOCTYPE html>
+<html>
+<head><title>RealTimeCoordinationLibrary.RealTimeCoordination.Message</title></head>
+<body>
 <p>We use messages to model asynchronous communication between different state graphs. Message define the type of asynchronous messages.</p>
-<p><img src=\"modelica://RealTimeCoordinationLibrary/images/message.jpg\"/></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/images/message.jpg\" alt =\"\"/></p>
 <p>A message has parameters which transfer information from its sender to its receiver. The signature of the message type defines which parameter the message has. The parameters have a call by value semantics. The sender transition binds concrete values to the parameters which can be accessed by the receiver transition. In State Graph the defined messages can be used as raise message-events by a sender transition. A raise message-event is a message-event which is raised when a transition fires. A raise message-event is sent via the associated output delegation port of the State Graph2 class. This port is connected to an input delegation port which itself has a State Graph2 model and a receiver mailbox and a receiver transition.</p>
+</body>
 </html>"));
  end Message;
 
@@ -5869,7 +5888,8 @@ end Transition;
    parameter Integer nIn(min=0)=0 "Number of input connections"
                                                              annotation(Dialog(__Dymola_connectorSizing=true), HideResult=false);
 
-   parameter Real delayTime=0;
+   parameter Real delayTime=0
+      "The message delay time determines the transmission duration from the sender to the receiver";
    parameter Integer queueSize = 20 "The maximal size of the Queue"
      annotation(Dialog(enable=not use_conditionPort));
    Integer filling_level(start=0) "Result of the current filling level";
@@ -5882,8 +5902,8 @@ end Transition;
    parameter Integer numberOfMessageReals(min=0)=0
       "number of real parameters of a message";
 
-   parameter Boolean overwriteMessageWhenBufferIsFull = false "determines the behavior in case of message buffer overflow. 'True' means overwriting the last message with the new incoming message.
-     If this parameter is set to 'false', the incoming messages are dropped in case of buffer overflow";
+   parameter Boolean overwriteMessageWhenBufferIsFull = false "Determines the behavior in case of message buffer overflow. If this parameter is set to 'true', the message with longest storage period is 
+  deleted and the incoming message is euqeued. If this parameter is set to 'false', the incoming messages are dropped.";
 
    RealTimeCoordinationLibrary.RealTimeCoordination.Internal.Interfaces.Asynchron.mailbox_output_port
       mailbox_output_port[nOut](
@@ -5905,10 +5925,12 @@ end Transition;
          queueSize);
    RealTimeCoordinationLibrary.RealTimeCoordination.Internal.Interfaces.Asynchron.BooleanQueue.Queue
       boolean_q(queueSize=queueSize*numberOfMessageBooleans);
-      RealTimeCoordinationLibrary.RealTimeCoordination.Internal.Interfaces.Asynchron.IntQueue.Queue
+
+     RealTimeCoordinationLibrary.RealTimeCoordination.Internal.Interfaces.Asynchron.IntQueue.Queue
                                                                                instanceId_q(queueSize=
          queueSize);
-      RealTimeCoordinationLibrary.RealTimeCoordination.Internal.Interfaces.Asynchron.IntQueue.Queue
+
+     RealTimeCoordinationLibrary.RealTimeCoordination.Internal.Interfaces.Asynchron.IntQueue.Queue
                                                                                ownerId_q(queueSize=
          queueSize);
 
@@ -6215,10 +6237,14 @@ end Transition;
            extent={{30,46},{100,100}},
            lineColor={0,0,255},
            textString=String(filling_level))}),
-     Documentation(info="<html>
+     Documentation(info="<!DOCTYPE html>
+<html>
+<head><title>Mailbox</title></head>
+<body>
 <p>The mailbox of the State Graph2 model stores incoming message-events. The mailbox is a FIFO queue. The queue size is determined by the parameter <b>queueSize</b>.</p>
 <p>Futher the user must specify how many integer, boolean, and real parameters the messages which should be buffered have. Therefore, the parameters <b>numberofMessageIntegers</b>, <b>numberOfMessageBooleans</b>, and <b>numberOfMessageReals</b> must be set. </p>
-<p><img src=\"modelica://RealTimeCoordinationLibrary/images/mailbox.jpg\"/> </p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/images/mailbox.jpg\" alt =\"\"/> </p>
+</body>
 </html>"));
  end Mailbox;
 
@@ -6373,7 +6399,10 @@ end Transition;
             preserveAspectRatio=true,
             extent={{-100,-100},{100,100}},
             grid={2,2}), graphics),
-        Documentation(info="<html>
+        Documentation(info="<!DOCTYPE html>
+<html>
+<head><title>RealTimeCoordinationLibrary.RealTimeCoordination.TimeElements.Clock</title></head>
+<body>
 <p>
 The (time varying) Real output signal of this block can be defined in its
 parameter menu via variable <b>y</b>. The purpose is to support the
@@ -6384,6 +6413,7 @@ it is zero. Note, that \"time\" is a built-in variable that is always
 accessible and represents the \"model time\" and that
 Variable <b>y</b> is both a variable and a connector.
 </p>
+</body>
 </html>"));
     end Clock;
 
@@ -6595,7 +6625,10 @@ Variable <b>y</b> is both a variable and a connector.
               preserveAspectRatio=true,
               extent={{-100,-100},{100,100}},
               grid={2,2}), graphics),
-          Documentation(info="<html>
+          Documentation(info="<!DOCTYPE html>
+<html>
+<head><title>RealTimeCoordinationLibrary.RealTimeCoordination.TimeElements.ClockConstraintLess</title></head>
+<body>
 <p>
 The (time varying) Real output signal of this block can be defined in its
 parameter menu via variable <b>y</b>. The purpose is to support the
@@ -6606,6 +6639,7 @@ it is zero. Note, that \"time\" is a built-in variable that is always
 accessible and represents the \"model time\" and that
 Variable <b>y</b> is both a variable and a connector.
 </p>
+</body>
 </html>"));
       end ClockConstraintLess;
 
@@ -6676,7 +6710,10 @@ Variable <b>y</b> is both a variable and a connector.
               preserveAspectRatio=true,
               extent={{-100,-100},{100,100}},
               grid={2,2}), graphics),
-          Documentation(info="<html>
+          Documentation(info="<!DOCTYPE html>
+<html>
+<head><title>RealTimeCoordinationLibrary.RealTimeCoordination.TimeElements.ClockConstraintLessOrEqual</title></head>
+<body>
 <p>
 The (time varying) Real output signal of this block can be defined in its
 parameter menu via variable <b>y</b>. The purpose is to support the
@@ -6687,6 +6724,7 @@ it is zero. Note, that \"time\" is a built-in variable that is always
 accessible and represents the \"model time\" and that
 Variable <b>y</b> is both a variable and a connector.
 </p>
+</body>
 </html>"));
       end ClockConstraintLessOrEqual;
 
@@ -6757,7 +6795,10 @@ Variable <b>y</b> is both a variable and a connector.
               preserveAspectRatio=true,
               extent={{-100,-100},{100,100}},
               grid={2,2}), graphics),
-          Documentation(info="<html>
+          Documentation(info="<!DOCTYPE html>
+<html>
+<head><title>RealTimeCoordinationLibrary.RealTimeCoordination.TimeElements.ClockConstraintGreater</title></head>
+<body>
 <p>
 The (time varying) Real output signal of this block can be defined in its
 parameter menu via variable <b>y</b>. The purpose is to support the
@@ -6768,6 +6809,7 @@ it is zero. Note, that \"time\" is a built-in variable that is always
 accessible and represents the \"model time\" and that
 Variable <b>y</b> is both a variable and a connector.
 </p>
+</body>
 </html>"));
       end ClockConstraintGreater;
 
@@ -6839,7 +6881,10 @@ Variable <b>y</b> is both a variable and a connector.
               preserveAspectRatio=true,
               extent={{-100,-100},{100,100}},
               grid={2,2}), graphics),
-          Documentation(info="<html>
+          Documentation(info="<!DOCTYPE html>
+<html>
+<head><title>RealTimeCoordinationLibrary.RealTimeCoordination.TimeElements.ClockConstraintGreaterOrEqual</title></head>
+<body>
 <p>
 The (time varying) Real output signal of this block can be defined in its
 parameter menu via variable <b>y</b>. The purpose is to support the
@@ -6850,6 +6895,7 @@ it is zero. Note, that \"time\" is a built-in variable that is always
 accessible and represents the \"model time\" and that
 Variable <b>y</b> is both a variable and a connector.
 </p>
+</body>
 </html>"));
       end ClockConstraintGreaterOrEqual;
     end ClockConstraint;

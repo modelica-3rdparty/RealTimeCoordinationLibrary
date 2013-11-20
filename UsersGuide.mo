@@ -1,10 +1,10 @@
 within RealTimeCoordinationLibrary;
 package UsersGuide "User's Guide"
-
+extends Modelica.Icons.Information;
   package Elements "Elements"
-
+  extends Modelica.Icons.Information;
     class RealTimeCoordination "RealTimeCoordination"
-
+    extends Modelica.Icons.Information;
       annotation (Documentation(info="<!DOCTYPE html>
 <html>
 <head><title>RealTimeCoordinationLibrary.UsersGuide.Elements.RealTimeCoordination</title></head>
@@ -16,7 +16,7 @@ package UsersGuide "User's Guide"
     end RealTimeCoordination;
 
     class CoordinationPattern "CoordinationPattern"
-
+    extends Modelica.Icons.Information;
       annotation (Documentation(info="<!DOCTYPE html>
 <html>
 <head><title>RealTimeCoordinationLibrary.UsersGuide.Elements.CoordinationPattern</title></head>
@@ -27,7 +27,8 @@ package UsersGuide "User's Guide"
 "));
     end CoordinationPattern;
 
-    annotation (__Dymola_DocumentationClass=true, Documentation(info="<html>
+    annotation (__Dymola_DocumentationClass=true, Documentation(info="<!DOCTYPE html>
+<html>
 <head><title>RealTimeCoordinationLibrary.UsersGuide.Elements</title></head>
 <body>
 <ol>
@@ -40,8 +41,9 @@ package UsersGuide "User's Guide"
   end Elements;
 
   class ReleaseNotes "Release notes"
-
-    annotation (Documentation(info="<html>
+    extends Modelica.Icons.Information;
+    annotation (Documentation(info="<!DOCTYPE html>
+<html>
 <head><title>RealTimeCoordinationLibrary.UsersGuide.Release_Notes</title></head>
 <body>
 <h4>Version 1.0.0, 2012-05-21</h4>
@@ -60,9 +62,10 @@ package UsersGuide "User's Guide"
 class ModelicaLicense2 "Modelica License 2"
   extends Modelica.Icons.Information;
 
-  annotation (Documentation(info="<html>
+  annotation (Documentation(info="<!DOCTYPE html>
+<html>
 <head>
-<title>The Modelica License 2</title>
+<title>RealTimeCoordinationLibrary.UsersGuide.The Modelica License 2</title>
 <style type=\"text/css\">
 * { font-size: 10pt; font-family: Arial,sans-serif; }
 code { font-size: 9pt; font-family: Courier,monospace;}
@@ -618,16 +621,19 @@ printing and shipping costs may be recovered.</p>
 end ModelicaLicense2;
 
   class Contact "Contact"
-
-    annotation (Documentation(info="<html>
+  extends Modelica.Icons.Information;
+    annotation (Documentation(info="<!DOCTYPE html>
+<html>
+<head><title>RealTimeCoordinationLibrary.UsersGuide.Contact</title></head>
+<body>
 <dl>
-<dt><b>Main Authors:</b>
+<dt><b>Main Authors:</b></dt><dd></dd>
 </dl>
 
 <table border=0 cellspacing=0 cellpadding=2>
 <tr>
 <td>
-<a href=\"http://www.cs.uni-paderborn.de/fachgebiete/fachgebiet-softwaretechnik/personen/uwe-pohlmann.html\">Uwe Pohlmann</a><br>
+<a href=\"http://www.hni.uni-paderborn.de/swt/mitarbeiter/130201625100101/\">Uwe Pohlmann</a><br>
     Fraunhofer Institute for Production Technology IPT, <br>
 Project Group Mechatronic Systems Design, Software Engineering <br>
 Zukunftsmeile 1<br>
@@ -637,7 +643,7 @@ Zukunftsmeile 1<br>
 <td valign=\"middle\">&nbsp;&nbsp;and&nbsp;&nbsp;</td>
 <td>
 <td>
-<a href=\"http://www.cs.uni-paderborn.de/fachgebiete/fachgebiet-softwaretechnik/personen/stefan-dziwok.html\">Stefan Dziwok</a><br>
+<a href=\"http://www.hni.uni-paderborn.de/swt/mitarbeiter/130103685600101/\">Stefan Dziwok</a><br>
     Software Engineering Group<br>
 Heinz Nixdorf Institute<br>
  University of Paderborn<br>
@@ -687,13 +693,14 @@ Rhine-Westphalia (NRW), Germany and the EUROPEAN UNION, European Regional Develo
 Fund, Investing in your future.
 <a href=\"http://wwwhni.uni-paderborn.de/en/priority-projects/entime/\">ENTIME</a>
 </p>
-
+</body>
 </html>
 "));
 
   end Contact;
 
-  annotation (__Dymola_DocumentationClass=true, Documentation(info="<html>
+  annotation (__Dymola_DocumentationClass=true, Documentation(info="<!DOCTYPE html>
+<html>
 <head><title>RealTimeCoordinationLibrary.UsersGuide</title></head>
 <body>
 <p>
