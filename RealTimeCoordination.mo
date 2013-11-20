@@ -136,7 +136,6 @@ p>Examples are specified at: &QUOT;<a href=\"modelica://RealTimeCoordinationLibr
 "));
   end Elements;
 
-
    class Literature "Literature"
 
     annotation (Documentation(info="<html>
@@ -199,9 +198,7 @@ D. Henriksson, and M. Otter. ModeGraph-A Modelica Library for Embedded Control B
 </html>
 "));
 
-  end Literature;
-
-
+   end Literature;
 
   annotation (__Dymola_DocumentationClass=true, Documentation(info="<html>
 <head><title>RealTimeCoordinationLibrary.UsersGuide</title></head>
@@ -2740,7 +2737,7 @@ end UsersGuide;
         extends Modelica.Icons.Example;
 
         RealTimeCoordinationLibrary.RealTimeCoordination.Transition
-                                               T1(use_after=true, afterTime=1)
+                                               T1(use_after=true, afterTime=6)
           annotation (Placement(transformation(extent={{-46,36},{-38,44}})));
         Modelica_StateGraph2.Step step1(
           initialStep=true,
@@ -2794,10 +2791,6 @@ end UsersGuide;
             points={{-43.28,70},{-22,70},{-22,61.7},{-2.1,61.7}},
             color={255,0,255},
             smooth=Smooth.None));
-        connect(T2.firePort, clock.u[2]) annotation (Line(
-            points={{-35.8,-18},{-18,-18},{-18,58.3},{-2.1,58.3}},
-            color={255,0,255},
-            smooth=Smooth.None));
         connect(clock.y, timeInvariantSmallerLess.clockValue) annotation (Line(
             points={{19,60},{26,60},{26,19.76},{31.6,19.76}},
             color={0,0,127},
@@ -2807,7 +2800,13 @@ end UsersGuide;
             points={{-37.28,12},{-1.6,12},{-1.6,8.24},{32.08,8.24}},
             color={255,0,255},
             smooth=Smooth.None));
-        annotation (Diagram(graphics), Icon(graphics={
+        connect(step2.activePort, clock.u[2]) annotation (Line(
+            points={{-37.28,12},{-37.28,36},{-2.1,36},{-2.1,58.3}},
+            color={255,0,255},
+            smooth=Smooth.None));
+        annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent=
+                  {{-100,-100},{100,100}}),
+                            graphics), Icon(graphics={
                                                Ellipse(extent={{-100,100},{100,
                     -100}},
                   lineColor={95,95,95},
@@ -6389,7 +6388,7 @@ Variable <b>y</b> is both a variable and a connector.
     end Clock;
 
     package TimeInvariant
-      block TimeInvariantLessOrEqual
+      model TimeInvariantLessOrEqual
         "Set output signal to a time varying Real expression"
 
         parameter Real bound;
@@ -6403,10 +6402,12 @@ Variable <b>y</b> is both a variable and a connector.
               iconTransformation(extent={{-15,-15},{15,15}},
               rotation=0,
               origin={-115,36})));
+      Boolean localCondition;
 
       equation
-       when clockValue >  bound and conditionPort then
-          Modelica.Utilities.Streams.error("Invariant - " +String(clockValue) + " <= " + String(bound) + " -  error! ");
+       localCondition=conditionPort;
+         when clockValue >  bound and pre(localCondition) then
+          Modelica.Utilities.Streams.error("Invariant - " +String(clockValue) + " > " + String(bound) + " -  error! ");
        end when;
 
         annotation (
@@ -6458,7 +6459,7 @@ Variable <b>y</b> is both a variable and a connector.
 </html>"));
       end TimeInvariantLessOrEqual;
 
-      block TimeInvariantLess
+      model TimeInvariantLess
         "Set output signal to a time varying Real expression"
 
         parameter Real bound;
@@ -6470,10 +6471,12 @@ Variable <b>y</b> is both a variable and a connector.
           "Number to be shown in diagram layer if use_numberPort = true"
           annotation (Placement(transformation(extent={{-130,-15},{-100,15}}),
               iconTransformation(extent={{-130,25},{-100,55}})));
+      Boolean localCondition;
 
       equation
-       when clockValue >=  bound and conditionPort then
-          Modelica.Utilities.Streams.error("Invariant - " +String(clockValue) + " < " + String(bound) + " -  error! ");
+       localCondition=conditionPort;
+       when clockValue >=  bound and pre(localCondition) then
+          Modelica.Utilities.Streams.error("Invariant : " +String(clockValue) + " >= " + String(bound) + " :  error! ");
        end when;
         annotation (
           Icon(coordinateSystem(
