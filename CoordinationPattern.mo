@@ -4946,7 +4946,7 @@ end Examples;
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.Fail_Operational_Delegation.Delegation_Master</title></head>
 <body>
 <h3> Delegation_Master </h3>
-<p>This class implements the behavior of the role Delegation_Master in the &quot;Fail-Operational Delegation&quot; pattern. The master component wants to delegate a task to the slave component, being responsible for executing the task. The slave component can report the task execuition with either &quot;done&QUOT; or &quot;fail&quot;, informing the master wether the delegation was successful or not. More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Fail_Operational_Delegation\">here</a>&quot; The corresponding Realtime Statechart is shown in the following figure: </p>
+<p>This class implements the behavior of the role Delegation_Master in the &quot;Fail-Operational Delegation&quot; pattern. The master component wants to delegate a task to the slave component, being responsible for executing the task. The slave component can report the task execuition with either &quot;done&quot; or &quot;fail&quot;, informing the master wether the delegation was successful or not. More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Fail_Operational_Delegation\">here</a>&quot; The corresponding Realtime Statechart is shown in the following figure: </p>
 <p><img src=\"images/Fail_Operational_Delegation/RTS_Fail-OperationalDelegation_Master.jpg\" alt =\"\"/> </p>
 <p><small>Figure 1: Realtimestatechart, showing the behavior of the master role </small></p>
 <p>The master has a parameter &quot;timeout&quot;, specifying the time that the master waits for a reply of the slave (which can be either &quot;fail&quot; or &quot;done&quot; in case of a failure or a success resp.). </p>
@@ -7778,7 +7778,7 @@ The guard has no parameters. </p>
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.Block_Execution.Executor</title></head>
 <body>
 <h3> Executor </h3>
-This class implements the behavior of the role executor of the Block-Execution-Pattern. The executor is responsible for executing a certain task. The execution is controlled by a component which implements the gurad role. The guard can start and stop the exectution by sending the free() and the block() message to the executor. More information concerning the pattern can be found &QUOT;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Block_Execution\">here</a>&QUOT;. <p>The behavoir can be seen in the following statechart. 
+This class implements the behavior of the role executor of the Block-Execution-Pattern. The executor is responsible for executing a certain task. The execution is controlled by a component which implements the gurad role. The guard can start and stop the exectution by sending the free() and the block() message to the executor. More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Block_Execution\">here</a>&quot;. <p>The behavoir can be seen in the following statechart. 
 The executor has no parameters. </p>
 <p><img src=\"images/Block-Execution/Executor-Behavior.jpg\" alt = \"\"></p>
 <p><small>Figure 1: Realtimestatechart, showing the behavior of the executor role </small></p>
@@ -7925,7 +7925,7 @@ stops its work.
 This class implements the role Sender of the Periodic-Transmission Pattern. 
 The sender sends every $period time units a message data() to the receiver. The receiver receives this message periodically. If the receiver gets no message from the sender, the message was lost or the receiver has fallen out. In this case the receiver has to react in a certain way in order to prevent this safety critical situation.
 
-More information concerning the pattern can be found &QUOT;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Periodic_Transmission\">here</a>&QUOT;.
+More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Periodic_Transmission\">here</a>&quot;.
 
 <p> The provider has the parameter $period, which specifies the period, in which the sender sends the data() message to the receiver. </p>
 <p><img src=\"images/Periodic_Transmission/parameters_sender.jpg\" alt=\"\"></p>
@@ -8062,7 +8062,7 @@ More information concerning the pattern can be found &QUOT;<a href=\"modelica://
 <h3> Sender </h3>
 This class implements the role Sender of the Periodic-Transmission Pattern. 
 The sender sends every $period time units a message data() to the receiver. The receiver receives this message periodically. If the receiver gets no message from the sender, the message was lost or the receiver has fallen out. In this case the receiver has to react in a certain way in order to prevent this safety critical situation.
-More information concerning the pattern can be found &QUOT;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Periodic_Transmission\">here</a>&QUOT;.
+More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Periodic_Transmission\">here</a>&quot;.
 <p> The provider has a parameter $timeout, which specifies number of time units the receiver waits for a message of the sender. If there was no message received during the time, the receiver changes its state to 'Timeout'.
 After receiving the data() message, the receiver changes back to state 'PeriodicReceiving'. </p>
 <p><img src=\"images/Periodic_Transmission/parameters_receiver.jpg\" alt = \"\"></p>
@@ -8235,7 +8235,7 @@ receives a message data again, it changes back to state PeriodicReceiving.
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.Producer_Consumer.Producer</title></head>
 <body>
 <h3> Producer </h3>
-This class implements the behavior of the role producer of the Producer-Consumer-Pattern. The producer has reserved the critical section at first. By sending the produced() message it leaves the critical section and the consumer will reserve it. More information concerning the pattern can be found &QUOT;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Producer_Consumer\">here</a>&QUOT;. <p>The behavoir can be seen in the following statechart. 
+This class implements the behavior of the role producer of the Producer-Consumer-Pattern. The producer has reserved the critical section at first. By sending the produced() message it leaves the critical section and the consumer will reserve it. More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Producer_Consumer\">here</a>&quot;. <p>The behavoir can be seen in the following statechart. 
 The producer has no parameters. </p>
 <p><img src=\"images/Producer-Consumer/Producer-Behavior.jpg\" alt = \"\" ></p>
 <p><small>Figure 1: Realtimestatechart, showing the behavior of the producer role </small></p>
@@ -8336,7 +8336,7 @@ The producer has no parameters. </p>
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.Producer_Consumer.Consumer</title></head>
 <body>
 <h3> Consumer </h3>
-This class implements the behavior of the role consumer of the Producer-Consumer-Pattern. The producer has reserved the critical section at first. By sending the produced() message it leaves the critical section and the consumer will reserve it. The consumer can leave the critical section by sending the consumed() message, which enables the producer to reserve it. More information concerning the pattern can be found &QUOT;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Producer_Consumer\">here</a>&QUOT;. <p>The behavoir can be seen in the following statechart. 
+This class implements the behavior of the role consumer of the Producer-Consumer-Pattern. The producer has reserved the critical section at first. By sending the produced() message it leaves the critical section and the consumer will reserve it. The consumer can leave the critical section by sending the consumed() message, which enables the producer to reserve it. More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Producer_Consumer\">here</a>&quot;. <p>The behavoir can be seen in the following statechart. 
 The consumer has no parameters. </p>
 <p><img src=\"images/Producer-Consumer/Consumer-Behavior.jpg\" alt =\"\"></p>
 <p><small>Figure 1: Realtimestatechart, showing the behavior of the consumer role </small></p>
