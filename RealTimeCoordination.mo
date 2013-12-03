@@ -87,9 +87,16 @@ extends Modelica.Icons.Information;
 <html>
 <head><title>RealTimeCoordinationLibrary.RealTimeCoordination.UsersGuide.Elements.Invariant</title></head>
 <body>
-<p>Examples are specified at: &quot;<a href=\"modelica://RealTimeCoordinationLibrary.RealTimeCoordination.Examples.Invariant\">Examples.Invariant</a>&quot;.</p>
-<p>An invariant is an inequation that specifies an upper <b>bound</b> on a clock, e.g., c &lt; 2 or c &lt;= 2 where c is a <a href=\"modelica://RealTimeCoordinationLibrary.RealTimeCoordination.UsersGuide.Elements.Clock\">Clock</a>. Invariants are assigned to generalized steps and are used to specify a time span in which this generalized step is allowed to be active. </p>
-<p><img src=\"modelica://RealTimeCoordinationLibrary/images/invariant.jpg\" alt =\"\"/></p>
+
+<p>Examples are specified at: &quot;<a href=\"modelica://RealTimeCoordinationLibrary.RealTimeCoordination.Examples.Invariant\">Examples.Invariant</a>&quot;.
+</p>
+<p>
+An invariant is an inequation that specifies an upper <b>bound</b> on a clock, e.g., c &lt; 2 or c &lt;= 2 where c is a <a href=\"modelica://RealTimeCoordinationLibrary.RealTimeCoordination.UsersGuide.Elements.Clock\">Clock</a>. Invariants are assigned to generalized steps and are used to specify a time span in which this generalized step is allowed to be active.
+</p>
+
+<p>
+<img src=\"modelica://RealTimeCoordinationLibrary/images/invariant.jpg\" alt =\"\"/>
+</p>
 </body>
 </html>
 "));
@@ -4040,12 +4047,12 @@ The brake-message is transmitted to the rear driving Be Bot that is going to bra
               smooth=Smooth.None));
           connect(limPI.y, signalVoltage.v) annotation (Line(
               points={{-39.5,0},{-26.5,0},{-26.5,2.14313e-016},{-23.5,
-                2.14313e-016}},
+                  2.14313e-016}},
               color={0,0,127},
               smooth=Smooth.None));
           connect(fb.y, limPI.u) annotation (Line(
               points={{-67.5,-5.51091e-016},{-54.75,-5.51091e-016},{-54.75,0},{
-                -51,0}},
+                  -51,0}},
               color={0,0,127},
               smooth=Smooth.None));
 
@@ -4097,7 +4104,13 @@ The brake-message is transmitted to the rear driving Be Bot that is going to bra
                   color={0,0,0},
                   smooth=Smooth.None,
                   thickness=1)}),
-                Documentation(info="<HTML>
+                Documentation(info="<html>
+<head>
+<title>
+DCMotorCtrl_V4
+</title>
+</head>
+<body>
 <p>
 <i>Version 1.3 <br> Created: 14.12.2010 <br>Last modified: 11.07.2011 </i> <br><br>
 Model of a Faulhaber 1724 006 SR motor. The parameters shown below are taken from data sheet of the motor. Some properties of the model are as follows:<br>
@@ -4159,9 +4172,9 @@ V1.3 <br>
 <td valign=\"top\">Current constant</td>
 <td valign=\"top\">0.152</td><td valign=\"top\">A/mNm</td>
 </tr>
-<tr>
 </table>
-</HTML>"));
+</body>
+</html>"));
         end DCMotorCtrl_V4;
 
         model LimPI
@@ -4197,8 +4210,9 @@ V1.3 <br>
           y = yk +yi;
           der(yi) = if (y<outMin and u<0) or (y>outMax and u>0) then 0 else
                    ki*u;
-          annotation (    Documentation(info="
-<HTML>
+          annotation (    Documentation(info="<html>
+<head><title>LimPI</title></head>
+<body>
 <p>
 This block represents a PI controller with simple anti-windup measure.
 When limit is exceeded, the integrator is clamped.
@@ -4209,11 +4223,8 @@ When limit is exceeded, the integrator is clamped.
      = kp*u + --*u
               s
 </pre>
-<p>
-</p>
-
-
-</HTML>
+</body>
+</html>
 "),     Diagram(graphics), Icon(graphics={
                                         Rectangle(
                 extent={{-100,-100},{100,100}},
@@ -5459,15 +5470,27 @@ end if;
           rotation=90)}),
     Documentation(info="<!DOCTYPE html>
 <html>
-<head><title>RealTimeCoordinationLibrary.RealTimeCoordination.SelfTransition</title></head>
+<head>
+<title>RealTimeCoordinationLibrary.RealTimeCoordination.SelfTransition</title>
+</head>
 <body>
-<p>Examples are specified at: &quot;<a href=\"modelica://RealTimeCoordinationLibrary.RealTimeCoordination.Examples\">Examples</a>&quot;.</p>
-<p>SelfTransition works exactly as a  Transition. The only difference to the Transition class is that the use_after construct works also for self transitions. </p>
-<p>We use these parameters to synchronize the firing of parallel transitions as described in &quot;<a href=\"modelica://RealTimeCoordinationLibrary.RealTimeCoordination.UsersGuide.Elements.Synchronization\">Synchronization</a>&quot; and to receive asynchronous messages as described in &quot;<a href=\"modelica://RealTimeCoordinationLibrary.RealTimeCoordination.UsersGuide.Elements.Message_Mailbox\">Message and Mailbox</a>&quot;.</p>
-<p><img src=\"modelica://RealTimeCoordinationLibrary/images/selftransition.jpg\" alt =\"selfTransition\"></p>
+<p>
+Examples are specified at: &quot;<a href=\"modelica://RealTimeCoordinationLibrary.RealTimeCoordination.Examples\">Examples</a>&quot;.
+</p>
+
+<p>
+SelfTransition works exactly as a  Transition. The only difference to the Transition class is that the use_after construct works also for self transitions.
+</p>
+
+<p>
+We use these parameters to synchronize the firing of parallel transitions as described in &quot;<a href=\"modelica://RealTimeCoordinationLibrary.RealTimeCoordination.UsersGuide.Elements.Synchronization\">Synchronization</a>&quot; and to receive asynchronous messages as described in &quot;<a href=\"modelica://RealTimeCoordinationLibrary.RealTimeCoordination.UsersGuide.Elements.Message_Mailbox\">Message and Mailbox</a>&quot;.
+</p>
+
+<p>
+<img src=\"modelica://RealTimeCoordinationLibrary/images/selftransition.jpg\" alt =\"selfTransition\"/>
+</p>
 </body>
-</html>
-"));
+</html>"));
 end SelfTransition;
 
 model Transition

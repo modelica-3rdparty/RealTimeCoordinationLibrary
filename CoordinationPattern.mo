@@ -12,22 +12,27 @@ extends Modelica.Icons.Information;
 <html>
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.UsersGuide.Elements.Fail_Operarational_Delegation</title></head>
 <body>
-<h3> Fail_Operational_Delegation Pattern </h3>
+<h3>Fail_Operational_Delegation Pattern</h3>
+
 <p> 
 This pattern realizes a delegation of a task from a role master to a role slave. The
 slave executes the task in a certain time and answers regarding success or failure. The
 pattern assumes that a failure is not safety-critical, though only one delegation at a time
 is allowed. 
 </p>
+
 <p> 
 A test is specified at: <a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Examples.PatternTest.Fail_Operational_Delegation_Test\">PatternTest.Fail-Operational-Delegation</a>
 </p>
+
 <h4> Context </h4>
+
 <p> 
 Delegate tasks between communicating actors. 
 </p>
 
 <h4> Problem </h4>
+
 <p> 
 If the communication is asynchronous and the communication channel is
 unreliable, the role that sends the task, does not know if the other role has received it.
@@ -35,6 +40,7 @@ Though, the task has to be done.
 </p>
 
 <h4> Solution </h4>
+
 <p>
 Define a coordination protocol that enables a role master to delegate tasks
 to a slave. A failed task execution does not need to be handled before a new task can be
@@ -43,8 +49,8 @@ time, the master cancels the waiting. The slave executes this task in a certain 
 reports if the task was done successfully or if the execution failed.
 </p>
 
-
 <h4> Structure </h4>
+
 <p> 
 The pattern consists of the two roles master and slave. Both
 roles are in/out roles.Which message each role can receive and send is shown in the message interfaces. The master may send the message order to the slave. 
@@ -52,9 +58,17 @@ The slave may send the messages done and fail to the master. The time parameter 
 is $worktime. The connector may lose messages. The delay for sending a message is
 defined by the time parameters $delay-min and $delay-max.
 </p> 
-<p><img width = \"706\" height = \"405\" src=\"images/Fail_Operational_Delegation/Structure_Fail-OperationalDelegation.jpg\"  alt =\"\"></p>
-<p><small>Figure 1: Structure and Interfaces of the Fail-Operational-Pattern </small></p>
-<h4> Behavior </h4>
+
+<p>
+<img width = \"706\" height = \"405\" src=\"images/Fail_Operational_Delegation/Structure_Fail-OperationalDelegation.jpg\" alt =\"\"/>
+</p>
+
+<p>
+<small>Figure 1: Structure and Interfaces of the Fail-Operational-Pattern</small>
+</p>
+
+<h4>Behavior</h4>
+
 <p>
 The role master consists of the initial state Inactive and the state Waiting. From state
 Inactive, the message order() can be send to the slave and the state changes to Waiting.
@@ -65,6 +79,7 @@ triggered by the message done and leads to Inactive. The message fail triggers t
 transition and leads also to Inactive. If there is a timeout, the state changes also back to
 Inactive.
 </p>
+
 <p>
 The role slave represents the counter-part to the master role and consist of the initial
 state Inactive and the state Working. The message order() triggers the transition from
@@ -75,9 +90,15 @@ an error occurs, the message fail() will be send to the master and the state cha
 back to Inactive, too.
 </p>
 
-<p><img src=\"images/Fail_Operational_Delegation/RTS_Fail-OperationalDelegation_Master.jpg\" alt =\"\" >
-<img src=\"images/Fail_Operational_Delegation/RTS_Fail-OperationalDelegation_Slave.jpg\"  alt =\"\"></p>
-<p><small>Figure 2: Realtimestatechart, showing the behavior of the slave and master role </small></p>
+<p>
+<img src=\"images/Fail_Operational_Delegation/RTS_Fail-OperationalDelegation_Master.jpg\"  alt =\"\"/>
+<img src=\"images/Fail_Operational_Delegation/RTS_Fail-OperationalDelegation_Slave.jpg\" alt =\"\"/>
+</p>
+
+<p>
+<small>Figure 2: Realtimestatechart, showing the behavior of the slave and master role </small>
+</p>
+
 </body>
 </html>
 "));
@@ -90,20 +111,25 @@ back to Inactive, too.
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.UsersGuide.Elements.Master_Slave_Assignment</title></head>
 <body>
 <h3> Master_Slave_Assignment </h3>
+
 <p> 
 This pattern is used if two systems can dynamically change between one state in which
 they have equal rights and another state in which one is the master and the other one is
 the slave.
 </p>
+
 <p> 
 A test is specified at: <a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Examples.PatternTest.Master_Slave_Assignment_Test\">PatternTest.Master-Slave-Assignment-Test</a>
 </p>
-<h4> Context </h4>
+
+<h4>Context</h4>
+
 <p> 
 Equal, independent systems want to cooperate.
 </p>
 
-<h4> Problem </h4>
+<h4>Problem</h4>
+
 <p> 
 A system wants to cooperate with another system. During this time, they depend
 on each other and a safety-critical situation occurs, if they remain self-determined.
@@ -111,7 +137,8 @@ Furthermore, the communication channel may be unreliable and the systems and the
 communication channel may fall out fully.
 </p>
 
-<h4> Solution </h4>
+<h4>Solution</h4>
+
 <p>
 Define a pattern so that two equal roles can dynamically change into a state
 where one is the master that may delegate tasks or proposals to the other role (the slave).
@@ -122,6 +149,7 @@ position.
 
 
 <h4> Structure </h4>
+
 <p> 
 There are two peer roles, because they have the identical behavior. Each role can become the master or slave at run-time. Both roles are in/out
 roles and have the same message interfaces for sending and receiving.
@@ -130,13 +158,26 @@ the other peer.
 The time parameters of a peer are $timeout1, $timeout2, and $period. The connector
 may lose messages. The delay for sending a message is defined by the time parameters
 $delay-min and $delay-max.
-</p> 
-<p><img src=\"images/Master_Slave_Assignment/MasterSlavePattern.jpg\"  alt =\"\"></p>
-<p><small>Figure 1: Structure of the Master-Slave-Assignment Pattern </small></p>
-<p><img src=\"images/Master_Slave_Assignment/MasterSlaveInterface.jpg\" alt =\"\"></p>
-<p><small>Figure 2: Interfaces of the Master-Slave-Assignment Pattern </small></p>
+</p>
+ 
+<p>
+<img src=\"images/Master_Slave_Assignment/MasterSlavePattern.jpg\"  alt =\"\"/>
+</p>
+
+<p>
+<small>Figure 1: Structure of the Master-Slave-Assignment Pattern </small>
+</p>
+
+<p>
+<img src=\"images/Master_Slave_Assignment/MasterSlaveInterface.jpg\" alt =\"\"/>
+</p>
+
+<p>
+<small>Figure 2: Interfaces of the Master-Slave-Assignment Pattern </small>
+</p>
 
 <h4> Behavior </h4>
+
 <p>
 Both peers are in the initial state NoAssignment. A peer may send the message
 youSlave if it had rested in this state at least $waittime time units. After sending this
@@ -145,6 +186,7 @@ it confirms this using the message confirm and changes to state Slave. If both p
 send the message youSlave, they both return to state NoAssignment. If messages are
 lost, they return from state MasterProposed after $timeout1 time units.
 </p>
+
 <p>
 If a peer confirms the proposal and the initiator receives it, it changes to state Master.
 The state Master must be leaved after $period time units either with (i) sending an alive
@@ -153,6 +195,7 @@ message to the slave, (ii) consuming an alive2 message that was send from the sl
 timeout that occurs if no alive2 message was received for a certain number of times (this
 is defined by the variable $tries).
 </p>
+
 <p>
 A slave (i) can receive an alive message from the master and has to answer with an
 alive2 message, (ii) can receive an youSlave message and has to answer with a confirm
@@ -162,11 +205,17 @@ message was received after $timeout1 time units. This state change is allowed, b
 after that time, the slave can assume that the master or the communication channel has
 fallen out.
 </p>
-<p><img src=\"images/Master_Slave_Assignment/MasterSlaveBehavior.jpg\" alt =\"\" ></p>
-<p><small>Figure 3: Realtimestatechart, showing the behavior of the peer role </small></p>
+
+<p>
+<img src=\"images/Master_Slave_Assignment/MasterSlaveBehavior.jpg\" alt =\"\"/>
+</p>
+
+<p>
+<small>Figure 3: Realtimestatechart, showing the behavior of the peer role</small>
+</p>
+
 </body>
-</html>
-"));
+</html>"));
     end Master_Slave_Assignment;
 
     model Turn_Transmission
@@ -301,28 +350,74 @@ if value redeems the limit.
 <html>
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.UsersGuide.Elements.Fail_Safe_Delegation</title></head>
 <body>
+
 <h3>Fail-Safe Delegation</h3>
-<p>This pattern realizes a delegation of a task from a role master to a role slave. The slave executes the task in a certain time and answers regarding success or failure. If the execution fails, no other task may be delegated until the master ensures that the failure has been corrected. Moreover, only one delegation at a time is allowed. </p>
+
+<p>
+This pattern realizes a delegation of a task from a role master to a role slave. The slave executes the task in a certain time and answers regarding success or failure. If the execution fails, no other task may be delegated until the master ensures that the failure has been corrected. Moreover, only one delegation at a time is allowed.
+</p>
+
 <p> 
 Examples are specified at: <a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Examples.ExamplesForPatternUse.Fail_Safe_Delegation\">ExamplesForPatternUse.Fail-Safe-Delegation</a>.
 A test is specified at: <a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Examples.PatternTest.Fail_Safe_Delegation_Test\">PatternTest.Fail-Safe-Delegation-Test</a>
 </p>
 
 <h4>Context </h4>
-<p>Delegate tasks between communicating actors. </p>
+
+<p>
+Delegate tasks between communicating actors.
+</p>
+
 <h4>Problem </h4>
-<p>If the communication is asynchronous and the communication channel is unreliable, the role that sends the task, does not know if the other role has received it. Though, the task has to be done. </p>
+
+<p>
+If the communication is asynchronous and the communication channel is unreliable, the role that sends the task, does not know if the other role has received it. Though, the task has to be done.
+</p>
+
 <h4>Solution </h4>
-<p>Define a coordination protocol that enables a role master to delegate tasks to a slave. A failed task execution is handled before a new task can be delegated. The master delegates the task and wait for its completion. After a specified time, the master cancels the waiting. The slave executes this task in a certain time and reports if the task was done successfully or if the execution failed. If it failed, the slave does not execute new tasks until the master sends the signal that the error is resolved. </p>
+
+<p>
+Define a coordination protocol that enables a role master to delegate tasks to a slave. A failed task execution is handled before a new task can be delegated. The master delegates the task and wait for its completion. After a specified time, the master cancels the waiting. The slave executes this task in a certain time and reports if the task was done successfully or if the execution failed. If it failed, the slave does not execute new tasks until the master sends the signal that the error is resolved.
+</p>
+
 <h4>Structure </h4>
-<p>The pattern consists of the two roles master and slave. Both roles are in/out roles.Which message each role can receive and send is shown in the message interfaces. The master may send the messages order and continue tthe slave. The slave may send the messages done and fail to the master. The time parameter of the role master is $timeout, the time parameter of role slave is $worktime. The connector may lose messages. The delay for sending a message is defined by the time parameters $delay-min and $delay-max. </p>
-<p><img src=\"images/Fail_Safe_Delegation/Structure.jpg\" alt =\"\"/> </p><p><font style=\"font-size: 7pt; \">Figure 1: Structure of Fail Safe Delegation</font> </p>
-<p><img src=\"images/Fail_Safe_Delegation/Interfaces.jpg\" alt =\"\"/></p>
-<p><small>Figure 2: Interfaces of Fail Safe Delegation </small></p>
+
+<p>
+The pattern consists of the two roles master and slave. Both roles are in/out roles.Which message each role can receive and send is shown in the message interfaces. The master may send the messages order and continue tthe slave. The slave may send the messages done and fail to the master. The time parameter of the role master is $timeout, the time parameter of role slave is $worktime. The connector may lose messages. The delay for sending a message is defined by the time parameters $delay-min and $delay-max.
+</p>
+
+<p>
+<img src=\"images/Fail_Safe_Delegation/Structure.jpg\" alt=\"\"/>
+</p>
+
+<p>
+<small>
+Figure 1: Structure of Fail Safe Delegation
+</small>
+</p>
+
+<p>
+<img src=\"images/Fail_Safe_Delegation/Interfaces.jpg\" alt=\"\"/>
+</p>
+
+<p>
+<small>Figure 2: Interfaces of Fail Safe Delegation </small>
+</p>
+
 <h4>Behavior </h4>
-<p>The role master has the initial state Idle. From this state the master can send the message order() to the slave and the state changes to Waiting. An entry-action in this state resets the clock c0. If the clock c0 reaches the value of $timeout, the master assumes that the order or the answer message got lost or that the slave has fallen out. Then, the state will leave to Idle. If the master receives the message fail() the state will change to FailSafe. If the master receives the message done() the state changes back to Idle. When the master receives the message fail(), it changes to state FailSafe. The pattern assumes that if the master is in state FailSafe, the master execute actions to resolve the problem. Afterward, it sends message continue() changes back to Idle. The role slave is the correspondent part to the master and consists of the initial state Idle and the statesWorking and FailSafe. If it receives the message order the state changes to Working. This state can be leave as soon as the order is done. Then the slave sends done to the master and the state changes back to Idle. An entry-action in the state Working resets the clock c0. If the clock c0 reaches the value of $worktime and the order is not finished yet, the slave has to cancel the order, sends the message fail to the master, and changes to state FailSafe. If the order fails, the slave changes to state FailSafe, too. This state can be leave with the message continue. Then the slave changes back to state Idle. It may happen that the slave receives the message order while it is in state FailSafe. This is only the case, if a message before got lost. As the slave is not allowed to execute the order, it sends the message fail immeditiately and remains in state FailSafe. </p>
-<p><img src=\"images/Fail_Safe_Delegation/Behavior.jpg\" alt =\"\"/></p>
-<p><small>Figure 3: Realtimestatecharts of the Fail Safe Delegation Pattern, showing the behavior of the master and slave role </small></p>
+
+<p>
+The role master has the initial state Idle. From this state the master can send the message order() to the slave and the state changes to Waiting. An entry-action in this state resets the clock c0. If the clock c0 reaches the value of $timeout, the master assumes that the order or the answer message got lost or that the slave has fallen out. Then, the state will leave to Idle. If the master receives the message fail() the state will change to FailSafe. If the master receives the message done() the state changes back to Idle. When the master receives the message fail(), it changes to state FailSafe. The pattern assumes that if the master is in state FailSafe, the master execute actions to resolve the problem. Afterward, it sends message continue() changes back to Idle. The role slave is the correspondent part to the master and consists of the initial state Idle and the statesWorking and FailSafe. If it receives the message order the state changes to Working. This state can be leave as soon as the order is done. Then the slave sends done to the master and the state changes back to Idle. An entry-action in the state Working resets the clock c0. If the clock c0 reaches the value of $worktime and the order is not finished yet, the slave has to cancel the order, sends the message fail to the master, and changes to state FailSafe. If the order fails, the slave changes to state FailSafe, too. This state can be leave with the message continue. Then the slave changes back to state Idle. It may happen that the slave receives the message order while it is in state FailSafe. This is only the case, if a message before got lost. As the slave is not allowed to execute the order, it sends the message fail immeditiately and remains in state FailSafe.
+</p>
+
+<p>
+	<img src=\"images/Fail_Safe_Delegation/Behavior.jpg\" alt =\"\"/>
+</p>
+
+<p>
+	<small>Figure 3: Realtimestatecharts of the Fail Safe Delegation Pattern, showing the behavior of the master and slave role </small>
+</p>
+
 </body>
 </html>"));
     end Fail_Safe_Delegation;
@@ -609,8 +704,7 @@ leaved the critical section and the producer can enter it again.
 <li>&quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.UsersGuide.Elements.Producer_Consumer\">Producer_Consumer</a>&quot; gives an overview about the Producer-Consumer pattern</li>
 </ol>
 </body>
-</html>
-"));
+</html>"));
   end Elements;
 
   annotation (__Dymola_DocumentationClass=true, Documentation(info="
@@ -2108,7 +2202,7 @@ Two bebots drive in a line, so there is a RearBebot and a FrontBebot. So that no
             color={255,0,255},
             smooth=Smooth.None));
         annotation (Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-180,
-                  -100},{140,140}}),       graphics));
+                    -100},{140,140}}),     graphics));
       end FSD_Slave;
 
       model Bebot
@@ -2463,87 +2557,17 @@ Two bebots drive in a line, so there is a RearBebot and a FrontBebot. So that no
             points={{27.6,-15.04},{27.6,-33.52},{43,-33.52},{43,-52}},
             color={0,0,127},
             smooth=Smooth.None));
-        annotation (Diagram(graphics), Documentation(info="<html>
+        annotation (Diagram(graphics), Documentation(info="<!DOCTYPE html>
+<html>
 <head>
-
+<title>
+Fail_Safe_Delegation.FinalSystemMain
+</title>
 </head>
 <body>
-</body>
 <h3>szenario</h3>
-Two Bebots drive in a line, so one is in front, namely the \"FrontBebot\", and the other one is rear, called \"RearBebot\" in the model. Together they form a convoy. Since the bebots are driving in a convoy and should not collide, they are using the same acceleration function. After 'timeOfBreakRequest' seconds the FrontBebot send a break request to the RearBebot with the corresponding breakforce the FrontBebot wants to break with. Depending on the value of the parameter 'breakingPossible' of the RearBebot the RearBebot will start breaking or not. If it is not able to break, the front will break anyway and both Bebots will collide. Otherwise first the RearBebot will start to break and the FrontBebot will also start breaking with the same intense, so no collision occurs. The process is shown in the following diagrams:
-<p><div align=\"center\">Time = 0:</div></p>
-<p><div align=\"center\"><img src=\"modelica://RealTimeCoordinationLibrary/images/Fail_Safe_Delegation/examplesForPatternUse/example1/time0.jpg\"/></div></p>
-<p><div align=\"center\">Time = timeOfBreakRequest:</div></p>
-<p><div align=\"center\"><img src=\"modelica://RealTimeCoordinationLibrary/images/Fail_Safe_Delegation/examplesForPatternUse/example1/timeOfBreakRequest.jpg\"/></div></p>
-<p><div align=\"center\"><img src=\"modelica://RealTimeCoordinationLibrary/images/Fail_Safe_Delegation/examplesForPatternUse/example1/arrows.jpg\"/></div></p>
-<p>
-
-<table border=\"0\" align=\"center\">
-<tr>
-        <td>
-                <h3>Case breaking possible:</h3>
-        </td>
-        <td width=\"100\">         &#160; </td>
-        <td>
-                <h3>Case breaking not possible:</h3>
-        </td>
-</tr>
-<tr>
-        <td>
-                The RearBebot answers the request with 'yes':
-        </td>
-        <td width=\"100\">         &#160; </td>
-        <td>
-                The RearBebot answers the request with 'no':
-        </td>
-</tr>
-<tr>
-        <td>
-                <img src=\"modelica://RealTimeCoordinationLibrary/images/Fail_Safe_Delegation/examplesForPatternUse/example1/possible1.jpg\" align=\"left\"/>
-        </td>
-        <td>  </td>
-        <td>
-                <img src=\"modelica://RealTimeCoordinationLibrary/images/Fail_Safe_Delegation/examplesForPatternUse/example1/notPossible1.jpg\" align=\"right\"/>
-        </td>
-</tr>
-<tr>
-        <td>
-                Both can start breaking:
-        </td>
-        <td width=\"100\">         &#160; </td>
-        <td>
-                The Front Bebot has to break anyway:
-        </td>
-</tr>
-<tr>
-        <td>
-                <img src=\"modelica://RealTimeCoordinationLibrary/images/Fail_Safe_Delegation/examplesForPatternUse/example1/possible2.jpg\" align=\"left\"/>
-        </td>
-        <td>  </td>
-        <td>
-                <img src=\"modelica://RealTimeCoordinationLibrary/images/Fail_Safe_Delegation/examplesForPatternUse/example1/notPossible2.jpg\" align=\"right\"/>
-        </td>
-</tr>
-<tr>
-        <td>
-                
-        </td>
-        <td width=\"100\">         &#160; </td>
-        <td>
-                A crash may happen, since the RearBebot might not be able to break:
-        </td>
-</tr>
-<tr>
-        <td>
-                
-        </td>
-        <td>  </td>
-        <td>
-                <img src=\"modelica://RealTimeCoordinationLibrary/images/Fail_Safe_Delegation/examplesForPatternUse/example1/notPossible3.jpg\" align=\"left\"/>
-        </td>
-</tr>
-</table>
-</p>
+<p>Two Bebots drive in a line, so one is in front, namely the \"FrontBebot\", and the other one is rear, called \"RearBebot\" in the model. Together they form a convoy. Since the bebots are driving in a convoy and should not collide, they are using the same acceleration function. After 'timeOfBreakRequest' seconds the FrontBebot tries to break, but it has to negotiate its break force with the RearBebot, since the distance between both bebots is very small. Therefore the FrontBebot sends its maximum break force to the rear. The rear checks wether it can also break with the same intense. In case it can break, it answers the request with a 'Done' message and both break with the break force of the front. Else it sends a 'fail' message with its possible break force and both break with the break force of the rear.</p>
+</body>
 </html>"));
       end FinalSystemMain;
     end Fail_Safe_Delegation;
@@ -2870,10 +2894,18 @@ Two Bebots drive in a line, so one is in front, namely the \"FrontBebot\", and t
             points={{17.4,24},{22,24},{22,52.05},{-6,52.05}},
             color={0,0,0},
             smooth=Smooth.None));
-        annotation (Diagram(graphics), Documentation(info="<html>
+        annotation (Diagram(graphics), Documentation(info="<!DOCTYPE html>
+<html>
+<head>
+<title>
+BlockExecution.FinalSystemMain
+</title>
+</head>
+<body>
 <p>A bebot is driving on track sections that are ordered in a circle. Every track section is controlled by a TrackSectionControl. The TrackSectionControl and the bebot can communicate via messages. </p>
-<p><img src=\"modelica://RealTimeCoordinationLibrary/images/Block-Execution/examplesForPatternUse/example1/scenario.jpg\"/></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/images/Block-Execution/examplesForPatternUse/example1/scenario.jpg\" alt =\"\"/></p>
 <p>It is possible, that an accident on a track section occurs. In this case the track section control sends a message to the bebot, that there is an accident on this section. If the bebot is currently driving on the affected section, it stops, if its on a different section, the bebot continues driving.</p>
+</body>
 </html>"));
       end FinalSystemMain;
     end BlockExecution;
@@ -3281,7 +3313,11 @@ Two Bebots drive in a line, so one is in front, namely the \"FrontBebot\", and t
               smooth=Smooth.None));
           annotation (Icon(graphics), Diagram(graphics),
             Documentation(info="<html>
-Two bebots drive in a line. The front bebot asks wether they should form a convoy. If the rear bebot is ready, they join an form a convoy, else if it is not ready, the front rebot will repeat its request later on, as long as the variable startTransmission equals true.
+<head>
+<title>Szenario Description</title>
+</head>
+<body><p>Two bebots drive in a line. The front bebot asks wether they should form a convoy. If the rear bebot is ready, they join an form a convoy, else if it is not ready, the front rebot will repeat its request later on, as long as the variable startTransmission equals true.<p>
+</body>
 </html>"));
         end FinalSystemMain;
       end Convoy;
@@ -5115,22 +5151,27 @@ end Examples;
 <html>
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.UsersGuide.Elements.Fail_Operarational_Delegation</title></head>
 <body>
-<h3> Fail_Operational_Delegation Pattern </h3>
+<h3>Fail_Operational_Delegation Pattern</h3>
+
 <p> 
 This pattern realizes a delegation of a task from a role master to a role slave. The
 slave executes the task in a certain time and answers regarding success or failure. The
 pattern assumes that a failure is not safety-critical, though only one delegation at a time
 is allowed. 
 </p>
+
 <p> 
 A test is specified at: <a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Examples.PatternTest.Fail_Operational_Delegation_Test\">PatternTest.Fail-Operational-Delegation</a>
 </p>
+
 <h4> Context </h4>
+
 <p> 
 Delegate tasks between communicating actors. 
 </p>
 
 <h4> Problem </h4>
+
 <p> 
 If the communication is asynchronous and the communication channel is
 unreliable, the role that sends the task, does not know if the other role has received it.
@@ -5138,6 +5179,7 @@ Though, the task has to be done.
 </p>
 
 <h4> Solution </h4>
+
 <p>
 Define a coordination protocol that enables a role master to delegate tasks
 to a slave. A failed task execution does not need to be handled before a new task can be
@@ -5146,8 +5188,8 @@ time, the master cancels the waiting. The slave executes this task in a certain 
 reports if the task was done successfully or if the execution failed.
 </p>
 
-
 <h4> Structure </h4>
+
 <p> 
 The pattern consists of the two roles master and slave. Both
 roles are in/out roles.Which message each role can receive and send is shown in the message interfaces. The master may send the message order to the slave. 
@@ -5155,9 +5197,17 @@ The slave may send the messages done and fail to the master. The time parameter 
 is $worktime. The connector may lose messages. The delay for sending a message is
 defined by the time parameters $delay-min and $delay-max.
 </p> 
-<p><img width = \"706\" height = \"405\" src=\"images/Fail_Operational_Delegation/Structure_Fail-OperationalDelegation.jpg\" alt =\"\" ></p>
-<p><small>Figure 1: Structure and Interfaces of the Fail-Operational-Pattern </small></p>
-<h4> Behavior </h4>
+
+<p>
+<img width = \"706\" height = \"405\" src=\"images/Fail_Operational_Delegation/Structure_Fail-OperationalDelegation.jpg\" alt =\"\"/>
+</p>
+
+<p>
+<small>Figure 1: Structure and Interfaces of the Fail-Operational-Pattern</small>
+</p>
+
+<h4>Behavior</h4>
+
 <p>
 The role master consists of the initial state Inactive and the state Waiting. From state
 Inactive, the message order() can be send to the slave and the state changes to Waiting.
@@ -5168,6 +5218,7 @@ triggered by the message done and leads to Inactive. The message fail triggers t
 transition and leads also to Inactive. If there is a timeout, the state changes also back to
 Inactive.
 </p>
+
 <p>
 The role slave represents the counter-part to the master role and consist of the initial
 state Inactive and the state Working. The message order() triggers the transition from
@@ -5178,9 +5229,15 @@ an error occurs, the message fail() will be send to the master and the state cha
 back to Inactive, too.
 </p>
 
-<p><img src=\"images/Fail_Operational_Delegation/RTS_Fail-OperationalDelegation_Master.jpg\"  alt =\"\">
-<img src=\"images/Fail_Operational_Delegation/RTS_Fail-OperationalDelegation_Slave.jpg\" alt =\"\" ></p>
-<p><small>Figure 2: Realtimestatechart, showing the behavior of the slave and master role </small></p>
+<p>
+<img src=\"images/Fail_Operational_Delegation/RTS_Fail-OperationalDelegation_Master.jpg\"  alt =\"\"/>
+<img src=\"images/Fail_Operational_Delegation/RTS_Fail-OperationalDelegation_Slave.jpg\" alt =\"\"/>
+</p>
+
+<p>
+<small>Figure 2: Realtimestatechart, showing the behavior of the slave and master role </small>
+</p>
+
 </body>
 </html>
 "));
@@ -5776,55 +5833,86 @@ back to Inactive, too.
 <html>
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.Master_Slave_Assignment.Peer</title></head>
 <body>
-<h3> Master_Slave_Assignment_Peer </h3>
-<p>This class implements the behavior of the role Peer in the &quot;Master-Slave-Assignment&quot; pattern. The peers should dynamically assign a master or a slave role to each other. More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Master_Slave_Assignment\">here</a>&quot; The corresponding Realtime Statechart is shown in the following figure: </p>
-<p><img src=\"images/Master_Slave_Assignment/MasterSlaveBehavior.jpg\" alt = \"\"/> </p>
-<p><small>Figure 1: Realtimestatechart, showing the behavior of the peer role </small></p>
-<p>The peer has the following parameters (The paramter names may differ in the Realtimestatechart and in the Modelica Model. So if there exist two names for the same parameter, both are listed as \"name in Realtimestatechart\"/\"name in Modelica\":
- <ul>
+<h3> Master_Slave_Assignment_Peer</h3>
 
-<li> $tries: </li>
-        <ul> Specifies the number of times that a peer that wants to act as a master tries to establish this assignment, i. e. the number of times that the master peer sends an alive() message to the slave. If there is no response after $tries times and the master is already \"period\" times in the master state, then the current assignment is cancelled and the master and slave peers go to there initial states. </ul>
-<li>$waittime:</li>
-        <ul>The time a peer waits until it initiates a Master-Slave Assignment with itself as master.</ul>
-<li>$timeout2/$timeoutSlave:</li> 
-        <ul>Specifies the time that the slave peer stays at most in the \"slave\" state. If the slave peer  has not received any youSlave() or alive() message from the master peer, it changes after $timeout2 time units its state to the \"NoAssignment\" state. </ul>
-<li>$timeout1/$timeoutMasterProposed:</li> 
-        <ul>
-                Specifies the time the peer that tries to be the master peer waits for a reply of the slave peer. If there is no reply after $timeout1 time units, the assignment was not successfull and the peer changes its state to the \"NoAssignment\" state.
-        </ul>
-<li>$period:</li> 
-        <ul>
-                 A peer must leave the Master state after $period time units. This can be done either by sending an alive() message to the slave, which will keep the current assignment (only possible if the number of alive() messages is smaller than $tries), or by sending a noSlave() message, which cancels the current assignment(always possible). Furthermore, the state is left if there are no more tries for sending an alive() message left.
-        </ul>
-</ul>
-
+<p>
+This class implements the behavior of the role Peer in the &quot;Master-Slave-Assignment&quot; pattern. The peers should dynamically assign a master or a slave role to each other. More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Master_Slave_Assignment\">here</a>&quot; The corresponding Realtime Statechart is shown in the following figure:
 </p>
-<p><img src=\"images/Master_Slave_Assignment/ParametersPeer.jpg\" alt =\"\"/> </p>
-<p><small>Figure 2: parameters of the peer </small></p>
+
+<p>
+<img src=\"images/Master_Slave_Assignment/MasterSlaveBehavior.jpg\" alt = \"\"/>
+</p>
+<p>
+<small>Figure 1: Realtimestatechart, showing the behavior of the peer role </small>
+</p>
+
+<p>
+The peer has the following parameters (The paramter names may differ in the Realtimestatechart and in the Modelica Model. So if there exist two names for the same parameter, both are listed as \"name in Realtimestatechart\"/\"name in Modelica\":</p>
+
+<dl>
+  <dt> $tries:</dt>
+  <dd> Specifies the number of times that a peer that wants to act as a master tries to establish this assignment, i. e. the number of times that the master peer sends an alive() message to the slave. If there is no response after       	$tries times and the master is already \"period\" times in the master state, then the current assignment is cancelled and the master and slave peers go to there initial states. 
+  </dd>
+  
+  
+  <dt>$waittime:</dt>
+   <dd>
+	The time a peer waits until it initiates a Master-Slave Assignment with itself as master.
+   </dd>
+
+   <dt>$timeout2/$timeoutSlave:</dt>
+    <dd>Specifies the time that the slave peer stays at most in the \"slave\" state. If the slave peer  has not received any youSlave() or alive() message from the master peer, it changes after $timeout2 time units its state to the   		\"NoAssignment\" state. 
+   </dd>
+
+  <dd>$timeout1/$timeoutMasterProposed:</dd> 
+    <dt>
+      Specifies the time the peer that tries to be the master peer waits for a reply of the slave peer. If there is no reply after $timeout1 time units, the assignment was not successfull and the peer changes its state to the 			\"NoAssignment\" state.
+    </dt>
+
+  <dd>$period:</dd> 
+    <dt>
+     A peer must leave the Master state after $period time units. This can be done either by sending an alive() message to the slave, which will keep the current assignment (only possible if the number of alive() messages is smaller than $tries), or by sending a noSlave() message, which cancels the current assignment(always possible). Furthermore, the state is left if there are no more tries for sending an alive() message left.
+    </dt>
+</dl>
+
+
+
+
+<p>
+<img src=\"images/Master_Slave_Assignment/ParametersPeer.jpg\" alt =\"\"/>
+</p>
+
+<p>
+<small>Figure 2: parameters of the peer </small>
+</p>
+
 </body>
-</html>
-"));
+</html>"));
     end Peer;
     annotation (Documentation(info="<!DOCTYPE html>
 <html>
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.UsersGuide.Elements.Master_Slave_Assignment</title></head>
 <body>
 <h3> Master_Slave_Assignment </h3>
+
 <p> 
 This pattern is used if two systems can dynamically change between one state in which
 they have equal rights and another state in which one is the master and the other one is
 the slave.
 </p>
+
 <p> 
 A test is specified at: <a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Examples.PatternTest.Master_Slave_Assignment_Test\">PatternTest.Master-Slave-Assignment-Test</a>
 </p>
-<h4> Context </h4>
+
+<h4>Context</h4>
+
 <p> 
 Equal, independent systems want to cooperate.
 </p>
 
-<h4> Problem </h4>
+<h4>Problem</h4>
+
 <p> 
 A system wants to cooperate with another system. During this time, they depend
 on each other and a safety-critical situation occurs, if they remain self-determined.
@@ -5832,7 +5920,8 @@ Furthermore, the communication channel may be unreliable and the systems and the
 communication channel may fall out fully.
 </p>
 
-<h4> Solution </h4>
+<h4>Solution</h4>
+
 <p>
 Define a pattern so that two equal roles can dynamically change into a state
 where one is the master that may delegate tasks or proposals to the other role (the slave).
@@ -5843,6 +5932,7 @@ position.
 
 
 <h4> Structure </h4>
+
 <p> 
 There are two peer roles, because they have the identical behavior. Each role can become the master or slave at run-time. Both roles are in/out
 roles and have the same message interfaces for sending and receiving.
@@ -5851,13 +5941,26 @@ the other peer.
 The time parameters of a peer are $timeout1, $timeout2, and $period. The connector
 may lose messages. The delay for sending a message is defined by the time parameters
 $delay-min and $delay-max.
-</p> 
-<p><img src=\"images/Master_Slave_Assignment/MasterSlavePattern.jpg\"  alt =\"\"></p>
-<p><small>Figure 1: Structure of the Master-Slave-Assignment Pattern </small></p>
-<p><img src=\"images/Master_Slave_Assignment/MasterSlaveInterface.jpg\" alt =\"\"></p>
-<p><small>Figure 2: Interfaces of the Master-Slave-Assignment Pattern </small></p>
+</p>
+ 
+<p>
+<img src=\"images/Master_Slave_Assignment/MasterSlavePattern.jpg\"  alt =\"\"/>
+</p>
+
+<p>
+<small>Figure 1: Structure of the Master-Slave-Assignment Pattern </small>
+</p>
+
+<p>
+<img src=\"images/Master_Slave_Assignment/MasterSlaveInterface.jpg\" alt =\"\"/>
+</p>
+
+<p>
+<small>Figure 2: Interfaces of the Master-Slave-Assignment Pattern </small>
+</p>
 
 <h4> Behavior </h4>
+
 <p>
 Both peers are in the initial state NoAssignment. A peer may send the message
 youSlave if it had rested in this state at least $waittime time units. After sending this
@@ -5866,6 +5969,7 @@ it confirms this using the message confirm and changes to state Slave. If both p
 send the message youSlave, they both return to state NoAssignment. If messages are
 lost, they return from state MasterProposed after $timeout1 time units.
 </p>
+
 <p>
 If a peer confirms the proposal and the initiator receives it, it changes to state Master.
 The state Master must be leaved after $period time units either with (i) sending an alive
@@ -5874,6 +5978,7 @@ message to the slave, (ii) consuming an alive2 message that was send from the sl
 timeout that occurs if no alive2 message was received for a certain number of times (this
 is defined by the variable $tries).
 </p>
+
 <p>
 A slave (i) can receive an alive message from the master and has to answer with an
 alive2 message, (ii) can receive an youSlave message and has to answer with a confirm
@@ -5883,11 +5988,17 @@ message was received after $timeout1 time units. This state change is allowed, b
 after that time, the slave can assume that the master or the communication channel has
 fallen out.
 </p>
-<p><img src=\"images/Master_Slave_Assignment/MasterSlaveBehavior.jpg\" alt =\"\" ></p>
-<p><small>Figure 3: Realtimestatechart, showing the behavior of the peer role </small></p>
+
+<p>
+<img src=\"images/Master_Slave_Assignment/MasterSlaveBehavior.jpg\" alt =\"\"/>
+</p>
+
+<p>
+<small>Figure 3: Realtimestatechart, showing the behavior of the peer role</small>
+</p>
+
 </body>
-</html>
-"));
+</html>"));
   end Master_Slave_Assignment;
 
   package Turn_Transmission
@@ -6179,7 +6290,7 @@ The corresponding Realtime Statechart is shown in the following figure: </p>
 
 
 
-<p>The partner has a parameter &amp;timeout, specifying the maximum amount of time units that the partner waits for the message of the other partner. </p>
+<p>The partner has a parameter $timeout, specifying the maximum amount of time units that the partner waits for the message of the other partner. </p>
 <p><img src=\"images/Turn_Transmission/Parameters.jpg\" alt = \"\"/> </p>
 <p><small>Figure 2: Realtimestatechart, showing the parameters of the partner role </small></p>
 </body>
@@ -6817,7 +6928,7 @@ if value redeems the limit.
 <html>
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.Fail_Safe_Delegation.Safe_Delegation_Master</title></head>
 <body>
-<p><b></font><font style=\"font-size: 10pt; \">Safe_Delegation_Master </b></p>
+<h3>Safe_Delegation_Master</h3>
 <p>This class implements the role Master of the Fail-Safe-Delgation-Pattern. The master component wants to delegate a task to the slave component, being responsible for executing the task. The slave component can report the task execuition with either &quot;done&quot; or &quot;fail&quot;, informing the master wether the delegation was successful or not. More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Fail_Safe_Delegation\">here</a>&quot;. </p>
 <p>The behavoir can be seen in the following statechart. </p>
 <p><img src=\"images/Fail_Safe_Delegation/Behavior_Master.jpg\" alt=\"\"/></p>
@@ -7023,7 +7134,7 @@ if value redeems the limit.
 <html>
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.Fail_Safe_Delegation.Safe_Delegation_Slave</title></head>
 <body>
-<p><b></font><font style=\"font-size: 10pt; \">Safe_Delegation_Master </b></p>
+<h3>Safe_Delegation_Master</h3>
 <p>This class implements the role Master of the Fail-Safe-Delgation-Pattern. TThis class implements the behavior of the role Delegation_Slave in the &quot;Fail-Operational Delegation&quot; pattern. The master component wants to delegate a task to the slave component, being responsible for executing the task. The slave component can report the task execuition with either &quot;done&quot; or &quot;fail&quot;, informing the master wether the delegation was successful or not. More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Fail_Safe_Delegation\">here</a>&quot;. </p>
 <p>The behavior can be seen in the following statechart. </p>
 <p><img src=\"images/Fail_Safe_Delegation/Behavior_Slave.jpg\" alt =\"\"/></p>
@@ -7039,28 +7150,74 @@ if value redeems the limit.
 <html>
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.UsersGuide.Elements.Fail_Safe_Delegation</title></head>
 <body>
+
 <h3>Fail-Safe Delegation</h3>
-<p>This pattern realizes a delegation of a task from a role master to a role slave. The slave executes the task in a certain time and answers regarding success or failure. If the execution fails, no other task may be delegated until the master ensures that the failure has been corrected. Moreover, only one delegation at a time is allowed. </p>
+
+<p>
+This pattern realizes a delegation of a task from a role master to a role slave. The slave executes the task in a certain time and answers regarding success or failure. If the execution fails, no other task may be delegated until the master ensures that the failure has been corrected. Moreover, only one delegation at a time is allowed.
+</p>
+
 <p> 
 Examples are specified at: <a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Examples.ExamplesForPatternUse.Fail_Safe_Delegation\">ExamplesForPatternUse.Fail-Safe-Delegation</a>.
 A test is specified at: <a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Examples.PatternTest.Fail_Safe_Delegation_Test\">PatternTest.Fail-Safe-Delegation-Test</a>
 </p>
 
 <h4>Context </h4>
-<p>Delegate tasks between communicating actors. </p>
+
+<p>
+Delegate tasks between communicating actors.
+</p>
+
 <h4>Problem </h4>
-<p>If the communication is asynchronous and the communication channel is unreliable, the role that sends the task, does not know if the other role has received it. Though, the task has to be done. </p>
+
+<p>
+If the communication is asynchronous and the communication channel is unreliable, the role that sends the task, does not know if the other role has received it. Though, the task has to be done.
+</p>
+
 <h4>Solution </h4>
-<p>Define a coordination protocol that enables a role master to delegate tasks to a slave. A failed task execution is handled before a new task can be delegated. The master delegates the task and wait for its completion. After a specified time, the master cancels the waiting. The slave executes this task in a certain time and reports if the task was done successfully or if the execution failed. If it failed, the slave does not execute new tasks until the master sends the signal that the error is resolved. </p>
+
+<p>
+Define a coordination protocol that enables a role master to delegate tasks to a slave. A failed task execution is handled before a new task can be delegated. The master delegates the task and wait for its completion. After a specified time, the master cancels the waiting. The slave executes this task in a certain time and reports if the task was done successfully or if the execution failed. If it failed, the slave does not execute new tasks until the master sends the signal that the error is resolved.
+</p>
+
 <h4>Structure </h4>
-<p>The pattern consists of the two roles master and slave. Both roles are in/out roles.Which message each role can receive and send is shown in the message interfaces. The master may send the messages order and continue tthe slave. The slave may send the messages done and fail to the master. The time parameter of the role master is $timeout, the time parameter of role slave is $worktime. The connector may lose messages. The delay for sending a message is defined by the time parameters $delay-min and $delay-max. </p>
-<p><img src=\"images/Fail_Safe_Delegation/Structure.jpg\" alt=\"\"/> </p><p><font style=\"font-size: 7pt; \">Figure 1: Structure of Fail Safe Delegation</font> </p>
-<p><img src=\"images/Fail_Safe_Delegation/Interfaces.jpg\" alt=\"\"/></p>
-<p><small>Figure 2: Interfaces of Fail Safe Delegation </small></p>
+
+<p>
+The pattern consists of the two roles master and slave. Both roles are in/out roles.Which message each role can receive and send is shown in the message interfaces. The master may send the messages order and continue tthe slave. The slave may send the messages done and fail to the master. The time parameter of the role master is $timeout, the time parameter of role slave is $worktime. The connector may lose messages. The delay for sending a message is defined by the time parameters $delay-min and $delay-max.
+</p>
+
+<p>
+<img src=\"images/Fail_Safe_Delegation/Structure.jpg\" alt=\"\"/>
+</p>
+
+<p>
+<small>
+Figure 1: Structure of Fail Safe Delegation
+</small>
+</p>
+
+<p>
+<img src=\"images/Fail_Safe_Delegation/Interfaces.jpg\" alt=\"\"/>
+</p>
+
+<p>
+<small>Figure 2: Interfaces of Fail Safe Delegation </small>
+</p>
+
 <h4>Behavior </h4>
-<p>The role master has the initial state Idle. From this state the master can send the message order() to the slave and the state changes to Waiting. An entry-action in this state resets the clock c0. If the clock c0 reaches the value of $timeout, the master assumes that the order or the answer message got lost or that the slave has fallen out. Then, the state will leave to Idle. If the master receives the message fail() the state will change to FailSafe. If the master receives the message done() the state changes back to Idle. When the master receives the message fail(), it changes to state FailSafe. The pattern assumes that if the master is in state FailSafe, the master execute actions to resolve the problem. Afterward, it sends message continue() changes back to Idle. The role slave is the correspondent part to the master and consists of the initial state Idle and the statesWorking and FailSafe. If it receives the message order the state changes to Working. This state can be leave as soon as the order is done. Then the slave sends done to the master and the state changes back to Idle. An entry-action in the state Working resets the clock c0. If the clock c0 reaches the value of $worktime and the order is not finished yet, the slave has to cancel the order, sends the message fail to the master, and changes to state FailSafe. If the order fails, the slave changes to state FailSafe, too. This state can be leave with the message continue. Then the slave changes back to state Idle. It may happen that the slave receives the message order while it is in state FailSafe. This is only the case, if a message before got lost. As the slave is not allowed to execute the order, it sends the message fail immeditiately and remains in state FailSafe. </p>
-<p><img src=\"images/Fail_Safe_Delegation/Behavior.jpg\" alt =\"\"/></p>
-<p><small>Figure 3: Realtimestatecharts of the Fail Safe Delegation Pattern, showing the behavior of the master and slave role </small></p>
+
+<p>
+The role master has the initial state Idle. From this state the master can send the message order() to the slave and the state changes to Waiting. An entry-action in this state resets the clock c0. If the clock c0 reaches the value of $timeout, the master assumes that the order or the answer message got lost or that the slave has fallen out. Then, the state will leave to Idle. If the master receives the message fail() the state will change to FailSafe. If the master receives the message done() the state changes back to Idle. When the master receives the message fail(), it changes to state FailSafe. The pattern assumes that if the master is in state FailSafe, the master execute actions to resolve the problem. Afterward, it sends message continue() changes back to Idle. The role slave is the correspondent part to the master and consists of the initial state Idle and the statesWorking and FailSafe. If it receives the message order the state changes to Working. This state can be leave as soon as the order is done. Then the slave sends done to the master and the state changes back to Idle. An entry-action in the state Working resets the clock c0. If the clock c0 reaches the value of $worktime and the order is not finished yet, the slave has to cancel the order, sends the message fail to the master, and changes to state FailSafe. If the order fails, the slave changes to state FailSafe, too. This state can be leave with the message continue. Then the slave changes back to state Idle. It may happen that the slave receives the message order while it is in state FailSafe. This is only the case, if a message before got lost. As the slave is not allowed to execute the order, it sends the message fail immeditiately and remains in state FailSafe.
+</p>
+
+<p>
+	<img src=\"images/Fail_Safe_Delegation/Behavior.jpg\" alt =\"\"/>
+</p>
+
+<p>
+	<small>Figure 3: Realtimestatecharts of the Fail Safe Delegation Pattern, showing the behavior of the master and slave role </small>
+</p>
+
 </body>
 </html>"));
   end Fail_Safe_Delegation;
@@ -7401,7 +7558,7 @@ The corresponding Realtime Statechart is shown in the following figure: </p>
           color={0,0,0},
           smooth=Smooth.None));
       connect(T8.outPort, Idle.inPort[1])    annotation (Line(
-          points={{-78,89},{-72,89},{-72,66},{-61.3333,66}},
+          points={{-78,89},{-72,89},{-72,66},{-60.5333,66}},
           color={0,0,0},
           smooth=Smooth.None));
       connect(T10.outPort, CollaborationActive.inPort[1])
@@ -7422,7 +7579,7 @@ The corresponding Realtime Statechart is shown in the following figure: </p>
           color={0,0,0},
           smooth=Smooth.None));
       connect(T7.outPort, Idle.inPort[3])    annotation (Line(
-          points={{-24,73},{-24,94},{-54,94},{-54,66},{-58.6667,66}},
+          points={{-24,73},{-24,94},{-54,94},{-54,66},{-59.4667,66}},
           color={0,0,0},
           smooth=Smooth.None));
       connect(Proposal.message_output_port, OutProposal)
@@ -7437,7 +7594,7 @@ The corresponding Realtime Statechart is shown in the following figure: </p>
           color={0,0,0},
           smooth=Smooth.None));
       connect(Idle.outPort[1],T6. inPort)    annotation (Line(
-          points={{-60,57.4},{-60,54},{-62,54},{-62,50.4}},
+          points={{-59.98,57.86},{-59.98,54},{-62,54},{-62,50.4}},
           color={0,0,0},
           smooth=Smooth.None));
       connect(T6.outPort, Waiting.inPort[1]) annotation (Line(

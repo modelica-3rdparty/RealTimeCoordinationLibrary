@@ -724,6 +724,5 @@ the library and has the following content:
     acknowledgments.</li>
 </ol>
 </body>
-</html>
-"));
+</html>"));
 end UsersGuide;
