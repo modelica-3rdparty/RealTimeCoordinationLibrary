@@ -5309,6 +5309,8 @@ model SelfTransition
   parameter Boolean use_syncReceive = false
       "= true, if using synchronization of kind SEND"
      annotation(Dialog(enable=not (use_syncSend),Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true)));
+  input Integer selectorExpression = 0 "a selector expression"
+    annotation(Dialog(enable=true));
   parameter Boolean use_messageReceive = false
       "= true, if using asynchron messages of kind TRIGGER"
     annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true));
@@ -5331,7 +5333,7 @@ model SelfTransition
 output Boolean fire = T1.fire "= true, if transition fires";
 
  Transition  T1(condition = condition, use_after = use_after,afterTime = afterTime, use_conditionPort=use_conditionPort, use_firePort=use_firePort, use_syncSend = use_syncSend, use_syncReceive = use_syncReceive,
- numberOfSyncSend=numberOfSyncSend,  numberOfSyncReceive=numberOfSyncReceive, use_messageReceive=use_messageReceive, numberOfMessageReceive=numberOfMessageReceive,
+ numberOfSyncSend=numberOfSyncSend,  numberOfSyncReceive=numberOfSyncReceive, selectorExpression=selectorExpression, use_messageReceive=use_messageReceive, numberOfMessageReceive=numberOfMessageReceive,
  numberOfMessageIntegers= numberOfMessageIntegers,numberOfMessageBooleans= numberOfMessageBooleans, numberOfMessageReals=numberOfMessageReals)
     annotation (Placement(transformation(extent={{-8,52},{8,68}})));
   RealTimeCoordination.Step
@@ -5518,6 +5520,8 @@ model Transition
   parameter Boolean use_syncReceive = false
       "= true, if using synchronization of kind SEND"
      annotation(Dialog(enable=not (use_syncSend),Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true)));
+  input Integer selectorExpression = 0 "a selector expression"
+    annotation(Dialog(enable=true));
   parameter Boolean use_messageReceive = false
       "= true, if using asynchron messages of kind TRIGGER"
     annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true));
@@ -5644,7 +5648,7 @@ equation
 
   for i in 1:numberOfSyncSend loop
     //Determine the synchronization condition
-    localSender[i].fire_ready_s = preFire and not pre(fire) and localSender[i].fire_ready_r and (Modelica_StateGraph2.Blocks.BooleanFunctions.anyTrue(localtransition_input_port.hasMessage) or not use_messageReceive);
+    localSender[i].fire_ready_s = preFire and not pre(fire) and localSender[i].fire_ready_r and (selectorExpression == localSender[i].selector_expression_r) and (Modelica_StateGraph2.Blocks.BooleanFunctions.anyTrue(localtransition_input_port.hasMessage) or not use_messageReceive);
     localSender[i].fire_s =  Modelica_StateGraph2.Blocks.BooleanFunctions.firstTrueIndex(localSender.fire_r) == i and (messageFire or not use_messageReceive);
 
   end for;
@@ -5652,6 +5656,7 @@ equation
   for i in 1:numberOfSyncReceive loop
     //Determine the synchronization condition
     localReceiver[i].fire_ready_r = preFire and not pre(fire) and (Modelica_StateGraph2.Blocks.BooleanFunctions.anyTrue(localtransition_input_port.hasMessage) or not use_messageReceive);
+    localReceiver[i].selector_expression_r = selectorExpression;
     //The connection with lower array index has higher priority and will fire!
     localReceiver[i].fire_r = Modelica_StateGraph2.Blocks.BooleanFunctions.firstTrueIndex(localReceiver.fire_ready_s) == i and (messageFire or not use_messageReceive);
 
@@ -6934,6 +6939,7 @@ package Internal "Internal utility models (should usually not be used by user)"
           input Boolean fire_s;
           output Boolean fire_ready_r;
           output Boolean fire_r;
+          input Integer selector_expression_r;
           annotation (Icon(graphics={
                           Ellipse(
                   extent={{-100,100},{100,-100}},
@@ -6947,6 +6953,7 @@ package Internal "Internal utility models (should usually not be used by user)"
           output Boolean fire_s;
           input Boolean fire_ready_r;
           input Boolean fire_r;
+          output Integer selector_expression_r;
           annotation (Icon(graphics={
                           Ellipse(
                   extent={{-100,100},{100,-100}},
