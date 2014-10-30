@@ -3449,7 +3449,7 @@ end UsersGuide;
             smooth=Smooth.None));
         connect(T9.inPort, front.outPort[1]) annotation (Line(
             points={{40,30},{40,8},{46,8},{46,-16},{44,-16},{44,-15.4},{42.6667,
-              -15.4}},
+                -15.4}},
             color={0,0,0},
             smooth=Smooth.None));
         connect(T9.outPort, NoConvoyV.inPort[2]) annotation (Line(
@@ -5788,9 +5788,13 @@ end Transition;
 
  model Message
     "Defines a message type and sends a message instance on Boolean input signal."
-
   parameter Integer nIn(min=0)=0
    annotation(Dialog(__Dymola_connectorSizing=true), HideResult=true);
+
+   parameter Boolean appendMessageResults= false;
+   parameter Boolean logMessageResults= true;
+  parameter String filename = "MessageResults.txt";
+
   input Modelica.Blocks.Interfaces.BooleanInput conditionPort[nIn]
       "trigger input port for sending messages"
      annotation (Placement(transformation(extent={{-140,-116},{-100,-76}})));
@@ -5826,6 +5830,11 @@ end Transition;
       "output port for sending message"              annotation (
        Placement(transformation(extent={{80,-20},{100,0}}), iconTransformation(
            extent={{80,-20},{100,0}})));
+ initial algorithm
+   if
+     (not appendMessageResults and logMessageResults) then
+      Modelica.Utilities.Files.removeFile(filename);
+   end if;
  algorithm
     when Modelica_StateGraph2.Blocks.BooleanFunctions.anyTrue(conditionPort) then
         message_output_port.t :=time;
@@ -5833,7 +5842,11 @@ end Transition;
         message_output_port.booleans := u_booleans;
         message_output_port.reals := u_reals;
         message_output_port.instanceId :=message_output_port.instanceId + 1;
-        //message_output_port.strings := u_strings;
+        if
+          (logMessageResults) then
+          Modelica.Utilities.Streams.print("Send instance "+ String(message_output_port.instanceId)+" of message " + getInstanceName()  +" at time "+String(time),filename);
+        end if;
+       //message_output_port.strings := u_strings;
     end when;
  equation
       //message_output_port.message.integers = u_integers;
