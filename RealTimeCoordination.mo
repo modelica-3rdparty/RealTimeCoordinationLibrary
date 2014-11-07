@@ -6478,7 +6478,7 @@ Variable <b>y</b> is both a variable and a connector.
       equation
        localCondition=conditionPort;
          when clockValue >  bound and pre(localCondition) then
-          Modelica.Utilities.Streams.error("Invariant - " +String(clockValue) + " > " + String(bound) + " -  error! ");
+          Modelica.Utilities.Streams.error("Invariant "+getInstanceName()+": " +String(clockValue) + " > " + String(bound) + " -  error! ");
        end when;
 
         annotation (
@@ -6547,7 +6547,7 @@ Variable <b>y</b> is both a variable and a connector.
       equation
        localCondition=conditionPort;
        when clockValue >=  bound and pre(localCondition) then
-          Modelica.Utilities.Streams.error("Invariant : " +String(clockValue) + " >= " + String(bound) + " :  error! ");
+          Modelica.Utilities.Streams.error("Invariant "+getInstanceName()+": " +String(clockValue) + " >= " + String(bound) + " :  error! ");
        end when;
         annotation (
           Icon(coordinateSystem(
