@@ -2,10 +2,10 @@ within ;
 package RealTimeCoordinationLibrary "Components for defining clocks, time constraints, and invariants."
 
 
-  annotation (uses(Modelica(version="3.2"),
-      Modelica_StateGraph2(version="2.0.1")),
+  annotation (uses(Modelica(version="3.2.1"), Modelica_StateGraph2(version=
+          "2.0.2")),
     preferredView="info",
-    version="1.0.2",
+    version="1.0.4",
     versionBuild=1,
     versionDate="2013-04-04",
     dateModified = "2012-04-04",
