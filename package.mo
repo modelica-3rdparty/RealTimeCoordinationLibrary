@@ -41,6 +41,6 @@ Realtime Coordination Library</title></head>
 <p>Name: RealTimeCoordinationLibrary</p>
 <p>Path: RealTimeCoordinationLibrary</p>
 <p>Version: 1.0.2, 2013-04-04, build 1 (2013-04-04)</p>
-<p>Uses:Modelica (version=&quot;3.2&quot;), Modelica_StateGraph2 (version=&quot;2.0.2&quot;)</p>
+<p>Uses:Modelica (version=&quot;3.2.1&quot;), Modelica_StateGraph2 (version=&quot;2.0.2&quot;)</p>
 </html>"));
 end RealTimeCoordinationLibrary;

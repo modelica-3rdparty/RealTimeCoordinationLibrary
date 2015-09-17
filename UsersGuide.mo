@@ -47,7 +47,7 @@ extends Modelica.Icons.Information;
 <head><title>RealTimeCoordinationLibrary.UsersGuide.Release_Notes</title></head>
 <body>
 <h4>Version 1.0.0, 2012-05-21</h4>
-<p>Uses Modelica Standard Library 3.2 </p>
+<p>Uses Modelica Standard Library 3.2.1 </p>
 <p>First version of the real-time coordination library based on StateGraph2, Modelica.StateGraph and the prototype ModeGraph library from Martin Malmheden. </p>
 <h4>Version 1.0.1, 2012-10-08</h4>
 <p>Changed Transition Class</p>

@@ -9,7 +9,7 @@ LibraryInfoMenuCommand(
   version="1.0.2",
   isModel=true,
   description="RealTimeCoordination Library (1.0.2) by Fraunhofer IPT, Project Group Mechatronic Design and Software Engineering Group, Heinz Nixdorf Institute Paderborn",
-  ModelicaVersion="3.2",
+  ModelicaVersion="3.2.1",
   pos=1011)
 
 // LibraryInfoPreload(reference="RealTimeCoordinationLibrary")
