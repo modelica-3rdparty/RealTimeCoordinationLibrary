@@ -1902,7 +1902,8 @@ end UsersGuide;
               points={{-8,50.2},{-6,50.2},{-6,62.24},{-5.2,62.24}},
               color={255,0,255},
               smooth=Smooth.None));
-          annotation (Diagram(graphics));
+          annotation (Diagram(coordinateSystem(preserveAspectRatio=false,
+                  extent={{-100,-100},{100,100}})));
         end senderComponent;
 
         model receiverComponent
@@ -1960,7 +1961,8 @@ end UsersGuide;
               points={{-66.8,-10.8},{-42.4,-10.8},{-42.4,15.1},{-18.12,15.1}},
               color={0,0,0},
               smooth=Smooth.None));
-          annotation (Diagram(graphics));
+          annotation (Diagram(coordinateSystem(preserveAspectRatio=false,
+                  extent={{-100,-100},{100,100}})));
         end receiverComponent;
       end SecondExample;
 
