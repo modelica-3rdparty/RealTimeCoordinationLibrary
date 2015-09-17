@@ -3772,7 +3772,7 @@ V1.6 Viscous friction is added to the model. <br>
 <p>
 <i>Version 3.1 <br> Created 14.12.2010 <br> Last modified 11.04.2011 </i> <br><br>
 
-Model of robot with two wheels, actuated independantly by two DC motors. <br>
+Model of robot with two wheels, actuated independently by two DC motors. <br>
 The model is made up of following parts: <br>
 - DC Motor based on Faulhaber 1724 motor with a gear having a ratio of 14.4 <br>
 - Motor is attached to an inertia block which includes a friction model <br>
@@ -4846,7 +4846,7 @@ equation
 
   for i in 1:numberOfMessageReceive loop
     // Determine if the transition is ready to receive a message
-    // 1. All transition conditions must be fufilled (preFire = true)
+    // 1. All transition conditions must be fulfilled (preFire = true)
     // 2. The Mailbox must have a message
     // 3. If also a synchronization needs to be performed, both transitions must be ready to fire
     localtransition_input_port[i].active = preFire and localtransition_input_port[i].hasMessage
@@ -5141,7 +5141,7 @@ end Transition;
    Real realTemp[nOut*numberOfMessageReals];
    Real timeTemp[nOut];
    Boolean booleanTemp[nOut*numberOfMessageBooleans];
-   Integer instaceIdTemp[nOut];
+   Integer instanceIdTemp[nOut];
    Integer ownerIdTemp[nOut];
 
   //Temp variables which are used to test if the messageInstance is already in the queue.
@@ -5269,7 +5269,7 @@ end Transition;
            time_q.tail,
            time_q.head);
 
-        (instanceId_q.vec,instaceIdTemp[i],instanceId_q.tail,instanceId_q.head)
+        (instanceId_q.vec,instanceIdTemp[i],instanceId_q.tail,instanceId_q.head)
           :=
           RealTimeCoordinationLibrary.RealTimeCoordination.Internal.Interfaces.Asynchron.IntQueue.dequeue(
            instanceId_q.vec,

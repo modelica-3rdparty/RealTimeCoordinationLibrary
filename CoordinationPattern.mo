@@ -259,7 +259,7 @@ The pattern consists of the role partner, which is a in/out role. The message th
 <p><small>Figure 2: Interfaces of the Turn-Transmission Pattern</small></p>
 <h4> Behavior </h4>
 <p>
-In order to distinguish between the two partners in this section, they are called partner1 and partner2. Both, partner1 or partner2, may start the cooperation. Assuming partner1 wants to start the cooperation, then it sends the message turn() to partner2 and changes its state to 'YourTurn', which means that partner1 is not actively solving this task anymore but gives it turn to partner1. Consequently, by receiving the turn() message from partner1, partner2 is now the acitve partner and changes its state to 'MyTurn'. Now both partners may change their 'roles' between 'MyTurn' and 'YourTurn'sequentially, such that they are always in the corresponding 'counterstate'. If a partner decides to end the cooperation, either because the task is fullfilled or in case of a failure, it can always change its state back to inactive. Furthermore if a partner does not receive any message from the counterpart, then after a certain amount of time units it changes it changes its state back to inactive via the timeout transition.
+In order to distinguish between the two partners in this section, they are called partner1 and partner2. Both, partner1 or partner2, may start the cooperation. Assuming partner1 wants to start the cooperation, then it sends the message turn() to partner2 and changes its state to 'YourTurn', which means that partner1 is not actively solving this task anymore but gives it turn to partner1. Consequently, by receiving the turn() message from partner1, partner2 is now the acitve partner and changes its state to 'MyTurn'. Now both partners may change their 'roles' between 'MyTurn' and 'YourTurn'sequentially, such that they are always in the corresponding 'counterstate'. If a partner decides to end the cooperation, either because the task is fulfilled or in case of a failure, it can always change its state back to inactive. Furthermore if a partner does not receive any message from the counterpart, then after a certain amount of time units it changes it changes its state back to inactive via the timeout transition.
 </p>
 
 <p><img src=\"images/Turn_Transmission/Behavior.jpg\" alt =\"\" ></p>
@@ -2037,7 +2037,7 @@ Two bebots drive in a line, so there is a RearBebot and a FrontBebot. So that no
       parameter Real startPos = 0
             "The one dimensional starting position of the bebot";
       parameter Boolean breakingPossible = true
-            "This parameter has no effect if the Bebot is in front. Otherwise it defines, wether the rear bebot is able to break or nota after the break request of the front bebot";
+            "This parameter has no effect if the Bebot is in front. Otherwise it defines, whether the rear bebot is able to break or nota after the break request of the front bebot";
       inner parameter Real  timeOfBreakRequest = 1.5
             "This parameteris has only an effect if the bebot is in front. It defines the time when the front bebot should send the break request.";
       parameter Real breakForce = -1;
@@ -2340,7 +2340,7 @@ Two bebots drive in a line, so there is a RearBebot and a FrontBebot. So that no
             points={{36.9333,14},{58,14},{58,-42},{-60,-42},{-60,-4.24},{
                   -32.1333,-4.24}}));
       //when FrontBebot.startPos <= RearBebot.startPos then
-       // Modelica.Utilities.Streams.error("The position of the FrontBebot must be greater then the position of the RearBebot!");
+       // Modelica.Utilities.Streams.error("The position of the FrontBebot must be greater than the position of the RearBebot!");
       //end when;
         connect(RearBebot.velocity, robot_V3_1.omegaL_des) annotation (Line(
             points={{-22.4,-15.04},{-22.4,-33.52},{-51,-33.52},{-51,-52}},
@@ -2363,7 +2363,7 @@ Fail_Safe_Delegation.FinalSystemMain
 </head>
 <body>
 <h3>szenario</h3>
-<p>Two Bebots drive in a line, so one is in front, namely the \"FrontBebot\", and the other one is rear, called \"RearBebot\" in the model. Together they form a convoy. Since the bebots are driving in a convoy and should not collide, they are using the same acceleration function. After 'timeOfBreakRequest' seconds the FrontBebot tries to break, but it has to negotiate its break force with the RearBebot, since the distance between both bebots is very small. Therefore the FrontBebot sends its maximum break force to the rear. The rear checks wether it can also break with the same intense. In case it can break, it answers the request with a 'Done' message and both break with the break force of the front. Else it sends a 'fail' message with its possible break force and both break with the break force of the rear.</p>
+<p>Two Bebots drive in a line, so one is in front, namely the \"FrontBebot\", and the other one is rear, called \"RearBebot\" in the model. Together they form a convoy. Since the bebots are driving in a convoy and should not collide, they are using the same acceleration function. After 'timeOfBreakRequest' seconds the FrontBebot tries to break, but it has to negotiate its break force with the RearBebot, since the distance between both bebots is very small. Therefore the FrontBebot sends its maximum break force to the rear. The rear checks whether it can also break with the same intense. In case it can break, it answers the request with a 'Done' message and both break with the break force of the front. Else it sends a 'fail' message with its possible break force and both break with the break force of the rear.</p>
 </body>
 </html>"));
       end FinalSystemMain;
@@ -2519,7 +2519,7 @@ Fail_Safe_Delegation.FinalSystemMain
 
       model TrackSectionControl
 
-        Modelica.Blocks.Interfaces.BooleanInput accidentOccured
+        Modelica.Blocks.Interfaces.BooleanInput accidentOccurred
           annotation (Placement(transformation(extent={{-13,-13},{13,13}},
               rotation=180,
               origin={103,89})));
@@ -2553,10 +2553,10 @@ Fail_Safe_Delegation.FinalSystemMain
             points={{55.6,-0.4},{56,0},{56,-14},{98,-14}}));
         connect(guard.Out_Free, free) annotation (Line(
             points={{56.4,25.8},{55.1,25.8},{55.1,54},{100,54}}));
-        connect(accidentOccured, guard.blocked) annotation (Line(
+        connect(accidentOccurred, guard.blocked) annotation (Line(
             points={{103,89},{103,87.5},{47.8,87.5},{47.8,-1}},
             color={255,0,255}));
-        connect(accidentOccured, not1.u) annotation (Line(
+        connect(accidentOccurred, not1.u) annotation (Line(
             points={{103,89},{75.5,89},{75.5,97.2},{38,97.2}},
             color={255,0,255}));
         connect(not1.y, guard.free) annotation (Line(
@@ -2651,10 +2651,10 @@ Fail_Safe_Delegation.FinalSystemMain
   connect(bebot.delegationPortsBlocked[2], section2.blocked);
   connect(bebot.delegationPortsFree[2], section2.free);*/
 
-        connect(accidentOnSection2.y, section2.accidentOccured) annotation (Line(
+        connect(accidentOnSection2.y, section2.accidentOccurred) annotation (Line(
             points={{22,-19},{20,-2},{20,23.7},{20.9,23.7}},
             color={255,0,255}));
-        connect(accidentOnSection1.y, section1.accidentOccured) annotation (Line(
+        connect(accidentOnSection1.y, section1.accidentOccurred) annotation (Line(
             points={{-28,-19},{0,-19},{0,23.7},{0.9,23.7}},
             color={255,0,255}));
         connect(bebot.delegationPortsBlocked[1], section1.blocked) annotation (
@@ -3055,7 +3055,7 @@ BlockExecution.FinalSystemMain
 <head>
 <title>Szenario Description</title>
 </head>
-<body><p>Two bebots drive in a line. The front bebot asks wether they should form a convoy. If the rear bebot is ready, they join an form a convoy, else if it is not ready, the front rebot will repeat its request later on, as long as the variable startTransmission equals true.<p>
+<body><p>Two bebots drive in a line. The front bebot asks whether they should form a convoy. If the rear bebot is ready, they join an form a convoy, else if it is not ready, the front rebot will repeat its request later on, as long as the variable startTransmission equals true.<p>
 </body>
 </html>"));
         end FinalSystemMain;
@@ -4496,7 +4496,7 @@ end Examples;
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.Fail_Operational_Delegation.Delegation_Master</title></head>
 <body>
 <h3> Delegation_Master </h3>
-<p>This class implements the behavior of the role Delegation_Master in the &quot;Fail-Operational Delegation&quot; pattern. The master component wants to delegate a task to the slave component, being responsible for executing the task. The slave component can report the task execuition with either &quot;done&quot; or &quot;fail&quot;, informing the master wether the delegation was successful or not. More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Fail_Operational_Delegation\">here</a>&quot; The corresponding Realtime Statechart is shown in the following figure: </p>
+<p>This class implements the behavior of the role Delegation_Master in the &quot;Fail-Operational Delegation&quot; pattern. The master component wants to delegate a task to the slave component, being responsible for executing the task. The slave component can report the task execuition with either &quot;done&quot; or &quot;fail&quot;, informing the master whether the delegation was successful or not. More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Fail_Operational_Delegation\">here</a>&quot; The corresponding Realtime Statechart is shown in the following figure: </p>
 <p><img src=\"images/Fail_Operational_Delegation/RTS_Fail-OperationalDelegation_Master.jpg\" alt =\"\"/> </p>
 <p><small>Figure 1: Realtimestatechart, showing the behavior of the master role </small></p>
 <p>The master has a parameter &quot;timeout&quot;, specifying the time that the master waits for a reply of the slave (which can be either &quot;fail&quot; or &quot;done&quot; in case of a failure or a success resp.). </p>
@@ -4628,7 +4628,7 @@ end Examples;
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.Fail_Operational_Delegation.Delegation_Slave</title></head>
 <body>
 <h3> Delegation_Slave </h3>
-<p>This class implements the behavior of the role Delegation_Slave in the &quot;Fail-Operational Delegation&quot; pattern. The master component wants to delegate a task to the slave component, being responsible for executing the task. The slave component can report the task execuition with either &quot;done&quot; or &quot;fail&quot;, informing the master wether the delegation was successful or not. More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Fail_Operational_Delegation\">here</a>&quot; The corresponding Realtime Statechart is shown in the following figure: </p>
+<p>This class implements the behavior of the role Delegation_Slave in the &quot;Fail-Operational Delegation&quot; pattern. The master component wants to delegate a task to the slave component, being responsible for executing the task. The slave component can report the task execuition with either &quot;done&quot; or &quot;fail&quot;, informing the master whether the delegation was successful or not. More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Fail_Operational_Delegation\">here</a>&quot; The corresponding Realtime Statechart is shown in the following figure: </p>
 <p><img src=\"images/Fail_Operational_Delegation/RTS_Fail-OperationalDelegation_Slave.jpg\" alt =\"\"/> </p>
 <p><small>Figure 1: Realtimestatechart, showing the behavior of the slave role </small></p>
 <p>The slave has a parameter &quot;worktime&quot;, specifying the maximum amount of time that the slave may use to execute the task. </p>
@@ -5230,7 +5230,7 @@ This class implements the behavior of the role Peer in the &quot;Master-Slave-As
 </p>
 
 <p>
-The peer has the following parameters (The paramter names may differ in the Realtimestatechart and in the Modelica Model. So if there exist two names for the same parameter, both are listed as \"name in Realtimestatechart\"/\"name in Modelica\":</p>
+The peer has the following parameters (The parameter names may differ in the Realtimestatechart and in the Modelica Model. So if there exist two names for the same parameter, both are listed as \"name in Realtimestatechart\"/\"name in Modelica\":</p>
 
 <dl>
   <dt> $tries:</dt>
@@ -5249,7 +5249,7 @@ The peer has the following parameters (The paramter names may differ in the Real
 
   <dd>$timeout1/$timeoutMasterProposed:</dd>
     <dt>
-      Specifies the time the peer that tries to be the master peer waits for a reply of the slave peer. If there is no reply after $timeout1 time units, the assignment was not successfull and the peer changes its state to the 			\"NoAssignment\" state.
+      Specifies the time the peer that tries to be the master peer waits for a reply of the slave peer. If there is no reply after $timeout1 time units, the assignment was not successful and the peer changes its state to the 			\"NoAssignment\" state.
     </dt>
 
   <dd>$period:</dd>
@@ -5605,7 +5605,7 @@ fallen out.
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.Turn_Transmission.Turn_Transmission_Partner</title></head>
 <body>
 <h3> Turn-Transmission Partner </h3>
-<p>This class implements the behavior of the role partner of the Turn-Transmission-Pattern. This is the only role of the pattern. In order to distinguish between the two partners in this section, they are called partner1 and partner2. Both, partner1 or partner2, may start the cooperation. Assuming partner1 wants to start the cooperation, then it sends the message turn() to partner2 and changes its state to 'YourTurn', which means that partner1 is not actively solving this task anymore but gives it turn to partner1. Consequently, by receiving the turn() message from partner1, partner2 is now the acitve partner and changes its state to 'MyTurn'. Now both partners may change their 'roles' between 'MyTurn' and 'YourTurn'sequentially, such that they are always in the corresponding 'counterstate'. If a partner decides to end the cooperation, either because the task is fullfilled or in case of a failure, it can always change its state back to inactive. Furthermore if a partner does not receive any message from the counterpart, then after a certain amount of time units it changes it changes its state back to inactive via the timeout transition.
+<p>This class implements the behavior of the role partner of the Turn-Transmission-Pattern. This is the only role of the pattern. In order to distinguish between the two partners in this section, they are called partner1 and partner2. Both, partner1 or partner2, may start the cooperation. Assuming partner1 wants to start the cooperation, then it sends the message turn() to partner2 and changes its state to 'YourTurn', which means that partner1 is not actively solving this task anymore but gives it turn to partner1. Consequently, by receiving the turn() message from partner1, partner2 is now the acitve partner and changes its state to 'MyTurn'. Now both partners may change their 'roles' between 'MyTurn' and 'YourTurn'sequentially, such that they are always in the corresponding 'counterstate'. If a partner decides to end the cooperation, either because the task is fulfilled or in case of a failure, it can always change its state back to inactive. Furthermore if a partner does not receive any message from the counterpart, then after a certain amount of time units it changes it changes its state back to inactive via the timeout transition.
 
  More information concerning the pattern can be found
 &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Turn_Transmission\">here</a>&quot;
@@ -5660,7 +5660,7 @@ The pattern consists of the role partner, which is a in/out role. The message th
 <p><small>Figure 2: Interfaces of the Turn-Transmission Pattern</small></p>
 <h4> Behavior </h4>
 <p>
-In order to distinguish between the two partners in this section, they are called partner1 and partner2. Both, partner1 or partner2, may start the cooperation. Assuming partner1 wants to start the cooperation, then it sends the message turn() to partner2 and changes its state to 'YourTurn', which means that partner1 is not actively solving this task anymore but gives it turn to partner1. Consequently, by receiving the turn() message from partner1, partner2 is now the acitve partner and changes its state to 'MyTurn'. Now both partners may change their 'roles' between 'MyTurn' and 'YourTurn'sequentially, such that they are always in the corresponding 'counterstate'. If a partner decides to end the cooperation, either because the task is fullfilled or in case of a failure, it can always change its state back to inactive. Furthermore if a partner does not receive any message from the counterpart, then after a certain amount of time units it changes it changes its state back to inactive via the timeout transition.
+In order to distinguish between the two partners in this section, they are called partner1 and partner2. Both, partner1 or partner2, may start the cooperation. Assuming partner1 wants to start the cooperation, then it sends the message turn() to partner2 and changes its state to 'YourTurn', which means that partner1 is not actively solving this task anymore but gives it turn to partner1. Consequently, by receiving the turn() message from partner1, partner2 is now the acitve partner and changes its state to 'MyTurn'. Now both partners may change their 'roles' between 'MyTurn' and 'YourTurn'sequentially, such that they are always in the corresponding 'counterstate'. If a partner decides to end the cooperation, either because the task is fulfilled or in case of a failure, it can always change its state back to inactive. Furthermore if a partner does not receive any message from the counterpart, then after a certain amount of time units it changes it changes its state back to inactive via the timeout transition.
 </p>
 
 <p><img src=\"images/Turn_Transmission/Behavior.jpg\"  alt =\"\"></p>
@@ -5794,7 +5794,7 @@ In order to distinguish between the two partners in this section, they are calle
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.Limit_Observation.Provider</title></head>
 <body>
 <h3> Provider </h3>
-This class implements the role Provider of the Limit-Observation-Pattern. The provider is responsible for collecting numerical information. The observer wants to know, wether this information violated a certain limit or not. Therefore the provider sends the limitViolated() message to the observer, if the information violates a certain limit, and it sends the limitRedeemed() message to the observer, if the violation has stopped.More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Limit_Observation\">here</a>&quot;. <p>The behavoir can be seen in the following statechart.
+This class implements the role Provider of the Limit-Observation-Pattern. The provider is responsible for collecting numerical information. The observer wants to know, whether this information violated a certain limit or not. Therefore the provider sends the limitViolated() message to the observer, if the information violates a certain limit, and it sends the limitRedeemed() message to the observer, if the violation has stopped.More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Limit_Observation\">here</a>&quot;. <p>The behavoir can be seen in the following statechart.
 The provider has the parameter $worktime, which specifies the number of time units, that the initial measurement of the numerical information shuold need at most. </p>
 <p><img src=\"images/Limit-Observation/parameters_provider.jpg\"alt = \"\"></p>
 <p><small>Figure 1: Parameters of the provider </small></p>
@@ -5922,7 +5922,7 @@ The provider has the parameter $worktime, which specifies the number of time uni
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.Limit_Observation.Observer</title></head>
 <body>
 <h3> Observer </h3>
-This class implements the role Provider of the Limit-Observation-Pattern. The provider is responsible for collecting numerical information. The observer wants to know, wether this information violated a certain limit or not. Therefore the provider sends the limitViolated() message to the observer, if the information violates a certain limit, and it sends the limitRedeemed() message to the observer, if the violation has stopped.More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Limit_Observation\">here</a>&quot;. <p>The behavoir can be seen in the following statechart.
+This class implements the role Provider of the Limit-Observation-Pattern. The provider is responsible for collecting numerical information. The observer wants to know, whether this information violated a certain limit or not. Therefore the provider sends the limitViolated() message to the observer, if the information violates a certain limit, and it sends the limitRedeemed() message to the observer, if the violation has stopped.More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Limit_Observation\">here</a>&quot;. <p>The behavoir can be seen in the following statechart.
 The observer has no parameters. </p>
 <p><img src=\"images/Limit-Observation/Observer-Behavior.jpg\" alt = \"\"></p>
 <p><small>Figure 1: Realtimestatechart, showing the behavior of the observer role </small></p>
@@ -6161,12 +6161,12 @@ if value redeems the limit.
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.Fail_Safe_Delegation.Safe_Delegation_Master</title></head>
 <body>
 <h3>Safe_Delegation_Master</h3>
-<p>This class implements the role Master of the Fail-Safe-Delgation-Pattern. The master component wants to delegate a task to the slave component, being responsible for executing the task. The slave component can report the task execuition with either &quot;done&quot; or &quot;fail&quot;, informing the master wether the delegation was successful or not. More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Fail_Safe_Delegation\">here</a>&quot;. </p>
+<p>This class implements the role Master of the Fail-Safe-Delgation-Pattern. The master component wants to delegate a task to the slave component, being responsible for executing the task. The slave component can report the task execuition with either &quot;done&quot; or &quot;fail&quot;, informing the master whether the delegation was successful or not. More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Fail_Safe_Delegation\">here</a>&quot;. </p>
 <p>The behavoir can be seen in the following statechart. </p>
 <p><img src=\"images/Fail_Safe_Delegation/Behavior_Master.jpg\" alt=\"\"/></p>
 <p><small>Figure 1:  Realtimestatechart showing the behavior of the role master</small></p>
-<p>The Master has a paramter $timeout, which is specifies the time the master may stay at most in the state of &apos;Waiting&apos;, e. g. it specifies the maximum time the Master waits for a reply of the slave after ordering the delegation. </p>
-<p><img src=\"images/Fail_Safe_Delegation/Paramater_Master.jpg\" alt=\"\"/></p>
+<p>The Master has a parameter $timeout, which is specifies the time the master may stay at most in the state of &apos;Waiting&apos;, e. g. it specifies the maximum time the Master waits for a reply of the slave after ordering the delegation. </p>
+<p><img src=\"images/Fail_Safe_Delegation/Parameter_Master.jpg\" alt=\"\"/></p>
 <p><small>Figure 2: Parameters of the role master.</small></p>
 </body>
 </html>"));
@@ -6327,12 +6327,12 @@ if value redeems the limit.
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.Fail_Safe_Delegation.Safe_Delegation_Slave</title></head>
 <body>
 <h3>Safe_Delegation_Master</h3>
-<p>This class implements the role Master of the Fail-Safe-Delgation-Pattern. TThis class implements the behavior of the role Delegation_Slave in the &quot;Fail-Operational Delegation&quot; pattern. The master component wants to delegate a task to the slave component, being responsible for executing the task. The slave component can report the task execuition with either &quot;done&quot; or &quot;fail&quot;, informing the master wether the delegation was successful or not. More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Fail_Safe_Delegation\">here</a>&quot;. </p>
+<p>This class implements the role Master of the Fail-Safe-Delgation-Pattern. TThis class implements the behavior of the role Delegation_Slave in the &quot;Fail-Operational Delegation&quot; pattern. The master component wants to delegate a task to the slave component, being responsible for executing the task. The slave component can report the task execuition with either &quot;done&quot; or &quot;fail&quot;, informing the master whether the delegation was successful or not. More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Fail_Safe_Delegation\">here</a>&quot;. </p>
 <p>The behavior can be seen in the following statechart. </p>
 <p><img src=\"images/Fail_Safe_Delegation/Behavior_Slave.jpg\" alt =\"\"/></p>
 <p><small>Figure 1:  Realtimestatechart showing the behavior of the role slave</small></p>
-<p>The slave has a paramter $worktime, which specifies the time the slave may stay at most in the state of &apos;Working&apos;, e. g. it specifies the maximum time the Slave may be working on the task. </p>
-<p><img src=\"images/Fail_Safe_Delegation/Paramater_Slave.jpg\" alt =\"\"/></p>
+<p>The slave has a parameter $worktime, which specifies the time the slave may stay at most in the state of &apos;Working&apos;, e. g. it specifies the maximum time the Slave may be working on the task. </p>
+<p><img src=\"images/Fail_Safe_Delegation/Parameter_Slave.jpg\" alt =\"\"/></p>
 <p><small>Figure 2: Parmaters of the role slave.</small></p>
 </body>
 </html>"));
@@ -6578,7 +6578,7 @@ The role master has the initial state Idle. From this state the master can send 
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.Synchronized_Collaboration.Collaboration_Slave</title></head>
 <body>
 <h3> Collaboration_Slave </h3>
-<p>This class implements the behavior of the role Slave of the Synchronized-Collaboration Pattern. The master wants to collaborate with the slave in order to fulfill a certain task. The slave receives the proposal and has to determine, wether it wants to collaborate with the master or not. The evalution result is reported to the master. If the collaboration is accepted by the slave, both (master and slave) change their state to 'CollaborationActive'. Only the master can decide to quit the collaboration.
+<p>This class implements the behavior of the role Slave of the Synchronized-Collaboration Pattern. The master wants to collaborate with the slave in order to fulfill a certain task. The slave receives the proposal and has to determine, whether it wants to collaborate with the master or not. The evalution result is reported to the master. If the collaboration is accepted by the slave, both (master and slave) change their state to 'CollaborationActive'. Only the master can decide to quit the collaboration.
 
  More information concerning the pattern can be found
 &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.SynchronizedCollaboration\">here</a>&quot;
@@ -6586,7 +6586,7 @@ The corresponding Realtime Statechart is shown in the following figure: </p>
 <p><img src=\"images/Synchronized_Collaboration/Behavior_Slave.jpg\" alt=\"\"/> </p>
 <p><small>Figure 1: Realtimestatechart, showing the behavior of the slave role </small></p>
 <p>The slave has a parameter $evaluationtime, specifying the time that the slave may need at most to evaluate the collaboration proposal. </p>
-<p><img src=\"images/Synchronized_Collaboration/Paramaters_Slave.jpg\" alt=\"\"/> </p>
+<p><img src=\"images/Synchronized_Collaboration/Parameters_Slave.jpg\" alt=\"\"/> </p>
 <p><small>Figure 2: Realtimestatechart, showing the parameters of the slave role </small></p>
 </body>
 </html>"));
@@ -6759,7 +6759,7 @@ The corresponding Realtime Statechart is shown in the following figure: </p>
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.Synchronized_Collaboration.Collaboration_Master</title></head>
 <body>
 <h3> Collaboration_Master </h3>
-<p>This class implements the behavior of the role Master of the Synchronized-Collaboration Pattern. The master wants to collaborate with the slave in order to fulfill a certain task. The slave receives the proposal and has to determine, wether it wants to collaborate with the master or not. The evalution result is reported to the master. If the collaboration is accepted by the slave, both (master and slave) change their state to 'CollaborationActive'. Only the master can decide to quit the collaboration.
+<p>This class implements the behavior of the role Master of the Synchronized-Collaboration Pattern. The master wants to collaborate with the slave in order to fulfill a certain task. The slave receives the proposal and has to determine, whether it wants to collaborate with the master or not. The evalution result is reported to the master. If the collaboration is accepted by the slave, both (master and slave) change their state to 'CollaborationActive'. Only the master can decide to quit the collaboration.
 
  More information concerning the pattern can be found
 &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.SynchronizedCollaboration\">here</a>&quot;
@@ -6768,7 +6768,7 @@ The corresponding Realtime Statechart is shown in the following figure: </p>
 <p><small>Figure 1: Realtimestatechart, showing the behavior of the master role </small></p>
 
 <p>The master has a parameter $timeout, specifying the time that the master waits at most for the report of the slave. </p>
-<p><img src=\"images/Synchronized_Collaboration/Paramaters_Master.jpg\" alt =\"\"/> </p>
+<p><img src=\"images/Synchronized_Collaboration/Parameters_Master.jpg\" alt =\"\"/> </p>
 <p><small>Figure 2: Realtimestatechart, showing the parameters of the master role </small></p>
 </body>
 </html>"));
@@ -6920,7 +6920,7 @@ deactivate the collaboration. He informs the slave so that he also deactivates i
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.Block_Execution.Guard</title></head>
 <body>
 <h3> Guard </h3>
-This class implements the behavior of the role guard of the Block-Execution-Pattern. The guard controls the exection of a certain task, which is done by a different component, which implements the executor role. It can start and stop the exectution by sending the free() and the block() message to the executor. More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Block_Execution\">here</a>&quot;. <p>The behavoir can be seen in the following statechart.
+This class implements the behavior of the role guard of the Block-Execution-Pattern. The guard controls the execution of a certain task, which is done by a different component, which implements the executor role. It can start and stop the exectution by sending the free() and the block() message to the executor. More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Block_Execution\">here</a>&quot;. <p>The behavoir can be seen in the following statechart.
 The guard has no parameters. </p>
 <p><img src=\"images/Block-Execution/Guard-Behavior.jpg\" alt =\"\" ></p>
 <p><small>Figure 1: Realtimestatechart, showing the behavior of the producer role </small></p>
