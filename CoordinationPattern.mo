@@ -14,29 +14,29 @@ extends Modelica.Icons.Information;
 <body>
 <h3>Fail_Operational_Delegation Pattern</h3>
 
-<p> 
+<p>
 This pattern realizes a delegation of a task from a role master to a role slave. The
 slave executes the task in a certain time and answers regarding success or failure. The
 pattern assumes that a failure is not safety-critical, though only one delegation at a time
-is allowed. 
+is allowed.
 </p>
 
-<p> 
+<p>
 A test is specified at: <a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Examples.PatternTest.Fail_Operational_Delegation_Test\">PatternTest.Fail-Operational-Delegation</a>
 </p>
 
 <h4> Context </h4>
 
-<p> 
-Delegate tasks between communicating actors. 
+<p>
+Delegate tasks between communicating actors.
 </p>
 
 <h4> Problem </h4>
 
-<p> 
+<p>
 If the communication is asynchronous and the communication channel is
 unreliable, the role that sends the task, does not know if the other role has received it.
-Though, the task has to be done. 
+Though, the task has to be done.
 </p>
 
 <h4> Solution </h4>
@@ -51,13 +51,13 @@ reports if the task was done successfully or if the execution failed.
 
 <h4> Structure </h4>
 
-<p> 
+<p>
 The pattern consists of the two roles master and slave. Both
-roles are in/out roles.Which message each role can receive and send is shown in the message interfaces. The master may send the message order to the slave. 
+roles are in/out roles.Which message each role can receive and send is shown in the message interfaces. The master may send the message order to the slave.
 The slave may send the messages done and fail to the master. The time parameter of the role master is $timeout, the time parameter of role slave
 is $worktime. The connector may lose messages. The delay for sending a message is
 defined by the time parameters $delay-min and $delay-max.
-</p> 
+</p>
 
 <p>
 <img width = \"706\" height = \"405\" src=\"images/Fail_Operational_Delegation/Structure_Fail-OperationalDelegation.jpg\" alt =\"\"/>
@@ -84,7 +84,7 @@ Inactive.
 The role slave represents the counter-part to the master role and consist of the initial
 state Inactive and the state Working. The message order() triggers the transition from
 Inactive to Working. Upon the activation of Working the clock c0 is reset via an entryaction.
-An invariant using c0 ensures that Working is left not later than $worktime units of time after its activation. 
+An invariant using c0 ensures that Working is left not later than $worktime units of time after its activation.
 There are two outgoing transitions. The one with the highest priority sends the message done() to the master and the state changes back to Inactive. If
 an error occurs, the message fail() will be send to the master and the state changes also
 back to Inactive, too.
@@ -112,25 +112,25 @@ back to Inactive, too.
 <body>
 <h3> Master_Slave_Assignment </h3>
 
-<p> 
+<p>
 This pattern is used if two systems can dynamically change between one state in which
 they have equal rights and another state in which one is the master and the other one is
 the slave.
 </p>
 
-<p> 
+<p>
 A test is specified at: <a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Examples.PatternTest.Master_Slave_Assignment_Test\">PatternTest.Master-Slave-Assignment-Test</a>
 </p>
 
 <h4>Context</h4>
 
-<p> 
+<p>
 Equal, independent systems want to cooperate.
 </p>
 
 <h4>Problem</h4>
 
-<p> 
+<p>
 A system wants to cooperate with another system. During this time, they depend
 on each other and a safety-critical situation occurs, if they remain self-determined.
 Furthermore, the communication channel may be unreliable and the systems and the
@@ -150,7 +150,7 @@ position.
 
 <h4> Structure </h4>
 
-<p> 
+<p>
 There are two peer roles, because they have the identical behavior. Each role can become the master or slave at run-time. Both roles are in/out
 roles and have the same message interfaces for sending and receiving.
 Thus, both peers may send the messages youSlave, confirm, noSlave, alive, and alive2 to
@@ -159,7 +159,7 @@ The time parameters of a peer are $timeout1, $timeout2, and $period. The connect
 may lose messages. The delay for sending a message is defined by the time parameters
 $delay-min and $delay-max.
 </p>
- 
+
 <p>
 <img src=\"images/Master_Slave_Assignment/MasterSlavePattern.jpg\"  alt =\"\"/>
 </p>
@@ -225,20 +225,20 @@ fallen out.
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.UsersGuide.Elements.Turn_Transmission</title></head>
 <body>
 <h3> Turn-Transmission Pattern </h3>
-<p> 
+<p>
 This pattern synchronizes the behavior of two systems in such a way, that never two systems are active at the same time. But both systems may be inactive at the same time.
 </p>
-<p> 
+<p>
 Examples are specified at: <a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Examples.ExamplesForPatternUse.\"></a>
 A test is specified at: <a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Examples.PatternTest.Master_Slave_Assignment_Test\">PatternTest.Master-Slave-Assignment-Test</a>
 </p>
 <h4> Context </h4>
-<p> 
+<p>
 Two systems are cooperating in a safety crititcal environment, where both systems may not be active at the same time.
 </p>
 
 <h4> Problem </h4>
-<p> 
+<p>
 Both systems want to fulfill a task together. In order to accieve this, they have to be active sequentially. So, when active, one system always waits until the other is finished and vice versa.
 </p>
 
@@ -250,16 +250,16 @@ Define a pattern which ensures that both systems may never be active at the same
 
 
 <h4> Structure </h4>
-<p> 
+<p>
 The pattern consists of the role partner, which is a in/out role. The message the partners exchange can be seen in the message interface. The partner may send the message turn() to the other partner and vice versa. The connector must not loose messages. The delay for sending a message is defined by the time parameters $delay-min and $delay-max.
-</p> 
+</p>
 <p><img src=\"images/Turn_Transmission/Structure.jpg\" alt =\"\" ></p>
 <p><small>Figure 1: Structure of the Turn-Transmission Pattern</small></p>
 <p><img src=\"images/Turn_Transmission/Interfaces.jpg\" alt =\"\" ></p>
 <p><small>Figure 2: Interfaces of the Turn-Transmission Pattern</small></p>
 <h4> Behavior </h4>
 <p>
-In order to distinguish between the two partners in this section, they are called partner1 and partner2. Both, partner1 or partner2, may start the cooperation. Assuming partner1 wants to start the cooperation, then it sends the message turn() to partner2 and changes its state to 'YourTurn', which means that partner1 is not actively solving this task anymore but gives it turn to partner1. Consequently, by receiving the turn() message from partner1, partner2 is now the acitve partner and changes its state to 'MyTurn'. Now both partners may change their 'roles' between 'MyTurn' and 'YourTurn'sequentially, such that they are always in the corresponding 'counterstate'. If a partner decides to end the cooperation, either because the task is fullfilled or in case of a failure, it can always change its state back to inactive. Furthermore if a partner does not receive any message from the counterpart, then after a certain amount of time units it changes it changes its state back to inactive via the timeout transition. 
+In order to distinguish between the two partners in this section, they are called partner1 and partner2. Both, partner1 or partner2, may start the cooperation. Assuming partner1 wants to start the cooperation, then it sends the message turn() to partner2 and changes its state to 'YourTurn', which means that partner1 is not actively solving this task anymore but gives it turn to partner1. Consequently, by receiving the turn() message from partner1, partner2 is now the acitve partner and changes its state to 'MyTurn'. Now both partners may change their 'roles' between 'MyTurn' and 'YourTurn'sequentially, such that they are always in the corresponding 'counterstate'. If a partner decides to end the cooperation, either because the task is fulfilled or in case of a failure, it can always change its state back to inactive. Furthermore if a partner does not receive any message from the counterpart, then after a certain amount of time units it changes it changes its state back to inactive via the timeout transition.
 </p>
 
 <p><img src=\"images/Turn_Transmission/Behavior.jpg\" alt =\"\" ></p>
@@ -276,20 +276,20 @@ In order to distinguish between the two partners in this section, they are calle
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.UsersGuide.Elements.Limit_Observation</title></head>
 <body>
 <H3> Limit Observation</H3>
-<p> 
+<p>
 This pattern is used to communicate if a certain value violates a defined limit or not.
 </p>
-<p> 
+<p>
 Examples are specified at: <a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Examples.ExamplesForPatternUse.Limit_Observation\">ExamplesForPatternUse.Limit-Observation</a>.
 A test is specified at: <a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Examples.PatternTest.Limit_Observation_Test\">PatternTest.Limit-Observation-Test</a>
 </p>
 <h4> Context </h4>
-<p> 
+<p>
 Information exchange between participants.
 </p>
 
 <h4> Problem </h4>
-<p> 
+<p>
 Two participants exist within a system. One collects numerical information,
 the other wants the know them. In particular, he wants to know if the numerical information
 violates a certain limit or not.
@@ -306,7 +306,7 @@ In addition, the pattern warranted a disjunction of the observation and the proc
 and analysis of the environment situation.
 </p>
 <h4> Structure </h4>
-<p> 
+<p>
 The pattern consists of the roles provider and observer.
 The role provider is an out-role; the role observer is an in-role.
 Which message each role can receive and send is shown in the message interfaces. The provider may send the messages limitViolated and limitRedeemed to
@@ -314,7 +314,7 @@ the observer.
 The connector must not lose messages. The time parameter of the role provider is
 $worktime. The delay for sending a message is defined by the time parameters $delaymin
 and $delay-max.
-</p> 
+</p>
 <p><img src=\"images/Limit-Observation/Structure.jpg\" alt =\"\" ></p>
 <p><small>Figure 1: Structure of the Limit Observation Pattern</small></p>
 <p><img src=\"images/Limit-Observation/Interfaces.jpg\" alt =\"\"></p>
@@ -357,7 +357,7 @@ if value redeems the limit.
 This pattern realizes a delegation of a task from a role master to a role slave. The slave executes the task in a certain time and answers regarding success or failure. If the execution fails, no other task may be delegated until the master ensures that the failure has been corrected. Moreover, only one delegation at a time is allowed.
 </p>
 
-<p> 
+<p>
 Examples are specified at: <a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Examples.ExamplesForPatternUse.Fail_Safe_Delegation\">ExamplesForPatternUse.Fail-Safe-Delegation</a>.
 A test is specified at: <a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Examples.PatternTest.Fail_Safe_Delegation_Test\">PatternTest.Fail-Safe-Delegation-Test</a>
 </p>
@@ -429,18 +429,18 @@ The role master has the initial state Idle. From this state the master can send 
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.UsersGuide.Elements.Block_Execution</title></head>
 <body>
 <H3> Block_Execution</H3>
-<p> 
+<p>
 This pattern coordinates a blocking of actions, e.g., due to safety-critical reasons. Also known as Start-Stop, and
 Guard.
 </p>
 Examples are specified at: <a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Examples.ExamplesForPatternUse.BlockExecution\">ExamplesForPatternUse.Block-Execution</a>
 <h4> Context </h4>
-<p> 
+<p>
 A system operates under changing conditions.
 </p>
 
 <h4> Problem </h4>
-<p> 
+<p>
 A system executes a certain task that must be stopped, e.g. if a safety-critical
 station appears or if it is not necessary that it operates.
 </p>
@@ -456,13 +456,13 @@ has to explore the situation.
 
 
 <h4> Structure </h4>
-<p> 
+<p>
 The pattern consists of the roles guard and executor. The
 role guard is an out-role; the role executor is an in-role.
 Which message each role can receive and send is shown in the message interfaces. The guard may send the messages free and block to the executor.
 The connector must not lose messages. The delay for sending a message is defined by
 the time parameters $delay-min and $delay-max.
-</p> 
+</p>
 <p><img src=\"images/Block-Execution/Structure.jpg\" alt =\"\" ></p>
 <p><small>Figure 1: Structure of the Block-Execution Pattern</small></p>
 <p><img src=\"images/Block-Execution/Interfaces.jpg\" alt =\"\"></p>
@@ -492,23 +492,23 @@ stops its work.
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.UsersGuide.Elements.Synchronized_Collaboration</title></head>
 <body>
 <h3> Synchronized-Collaboration Pattern </h3>
-<p> 
+<p>
 This pattern synchronizes the activation and deactivation of a collaboration of two systems.
 The pattern assumes that a safety-critical situation appears if the system, which initialized
 the activation, is in collaboration mode and the other system is not in collaboration
 mode. Therefore, the pattern ensures that this situation never happens.
 </p>
-<p> 
+<p>
 Examples are specified at: <a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Examples.ExamplesForPatternUse.Limit_Observation\">ExamplesForPatternUse.Limit-Observation</a>
 </p>
 <h4> Context </h4>
-<p> 
+<p>
 Two independent systems can collaborate in a safety-critical environment,
 though cooperation adds more hazards.
 </p>
 
 <h4> Problem </h4>
-<p> 
+<p>
 If one system believes they are working together, but the other one does not
 know this, this may create a safety-critical situation for the first system. This must be
 avoided. This problem occurs, if the communication is asynchronous or the communication
@@ -529,7 +529,7 @@ no longer useful.
 
 
 <h4> Structure </h4>
-<p> 
+<p>
 The pattern consists of the two roles master and slave and a connector. Both roles are in/out roles. Which message each role can receive and send is
 shown in the message interfaces. The master may send the messages activationProposal
 and deactivation to the slave. The slave may send the messages activationAccepted
@@ -537,7 +537,7 @@ and activationRejected to the master. The time parameter of the role master
 is $timeout, the time parameter of role slave is $eval-time. The connector may lose
 messages. The delay for sending a message is defined by the time parameters $delay-min
 and $delay-max.
-</p> 
+</p>
 <p><img src=\"images/Synchronized_Collaboration/Structure.jpg\" alt =\"\" ></p>
 <p><small>Figure 1: Structure of the Synchronized-Collaboration Pattern</small></p>
 <p><img src=\"images/Synchronized_Collaboration/Interfaces.jpg\"  alt =\"\"></p>
@@ -568,22 +568,22 @@ deactivate the collaboration. He informs the slave so that he also deactivates i
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.UsersGuide.Elements.Periodic_Transmission</title></head>
 <body>
 <H3> Periodic Transmission</H3>
-<p> 
+<p>
 This pattern can be used to periodically transmit information from a sender to a receiver.
 If the receiver does not get the information within a certain time, a specified
 behavior must be activated to prevent a safety-critical situation.
 </p>
-<p> 
+<p>
 Examples are specified at: <a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Examples.ExamplesForPatternUse.PeriodicTransmission\">ExamplesForPatternUse.Periodic-Transmission</a>.
 A test is specified at: <a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Examples.PatternTest.Periodic_Transmission_Test\">PatternTest.Periodic-Transmission-Test</a>
 </p>
 <h4> Context </h4>
-<p> 
+<p>
 Information exchange between two systems.
 </p>
 
 <h4> Problem </h4>
-<p> 
+<p>
 If the receiver does not get the information within a certain time, a safetycritical
 situation can occur. This must be prevented.
 </p>
@@ -591,16 +591,16 @@ situation can occur. This must be prevented.
 <h4> Solution </h4>
 <p>
 If the receiver does not get the information within a certain time, a specified
-behavior must be activated to prevent the safety-critical situation. 
+behavior must be activated to prevent the safety-critical situation.
 </p>
 <h4> Structure </h4>
-<p> 
+<p>
 The pattern consists of the two roles sender and receiver.
 sender is an in-role. receiver is an out-role. Which message each role can receive resp. send is defined in the message interface. Here, the sender may send the message data to the receiver.
 The time parameter of the role sender is $period, the time parameter of role slave is
 $timeout. The connector may lose messages. The delay for sending a message is defined
 by the time parameters $delay-min and $delay-max.
-</p> 
+</p>
 <p><img src=\"images/Periodic_Transmission/Structure.jpg\" alt =\"\" ></p>
 <p><small>Figure 1: Structure of the Periodic Transmission Pattern</small></p>
 <p><img src=\"images/Periodic_Transmission/Interfaces.jpg\" alt =\"\"></p>
@@ -629,21 +629,21 @@ receives a message data again, it changes back to state PeriodicReceiving.
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.UsersGuide.Elements.Producer_Consumer</title></head>
 <body>
 <H3> Producer-Consumer</H3>
-<p> 
+<p>
 This pattern is used when two roles shall access a safety-critical section alternately,
 e.g., one produces goods, the other consumes them. The pattern guarantees that only one
 is in the critical section at the same time.
 </p>
-<p> 
+<p>
 Examples are specified at: <a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Examples.ExamplesForPatternUse.ProducerConsumer\">ExamplesForPatternUse.Producer-Consumer</a>.
 </p>
 <h4> Context </h4>
-<p> 
+<p>
 Working in a safety-critical section.
 </p>
 
 <h4> Problem </h4>
-<p> 
+<p>
 There exists a section where information or goods can be stored. The size of
 the section is 1. Furthermore, there exists two different systems. The one produces the
 information/good, the other consumes/clears it. The consumer may not act, if nothing is
@@ -663,12 +663,12 @@ the information/good.
 
 
 <h4> Structure </h4>
-<p> 
+<p>
 The pattern consist of two roles producer and consumer. Both roles are in/out-roles.
 Which message each role can receive and send is shown in the message interfaces. The producer may send the message produced to the consumer. The slave
 may send the message consumed to the producer. The connector must not lose messages. The delay for sending a message is defined by
 the time parameters $delay-min and $delay-max.
-</p> 
+</p>
 <p><img src=\"images/Producer-Consumer/Structure.jpg\"  alt =\"\"></p>
 <p><small>Figure 1: Structure of the Producer-Consumer Pattern</small></p>
 <p><img src=\"images/Producer-Consumer/Interfaces.jpg\" alt =\"\"></p>
@@ -708,7 +708,7 @@ leaved the critical section and the producer can enter it again.
   end Elements;
 
   annotation (__Dymola_DocumentationClass=true, Documentation(info="
-<!DOCTYPE html>  
+<!DOCTYPE html>
 <html>
 <head><title>UsersGuide</title></head>
 <body>
@@ -746,21 +746,15 @@ package Examples "This package provides examples of pattern use."
       equation
         connect(delegation_Master.Out_Order_Delegation, delegation_Slave.In_Order_Delegation)
           annotation (Line(
-            points={{-26.2,55.2},{-3.1,55.2},{-3.1,55.4},{19.8,55.4}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-26.2,55.2},{-3.1,55.2},{-3.1,55.4},{19.8,55.4}}));
         connect(delegation_Slave.Out_Delegation_Failed, delegation_Master.In_DelegationFailed)
           annotation (Line(
-            points={{40,45.4},{54,46},{54,70},{-52,70},{-52,44},{-46.2,44}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{40,45.4},{54,46},{54,70},{-52,70},{-52,44},{-46.2,44}}));
         connect(delegation_Master.In_Delegation_Succeded, delegation_Slave.Out_Delegation_Succeded)
           annotation (Line(
             points={{-46.2,40.4},{-60,40.4},{-60,22},{54,22},{54,38.2},{40,38.2}},
-            color={0,0,255},
-            smooth=Smooth.None));
+            color={0,0,255}));
 
-        annotation (Diagram(graphics));
       end Fail_Operational_Delegation_Main_Test;
     end Fail_Operational_Delegation_Test;
 
@@ -787,58 +781,38 @@ package Examples "This package provides examples of pattern use."
             i(start=0))
                       annotation (Placement(transformation(
               extent={{20,-11},{-20,11}},
-              rotation=0,
               origin={-42,-85})));
       equation
         connect(peer1.In_Confirm, peer.Out_Cofirm) annotation (Line(
             points={{-34.4,-96},{-34.4,-112},{48,-112},{48,108},{-26,108},{-26,
                   95.3529},{-29.7333,95.3529}},
-            color={0,0,255},
-            smooth=Smooth.None));
+            color={0,0,255}));
         connect(peer.Out_NoSlave, peer1.In_NoSlave) annotation (Line(
             points={{-43.6,95.3529},{-42,130},{124,130},{124,-136},{-45.2,-136},
-                  {-45.2,-96}},
-            color={0,0,0},
-            smooth=Smooth.None));
+                  {-45.2,-96}}));
         connect(peer.Out_Alive2, peer1.In_Alive2) annotation (Line(
             points={{-36.6667,95.3529},{-34,120},{110,120},{110,-128},{-39.4667,
-                  -128},{-39.4667,-96}},
-            color={0,0,0},
-            smooth=Smooth.None));
+                  -128},{-39.4667,-96}}));
         connect(peer.Out_YouSlave, peer1.In_YouSlave) annotation (Line(
             points={{-48.2667,95.3529},{-48,114},{-132,114},{-132,-112},{-52,
-                  -112},{-52,-96},{-48.8,-96}},
-            color={0,0,0},
-            smooth=Smooth.None));
+                  -112},{-52,-96},{-48.8,-96}}));
         connect(peer.Out_Alive, peer1.In_Alive) annotation (Line(
             points={{-52.6667,95.3529},{-54,96},{-54,124},{-138,124},{-138,-126},
-                  {-58,-126},{-58,-96},{-53.0667,-96}},
-            color={0,0,0},
-            smooth=Smooth.None));
+                  {-58,-126},{-58,-96},{-53.0667,-96}}));
         connect(peer1.Out_Cofirm, peer.In_Confirm) annotation (Line(
-            points={{-54.2667,-74.6471},{-60,-74.6471},{-60,74},{-49.6,74}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-54.2667,-74.6471},{-60,-74.6471},{-60,74},{-49.6,74}}));
         connect(peer1.Out_NoSlave, peer.In_NoSlave) annotation (Line(
-            points={{-40.4,-74.6471},{-40,-74.6471},{-40,74},{-38.8,74}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-40.4,-74.6471},{-40,-74.6471},{-40,74},{-38.8,74}}));
 
         connect(peer1.Out_Alive2, peer.In_Alive2) annotation (Line(
             points={{-47.3333,-74.6471},{-50,-74.6471},{-50,6},{-44.5333,6},{
-                  -44.5333,74}},
-            color={0,0,0},
-            smooth=Smooth.None));
+                  -44.5333,74}}));
         connect(peer1.Out_YouSlave, peer.In_YouSlave) annotation (Line(
-            points={{-35.7333,-74.6471},{-36,-48},{-32,-48},{-32,74},{-35.2,74}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-35.7333,-74.6471},{-36,-48},{-32,-48},{-32,74},{-35.2,74}}));
         connect(peer.In_Alive, peer1.Out_Alive) annotation (Line(
             points={{-30.9333,74},{-30.9333,-50.6},{-31.3333,-50.6},{-31.3333,
                   -74.6471}},
-            color={0,0,255},
-            smooth=Smooth.None));
-        annotation (Diagram(graphics));
+            color={0,0,255}));
       end Master_Slave_Assignment_Test;
     end Master_Slave_Assignment_Test;
 
@@ -850,26 +824,19 @@ package Examples "This package provides examples of pattern use."
             provider(worktime=10)                                 annotation (
             Placement(transformation(
               extent={{-14,-9},{14,9}},
-              rotation=0,
               origin={-20,73})));
         RealTimeCoordinationLibrary.CoordinationPattern.Limit_Observation.Observer
             observer                                              annotation (
             Placement(transformation(
               extent={{-13,-10},{13,10}},
-              rotation=0,
               origin={-19,20})));
       equation
         connect(provider.Out_Limit_Violated, observer.In_LimitViolated)
           annotation (Line(
-            points={{-34.2,73.4},{-64,73.4},{-64,24},{-32.2,24},{-32.2,23.4}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-34.2,73.4},{-64,73.4},{-64,24},{-32.2,24},{-32.2,23.4}}));
         connect(provider.Out_LimitRedeemed, observer.In_LimitRedeemed)
           annotation (Line(
-            points={{-6,73},{18,73},{18,23.2},{-6,23.2}},
-            color={0,0,0},
-            smooth=Smooth.None));
-        annotation (Diagram(graphics));
+            points={{-6,73},{18,73},{18,23.2},{-6,23.2}}));
       end Limit_Observation_Test_Main;
     end Limit_Observation_Test;
 
@@ -919,27 +886,20 @@ package Examples "This package provides examples of pattern use."
         connect(safe_Delegation_Master.Out_Continue, safe_Delegation_Slave.In_Continue)
           annotation (Line(
             points={{-80,36.8},{-108,36},{-108,-26},{12,-26},{12,35.9},{24.2,
-                35.9}},
-            color={0,0,0},
-            smooth=Smooth.None));
+                35.9}}));
         connect(safe_Delegation_Slave.Out_Fail, safe_Delegation_Master.In_Fail)
           annotation (Line(
-            points={{56.2,33.8},{64,33.8},{64,-4},{-65,-4},{-65,26.4}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{56.2,33.8},{64,33.8},{64,-4},{-65,-4},{-65,26.4}}));
         connect(safe_Delegation_Slave.In_Order, safe_Delegation_Master.Out_Order)
           annotation (Line(
             points={{23.8,44.4},{10,46},{10,54},{-38,54},{-38,34},{-47.8,34}},
-            color={0,0,255},
-            smooth=Smooth.None));
+            color={0,0,255}));
 
         connect(safe_Delegation_Master.In_Done, safe_Delegation_Slave.Out_Done)
           annotation (Line(
             points={{-80,44.2},{-104,44.2},{-104,74},{78,74},{78,46},{56,46},
                 {56,45.8}},
-            color={0,0,255},
-            smooth=Smooth.None));
-        annotation (Diagram(graphics));
+            color={0,0,255}));
       end Fail_Safe_Delegation_Test_Main;
     end Fail_Safe_Delegation_Test;
 
@@ -964,10 +924,8 @@ package Examples "This package provides examples of pattern use."
           annotation (Placement(transformation(extent={{-28,10},{-8,30}})));
       equation
         connect(sender.Out_Data, receicer.In_Data) annotation (Line(
-            points={{-9.6,70},{12,70},{12,20.8},{-7.6,20.8}},
-            color={0,0,0},
-            smooth=Smooth.None));
-        annotation (Diagram(graphics), experiment(StopTime=10));
+            points={{-9.6,70},{12,70},{12,20.8},{-7.6,20.8}}));
+        annotation ( experiment(StopTime=10));
       end Periodic_Transmission_Main_Test;
     end Periodic_Transmission_Test;
   end PatternTest;
@@ -1036,58 +994,40 @@ package Examples "This package provides examples of pattern use."
         equation
           connect(consumer.In_Produced, inputDelegationPort) annotation (Line(
               points={{8.2,55.8},{69.9,55.8},{69.9,96},{24,96}},
-              color={0,0,255},
-              smooth=Smooth.None));
+              color={0,0,255}));
           connect(consumer.Out_Consumed, outputDelegationPort) annotation (Line(
-              points={{-13.8,55.4},{-41.1,55.4},{-41.1,98},{-36,98}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{-13.8,55.4},{-41.1,55.4},{-41.1,98},{-36,98}}));
           connect(T1.outPort, ConsumingPossible.inPort[1]) annotation (Line(
-              points={{-19,10},{-4,10},{-4,-30},{-10,-30}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{-19,10},{-4,10},{-4,-30},{-10,-30}}));
           connect(ConsumingBlocked.outPort[1], T1.inPort) annotation (Line(
-              points={{-55.4,10},{-28,10}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{-55.4,10},{-28,10}}));
           connect(T2.outPort, ConsumingBlocked.inPort[1]) annotation (Line(
-              points={{-71,-30},{-86,-30},{-86,10},{-64,10}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{-71,-30},{-86,-30},{-86,10},{-64,10}}));
           connect(T2.inPort, ConsumingPossible.outPort[1]) annotation (Line(
-              points={{-62,-30},{-18.6,-30}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{-62,-30},{-18.6,-30}}));
           connect(consumer.sender, T1.receiver[1]) annotation (Line(
               points={{8.2,60.6},{20,60},{20,72},{-28.02,72},{-28.02,12.82}},
-              color={255,128,0},
-              smooth=Smooth.None));
+              color={255,128,0}));
           connect(consumer.receiver, T2.sender[1]) annotation (Line(
               points={{8,50.6},{20,50.6},{20,-40},{-61.94,-40},{-61.94,-32.6}},
-              color={255,128,0},
-              smooth=Smooth.None));
+              color={255,128,0}));
           connect(u, nor1.u) annotation (Line(
               points={{-104,-14},{-75.6,-14}},
-              color={255,0,255},
-              smooth=Smooth.None));
+              color={255,0,255}));
           connect(nor1.y, T2.conditionPort) annotation (Line(
               points={{-65.2,-14},{-66,-14},{-66,-25}},
-              color={255,0,255},
-              smooth=Smooth.None));
+              color={255,0,255}));
           connect(u, and1.u[1]) annotation (Line(
               points={{-104,-14},{-90,-14},{-90,-68.1},{-18,-68.1}},
-              color={255,0,255},
-              smooth=Smooth.None));
+              color={255,0,255}));
           connect(ConsumingPossible.activePort, and1.u[2]) annotation (Line(
               points={{-14,-34.72},{-50,-34.72},{-50,-63.9},{-18,-63.9}},
-              color={255,0,255},
-              smooth=Smooth.None));
+              color={255,0,255}));
           connect(and1.y, y) annotation (Line(
               points={{-5.1,-66},{46,-66},{46,-30},{106,-30}},
-              color={255,0,255},
-              smooth=Smooth.None));
-          annotation (Diagram(graphics), Documentation(info="<html>
-This component has a boolean input port that defines the read-behavior of the component. As long as the signal is set to 'true', the component tries to read the shared memory. It will only actually read the memory, if the component is in the state 'ReadingPossible', which means, that the component is allowed to read the memory. If the signal is set to 'false', the component does not try to read and if it should get the right to read, it will give it away so that the WritingComponent may be able to write the memory. 
+              color={255,0,255}));
+          annotation ( Documentation(info="<html>
+This component has a boolean input port that defines the read-behavior of the component. As long as the signal is set to 'true', the component tries to read the shared memory. It will only actually read the memory, if the component is in the state 'ReadingPossible', which means, that the component is allowed to read the memory. If the signal is set to 'false', the component does not try to read and if it should get the right to read, it will give it away so that the WritingComponent may be able to write the memory.
 </html>"));
         end ReadingComponent;
 
@@ -1105,12 +1045,10 @@ This component has a boolean input port that defines the read-behavior of the co
         equation
           connect(T1.sender[1], sender) annotation (Line(
               points={{-39.4,42.06},{-39.4,65.03},{-102,65.03},{-102,86}},
-              color={255,128,0},
-              smooth=Smooth.None));
+              color={255,128,0}));
           connect(T2.receiver[1], receiver) annotation (Line(
               points={{39.18,31.98},{23.59,31.98},{23.59,-14},{-100,-14}},
-              color={255,128,0},
-              smooth=Smooth.None));
+              color={255,128,0}));
           annotation (Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
                     {120,100}}),             graphics));
         end Consumer;
@@ -1131,12 +1069,10 @@ This component has a boolean input port that defines the read-behavior of the co
         equation
           connect(receiver, T1.receiver[1]) annotation (Line(
               points={{-140,80},{-46,80},{-46,34.02},{-49.18,34.02}},
-              color={255,128,0},
-              smooth=Smooth.None));
+              color={255,128,0}));
           connect(T2.sender[1], sender) annotation (Line(
               points={{1.4,25.94},{1.4,-39.03},{-140,-39.03},{-140,-38}},
-              color={255,128,0},
-              smooth=Smooth.None));
+              color={255,128,0}));
           annotation (Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-140,-100},
                     {120,100}}),             graphics));
         end Producer;
@@ -1154,7 +1090,6 @@ This component has a boolean input port that defines the read-behavior of the co
             Modelica.Utilities.Streams.error("Error - Simultaneous Reading and Writing");
           end when;
 
-          annotation (Diagram(graphics));
         end SharedMemory;
 
         model WritingComponent
@@ -1163,7 +1098,6 @@ This component has a boolean input port that defines the read-behavior of the co
           RealTimeCoordinationLibrary.CoordinationPattern.Examples.ExamplesForPatternUse.ProducerConsumer.MemoryExample.Producer
               producer
             annotation (Placement(transformation(extent={{13,-10},{-13,10}},
-                rotation=0,
                 origin={33,28})));
           RealTimeCoordination.MessageInterface.OutputDelegationPort
                                                 outputDelegationPort(
@@ -1189,7 +1123,6 @@ This component has a boolean input port that defines the read-behavior of the co
           RealTimeCoordination.Step
                ProducingBlocked(nIn=1, nOut=1) annotation (Placement(transformation(
                 extent={{-4,-4},{4,4}},
-                rotation=0,
                 origin={-10,-24})));
           RealTimeCoordination.Transition
                      T1(
@@ -1220,59 +1153,41 @@ This component has a boolean input port that defines the read-behavior of the co
             annotation (Placement(transformation(extent={{-68,-8},{-60,0}})));
         equation
           connect(producer.Out_Produced, outputDelegationPort) annotation (Line(
-              points={{46,31},{72,31},{72,-98},{40,-98}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{46,31},{72,31},{72,-98},{40,-98}}));
           connect(producer.In_Consumed, inputDelegationPort) annotation (Line(
               points={{19.8,31},{8.1,31},{8.1,-96},{-16,-96}},
-              color={0,0,255},
-              smooth=Smooth.None));
+              color={0,0,255}));
           connect(ProducingPossible.outPort[1], T1.inPort) annotation (Line(
-              points={{-63.4,14},{-52,14}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{-63.4,14},{-52,14}}));
           connect(T1.outPort, ProducingBlocked.inPort[1]) annotation (Line(
-              points={{-43,14},{-10,14},{-10,-20}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{-43,14},{-10,14},{-10,-20}}));
           connect(ProducingBlocked.outPort[1], T2.inPort) annotation (Line(
-              points={{-10,-28.6},{-10,-56},{-54,-56}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{-10,-28.6},{-10,-56},{-54,-56}}));
           connect(T2.outPort, ProducingPossible.inPort[1]) annotation (Line(
-              points={{-63,-56},{-86,-56},{-86,14},{-72,14}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{-63,-56},{-86,-56},{-86,14},{-72,14}}));
           connect(T1.sender[1], producer.receiver) annotation (Line(
               points={{-52.06,16.6},{-52,42},{56,42},{56,36},{46,36}},
-              color={255,128,0},
-              smooth=Smooth.None));
+              color={255,128,0}));
           connect(producer.sender, T2.receiver[1]) annotation (Line(
               points={{46,24.2},{62,24.2},{62,-58.82},{-53.98,-58.82}},
-              color={255,128,0},
-              smooth=Smooth.None));
+              color={255,128,0}));
           connect(u, and1.u[1]) annotation (Line(
               points={{-104,-4},{-90,-4},{-90,70.1},{18,70.1}},
-              color={255,0,255},
-              smooth=Smooth.None));
+              color={255,0,255}));
           connect(ProducingPossible.activePort, and1.u[2]) annotation (Line(
               points={{-68,18.72},{-68,65.9},{18,65.9}},
-              color={255,0,255},
-              smooth=Smooth.None));
+              color={255,0,255}));
           connect(and1.y, y) annotation (Line(
               points={{30.9,68},{88,68},{88,-4},{106,-4}},
-              color={255,0,255},
-              smooth=Smooth.None));
+              color={255,0,255}));
           connect(u, nor1.u) annotation (Line(
               points={{-104,-4},{-69.6,-4}},
-              color={255,0,255},
-              smooth=Smooth.None));
+              color={255,0,255}));
           connect(nor1.y, T1.conditionPort) annotation (Line(
               points={{-59.2,-4},{-48,-4},{-48,9}},
-              color={255,0,255},
-              smooth=Smooth.None));
-          annotation (Diagram(graphics), Documentation(info="<html>
-This component has a boolean input port that defines the write-behavior of the component. As long as the signal is set to 'true', the component tries to write the shared memory. It will only actually write the memory, if the component is in the state 'WritingPossible', which means, that the component is allowed to write the memory. If the signal is set to 'false', the component does not try to write and if it should get the right to write, it will give it away so that the ReadingComponent may be able to read the memory. 
+              color={255,0,255}));
+          annotation ( Documentation(info="<html>
+This component has a boolean input port that defines the write-behavior of the component. As long as the signal is set to 'true', the component tries to write the shared memory. It will only actually write the memory, if the component is in the state 'WritingPossible', which means, that the component is allowed to write the memory. If the signal is set to 'false', the component does not try to write and if it should get the right to write, it will give it away so that the ReadingComponent may be able to read the memory.
 </html>"));
         end WritingComponent;
 
@@ -1284,20 +1199,17 @@ This component has a boolean input port that defines the write-behavior of the c
                                                                 annotation (Placement(
                 transformation(
                 extent={{-10,10},{10,-10}},
-                rotation=0,
                 origin={-34,70})));
           RealTimeCoordinationLibrary.CoordinationPattern.Examples.ExamplesForPatternUse.ProducerConsumer.MemoryExample.WritingComponent
               writingComponent(T2(use_after=false), T1(afterTime=0.5))
                                                                      annotation (
               Placement(transformation(
                 extent={{-10,10},{10,-10}},
-                rotation=0,
                 origin={-34,26})));
           RealTimeCoordinationLibrary.CoordinationPattern.Examples.ExamplesForPatternUse.ProducerConsumer.MemoryExample.SharedMemory
               sharedMemory
                          annotation (Placement(transformation(
                 extent={{-10,-10},{10,10}},
-                rotation=0,
                 origin={76,58})));
           Modelica.Blocks.Sources.BooleanTable TryReading(startValue=true, table={0.5,1,
                 1.5,2,2.5})
@@ -1307,39 +1219,32 @@ This component has a boolean input port that defines the write-behavior of the c
         equation
           connect(writingComponent.y, sharedMemory.Write) annotation (Line(
               points={{-23.4,26.4},{45.3,26.4},{45.3,61},{65.6,61}},
-              color={255,0,255},
-              smooth=Smooth.None));
+              color={255,0,255}));
           connect(readingComponent.y, sharedMemory.Read) annotation (Line(
               points={{-23.4,73},{-23.4,69.5},{65.6,69.5},{65.6,66}},
-              color={255,0,255},
-              smooth=Smooth.None));
+              color={255,0,255}));
           connect(readingComponent.outputDelegationPort, writingComponent.inputDelegationPort)
             annotation (Line(
-              points={{-37.6,60.2},{-36,60.2},{-36,35.6},{-35.6,35.6}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{-37.6,60.2},{-36,60.2},{-36,35.6},{-35.6,35.6}}));
           connect(readingComponent.inputDelegationPort, writingComponent.outputDelegationPort)
             annotation (Line(
               points={{-31.6,60.4},{-30,60.4},{-30,35.8}},
-              color={0,0,255},
-              smooth=Smooth.None));
+              color={0,0,255}));
           connect(TryWriting.y, writingComponent.u) annotation (Line(
               points={{-85,26},{-64.7,26},{-64.7,26.4},{-44.4,26.4}},
-              color={255,0,255},
-              smooth=Smooth.None));
+              color={255,0,255}));
           connect(TryReading.y, readingComponent.u) annotation (Line(
               points={{-83,70},{-64,70},{-64,71.4},{-44.4,71.4}},
-              color={255,0,255},
-              smooth=Smooth.None));
-          annotation (Diagram(graphics), Documentation(info="<html>
-There are two components that use a shared memory. One component (the WritingComponent) can write the memory, the other component (the ReadingComponent) can read it. The shared memory may never be accessed at the same time. If this happens, an error will occur instantly. The two components use the producer-consumer pattern in order to synchronize their access behavior. The ReadingComponent and the WritingComponent have each a boolean input that defines their read- resp. write-behavior. In this implementation boolean tables are used as input for the two components. 
+              color={255,0,255}));
+          annotation ( Documentation(info="<html>
+There are two components that use a shared memory. One component (the WritingComponent) can write the memory, the other component (the ReadingComponent) can read it. The shared memory may never be accessed at the same time. If this happens, an error will occur instantly. The two components use the producer-consumer pattern in order to synchronize their access behavior. The ReadingComponent and the WritingComponent have each a boolean input that defines their read- resp. write-behavior. In this implementation boolean tables are used as input for the two components.
 </html>"));
         end MemoryReadWriteExampleMain;
         annotation (Documentation(info="<html>
 <h3>General information</h3>
-In this package you can find an example for an application of the <a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Producer_Consumer\">producer-consumer pattern</a>. 
+In this package you can find an example for an application of the <a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Producer_Consumer\">producer-consumer pattern</a>.
 <h3>Description of the scenario</h3>
-There are two components that use a shared memory. One component (the WritingComponent) can write the memory, the other component (the ReadingComponent) can read it. The shared memory may never be accessed at the same time. If this happens, an error will occur instantly. The two components use the producer-consumer pattern in order to synchronize their access behavior.  
+There are two components that use a shared memory. One component (the WritingComponent) can write the memory, the other component (the ReadingComponent) can read it. The shared memory may never be accessed at the same time. If this happens, an error will occur instantly. The two components use the producer-consumer pattern in order to synchronize their access behavior.
 </html>"));
       end MemoryExample;
     end ProducerConsumer;
@@ -1361,9 +1266,7 @@ There are two components that use a shared memory. One component (the WritingCom
         equation
           connect(acceleration, Data_Message.u_reals[1]) annotation (Line(
               points={{-96,-70},{-38,-70},{-38,22},{21,22}},
-              color={0,0,127},
-              smooth=Smooth.None));
-          annotation (Diagram(graphics));
+              color={0,0,127}));
         end Sender;
 
         model Receiver
@@ -1396,9 +1299,7 @@ There are two components that use a shared memory. One component (the WritingCom
           end when;
           connect(Timeout.activePort, timeoutActive) annotation (Line(
               points={{-9.28,-4},{-12,-4},{-12,-78},{-24,-78}},
-              color={255,0,255},
-              smooth=Smooth.None));
-          annotation (Diagram(graphics));
+              color={255,0,255}));
         end Receiver;
 
         model FinalSystemMain
@@ -1422,43 +1323,34 @@ There are two components that use a shared memory. One component (the WritingCom
           RealTimeCoordination.Examples.Application.Parts.Robot_V3
                                               robot_V3_1(xstart_wmr=1)
             annotation (Placement(transformation(extent={{-15,10},{15,-10}},
-                rotation=0,
                 origin={37,-16})));
           RealTimeCoordination.Examples.Application.Parts.Robot_V3
                                               robot_V3_2(xstart_wmr=0)
             annotation (Placement(transformation(extent={{-15,10},{15,-10}},
-                rotation=0,
                 origin={81,60})));
           inner Modelica.Mechanics.MultiBody.World world(label2="z", n={0,0,-1})
             annotation (Placement(transformation(extent={{-32,-76},{-22,-66}})));
         equation
           connect(bebotFront.outputDelegationPort, bebotRear.inputDelegationPort)
             annotation (Line(
-              points={{14.2,29},{-14.9,29},{-14.9,83},{11.8,83}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{14.2,29},{-14.9,29},{-14.9,83},{11.8,83}}));
           connect(sine.y, bebotFront.AccelerationOfFront) annotation (Line(
               points={{-73,24},{-32,24},{-32,22.8},{13.4,22.8}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(bebotFront.velocity, robot_V3_1.omegaL_des) annotation (Line(
               points={{34.2,18.8},{34.2,1.4},{23,1.4},{23,-16}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(bebotFront.velocity, robot_V3_1.omegaR_des) annotation (Line(
               points={{34.2,18.8},{34.2,1.4},{51,1.4},{51,-16}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(bebotRear.velocity, robot_V3_2.omegaL_des) annotation (Line(
               points={{11.8,72.8},{38.9,72.8},{38.9,60},{67,60}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(bebotRear.velocity, robot_V3_2.omegaR_des) annotation (Line(
               points={{11.8,72.8},{54.9,72.8},{54.9,60},{95,60}},
-              color={0,0,127},
-              smooth=Smooth.None));
-          annotation (Diagram(graphics), Documentation(info="<html>
-Two bebots are driving a line. The front bebot periodically transmitts its acceleration to the rear bebot. The rear adapts its acceleration to the front bebots's acceleration, so that no accident can occur. 
+              color={0,0,127}));
+          annotation ( Documentation(info="<html>
+Two bebots are driving a line. The front bebot periodically transmitts its acceleration to the rear bebot. The rear adapts its acceleration to the front bebots's acceleration, so that no accident can occur.
 </html>"));
         end FinalSystemMain;
 
@@ -1523,8 +1415,7 @@ Two bebots are driving a line. The front bebot periodically transmitts its accel
           connect(AccelerationOfFront, sender.acceleration)
                                                     annotation (Line(
               points={{-106,-32},{-91,-32},{-91,-3},{-73.6,-3}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(localAcceleration, AccelerationOfFront);
          // connections of rear bebot
           connect(transmissionTimedOut,receiver.timeoutActive);
@@ -1532,25 +1423,21 @@ Two bebots are driving a line. The front bebot periodically transmitts its accel
 
           connect(receiver.In_Data, inputDelegationPort) annotation (Line(
               points={{72.4,30.8},{84.2,30.8},{84.2,30},{102,30}},
-              color={0,0,255},
-              smooth=Smooth.None));
+              color={0,0,255}));
           connect(sender.Out_Data, outputDelegationPort) annotation (Line(
-              points={{-53.6,6},{-42,6},{-42,30},{-98,30}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{-53.6,6},{-42,6},{-42,30},{-98,30}}));
 
-          annotation (Diagram(graphics), Documentation(info=""));
+          annotation ( Documentation(info=""));
         end Bebot;
 
         package t1
           model test2
             extends
                 CoordinationPattern.Turn_Transmission.Turn_Transmission_Partner;
-            annotation (Diagram(graphics));
           end test2;
         end t1;
           annotation (Documentation(revisions="<html>
-Two bebots are driving a line. The front bebot periodically transmitts its acceleration to the rear bebot. The rear adapts its acceleration to the front bebots's acceleration, so that no accident can occur. 
+Two bebots are driving a line. The front bebot periodically transmitts its acceleration to the rear bebot. The rear adapts its acceleration to the front bebots's acceleration, so that no accident can occur.
 </html>"));
       end TwoBebotsInARowExample;
     end PeriodicTransmission;
@@ -1601,9 +1488,7 @@ Two bebots are driving a line. The front bebot periodically transmitts its accel
         equation
 
           connect(step3.entry[1], Waiting.inPort[1]) annotation (Line(
-              points={{-8,95},{-8,80.5},{-6,80.5},{-6,64}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{-8,95},{-8,80.5},{-6,80.5},{-6,64}}));
 
           annotation (Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-140,
                     -100},{120,100}}),
@@ -1676,22 +1561,16 @@ Two bebots are driving a line. The front bebot periodically transmitts its accel
           end if;
 
           connect(pr.Out_Limit_Violated, outpuLimitViolated) annotation (Line(
-              points={{-14.2,75.4},{-58.1,75.4},{-58.1,76},{-98,76}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{-14.2,75.4},{-58.1,75.4},{-58.1,76},{-98,76}}));
           connect(pr.Out_LimitRedeemed, outputLimitRedeemed) annotation (Line(
-              points={{14,75},{60,75},{60,74},{100,74}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{14,75},{60,75},{60,74},{100,74}}));
 
           connect(limit, pr.limit) annotation (Line(
               points={{-104,28},{-60,28},{-60,78.5},{-15.1,78.5}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(distance, pr.distance) annotation (Line(
               points={{-105,53},{-60.5,53},{-60.5,82.5},{-15.3,82.5}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(dummyExpression.y, violated);
           connect(dummyExpression.y, ok);
 
@@ -1700,15 +1579,12 @@ Two bebots are driving a line. The front bebot periodically transmitts its accel
 
           connect(inputLimitViolated, obs.In_LimitViolated) annotation (Line(
               points={{-100,4},{-64,4},{-64,1.4},{-26.2,1.4}},
-              color={0,0,255},
-              smooth=Smooth.None));
+              color={0,0,255}));
           connect(obs.In_LimitRedeemed, inputLimitRedeemed) annotation (Line(
               points={{0,1.2},{48,1.2},{48,-2},{98,-2}},
-              color={0,0,255},
-              smooth=Smooth.None));
+              color={0,0,255}));
 
         // annotation of component
-          annotation (Diagram(graphics));
         end Bebot;
 
         model FinalSystemMain
@@ -1721,7 +1597,6 @@ Two bebots are driving a line. The front bebot periodically transmitts its accel
           Modelica.Blocks.Sources.RealExpression DistanceLimit(y=0.5)
             annotation (Placement(transformation(
                 extent={{-10,-10},{10,10}},
-                rotation=0,
                 origin={-102,-30})));
           Modelica.Blocks.Sources.RealExpression accFront(y=if time > 1 then 0
                  else 2)  annotation (Placement(transformation(extent={{-112,
@@ -1736,7 +1611,6 @@ Two bebots are driving a line. The front bebot periodically transmitts its accel
           RealTimeCoordination.Examples.Application.distance
                    distance1
             annotation (Placement(transformation(extent={{-10,-10},{10,10}},
-                rotation=0,
                 origin={78,-16})));
           RealTimeCoordination.Examples.Application.Parts.Robot_V3
                                               robot_V3_2(xstart_wmr=0)
@@ -1748,62 +1622,47 @@ Two bebots are driving a line. The front bebot periodically transmitts its accel
         equation
           connect(Front.outputLimitRedeemed, Rear.inputLimitRedeemed)
             annotation (Line(
-              points={{-6,-24.6},{22,-24.6},{22,55.8},{-8.2,55.8}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{-6,-24.6},{22,-24.6},{22,55.8},{-8.2,55.8}}));
           connect(Rear.inputLimitViolated, Front.outpuLimitViolated)
             annotation (Line(
               points={{-28,56.4},{-66,56.4},{-66,-24.4},{-25.8,-24.4}},
-              color={0,0,255},
-              smooth=Smooth.None));
+              color={0,0,255}));
           connect(DistanceLimit.y, Front.limit) annotation (Line(
               points={{-91,-30},{-58,-30},{-58,-29.2},{-26.4,-29.2}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(accFront.y, Front.acceleration) annotation (Line(
               points={{-91,-46},{-32,-46},{-32,-34.9},{-26.3,-34.9}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(accRear.y, Rear.acceleration) annotation (Line(
               points={{-105,44},{-68,44},{-68,53.1},{-28.3,53.1}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(Front.velocity, robot_V3_1.omegaL_des) annotation (Line(
               points={{-5.4,-28.2},{18,-36},{18,-52},{49,-52},{49,-50}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(Front.velocity, robot_V3_1.omegaR_des) annotation (Line(
               points={{-5.4,-28.2},{23.3,-28.2},{23.3,-22},{49,-22}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(Rear.velocity, robot_V3_2.omegaL_des) annotation (Line(
               points={{-7.4,59.8},{38.3,59.8},{38.3,32},{57,32}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(Rear.velocity, robot_V3_2.omegaR_des) annotation (Line(
               points={{-7.4,59.8},{17.3,59.8},{17.3,60},{57,60}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(robot_V3_2.Frame, distance1.xpos1) annotation (Line(
               points={{63,46},{66,46},{66,-10.2},{68,-10.2}},
               color={95,95,95},
-              thickness=0.5,
-              smooth=Smooth.None));
+              thickness=0.5));
           connect(robot_V3_1.Frame, distance1.xpos2) annotation (Line(
               points={{55,-36},{62,-36},{62,-20},{68,-20}},
               color={95,95,95},
-              thickness=0.5,
-              smooth=Smooth.None));
+              thickness=0.5));
           connect(distance1.y, Front.distance) annotation (Line(
               points={{88.6,-16.4},{114,-16.4},{114,-64},{-72,-64},{-72,-26},{
                   -26.5,-26.7}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           annotation (
-            Diagram(graphics),
             experiment(StopTime=10),
-            __Dymola_experimentSetupOutput,
-            Documentation(info="<html>
+Documentation(info="<html>
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.Examples.ExamplesForPatternUse.Limit_Observation.Distance_Sensor</title></head>
 <body>
 <h3>scenario description</h3>
@@ -1866,14 +1725,11 @@ Two bebots drive in a line, so there is a RearBebot and a FrontBebot. So that no
           for j in 1:nrOfTrackSections loop
             connect(observer[j].In_LimitRedeemed, In_Limit_Redeemed[j]) annotation (Line(
               points={{18,41.2},{59,41.2},{59,46},{102,46}},
-              color={0,0,255},
-              smooth=Smooth.None));
+              color={0,0,255}));
             connect(observer[j].In_LimitViolated, In_Limit_Violated[j]) annotation (Line(
               points={{-8.2,41.4},{-53.1,41.4},{-53.1,44},{-100,44}},
-              color={0,0,255},
-              smooth=Smooth.None));
+              color={0,0,255}));
           end for;
-          annotation (Diagram(graphics));
         end RailCab;
 
         model TrackSectionControl
@@ -1908,18 +1764,12 @@ Two bebots drive in a line, so there is a RearBebot and a FrontBebot. So that no
                 origin={-40,108})));
         equation
           connect(LimitViolated, provider.Out_Limit_Violated) annotation (Line(
-              points={{-100,76},{-60,76},{-60,74.6222},{-18.3143,74.6222}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{-100,76},{-60,76},{-60,74.6222},{-18.3143,74.6222}}));
           connect(provider.Out_LimitRedeemed, LimitOK) annotation (Line(
-              points={{26,74},{100,74}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{26,74},{100,74}}));
           connect(velocityOfRailCab, provider.currentVelocity) annotation (Line(
               points={{-40,108},{-40,83.0222},{-18.9429,83.0222}},
-              color={0,0,127},
-              smooth=Smooth.None));
-          annotation (Diagram(graphics));
+              color={0,0,127}));
         end TrackSectionControl;
 
         model Provider
@@ -1987,53 +1837,37 @@ Two bebots drive in a line, so there is a RearBebot and a FrontBebot. So that no
           connect(railCab.velocityOfRailCab, trackSectionControl.velocityOfRailCab)
             annotation (Line(
               points={{-29,71.8},{-29,24.9},{-48,24.9},{-48,16.8}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(railCab.velocityOfRailCab, trackSectionControl1.velocityOfRailCab)
             annotation (Line(
               points={{-29,71.8},{-29,30.9},{54,30.9},{54,-9.2}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(railCab.velocityOfRailCab, trackSectionControl2.velocityOfRailCab)
             annotation (Line(
               points={{-29,71.8},{-29,74},{86,74},{87.2,84}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(ramp.y, railCab.accelerationOfRailCab) annotation (Line(
               points={{-73,52},{-66,52},{-66,71.4},{-50.6,71.4}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(trackSectionControl.LimitViolated, railCab.In_Limit_Violated[1])
             annotation (Line(
-              points={{-54,13.6},{-54,77.7333},{-50,77.7333}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{-54,13.6},{-54,77.7333},{-50,77.7333}}));
           connect(trackSectionControl.LimitOK, railCab.In_Limit_Redeemed[1]) annotation (
               Line(
-              points={{-34,13.4},{-18,14},{-14,77.9333},{-29.8,77.9333}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{-34,13.4},{-18,14},{-14,77.9333},{-29.8,77.9333}}));
           connect(trackSectionControl1.LimitViolated, railCab.In_Limit_Violated[2])
             annotation (Line(
-              points={{48,-12.4},{-100,-12.4},{-100,78.4},{-50,78.4}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{48,-12.4},{-100,-12.4},{-100,78.4},{-50,78.4}}));
           connect(trackSectionControl1.LimitOK, railCab.In_Limit_Redeemed[2]) annotation (
              Line(
-              points={{68,-12.6},{84,-12.6},{84,78.6},{-29.8,78.6}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{68,-12.6},{84,-12.6},{84,78.6},{-29.8,78.6}}));
           connect(trackSectionControl2.LimitViolated, railCab.In_Limit_Violated[3])
             annotation (Line(
-              points={{90.4,90},{-72,90},{-72,79.0667},{-50,79.0667}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{90.4,90},{-72,90},{-72,79.0667},{-50,79.0667}}));
           connect(trackSectionControl2.LimitOK, railCab.In_Limit_Redeemed[3]) annotation (
              Line(
-              points={{90.6,70},{28,70},{28,79.2667},{-29.8,79.2667}},
-              color={0,0,0},
-              smooth=Smooth.None));
-          annotation (Diagram(graphics), Documentation(info="<html>
+              points={{90.6,70},{28,70},{28,79.2667},{-29.8,79.2667}}));
+          annotation ( Documentation(info="<html>
 <head><title>Velocity Observation</title></head>
 <body>
 <h4>scenario description</h4>
@@ -2097,12 +1931,10 @@ Two bebots drive in a line, so there is a RearBebot and a FrontBebot. So that no
       equation
         connect(realExpression.y, Order_Message.u_reals[1]) annotation (Line(
             points={{55,0},{72,0},{72,38},{91,38}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(T5.firePort, FailSafeActive) annotation (Line(
             points={{-102.2,58},{-142,58},{-142,-38}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         annotation (Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-180,
                   -40},{140,160}}),       graphics));
       end FSD_Master;
@@ -2175,32 +2007,25 @@ Two bebots drive in a line, so there is a RearBebot and a FrontBebot. So that no
 
         connect(possibleBreakForce, message1.u_reals[1]) annotation (Line(
             points={{20,-104},{46,-104},{46,-22},{71,-22}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(T2.firePort, T2_Triggered) annotation (Line(
             points={{-8,72.2},{-24,72.2},{-24,144}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(T3.firePort, T3_Triggered) annotation (Line(
             points={{54.2,10},{64,10},{64,-110}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(T5.firePort, FailsafeActive) annotation (Line(
             points={{-30.4,-31.4},{-8.2,-31.4},{-8.2,-108},{-8,-108}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(breakPossible, T2.conditionPort) annotation (Line(
             points={{-70,-106},{-46,-106},{-46,63},{-8,63}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(breakPossible, not1.u) annotation (Line(
             points={{-70,-106},{-23,-106},{-23,-56},{10,-56}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(not1.y, T3.conditionPort) annotation (Line(
             points={{33,-56},{40,-56},{40,10},{45,10}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         annotation (Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-180,
                     -100},{140,140}}),     graphics));
       end FSD_Slave;
@@ -2212,7 +2037,7 @@ Two bebots drive in a line, so there is a RearBebot and a FrontBebot. So that no
       parameter Real startPos = 0
             "The one dimensional starting position of the bebot";
       parameter Boolean breakingPossible = true
-            "This parameter has no effect if the Bebot is in front. Otherwise it defines, wether the rear bebot is able to break or nota after the break request of the front bebot";
+            "This parameter has no effect if the Bebot is in front. Otherwise it defines, whether the rear bebot is able to break or nota after the break request of the front bebot";
       inner parameter Real  timeOfBreakRequest = 1.5
             "This parameteris has only an effect if the bebot is in front. It defines the time when the front bebot should send the break request.";
       parameter Real breakForce = -1;
@@ -2383,37 +2208,25 @@ Two bebots drive in a line, so there is a RearBebot and a FrontBebot. So that no
         //case Slave/Rear:
           connect(fSD_Slave.In_Order, In_Order) annotation (Line(
             points={{-40.2,-157.6},{-71.1,-157.6},{-71.1,-102},{-102,-102}},
-            color={0,0,255},
-            smooth=Smooth.None));
+            color={0,0,255}));
         connect(fSD_Slave.In_Continue, In_Continue) annotation (Line(
             points={{-39.8,-166.1},{-58,-166},{-58,-204},{-102,-204},{-102,-160}},
-            color={0,0,255},
-            smooth=Smooth.None));
+            color={0,0,255}));
         connect(fSD_Slave.Out_Fail, Out_Fail) annotation (Line(
-            points={{-7.8,-168.2},{7.1,-168.2},{7.1,-158},{184,-158}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-7.8,-168.2},{7.1,-168.2},{7.1,-158},{184,-158}}));
         connect(fSD_Slave.Out_Done, Out_Done) annotation (Line(
-            points={{-8,-156.2},{44,-156.2},{44,-106},{184,-106}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-8,-156.2},{44,-156.2},{44,-106},{184,-106}}));
         //case Master/Front:
         connect(InDone, fSD_Master.In_Done) annotation (Line(
             points={{-98,52},{-52,52},{-52,86},{-8,86},{-8,78.2}},
-            color={0,0,255},
-            smooth=Smooth.None));
+            color={0,0,255}));
         connect(fSD_Master.Out_Order, OutOrder) annotation (Line(
-            points={{-40.2,68},{26,68},{26,50},{184,50}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-40.2,68},{26,68},{26,50},{184,50}}));
         connect(fSD_Master.Out_Continue, Out_Continue) annotation (Line(
-            points={{-8,70.8},{50,70.8},{50,8},{186,8}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-8,70.8},{50,70.8},{50,8},{186,8}}));
         connect(fSD_Master.In_Fail, InFail) annotation (Line(
             points={{-23,60.4},{-24,60},{-24,10},{-100,10}},
-            color={0,0,255},
-            smooth=Smooth.None));
+            color={0,0,255}));
 
       //localBreakForceOfMaster:
 
@@ -2427,15 +2240,13 @@ Two bebots drive in a line, so there is a RearBebot and a FrontBebot. So that no
         connect(breakOfSlaveBebot.y, localBreakForceOfSlave);
         connect(breakOfSlaveBebot.y, fSD_Slave.possibleBreakForce) annotation (Line(
             points={{-24,-191},{-22,-191},{-22,-176.4},{-20,-176.4}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         //case Master:
         connect(localBreakForceOfSlave, fSD_Master.possibleBreakForceOfRear);
 
         connect(breakForcePossible.y, fSD_Slave.breakPossible) annotation (Line(
             points={{-48,-191},{-38,-191},{-38,-176.6},{-29,-176.6}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
       //localBreakInitiated
         connect(localBreakInitiated, fSD_Slave.T1.firePort);
         connect(localBreakInitiated, fSD_Master.T1.firePort);
@@ -2512,52 +2323,38 @@ Two bebots drive in a line, so there is a RearBebot and a FrontBebot. So that no
         connect(AccelerationOfBebots.y, RearBebot.acceleration) annotation (
             Line(
             points={{2,69},{2,60},{-20,60},{-20,20.96},{-25.2,20.96}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(AccelerationOfBebots.y, FrontBebot.acceleration) annotation (
             Line(
             points={{2,69},{2,60},{28,60},{28,20.96},{24.8,20.96}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(RearBebot.Out_Done, FrontBebot.InDone) annotation (Line(
-            points={{-13.0667,-4.72},{3.9,-4.72},{3.9,14.24},{18.1333,14.24}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-13.0667,-4.72},{3.9,-4.72},{3.9,14.24},{18.1333,14.24}}));
         connect(RearBebot.Out_Fail, FrontBebot.InFail) annotation (Line(
-            points={{-13.0667,-10.96},{10,-10.96},{10,9.2},{18,9.2}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-13.0667,-10.96},{10,-10.96},{10,9.2},{18,9.2}}));
         connect(FrontBebot.Out_Continue, RearBebot.In_Continue) annotation (
             Line(
             points={{37.0667,8.96},{52,8.96},{52,-36},{-54,-36},{-54,-11.2},{
-                  -32.1333,-11.2}},
-            color={0,0,0},
-            smooth=Smooth.None));
+                  -32.1333,-11.2}}));
         connect(FrontBebot.OutOrder, RearBebot.In_Order) annotation (Line(
             points={{36.9333,14},{58,14},{58,-42},{-60,-42},{-60,-4.24},{
-                  -32.1333,-4.24}},
-            color={0,0,0},
-            smooth=Smooth.None));
+                  -32.1333,-4.24}}));
       //when FrontBebot.startPos <= RearBebot.startPos then
-       // Modelica.Utilities.Streams.error("The position of the FrontBebot must be greater then the position of the RearBebot!");
+       // Modelica.Utilities.Streams.error("The position of the FrontBebot must be greater than the position of the RearBebot!");
       //end when;
         connect(RearBebot.velocity, robot_V3_1.omegaL_des) annotation (Line(
             points={{-22.4,-15.04},{-22.4,-33.52},{-51,-33.52},{-51,-52}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(RearBebot.velocity, robot_V3_1.omegaR_des) annotation (Line(
             points={{-22.4,-15.04},{-22.4,-33.52},{-23,-33.52},{-23,-52}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(FrontBebot.velocity, robot_V3_2.omegaL_des) annotation (Line(
             points={{27.6,-15.04},{27.6,-33.52},{15,-33.52},{15,-52}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(FrontBebot.velocity, robot_V3_2.omegaR_des) annotation (Line(
             points={{27.6,-15.04},{27.6,-33.52},{43,-33.52},{43,-52}},
-            color={0,0,127},
-            smooth=Smooth.None));
-        annotation (Diagram(graphics), Documentation(info="<!DOCTYPE html>
+            color={0,0,127}));
+        annotation ( Documentation(info="<!DOCTYPE html>
 <html>
 <head>
 <title>
@@ -2566,7 +2363,7 @@ Fail_Safe_Delegation.FinalSystemMain
 </head>
 <body>
 <h3>szenario</h3>
-<p>Two Bebots drive in a line, so one is in front, namely the \"FrontBebot\", and the other one is rear, called \"RearBebot\" in the model. Together they form a convoy. Since the bebots are driving in a convoy and should not collide, they are using the same acceleration function. After 'timeOfBreakRequest' seconds the FrontBebot tries to break, but it has to negotiate its break force with the RearBebot, since the distance between both bebots is very small. Therefore the FrontBebot sends its maximum break force to the rear. The rear checks wether it can also break with the same intense. In case it can break, it answers the request with a 'Done' message and both break with the break force of the front. Else it sends a 'fail' message with its possible break force and both break with the break force of the rear.</p>
+<p>Two Bebots drive in a line, so one is in front, namely the \"FrontBebot\", and the other one is rear, called \"RearBebot\" in the model. Together they form a convoy. Since the bebots are driving in a convoy and should not collide, they are using the same acceleration function. After 'timeOfBreakRequest' seconds the FrontBebot tries to break, but it has to negotiate its break force with the RearBebot, since the distance between both bebots is very small. Therefore the FrontBebot sends its maximum break force to the rear. The rear checks whether it can also break with the same intense. In case it can break, it answers the request with a 'Done' message and both break with the break force of the front. Else it sends a 'fail' message with its possible break force and both break with the break force of the rear.</p>
 </body>
 </html>"));
       end FinalSystemMain;
@@ -2595,8 +2392,7 @@ Fail_Safe_Delegation.FinalSystemMain
       equation
         connect(blocked, booleanExpression.y) annotation (Line(
             points={{-120,-6},{-84,-6},{-84,1.34711e-015},{-47,1.34711e-015}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         annotation (Diagram(coordinateSystem(preserveAspectRatio=true, extent={
                   {-120,-100},{120,100}}), graphics));
       end Executor;
@@ -2623,12 +2419,10 @@ Fail_Safe_Delegation.FinalSystemMain
       equation
         connect(blocked, T2.conditionPort) annotation (Line(
             points={{130,-42},{8,-42},{8,36},{37,36}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(free, T1.conditionPort) annotation (Line(
             points={{-154,10},{-56,10},{-56,38},{-61,38}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         annotation (Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-140,
                   -100},{120,100}}),       graphics));
       end Guard;
@@ -2700,9 +2494,7 @@ Fail_Safe_Delegation.FinalSystemMain
 
         annotation (Line(
             points={{4,44.2},{-22,44.2},{-22,42},{-48,42}},
-            color={0,0,255},
-            smooth=Smooth.None), Diagram(graphics),
-          Icon(graphics={
+            color={0,0,255}),          Icon(graphics={
               Ellipse(
                 extent={{-88,-50},{-40,-96}},
                 lineColor={0,0,0},
@@ -2727,7 +2519,7 @@ Fail_Safe_Delegation.FinalSystemMain
 
       model TrackSectionControl
 
-        Modelica.Blocks.Interfaces.BooleanInput accidentOccured
+        Modelica.Blocks.Interfaces.BooleanInput accidentOccurred
           annotation (Placement(transformation(extent={{-13,-13},{13,13}},
               rotation=180,
               origin={103,89})));
@@ -2758,28 +2550,19 @@ Fail_Safe_Delegation.FinalSystemMain
       equation
 
         connect(guard.Out_Blocked, blocked) annotation (Line(
-            points={{55.6,-0.4},{56,0},{56,-14},{98,-14}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{55.6,-0.4},{56,0},{56,-14},{98,-14}}));
         connect(guard.Out_Free, free) annotation (Line(
-            points={{56.4,25.8},{55.1,25.8},{55.1,54},{100,54}},
-            color={0,0,0},
-            smooth=Smooth.None));
-        connect(accidentOccured, guard.blocked) annotation (Line(
+            points={{56.4,25.8},{55.1,25.8},{55.1,54},{100,54}}));
+        connect(accidentOccurred, guard.blocked) annotation (Line(
             points={{103,89},{103,87.5},{47.8,87.5},{47.8,-1}},
-            color={255,0,255},
-            smooth=Smooth.None));
-        connect(accidentOccured, not1.u) annotation (Line(
+            color={255,0,255}));
+        connect(accidentOccurred, not1.u) annotation (Line(
             points={{103,89},{75.5,89},{75.5,97.2},{38,97.2}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(not1.y, guard.free) annotation (Line(
             points={{38,83.4},{40,83.4},{40,27.4},{53,27.4}},
-            color={255,0,255},
-            smooth=Smooth.None));
-        annotation (Diagram(coordinateSystem(extent={{-100,-100},{100,100}},
-                preserveAspectRatio=true),
-                            graphics), Icon(coordinateSystem(extent={{-100,-100},
+            color={255,0,255}));
+        annotation ( Icon(coordinateSystem(extent={{-100,-100},
                   {100,100}}, preserveAspectRatio=true), graphics={
               Text(
                 extent={{-139,-23},{139,23}},
@@ -2868,33 +2651,24 @@ Fail_Safe_Delegation.FinalSystemMain
   connect(bebot.delegationPortsBlocked[2], section2.blocked);
   connect(bebot.delegationPortsFree[2], section2.free);*/
 
-        connect(accidentOnSection2.y, section2.accidentOccured) annotation (Line(
+        connect(accidentOnSection2.y, section2.accidentOccurred) annotation (Line(
             points={{22,-19},{20,-2},{20,23.7},{20.9,23.7}},
-            color={255,0,255},
-            smooth=Smooth.None));
-        connect(accidentOnSection1.y, section1.accidentOccured) annotation (Line(
+            color={255,0,255}));
+        connect(accidentOnSection1.y, section1.accidentOccurred) annotation (Line(
             points={{-28,-19},{0,-19},{0,23.7},{0.9,23.7}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(bebot.delegationPortsBlocked[1], section1.blocked) annotation (
             Line(
             points={{-6,54.99},{-6,24.2},{-9.4,24.2}},
-            color={0,0,255},
-            smooth=Smooth.None));
+            color={0,0,255}));
         connect(section1.free, bebot.delegationPortsFree[1]) annotation (Line(
-            points={{-2.6,24},{-2.6,36},{-6,36},{-6,51.35}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-2.6,24},{-2.6,36},{-6,36},{-6,51.35}}));
         connect(section2.blocked, bebot.delegationPortsBlocked[2]) annotation (
             Line(
-            points={{10.6,24.2},{10.6,58.1},{-6,58.1},{-6,55.69}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{10.6,24.2},{10.6,58.1},{-6,58.1},{-6,55.69}}));
         connect(section2.free, bebot.delegationPortsFree[2]) annotation (Line(
-            points={{17.4,24},{22,24},{22,52.05},{-6,52.05}},
-            color={0,0,0},
-            smooth=Smooth.None));
-        annotation (Diagram(graphics), Documentation(info="<!DOCTYPE html>
+            points={{17.4,24},{22,24},{22,52.05},{-6,52.05}}));
+        annotation ( Documentation(info="<!DOCTYPE html>
 <html>
 <head>
 <title>
@@ -2957,9 +2731,7 @@ BlockExecution.FinalSystemMain
           connect(accelerationOfMaster, Proposal.u_reals[1])
             annotation (Line(
               points={{46,106},{36,106},{36,60},{49,60}},
-              color={0,0,127},
-              smooth=Smooth.None));
-          annotation (Diagram(graphics));
+              color={0,0,127}));
         end Port_Master;
 
         model Bebot
@@ -3083,59 +2855,43 @@ BlockExecution.FinalSystemMain
           connect(convoy, slave.CollaborationActive.activePort);
           connect(slave.InProposal, activation) annotation (Line(
               points={{0,79.4},{-72,79.4},{-72,86},{-100,86}},
-              color={0,0,255},
-              smooth=Smooth.None));
+              color={0,0,255}));
           connect(slave.InDeact, deactivation) annotation (Line(
               points={{0,77},{-70,77},{-70,38},{-98,38}},
-              color={0,0,255},
-              smooth=Smooth.None));
+              color={0,0,255}));
           connect(slave.OutReject, activationRejected) annotation (
               Line(
-              points={{20.4,81.2},{55.1,81.2},{55.1,82},{98,82}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{20.4,81.2},{55.1,81.2},{55.1,82},{98,82}}));
           connect(slave.OutAccept, activationAccepted) annotation (
               Line(
-              points={{20.2,76.6},{57.1,76.6},{57.1,26},{102,26}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{20.2,76.6},{57.1,76.6},{57.1,26},{102,26}}));
           connect(master.InReject, activationRejectedIn) annotation (
              Line(
               points={{-2.2,-6.6},{-48,-6.6},{-48,-22},{-98,-22}},
-              color={0,0,255},
-              smooth=Smooth.None));
+              color={0,0,255}));
           connect(master.InAccept, activationAcceptedIn) annotation (
              Line(
               points={{-2,-18},{-28,-18},{-28,-88},{-98,-88}},
-              color={0,0,255},
-              smooth=Smooth.None));
+              color={0,0,255}));
           connect(master.OutDeact, deactivationProposal) annotation (Line(
-              points={{18.2,-12.6},{33.1,-12.6},{33.1,-88},{102,-88}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{18.2,-12.6},{33.1,-12.6},{33.1,-88},{102,-88}}));
           connect(master.OutProposal, activationProposal) annotation (
               Line(
-              points={{18,-8},{54,-8},{54,-34},{100,-34}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{18,-8},{54,-8},{54,-34},{100,-34}}));
           connect(startConvoy, master.startTransmission)       annotation (Line(
               points={{-14,104},{-14,60},{0,60},{0,-3.2},{-1,-3.2}},
-              color={255,0,255},
-              smooth=Smooth.None));
+              color={255,0,255}));
           connect(stopConvoy, master.stopTransmission)       annotation (Line(
               points={{46,104},{46,60},{6,60},{6,-3.2},{5,-3.2}},
-              color={255,0,255},
-              smooth=Smooth.None));
+              color={255,0,255}));
           connect(readyForConvoy, slave.ready)
                                       annotation (Line(
               points={{-48,104},{-48,87.8},{2,87.8}},
-              color={255,0,255},
-              smooth=Smooth.None));
+              color={255,0,255}));
           connect(acceleration, master.accelerationOfMaster) annotation (Line(
               points={{-107,5},{12.5,5},{12.5,-3.4},{12.6,-3.4}},
-              color={0,0,127},
-              smooth=Smooth.None));
-          annotation (Diagram(graphics), Icon(graphics={
+              color={0,0,127}));
+          annotation ( Icon(graphics={
                 Ellipse(
                   extent={{-102,-94},{-54,-140}},
                   lineColor={0,0,0},
@@ -3199,7 +2955,6 @@ BlockExecution.FinalSystemMain
             accelerationOfMaster =  T1.transition_input_port[1].reals[1];
           end when;
 
-          annotation (Diagram(graphics));
         end Port_Slave;
 
         model FinalSystemMain
@@ -3253,70 +3008,54 @@ BlockExecution.FinalSystemMain
           connect(startConvoy.y, bebotFront.startConvoy)
                                                      annotation (Line(
               points={{10,83},{10,64.4},{86.6,64.4}},
-              color={255,0,255},
-              smooth=Smooth.None));
+              color={255,0,255}));
           connect(stopConvoy.y, bebotFront.stopConvoy)
                                                    annotation (Line(
               points={{42,83},{42,64.4},{92.6,64.4}},
-              color={255,0,255},
-              smooth=Smooth.None));
+              color={255,0,255}));
           connect(bebotFront.activationProposal, bebotRear.activation)
                                                                annotation (Line(
-              points={{98,50.6},{106,50.6},{106,70},{-68,70},{-68,52.6}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{98,50.6},{106,50.6},{106,70},{-68,70},{-68,52.6}}));
           connect(bebotRear.deactivation, bebotFront.deactivationProposal)
                                                                    annotation (
               Line(
               points={{-67.8,47.8},{-102,47.8},{-102,-2},{108,-2},{108,45.2},{98.2,45.2}},
-              color={0,0,255},
-              smooth=Smooth.None));
+              color={0,0,255}));
 
           connect(bebotFront.activationAcceptedIn, bebotRear.activationAccepted)
             annotation (Line(
               points={{78.2,45.2},{48,48},{48,46},{-24,48},{-24,46.6},{-47.8,46.6}},
-              color={0,0,255},
-              smooth=Smooth.None));
+              color={0,0,255}));
           connect(bebotRear.activationRejected, bebotFront.activationRejectedIn)
             annotation (Line(
-              points={{-48.2,52.2},{4.9,52.2},{4.9,51.8},{78.2,51.8}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{-48.2,52.2},{4.9,52.2},{4.9,51.8},{78.2,51.8}}));
           connect(readyForConvoy.y, bebotRear.readyForConvoy)
                                                      annotation (Line(
               points={{-60,83},{-60,54.4},{-62.8,54.4}},
-              color={255,0,255},
-              smooth=Smooth.None));
+              color={255,0,255}));
           connect(bebotRear.velocity, robot_V3_1.omegaL_des) annotation (Line(
               points={{-47.2,44.2},{-52,44.2},{-52,-46},{-55,-46}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(bebotRear.velocity, robot_V3_1.omegaR_des) annotation (Line(
               points={{-47.2,44.2},{-24,44.2},{-24,-46},{-27,-46}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(bebotFront.velocity, robot_V3_2.omegaL_des) annotation (Line(
               points={{98.8,54.2},{32,54.2},{32,-48},{45,-48}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(bebotFront.velocity, robot_V3_2.omegaR_des) annotation (Line(
               points={{98.8,54.2},{72,54.2},{72,-48},{73,-48}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(ramp.y, bebotRear.acceleration) annotation (Line(
               points={{-129,52},{-86,52},{-86,44.5},{-68.7,44.5}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(const.y, bebotFront.acceleration) annotation (Line(
               points={{140,67},{140,54.5},{77.3,54.5}},
-              color={0,0,127},
-              smooth=Smooth.None));
-          annotation (Icon(graphics), Diagram(graphics),
-            Documentation(info="<html>
+              color={0,0,127}));
+          annotation (            Documentation(info="<html>
 <head>
 <title>Szenario Description</title>
 </head>
-<body><p>Two bebots drive in a line. The front bebot asks wether they should form a convoy. If the rear bebot is ready, they join an form a convoy, else if it is not ready, the front rebot will repeat its request later on, as long as the variable startTransmission equals true.<p>
+<body><p>Two bebots drive in a line. The front bebot asks whether they should form a convoy. If the rear bebot is ready, they join an form a convoy, else if it is not ready, the front rebot will repeat its request later on, as long as the variable startTransmission equals true.<p>
 </body>
 </html>"));
         end FinalSystemMain;
@@ -3364,54 +3103,30 @@ BlockExecution.FinalSystemMain
        timeOut;
       equation
           connect(Choice.outPort[1], T2.inPort)                  annotation (Line(
-            points={{-2,61.1},{-44,61.1},{-44,30}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-2,61.1},{-44,61.1},{-44,30}}));
           connect(entry[1], Choice.inPort[1])                  annotation (Line(
-            points={{0,100},{0,74}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{0,100},{0,74}}));
           connect(Choice.outPort[2], T1.inPort)                  annotation (Line(
             points={{2.22045e-016,61.1},{2.22045e-016,53.325},{-0.5,53.325},{
-                  -0.5,45.55},{-2,45.55},{-2,30}},
-            color={0,0,0},
-            smooth=Smooth.None));
+                  -0.5,45.55},{-2,45.55},{-2,30}}));
         connect(T1.outPort, Timeout.inPort[1]) annotation (Line(
-            points={{-2,21},{-2,10}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-2,21},{-2,10}}));
         connect(T2.outPort, Rejection.inPort[1]) annotation (Line(
-            points={{-44,21},{-44,8}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-44,21},{-44,8}}));
           connect(Choice.outPort[3], T3.inPort)                  annotation (Line(
-            points={{2,61.1},{34,61.1},{34,10}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{2,61.1},{34,61.1},{34,10}}));
         connect(Rejection.outPort[1], T4.inPort) annotation (Line(
-            points={{-44,-4.9},{-44,-22}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-44,-4.9},{-44,-22}}));
         connect(Timeout.outPort[1], T5.inPort) annotation (Line(
-            points={{-2,-2.9},{-2,-22}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-2,-2.9},{-2,-22}}));
         connect(T4.outPort,Join. inPort[1]) annotation (Line(
-            points={{-44,-31},{-24,-31},{-24,-58},{-4.66667,-58}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-44,-31},{-24,-31},{-24,-58},{-4.66667,-58}}));
         connect(T5.outPort,Join. inPort[2]) annotation (Line(
-            points={{-2,-31},{-2,-58},{-3,-58}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-2,-31},{-2,-58},{-3,-58}}));
         connect(T3.outPort,Join. inPort[3]) annotation (Line(
-            points={{34,1},{16,1},{16,-58},{-1.33333,-58}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{34,1},{16,1},{16,-58},{-1.33333,-58}}));
         connect(Join.outPort[1], exit[1]) annotation (Line(
-            points={{-3,-68.75},{-3,-86.375},{0,-86.375},{0,-105}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-3,-68.75},{-3,-86.375},{0,-86.375},{0,-105}}));
           annotation (Placement(transformation(extent={{138,14},{98,54}})),
                      Placement(transformation(extent={{138,-44},{98,-4}})),
                     Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-60,-80},
@@ -3443,7 +3158,6 @@ BlockExecution.FinalSystemMain
         RealTimeCoordination.Examples.Application.distance
                  distance1
           annotation (Placement(transformation(extent={{-10,-10},{10,10}},
-              rotation=0,
               origin={-76,18})));
         inner Modelica.Mechanics.MultiBody.World world(label2="z", n={0,0,-1})
           annotation (Placement(transformation(extent={{-50,-78},{-40,-68}})));
@@ -3466,80 +3180,59 @@ BlockExecution.FinalSystemMain
                 origin={84,68})));
       equation
         connect(rearRailCab.InReject, frontRailCab.OutReject) annotation (Line(
-            points={{13.4,-19.8},{13.4,59.6},{9.2,59.6}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{13.4,-19.8},{13.4,59.6},{9.2,59.6}}));
         connect(rearRailCab.InAccept, frontRailCab.OutAccept) annotation (Line(
-            points={{2,-20},{2,59.8},{4.6,59.8}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{2,-20},{2,59.8},{4.6,59.8}}));
         connect(frontRailCab.InDeact, rearRailCab.OutDeact) annotation (Line(
             points={{5,80},{4,80},{4,84},{-56,84},{-56,-46},{7.4,-46},{7.4,
                   -40.2}},
-            color={0,0,255},
-            smooth=Smooth.None));
+            color={0,0,255}));
         connect(rearRailCab.OutProposal, frontRailCab.InProposal) annotation (Line(
-            points={{12,-40},{58,-40},{58,80},{7.4,80}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{12,-40},{58,-40},{58,80},{7.4,80}}));
         connect(rearRailCab.myVelocity, rearRailCabDrive.omegaR_des)
                                                                 annotation (
             Line(
             points={{-4.6,-29.6},{-10.3,-29.6},{-10.3,-14},{-75,-14}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(rearRailCab.myVelocity, rearRailCabDrive.omegaL_des)
                                                                 annotation (
             Line(
             points={{-4.6,-29.6},{-53.3,-29.6},{-53.3,-42},{-75,-42}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(frontRailCab.myVelocity, frontRailCabDrive.omegaR_des)
                                                                annotation (
             Line(
             points={{-6,70},{-38,70},{-38,78},{-81,78}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(frontRailCab.myVelocity, frontRailCabDrive.omegaL_des)
                                                                annotation (
             Line(
             points={{-6,70},{-52,70},{-52,50},{-81,50}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(frontRailCabDrive.Frame, distance1.xpos1)
                                                    annotation (Line(
             points={{-87,64},{-94,64},{-94,23.8},{-86,23.8}},
             color={95,95,95},
-            thickness=0.5,
-            smooth=Smooth.None));
+            thickness=0.5));
         connect(rearRailCabDrive.Frame, distance1.xpos2)
                                                    annotation (Line(
             points={{-81,-28},{-94,-28},{-94,14},{-86,14}},
             color={95,95,95},
-            thickness=0.5,
-            smooth=Smooth.None));
+            thickness=0.5));
         connect(distance1.y, rearRailCab.distance)  annotation (Line(
             points={{-65.4,17.6},{50.3,17.6},{50.3,-25},{17.2,-25}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(velocityOfRear.y, rearRailCab.cruisingSpeed) annotation (Line(
             points={{89,-30},{54,-30},{54,-32},{17,-32}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(velocityOfFront.y, frontRailCab.cruisingSpeed) annotation (
             Line(
             points={{84,83},{30,83},{30,76.6},{14.4,76.6}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
           connect(frontRailCab.ready, readyOfFront.y) annotation (Line(
               points={{14.6,68.2},{44.3,68.2},{44.3,68},{73,68}},
-              color={255,0,255},
-              smooth=Smooth.None));
-      annotation (Diagram(coordinateSystem(preserveAspectRatio=true,  extent={{-100,
-                    -100},{100,100}}),
-                          graphics),
-            experiment(StopTime=20),
-            __Dymola_experimentSetupOutput);
+              color={255,0,255}));
+      annotation (            experiment(StopTime=20));
       end System;
 
       model Protocol_Master_Role
@@ -3626,7 +3319,6 @@ BlockExecution.FinalSystemMain
           myVelocity = cruisingSpeed;
         end if;
 
-        annotation (Diagram(graphics));
       end Protocol_Master_Role;
 
       model Protocol_Slave_Role
@@ -3675,17 +3367,13 @@ BlockExecution.FinalSystemMain
       equation
         connect(Accept.u_reals[1], cruisingSpeed) annotation (Line(
             points={{63,10},{-2,10},{-2,94},{62,94},{62,104},{-66,104}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(cruisingSpeed, myVelocity) annotation (Line(
             points={{-66,104},{-60,104},{-60,-100},{0,-100}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(Reject.u_reals[1], cruisingSpeed) annotation (Line(
             points={{41,82},{-16,82},{-16,104},{-66,104}},
-            color={0,0,127},
-            smooth=Smooth.None));
-        annotation (Diagram(graphics));
+            color={0,0,127}));
       end Protocol_Slave_Role;
     end PlatoonExample;
 
@@ -3728,170 +3416,128 @@ BlockExecution.FinalSystemMain
           annotation (Line(
             points={{6.18095,44.8267},{-21.9,44.8267},{-21.9,54.7733},{-50,
                   54.7733}},
-            color={0,0,255},
-            smooth=Smooth.None));
+            color={0,0,255}));
         connect(singleRobot_Real.InActivationProposal, singleRobot_Real1.Out_ActivationProposal)
           annotation (Line(
             points={{-87.819,42.8267},{-132,42.8267},{-132,106},{82,106},{82,58},
                   {44,58},{44,56.7733}},
-            color={0,0,255},
-            smooth=Smooth.None));
+            color={0,0,255}));
 
         connect(singleRobot_Real1.Out_Deactivation, singleRobot_Real.InDeactivation)
           annotation (Line(
             points={{44,54.16},{82,54.16},{82,-8},{-132,-8},{-132,40},{-87.819,
-                  40},{-87.819,39.6533}},
-            color={0,0,0},
-            smooth=Smooth.None));
+                  40},{-87.819,39.6533}}));
 
         connect(singleRobot_Real1.InDeactivation, singleRobot_Real.Out_Deactivation)
           annotation (Line(
             points={{6.18095,41.6533},{-25.9,41.6533},{-25.9,52.16},{-50,52.16}},
-            color={0,0,255},
-            smooth=Smooth.None));
+            color={0,0,255}));
         connect(singleRobot_Real1.OutTurn, singleRobot_Real.InTurn) annotation (Line(
             points={{44,44.64},{62,44.64},{62,90},{-122,90},{-122,47.12},{
-                  -87.819,47.12}},
-            color={0,0,0},
-            smooth=Smooth.None));
+                  -87.819,47.12}}));
         connect(singleRobot_Real1.OutActivationAccepted, singleRobot_Real.In_ActivationAccepted)
           annotation (Line(
             points={{44,38.6667},{58,38.6667},{58,84},{-100,84},{-100,51.2267},
-                  {-87.819,51.2267}},
-            color={0,0,0},
-            smooth=Smooth.None));
+                  {-87.819,51.2267}}));
         connect(singleRobot_Real1.Out_ActivationRejected, singleRobot_Real.In_ActivationRejected)
           annotation (Line(
             points={{44,41.28},{54,41.28},{54,76},{-96,76},{-96,54.4},{-87.819,
-                  54.4}},
-            color={0,0,0},
-            smooth=Smooth.None));
+                  54.4}}));
         connect(singleRobot_Real1.InTurn, singleRobot_Real.OutTurn) annotation (Line(
             points={{6.18095,49.12},{-31.9,49.12},{-31.9,42.64},{-50,42.64}},
-            color={0,0,255},
-            smooth=Smooth.None));
+            color={0,0,255}));
         connect(singleRobot_Real1.In_ActivationRejected, singleRobot_Real.Out_ActivationRejected)
           annotation (Line(
             points={{6.18095,56.4},{-16,56.4},{-16,39.28},{-50,39.28}},
-            color={0,0,255},
-            smooth=Smooth.None));
+            color={0,0,255}));
         connect(singleRobot_Real.OutActivationAccepted, singleRobot_Real1.In_ActivationAccepted)
           annotation (Line(
-            points={{-50,36.6667},{-10,36.6667},{-10,53.2267},{6.18095,53.2267}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-50,36.6667},{-10,36.6667},{-10,53.2267},{6.18095,53.2267}}));
         connect(testCounterReal1.y, singleRobot_Real.in_weight) annotation (Line(
             points={{-140.2,73},{-75.1,73},{-75.1,59.6267},{-74.6095,59.6267}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(singleRobot_Real.in_height, testCounterReal1.y) annotation (Line(
             points={{-69.181,59.6267},{-68,59.6267},{-68,73},{-140.2,73}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(singleRobot_Real.in_friction, testCounterReal1.y) annotation (Line(
             points={{-71.8952,59.6267},{-71.8952,73},{-140.2,73}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(singleRobot_Real.in_turn_time, testCounterReal1.y) annotation (Line(
             points={{-65.019,59.44},{-64.1,59.44},{-64.1,73},{-140.2,73}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(singleRobot_Real.in_y_pos, testCounterReal1.y) annotation (Line(
             points={{-60.4952,59.44},{-60.6,59.44},{-60.6,73},{-140.2,73}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(singleRobot_Real.in_x_pos, testCounterReal1.y) annotation (Line(
             points={{-62.6667,59.44},{-62.6667,73},{-140.2,73}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(singleRobot_Real.in_z_pos, testCounterReal1.y) annotation (Line(
             points={{-58.5048,59.44},{-56.7,59.44},{-56.7,73},{-140.2,73}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(singleRobot_Real.in_speed, testCounterReal1.y) annotation (Line(
             points={{-56.3333,59.44},{-55.5,59.44},{-55.5,73},{-140.2,73}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(singleRobot_Real.in_error, testCounterReal1.y) annotation (Line(
             points={{-53.8,59.44},{-52.1,59.44},{-52.1,73},{-140.2,73}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(singleRobot_Real1.in_weight, testCounterReal1.y) annotation (Line(
             points={{19.3905,61.6267},{17.4,61.6267},{17.4,73},{-140.2,73}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(singleRobot_Real1.in_friction, testCounterReal1.y) annotation (Line(
             points={{22.1048,61.6267},{20.9,61.6267},{20.9,73},{-140.2,73}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(singleRobot_Real1.in_height, testCounterReal1.y) annotation (Line(
             points={{24.819,61.6267},{25.4,61.6267},{25.4,73},{-140.2,73}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(singleRobot_Real1.in_turn_time, testCounterReal1.y) annotation (Line(
             points={{28.981,61.44},{28.7,61.44},{28.7,73},{-140.2,73}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(singleRobot_Real1.in_x_pos, testCounterReal1.y) annotation (Line(
             points={{31.3333,61.44},{31.3333,73},{-140.2,73}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(singleRobot_Real1.in_y_pos, testCounterReal1.y) annotation (Line(
             points={{33.5048,61.44},{33.2,61.44},{33.2,73},{-140.2,73}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(singleRobot_Real1.in_z_pos, testCounterReal1.y) annotation (Line(
             points={{35.4952,61.44},{36.3,61.44},{36.3,73},{-140.2,73}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(singleRobot_Real1.in_speed, testCounterReal1.y) annotation (Line(
             points={{37.6667,61.44},{39.5,61.44},{39.5,73},{-140.2,73}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(singleRobot_Real1.in_error, testCounterReal1.y) annotation (Line(
             points={{40.2,61.44},{42.9,61.44},{42.9,73},{-140.2,73}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(singleRobot_Real.Start_Transmission, booleanExpression1.y)
           annotation (Line(
             points={{-83.7476,59.5333},{-84,59.5333},{-84,112},{-16,112},{-16,
                   123}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(singleRobot_Real.ready, booleanExpression1.y) annotation (Line(
             points={{-85.5571,59.5333},{-88,59.5333},{-88,108},{-16,108},{-16,
                   123}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(singleRobot_Real.Strike, booleanPulse.y) annotation (Line(
             points={{-79.5857,59.5333},{-2,59.5333},{-2,80},{10,80},{10,111}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(singleRobot_Real1.Strike, booleanPulse1.y) annotation (Line(
             points={{14.4143,61.5333},{14.4143,86},{52,86},{52,111}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(booleanExpression1.y, singleRobot_Real1.ready) annotation (Line(
             points={{-16,123},{-16,68},{8.44286,68},{8.44286,61.5333}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(singleRobot_Real1.Start_Transmission, booleanExpression.y)
           annotation (Line(
             points={{10.2524,61.5333},{-37.65,61.5333},{-37.65,121},{-58,121}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(singleRobot_Real1.Stop_Transmission, booleanExpression.y) annotation (
            Line(
             points={{12.4238,61.5333},{12.4238,64},{12.4238,66},{-24,66},{-24,
                   121},{-58,121}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(singleRobot_Real.Stop_Transmission, booleanStep.y) annotation (Line(
             points={{-81.5762,59.5333},{-81.5762,82},{-136,82},{-136,124},{-139,
                   124}},
-            color={255,0,255},
-            smooth=Smooth.None));
-        annotation (Diagram(graphics));
+            color={255,0,255}));
       end CollaboratingRobotsFinalModellMain;
 
       partial model CollaboratingRobots
@@ -3908,60 +3554,44 @@ BlockExecution.FinalSystemMain
           annotation (Line(
             points={{6.18095,44.8267},{-21.9,44.8267},{-21.9,54.7733},{-50,
                   54.7733}},
-            color={0,0,255},
-            smooth=Smooth.None));
+            color={0,0,255}));
         connect(singleRobot_Real.InActivationProposal, singleRobot_Real1.Out_ActivationProposal)
           annotation (Line(
             points={{-87.819,42.8267},{-132,42.8267},{-132,106},{82,106},{82,84},
                   {82,84},{82,58},{82,58},{82,58},{44,58},{44,56.7733}},
-            color={0,0,255},
-            smooth=Smooth.None));
+            color={0,0,255}));
         connect(singleRobot_Real1.Out_Deactivation, singleRobot_Real.InDeactivation)
           annotation (Line(
             points={{44,54.16},{82,54.16},{82,-8},{-132,-8},{-132,40},{-90,40},
-                  {-90,39.6533},{-87.819,39.6533}},
-            color={0,0,0},
-            smooth=Smooth.None));
+                  {-90,39.6533},{-87.819,39.6533}}));
         connect(singleRobot_Real1.InDeactivation, singleRobot_Real.Out_Deactivation)
           annotation (Line(
             points={{6.18095,41.6533},{-25.9,41.6533},{-25.9,52.16},{-50,52.16}},
-            color={0,0,255},
-            smooth=Smooth.None));
+            color={0,0,255}));
         connect(singleRobot_Real1.OutTurn, singleRobot_Real.InTurn) annotation (
            Line(
             points={{44,44.64},{62,44.64},{62,90},{-122,90},{-122,47.12},{
-                  -87.819,47.12}},
-            color={0,0,0},
-            smooth=Smooth.None));
+                  -87.819,47.12}}));
 
         connect(singleRobot_Real1.OutActivationAccepted, singleRobot_Real.In_ActivationAccepted)
           annotation (Line(
             points={{44,38.6667},{58,38.6667},{58,84},{-100,84},{-100,51.2267},
-                  {-87.819,51.2267}},
-            color={0,0,0},
-            smooth=Smooth.None));
+                  {-87.819,51.2267}}));
         connect(singleRobot_Real1.Out_ActivationRejected, singleRobot_Real.In_ActivationRejected)
           annotation (Line(
             points={{44,41.28},{54,41.28},{54,76},{54,76},{-96,76},{-96,54.4},{
-                  -87.819,54.4}},
-            color={0,0,0},
-            smooth=Smooth.None));
+                  -87.819,54.4}}));
         connect(singleRobot_Real1.InTurn, singleRobot_Real.OutTurn) annotation (
            Line(
             points={{6.18095,49.12},{-31.9,49.12},{-31.9,42.64},{-50,42.64}},
-            color={0,0,255},
-            smooth=Smooth.None));
+            color={0,0,255}));
         connect(singleRobot_Real1.In_ActivationRejected, singleRobot_Real.Out_ActivationRejected)
           annotation (Line(
             points={{6.18095,56.4},{-16,56.4},{-16,39.28},{-50,39.28}},
-            color={0,0,255},
-            smooth=Smooth.None));
+            color={0,0,255}));
         connect(singleRobot_Real.OutActivationAccepted, singleRobot_Real1.In_ActivationAccepted)
           annotation (Line(
-            points={{-50,36.6667},{-10,36.6667},{-10,53.2267},{6.18095,53.2267}},
-            color={0,0,0},
-            smooth=Smooth.None));
-        annotation (Diagram(graphics));
+            points={{-50,36.6667},{-10,36.6667},{-10,53.2267},{6.18095,53.2267}}));
       end CollaboratingRobots;
 
       model SingleRobot
@@ -4173,172 +3803,132 @@ BlockExecution.FinalSystemMain
       equation
         connect(in_weight, collaboration_Master_Real.In_Weight) annotation (Line(
             points={{-72,116},{-72,98},{-90,98},{-90,67.56},{-89.3,67.56}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
 
         connect(collaboration_Master_Real.In_Friction, in_friction) annotation (
             Line(
             points={{-83.84,67.56},{-83.84,92.45},{-42,92.45},{-42,116}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(collaboration_Master_Real.In_Height, in_height) annotation (Line(
             points={{-78.38,67.56},{-78,86},{-12,86},{-12,116}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(in_turn_time, turn_Transmission_Partner_Real.In_TurnTime)
           annotation (Line(
             points={{34,114},{34,78},{130,78},{130,-3.85455},{124.53,-3.85455}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(in_x_pos, turn_Transmission_Partner_Real.In_X) annotation (Line(
             points={{60,114},{60,82},{134,82},{134,-9.74545},{124.53,-9.74545}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(in_y_pos, turn_Transmission_Partner_Real.In_Y) annotation (Line(
             points={{84,114},{84,86},{140,86},{140,-14.9818},{124.53,-14.9818}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(in_z_pos, turn_Transmission_Partner_Real.In_Z) annotation (Line(
             points={{106,114},{106,90},{144,90},{144,-20.8727},{124.53,-20.8727}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(in_speed, turn_Transmission_Partner_Real.In_Speed) annotation (
             Line(
             points={{130,114},{130,94},{152,94},{152,-26.1091},{124.53,-26.1091}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(turn_Transmission_Partner_Real.In_BatError, in_error) annotation (
            Line(
             points={{124.53,-32},{156,-38},{156,114},{158,114}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(InTurn, turn_Transmission_Partner_Real.InTurn) annotation (Line(
             points={{-218,-18},{16.94,-18},{16.94,-13.3455}},
-            color={0,0,255},
-            smooth=Smooth.None));
+            color={0,0,255}));
         connect(collaboration_Master_Real.InAccept,
           In_ActivationAccepted) annotation (Line(
             points={{-140,29.6},{-180,29.6},{-180,26},{-218,26}},
-            color={0,0,255},
-            smooth=Smooth.None));
+            color={0,0,255}));
         connect(collaboration_Master_Real.InReject,
           In_ActivationRejected) annotation (Line(
             points={{-140.78,59.24},{-180,59.24},{-180,60},{-218,60}},
-            color={0,0,255},
-            smooth=Smooth.None));
+            color={0,0,255}));
         connect(InActivationProposal, collaboration_Slave_Real.InProposal)
           annotation (Line(
             points={{-218,-64},{-177,-64},{-177,-63.16},{-136,-63.16}},
-            color={0,0,255},
-            smooth=Smooth.None));
+            color={0,0,255}));
         connect(collaboration_Slave_Real.InDeact, InDeactivation)
           annotation (Line(
             points={{-136,-69.4},{-176,-69.4},{-176,-98},{-218,-98}},
-            color={0,0,255},
-            smooth=Smooth.None));
+            color={0,0,255}));
         connect(collaboration_Master_Real.OutProposal,
           Out_ActivationProposal) annotation (Line(
-            points={{-62,55.6},{70,55.6},{70,64},{200,64}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-62,55.6},{70,55.6},{70,64},{200,64}}));
         connect(collaboration_Master_Real.OutDeact,
           Out_Deactivation) annotation (Line(
-            points={{-61.22,43.64},{71.39,43.64},{71.39,36},{200,36}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-61.22,43.64},{71.39,43.64},{71.39,36},{200,36}}));
         connect(turn_Transmission_Partner_Real.OutTurn, OutTurn) annotation (Line(
-            points={{121.88,-35.6},{161.94,-35.6},{161.94,-66},{200,-66}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{121.88,-35.6},{161.94,-35.6},{161.94,-66},{200,-66}}));
         connect(collaboration_Slave_Real.OutReject,
           Out_ActivationRejected) annotation (Line(
-            points={{-64.6,-58.48},{67.35,-58.48},{67.35,-102},{200,-102}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-64.6,-58.48},{67.35,-58.48},{67.35,-102},{200,-102}}));
         connect(collaboration_Slave_Real.OutAccept,
           OutActivationAccepted) annotation (Line(
-            points={{-65.3,-70.44},{54,-70.44},{54,-130},{200,-130}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-65.3,-70.44},{54,-70.44},{54,-130},{200,-130}}));
         connect(collaboration_Master_Real.Out_Begin,
           turn_Transmission_Partner_Real.Master) annotation (Line(
             points={{-61.22,37.4},{-21.61,37.4},{-21.61,4},{17.47,4}},
-            color={255,128,0},
-            smooth=Smooth.None));
+            color={255,128,0}));
         connect(ready, collaboration_Slave_Real.ready) annotation (Line(
             points={{-193,115},{-193,-33.5},{-126.2,-33.5},{-126.2,-44.96}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(Start_Transmission, collaboration_Master_Real.startTransmission)
           annotation (Line(
             points={{-173,115},{-173,76.5},{-117.38,76.5},{-117.38,68.08}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(Stop_Transmission, collaboration_Master_Real.stopTransmission)
           annotation (Line(
             points={{-149,115},{-149,81.5},{-133.37,81.5},{-133.37,68.34}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(Strike, turn_Transmission_Partner_Real.strike) annotation (Line(
             points={{-127,115},{-127,90},{-46,90},{-46,46},{43.97,46},{43.97,
                   26.9091}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
 
         connect(turn_Transmission_Partner_Real.Out_TurnTime, out_turn_time)
           annotation (Line(
             points={{63.58,-53.9273},{63.58,-117.08},{36,-117.08},{36,-190}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(turn_Transmission_Partner_Real.Out_X, out_in_x_pos) annotation (
             Line(
             points={{76.3,-53.9273},{76.3,-127.08},{57,-127.08},{57,-191}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(turn_Transmission_Partner_Real.Out_Y, out_y_pos) annotation (Line(
             points={{87.96,-53.9273},{87.96,-133.08},{79,-133.08},{79,-191}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(turn_Transmission_Partner_Real.Out_Z, out_z_pos) annotation (Line(
             points={{98.56,-53.9273},{98.56,-126.08},{104,-126.08},{104,-190}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(turn_Transmission_Partner_Real.Out_Speed, out_speed) annotation (
             Line(
             points={{108.1,-53.9273},{108.1,-118.08},{125,-118.08},{125,-191}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(turn_Transmission_Partner_Real.Out_BatError, out_error)
           annotation (Line(
             points={{119.76,-53.9273},{119.76,-110.08},{147,-110.08},{147,-191}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(collaboration_Slave_Real.Out_Weight, out_weight) annotation (Line(
             points={{-117.8,-99.04},{-117.8,-141.52},{-140,-141.52},{-140,-192}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
 
         connect(collaboration_Slave_Real.Out_Friction, out_friction) annotation (
             Line(
             points={{-111.5,-99.04},{-111.5,-145.52},{-119,-145.52},{-119,-193}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
 
         connect(collaboration_Slave_Real.Out_Height, out_height) annotation (Line(
             points={{-104.5,-99.04},{-104.5,-143.52},{-97,-143.52},{-97,-193}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(collaboration_Master_Real.deactivate_Collaboration,
           turn_Transmission_Partner_Real.StopCollaboration) annotation (Line(
             points={{-61.22,32.2},{-38,32.2},{-38,-43.4545},{18,-43.4545}},
-            color={255,128,0},
-            smooth=Smooth.None));
+            color={255,128,0}));
         connect(collaboration_Slave_Real.collaboration_deactivated,
           turn_Transmission_Partner_Real.StopCollaboration1) annotation (Line(
             points={{-66,-74.6},{-34,-74.6},{-34,-74},{-2,-74},{-2,-49.3455},{
                   18,-49.3455}},
-            color={255,128,0},
-            smooth=Smooth.None));
+            color={255,128,0}));
 
         annotation (Diagram(coordinateSystem(extent={{-220,-180},{200,120}},
                 preserveAspectRatio=true), graphics), Icon(coordinateSystem(
@@ -4386,7 +3976,6 @@ BlockExecution.FinalSystemMain
         y := time;
         end when;
 
-        annotation (Diagram(graphics));
       end Counter;
 
       package ParameterisedCoordinationProtocols
@@ -4414,32 +4003,26 @@ BlockExecution.FinalSystemMain
             Modelica.Blocks.Interfaces.RealInput In_TurnTime  annotation (Placement(
                   transformation(
                   extent={{7,-7},{-7,7}},
-                  rotation=0,
                   origin={101,21})));
             Modelica.Blocks.Interfaces.RealInput In_Speed  annotation (Placement(
                   transformation(
                   extent={{7,-7},{-7,7}},
-                  rotation=0,
                   origin={101,-47})));
             Modelica.Blocks.Interfaces.RealInput In_X      annotation (Placement(
                   transformation(
                   extent={{7,-7},{-7,7}},
-                  rotation=0,
                   origin={101,3})));
             Modelica.Blocks.Interfaces.RealInput In_Y      annotation (Placement(
                   transformation(
                   extent={{7,-7},{-7,7}},
-                  rotation=0,
                   origin={101,-13})));
             Modelica.Blocks.Interfaces.RealInput In_Z      annotation (Placement(
                   transformation(
                   extent={{7,-7},{-7,7}},
-                  rotation=0,
                   origin={101,-31})));
             Modelica.Blocks.Interfaces.RealInput In_BatError  annotation (Placement(
                   transformation(
                   extent={{7,-7},{-7,7}},
-                  rotation=0,
                   origin={101,-65})));
             Modelica.Blocks.Interfaces.RealOutput Out_X    annotation (Placement(
                   transformation(
@@ -4498,36 +4081,28 @@ BlockExecution.FinalSystemMain
           equation
             connect(In_TurnTime, message.u_reals[1]) annotation (Line(
                 points={{101,21},{83,21},{83,-76},{-73,-76}},
-                color={255,127,0},
-                smooth=Smooth.None));
+                color={255,127,0}));
             connect(In_X, message.u_reals[2]) annotation (Line(
                 points={{101,3},{83,3},{83,-76},{-73,-76}},
-                color={255,127,0},
-                smooth=Smooth.None));
+                color={255,127,0}));
             connect(In_Y, message.u_reals[3]) annotation (Line(
                 points={{101,-13},{83,-13},{83,-76},{-73,-76}},
-                color={255,127,0},
-                smooth=Smooth.None));
+                color={255,127,0}));
             connect(In_Z, message.u_reals[4]) annotation (Line(
                 points={{101,-31},{83,-31},{83,-76},{-73,-76}},
-                color={255,127,0},
-                smooth=Smooth.None));
+                color={255,127,0}));
             connect(In_Speed, message.u_reals[5]) annotation (Line(
                 points={{101,-47},{83,-47},{83,-76},{-73,-76}},
-                color={255,127,0},
-                smooth=Smooth.None));
+                color={255,127,0}));
             connect(In_BatError, message.u_reals[6]) annotation (Line(
                 points={{101,-65},{83,-65},{83,-76},{-73,-76}},
-                color={255,127,0},
-                smooth=Smooth.None));
+                color={255,127,0}));
             connect(strike, rising1.u) annotation (Line(
                 points={{-51,115},{-115.5,115},{-115.5,82},{-101.2,82}},
-                color={255,0,255},
-                smooth=Smooth.None));
+                color={255,0,255}));
             connect(rising1.y, T3.conditionPort) annotation (Line(
                 points={{-91.2,82},{-80,82},{-80,-12},{-69,-12}},
-                color={255,0,255},
-                smooth=Smooth.None));
+                color={255,0,255}));
             annotation (Diagram(coordinateSystem(preserveAspectRatio=true,  extent={{-100,
                       -120},{100,100}}),
                                 graphics), Icon(coordinateSystem(extent={{-100,
@@ -4588,9 +4163,6 @@ BlockExecution.FinalSystemMain
             Out_Height := T1.transition_input_port[1].reals[3];
           equation
 
-            annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
-                        -100},{100,100}}),
-                                graphics));
           end Collaboration_Slave;
 
           model Collaboration_Master
@@ -4649,20 +4221,14 @@ BlockExecution.FinalSystemMain
           equation
             connect(In_Weight, Proposal.u_reals[1]) annotation (Line(
                 points={{30,106},{30,60},{49,60}},
-                color={255,127,0},
-                smooth=Smooth.None));
+                color={255,127,0}));
             connect(In_Friction, Proposal.u_reals[2]) annotation (
                 Line(
                 points={{44,106},{46,106},{46,60},{49,60}},
-                color={255,127,0},
-                smooth=Smooth.None));
+                color={255,127,0}));
             connect(In_Height, Proposal.u_reals[3]) annotation (Line(
                 points={{58,106},{54,106},{54,60},{49,60}},
-                color={255,127,0},
-                smooth=Smooth.None));
-            annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
-                        -100},{100,100}}),
-                                graphics));
+                color={255,127,0}));
           end Collaboration_Master;
         end Synchronized_Collaboration;
       end ParameterisedCoordinationProtocols;
@@ -4719,47 +4285,30 @@ BlockExecution.FinalSystemMain
 
           equation
             connect(step1.entry[1], Inactive.inPort[4]) annotation (Line(
-                points={{48.6,127.9},{48.6,71.45},{-16,71.45},{-16,58}},
-                color={0,0,0},
-                smooth=Smooth.None));
+                points={{48.6,127.9},{48.6,71.45},{-16,71.45},{-16,58}}));
             connect(SynchWorkaround_1.outPort[1], T11.inPort) annotation (Line(
-                points={{136,67.4},{138,67.4},{138,54}},
-                color={0,0,0},
-                smooth=Smooth.None));
+                points={{136,67.4},{138,67.4},{138,54}}));
             connect(T11.outPort, step4.inPort[1]) annotation (Line(
-                points={{138,45},{138,34}},
-                color={0,0,0},
-                smooth=Smooth.None));
+                points={{138,45},{138,34}}));
             connect(step4.outPort[1], T14.inPort) annotation (Line(
-                points={{138,25.4},{128,25.4},{128,42},{118,42}},
-                color={0,0,0},
-                smooth=Smooth.None));
+                points={{138,25.4},{128,25.4},{128,42},{118,42}}));
             connect(T14.outPort, SynchWorkaround_1.inPort[1]) annotation (Line(
-                points={{118,51},{128,51},{128,76},{135,76}},
-                color={0,0,0},
-                smooth=Smooth.None));
+                points={{118,51},{128,51},{128,76},{135,76}}));
             connect(step1.entry[2], SynchWorkaround_1.inPort[2]) annotation (Line(
-                points={{63.4,127.9},{136,127.9},{136,76},{137,76}},
-                color={0,0,0},
-                smooth=Smooth.None));
+                points={{63.4,127.9},{136,127.9},{136,76},{137,76}}));
             connect(StopCollaboration, T11.receiver[1]) annotation (Line(
                 points={{-100,-100},{150,-100},{150,54},{142,54},{142,53.67},{135.18,53.67}},
-                color={255,128,0},
-                smooth=Smooth.None));
+                color={255,128,0}));
 
             connect(StopCollaboration1, T11.receiver[2]) annotation (Line(
                 points={{-100,-118},{160,-118},{160,54},{148,54},{148,54.37},{
                     135.18,54.37}},
-                color={255,128,0},
-                smooth=Smooth.None));
+                color={255,128,0}));
 
             connect(T2.receiver[1], Master) annotation (Line(
                 points={{-29.18,12.02},{-30.59,12.02},{-30.59,45},{-101,45}},
-                color={255,128,0},
-                smooth=Smooth.None));
-            annotation (Diagram(coordinateSystem(preserveAspectRatio=true,  extent={{-100,
-                      -100},{100,100}}),
-                                graphics), Documentation(info="<html>
+                color={255,128,0}));
+            annotation ( Documentation(info="<html>
 <p>ToDo:</p>
 <p>Insert synchronization channel which cancels the collaboration</p>
 </html>"));
@@ -4779,11 +4328,8 @@ BlockExecution.FinalSystemMain
 
             connect(T3.sender[1], collaboration_deactivated) annotation (Line(
                 points={{-55.4,3.94},{-56,-10},{100,-10}},
-                color={255,128,0},
-                smooth=Smooth.None));
-            annotation (Diagram(coordinateSystem(preserveAspectRatio=true,  extent={{-100,
-                      -100},{100,100}}),
-                                graphics), Documentation(info="<html>
+                color={255,128,0}));
+            annotation ( Documentation(info="<html>
 <p>ToDo:</p>
 <p>Insert synchronization channel which cancels the collaboration</p>
 </html>"));
@@ -4804,15 +4350,11 @@ BlockExecution.FinalSystemMain
           equation
             connect(T9.sender[1], deactivate_Collaboration) annotation (Line(
                 points={{-82.6,23.94},{-84,24},{-84,-30},{102,-30}},
-                color={255,128,0},
-                smooth=Smooth.None));
+                color={255,128,0}));
             connect(T10.sender[1], Out_Begin) annotation (Line(
                 points={{-57.4,-15.94},{20.3,-15.94},{20.3,-10},{102,-10}},
-                color={255,128,0},
-                smooth=Smooth.None));
-            annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
-                      -100},{100,100}}),
-                                graphics), Documentation(info="<html>
+                color={255,128,0}));
+            annotation ( Documentation(info="<html>
 <p>ToDo:</p>
 <p>Insert synchronization channel which cancels the collaboration</p>
 </html>"));
@@ -4905,84 +4447,56 @@ end Examples;
         annotation (Placement(transformation(extent={{-82,86},{-62,106}})));
     equation
       connect(Inactive.outPort[1], T1.inPort) annotation (Line(
-          points={{-71.4,64},{-22,64},{-22,80},{-12,80}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-71.4,64},{-22,64},{-22,80},{-12,80}}));
       connect(T1.outPort, Waiting.inPort[1]) annotation (Line(
-          points={{-3,80},{32,80},{32,68},{46,68}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-3,80},{32,80},{32,68},{46,68}}));
       connect(Waiting.outPort[1], T2.inPort) annotation (Line(
-          points={{47.3333,59.4},{40,59.4},{40,50},{-10,50}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{47.3333,59.4},{40,59.4},{40,50},{-10,50}}));
       connect(Waiting.outPort[2], T3.inPort) annotation (Line(
-          points={{46,59.4},{46,28},{-10,28}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{46,59.4},{46,28},{-10,28}}));
       connect(Waiting.outPort[3], T4.inPort) annotation (Line(
-          points={{44.6667,59.4},{50,59.4},{50,10},{-10,10}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{44.6667,59.4},{50,59.4},{50,10},{-10,10}}));
       connect(T2.outPort, Inactive.inPort[1]) annotation (Line(
-          points={{-19,50},{-92,50},{-92,62.6667},{-80,62.6667}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-19,50},{-92,50},{-92,62.6667},{-80,62.6667}}));
       connect(T3.outPort, Inactive.inPort[2]) annotation (Line(
-          points={{-19,28},{-94,28},{-94,64},{-80,64}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-19,28},{-94,28},{-94,64},{-80,64}}));
       connect(T4.outPort, Inactive.inPort[3]) annotation (Line(
-          points={{-19,10},{-96,10},{-96,65.3333},{-80,65.3333}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-19,10},{-96,10},{-96,65.3333},{-80,65.3333}}));
       connect(message.message_output_port, Out_Order_Delegation) annotation (Line(
-          points={{77,93},{95.5,93},{95.5,92},{98,92}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{77,93},{95.5,93},{95.5,92},{98,92}}));
       connect(T1.firePort, message.conditionPort[1]) annotation (Line(
           points={{-8,84.2},{24,84.2},{24,84.4},{56,84.4}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(In_DelegationFailed, mailbox.mailbox_input_port[1]) annotation (Line(
           points={{-102,-20},{-90.5,-20},{-90.5,-19},{-79,-19}},
-          color={0,0,255},
-          smooth=Smooth.None));
+          color={0,0,255}));
       connect(In_Delegation_Succeded, mailbox1.mailbox_input_port[1]) annotation (
           Line(
           points={{-102,-56},{-89,-56},{-89,-57},{-77,-57}},
-          color={0,0,255},
-          smooth=Smooth.None));
+          color={0,0,255}));
       connect(mailbox.mailbox_output_port[1], T3.transition_input_port[1])
         annotation (Line(
-          points={{-61,-19},{-61,36.5},{-11.88,36.5},{-11.88,32.9}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-61,-19},{-61,36.5},{-11.88,36.5},{-11.88,32.9}}));
       connect(mailbox1.mailbox_output_port[1], T4.transition_input_port[1])
         annotation (Line(
-          points={{-59,-57},{20,-58},{20,14.9},{-11.88,14.9}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-59,-57},{20,-58},{20,14.9},{-11.88,14.9}}));
       connect(T1.firePort, clock.u[1]) annotation (Line(
           points={{-8,84.2},{0,84.2},{0,108},{-9.9,108}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(clock.y, timeInvariantLessOrEqual.clockValue) annotation (Line(
           points={{-31,108},{-98,108},{-98,99.6},{-83.5,99.6}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(Waiting.activePort, timeInvariantLessOrEqual.conditionPort)
         annotation (Line(
           points={{41.28,64},{36,64},{36,114},{-100,114},{-100,92},{-83.2,
               92.4}},
-          color={255,0,255},
-          smooth=Smooth.None));
-      annotation (Diagram(graphics), Documentation(info="<!DOCTYPE html>
+          color={255,0,255}));
+      annotation ( Documentation(info="<!DOCTYPE html>
 <html>
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.Fail_Operational_Delegation.Delegation_Master</title></head>
 <body>
 <h3> Delegation_Master </h3>
-<p>This class implements the behavior of the role Delegation_Master in the &quot;Fail-Operational Delegation&quot; pattern. The master component wants to delegate a task to the slave component, being responsible for executing the task. The slave component can report the task execuition with either &quot;done&quot; or &quot;fail&quot;, informing the master wether the delegation was successful or not. More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Fail_Operational_Delegation\">here</a>&quot; The corresponding Realtime Statechart is shown in the following figure: </p>
+<p>This class implements the behavior of the role Delegation_Master in the &quot;Fail-Operational Delegation&quot; pattern. The master component wants to delegate a task to the slave component, being responsible for executing the task. The slave component can report the task execuition with either &quot;done&quot; or &quot;fail&quot;, informing the master whether the delegation was successful or not. More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Fail_Operational_Delegation\">here</a>&quot; The corresponding Realtime Statechart is shown in the following figure: </p>
 <p><img src=\"images/Fail_Operational_Delegation/RTS_Fail-OperationalDelegation_Master.jpg\" alt =\"\"/> </p>
 <p><small>Figure 1: Realtimestatechart, showing the behavior of the master role </small></p>
 <p>The master has a parameter &quot;timeout&quot;, specifying the time that the master waits for a reply of the slave (which can be either &quot;fail&quot; or &quot;done&quot; in case of a failure or a success resp.). </p>
@@ -5070,75 +4584,51 @@ end Examples;
         annotation (Placement(transformation(extent={{62,76},{82,96}})));
     equation
       connect(Inactive.outPort[1], T1.inPort) annotation (Line(
-          points={{-61.4,54},{-42,54},{-42,68},{-24,68}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-61.4,54},{-42,54},{-42,68},{-24,68}}));
       connect(T1.outPort, Working.inPort[1]) annotation (Line(
-          points={{-15,68},{10,68},{10,54},{32,54}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-15,68},{10,68},{10,54},{32,54}}));
       connect(Working.outPort[1], T2.inPort) annotation (Line(
-          points={{31,45.4},{10,45.4},{10,22},{-14,22}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{31,45.4},{10,45.4},{10,22},{-14,22}}));
       connect(Working.outPort[2], T3.inPort) annotation (Line(
-          points={{33,45.4},{34,45.4},{34,-50},{-10,-50}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{33,45.4},{34,45.4},{34,-50},{-10,-50}}));
       connect(T2.outPort, Inactive.inPort[1]) annotation (Line(
-          points={{-23,22},{-76,22},{-76,53},{-70,53}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-23,22},{-76,22},{-76,53},{-70,53}}));
       connect(T3.outPort, Inactive.inPort[2]) annotation (Line(
-          points={{-19,-50},{-82,-50},{-82,55},{-70,55}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-19,-50},{-82,-50},{-82,55},{-70,55}}));
       connect(In_Order_Delegation, mailbox.mailbox_input_port[1]) annotation (Line(
           points={{-102,94},{-87.5,94},{-87.5,95},{-73,95}},
-          color={0,0,255},
-          smooth=Smooth.None));
+          color={0,0,255}));
       connect(mailbox.mailbox_output_port[1], T1.transition_input_port[1])
         annotation (Line(
-          points={{-55,95},{-38.5,95},{-38.5,63.1},{-22.12,63.1}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-55,95},{-38.5,95},{-38.5,63.1},{-22.12,63.1}}));
       connect(message.conditionPort[1], T3.firePort) annotation (Line(
           points={{-8,-85.6},{-12,-85.6},{-12,-54.2},{-14,-54.2}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(T2.firePort, message1.conditionPort[1]) annotation (Line(
           points={{-18,17.8},{-14,17.8},{-14,-15.6},{-8,-15.6}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(message1.message_output_port, Out_Delegation_Failed)
                                                                   annotation (Line(
-          points={{13,-7},{56.5,-7},{56.5,-6},{100,-6}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{13,-7},{56.5,-7},{56.5,-6},{100,-6}}));
       connect(message.message_output_port, Out_Delegation_Succeded)
                                                                   annotation (Line(
-          points={{13,-77},{54.5,-77},{54.5,-78},{100,-78}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{13,-77},{54.5,-77},{54.5,-78},{100,-78}}));
       connect(T1.firePort, clock.u[1]) annotation (Line(
           points={{-20,72.2},{-4,72.2},{-4,92},{13.9,92}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(clock.y, timeInvariantLessOrEqual.clockValue) annotation (Line(
           points={{35,92},{48,92},{48,89.6},{60.5,89.6}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(Working.activePort, timeInvariantLessOrEqual.conditionPort)
         annotation (Line(
           points={{36.72,50},{48,50},{48,82.4},{60.8,82.4}},
-          color={255,0,255},
-          smooth=Smooth.None));
-      annotation (Diagram(graphics), Documentation(info="<!DOCTYPE html>
+          color={255,0,255}));
+      annotation ( Documentation(info="<!DOCTYPE html>
 <html>
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.Fail_Operational_Delegation.Delegation_Slave</title></head>
 <body>
 <h3> Delegation_Slave </h3>
-<p>This class implements the behavior of the role Delegation_Slave in the &quot;Fail-Operational Delegation&quot; pattern. The master component wants to delegate a task to the slave component, being responsible for executing the task. The slave component can report the task execuition with either &quot;done&quot; or &quot;fail&quot;, informing the master wether the delegation was successful or not. More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Fail_Operational_Delegation\">here</a>&quot; The corresponding Realtime Statechart is shown in the following figure: </p>
+<p>This class implements the behavior of the role Delegation_Slave in the &quot;Fail-Operational Delegation&quot; pattern. The master component wants to delegate a task to the slave component, being responsible for executing the task. The slave component can report the task execuition with either &quot;done&quot; or &quot;fail&quot;, informing the master whether the delegation was successful or not. More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Fail_Operational_Delegation\">here</a>&quot; The corresponding Realtime Statechart is shown in the following figure: </p>
 <p><img src=\"images/Fail_Operational_Delegation/RTS_Fail-OperationalDelegation_Slave.jpg\" alt =\"\"/> </p>
 <p><small>Figure 1: Realtimestatechart, showing the behavior of the slave role </small></p>
 <p>The slave has a parameter &quot;worktime&quot;, specifying the maximum amount of time that the slave may use to execute the task. </p>
@@ -5153,29 +4643,29 @@ end Examples;
 <body>
 <h3>Fail_Operational_Delegation Pattern</h3>
 
-<p> 
+<p>
 This pattern realizes a delegation of a task from a role master to a role slave. The
 slave executes the task in a certain time and answers regarding success or failure. The
 pattern assumes that a failure is not safety-critical, though only one delegation at a time
-is allowed. 
+is allowed.
 </p>
 
-<p> 
+<p>
 A test is specified at: <a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Examples.PatternTest.Fail_Operational_Delegation_Test\">PatternTest.Fail-Operational-Delegation</a>
 </p>
 
 <h4> Context </h4>
 
-<p> 
-Delegate tasks between communicating actors. 
+<p>
+Delegate tasks between communicating actors.
 </p>
 
 <h4> Problem </h4>
 
-<p> 
+<p>
 If the communication is asynchronous and the communication channel is
 unreliable, the role that sends the task, does not know if the other role has received it.
-Though, the task has to be done. 
+Though, the task has to be done.
 </p>
 
 <h4> Solution </h4>
@@ -5190,13 +4680,13 @@ reports if the task was done successfully or if the execution failed.
 
 <h4> Structure </h4>
 
-<p> 
+<p>
 The pattern consists of the two roles master and slave. Both
-roles are in/out roles.Which message each role can receive and send is shown in the message interfaces. The master may send the message order to the slave. 
+roles are in/out roles.Which message each role can receive and send is shown in the message interfaces. The master may send the message order to the slave.
 The slave may send the messages done and fail to the master. The time parameter of the role master is $timeout, the time parameter of role slave
 is $worktime. The connector may lose messages. The delay for sending a message is
 defined by the time parameters $delay-min and $delay-max.
-</p> 
+</p>
 
 <p>
 <img width = \"706\" height = \"405\" src=\"images/Fail_Operational_Delegation/Structure_Fail-OperationalDelegation.jpg\" alt =\"\"/>
@@ -5223,7 +4713,7 @@ Inactive.
 The role slave represents the counter-part to the master role and consist of the initial
 state Inactive and the state Working. The message order() triggers the transition from
 Inactive to Working. Upon the activation of Working the clock c0 is reset via an entryaction.
-An invariant using c0 ensures that Working is left not later than $worktime units of time after its activation. 
+An invariant using c0 ensures that Working is left not later than $worktime units of time after its activation.
 There are two outgoing transitions. The one with the highest priority sends the message done() to the master and the state changes back to Inactive. If
 an error occurs, the message fail() will be send to the master and the state changes also
 back to Inactive, too.
@@ -5432,7 +4922,6 @@ back to Inactive, too.
         use_after=true,
         afterTime=1e-8)             annotation (Placement(transformation(
             extent={{-4,-4},{4,4}},
-            rotation=0,
             origin={-8,30})));
       RealTimeCoordinationLibrary.RealTimeCoordination.Transition
                                              T10(use_messageReceive=true,
@@ -5534,298 +5023,192 @@ back to Inactive, too.
 
     equation
       connect(NoAssignment.outPort[1], T1.inPort) annotation (Line(
-          points={{-3.33333,67.4},{-16,67.4},{-16,58},{-30,58}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-3.33333,67.4},{-16,67.4},{-16,58},{-30,58}}));
       connect(T1.outPort, MasterProposed.inPort[1]) annotation (Line(
-          points={{-39,58},{-68,58}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-39,58},{-68,58}}));
       connect(T1.firePort, YouSlaveMessage.conditionPort[1]) annotation (Line(
           points={{-34,53.8},{-34,42},{-96,42},{-96,86.4},{-230,86.4}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
      connect(T1.firePort, clock.u[3])
        annotation (Line(
           points={{-34,53.8},{-24,53.8},{-24,123.9},{-17.15,123.9}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
      connect(T2.firePort, clock.u[4]) annotation (Line(
           points={{-72.2,22},{-258,22},{-258,176},{2,176},{2,123.9},{-15.45,
               123.9}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
 
       connect(NoAssignment.outPort[2], T3.inPort) annotation (Line(
-          points={{-2,67.4},{14,67.4},{14,58},{28,58}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-2,67.4},{14,67.4},{14,58},{28,58}}));
       connect(T3.outPort, Slave.inPort[1]) annotation (Line(
-          points={{37,58},{44.5,58},{44.5,56.6667},{64,56.6667}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{37,58},{44.5,58},{44.5,56.6667},{64,56.6667}}));
       connect(Slave.outPort[1], T4.inPort) annotation (Line(
-          points={{72.6,56.5},{84,56.5},{84,84},{46,84}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{72.6,56.5},{84,56.5},{84,84},{46,84}}));
       connect(T4.outPort, NoAssignment.inPort[1]) annotation (Line(
-          points={{37,84},{-3.71429,84},{-3.71429,76}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{37,84},{-3.71429,84},{-3.71429,76}}));
       connect(Master.outPort[1], T6.inPort) annotation (Line(
-          points={{-66.5,-8.6},{-66,-16},{-110,-16},{-110,28}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-66.5,-8.6},{-66,-16},{-110,-16},{-110,28}}));
       connect(T6.outPort, NoAssignment.inPort[2]) annotation (Line(
-          points={{-110,37},{-110,92},{-2,92},{-2,76},{-3.14286,76}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-110,37},{-110,92},{-2,92},{-2,76},{-3.14286,76}}));
       connect(In_Confirm, confirm.mailbox_input_port[1])
         annotation (Line(
           points={{-134,-120},{-134,-71},{-45,-71}},
-          color={0,0,255},
-          smooth=Smooth.None));
+          color={0,0,255}));
       connect(In_NoSlave, noSlave.mailbox_input_port[1])
         annotation (Line(
           points={{28,-120},{48,-120},{46,-72},{47,-71}},
-          color={0,0,255},
-          smooth=Smooth.None));
+          color={0,0,255}));
       connect(In_Alive2, alive2.mailbox_input_port[1])            annotation (
          Line(
           points={{-58,-120},{-14,-120},{-14,-74},{-9,-74},{-9,-71}},
-          color={0,0,255},
-          smooth=Smooth.None));
+          color={0,0,255}));
       connect(In_Alive, alive.mailbox_input_port[1])             annotation (
           Line(
           points={{146,-120},{132,-120},{132,-73},{135,-73}},
-          color={0,0,255},
-          smooth=Smooth.None));
+          color={0,0,255}));
       connect(In_YouSlave, YouSlave.mailbox_input_port[1])
         annotation (Line(
           points={{82,-120},{72,-120},{72,-71},{75,-71}},
-          color={0,0,255},
-          smooth=Smooth.None));
+          color={0,0,255}));
       connect(Slave.outPort[2], T8.inPort) annotation (Line(
-          points={{72.6,57.5},{98,57.5},{98,28}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{72.6,57.5},{98,57.5},{98,28}}));
       connect(Slave.outPort[3], T7.inPort) annotation (Line(
-          points={{72.6,58.5},{118,58.5},{118,28}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{72.6,58.5},{118,58.5},{118,28}}));
       connect(T8.outPort, Slave.inPort[2]) annotation (Line(
-          points={{98,19},{62,19},{62,58},{64,58}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{98,19},{62,19},{62,58},{64,58}}));
       connect(T7.outPort, Slave.inPort[3]) annotation (Line(
-          points={{118,19},{118,8},{54,8},{54,59.3333},{64,59.3333}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{118,19},{118,8},{54,8},{54,59.3333},{64,59.3333}}));
       connect(YouSlave.mailbox_output_port[1], T8.transition_input_port[1])
         annotation (Line(
-          points={{93,-71.6667},{93,-31.5},{93.1,-31.5},{93.1,26.12}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{93,-71.6667},{93,-31.5},{93.1,-31.5},{93.1,26.12}}));
       connect(alive.mailbox_output_port[1], T7.transition_input_port[1])
         annotation (Line(
-          points={{153,-73},{154,-68},{154,-48},{110,-48},{110,26.12},{113.1,26.12}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{153,-73},{154,-68},{154,-48},{110,-48},{110,26.12},{113.1,26.12}}));
       connect(T6.firePort, NoSlaveMessage.conditionPort[1]) annotation (Line(
           points={{-114.2,32},{-134,32},{-134,30.4},{-230,30.4}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
 
       connect(T8.firePort, ConfirmMessage.conditionPort[1]) annotation (Line(
           points={{102.2,24},{108,24},{108,39.4},{214,39.4}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(T7.firePort, Alive2Message.conditionPort[1]) annotation (Line(
           points={{122.2,24},{134,24},{134,6.4},{220,6.4}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(ConfirmMessage.message_output_port, Out_Cofirm)
         annotation (Line(
-          points={{235,49},{272,48},{272,210},{164,210}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{235,49},{272,48},{272,210},{164,210}}));
       connect(Alive2Message.message_output_port, Out_Alive2)
         annotation (Line(
-          points={{241,15},{258,18},{258,188},{60,188},{60,210}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{241,15},{258,18},{258,188},{60,188},{60,210}}));
       connect(noSlave.mailbox_output_port[1], T4.transition_input_port[1])
         annotation (Line(
-          points={{65,-71},{65,8.5},{44.12,8.5},{44.12,88.9}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{65,-71},{65,8.5},{44.12,8.5},{44.12,88.9}}));
       connect(NoAssignment.outPort[3], T9.inPort) annotation (Line(
-          points={{-0.666667,67.4},{-8,67.4},{-8,34}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-0.666667,67.4},{-8,67.4},{-8,34}}));
       connect(T9.outPort, NoAssignment.inPort[3]) annotation (Line(
           points={{-8,25},{-8,8},{-130,8},{-130,108},{-2,108},{-2,76},{-2.57143,
-              76}},
-          color={0,0,0},
-          smooth=Smooth.None));
+              76}}));
       connect(alive2.mailbox_output_port[1], T9.transition_input_port[1])
         annotation (Line(
-          points={{9,-71.5},{9,-24},{-12.9,-24},{-12.9,32.12}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{9,-71.5},{9,-24},{-12.9,-24},{-12.9,32.12}}));
       connect(Master.outPort[2], T10.inPort) annotation (Line(
-          points={{-67.5,-8.6},{-74,-8.6},{-74,-32}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-67.5,-8.6},{-74,-8.6},{-74,-32}}));
       connect(T10.outPort, Master.inPort[1]) annotation (Line(
-          points={{-74,-41},{-92,-41},{-92,2.22045e-016},{-66.6667,2.22045e-016}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-74,-41},{-92,-41},{-92,2.22045e-016},{-66.6667,2.22045e-016}}));
       connect(alive2.mailbox_output_port[2], T10.transition_input_port[1])
         annotation (Line(
-          points={{9,-70.5},{44.5,-70.5},{44.5,-33.88},{-69.1,-33.88}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{9,-70.5},{44.5,-70.5},{44.5,-33.88},{-69.1,-33.88}}));
       connect(NoSlaveMessage.message_output_port, Out_NoSlave)
         annotation (Line(
-          points={{-251,39},{-296,39},{-296,196},{-44,196},{-44,210}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-251,39},{-296,39},{-296,196},{-44,196},{-44,210}}));
       connect(YouSlaveMessage.message_output_port, Out_YouSlave)
         annotation (Line(
-          points={{-251,95},{-286,95},{-286,188},{-114,188},{-114,210}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-251,95},{-286,95},{-286,188},{-114,188},{-114,210}}));
       connect(YouSlave.mailbox_output_port[2], T3.transition_input_port[1])
         annotation (Line(
-          points={{93,-71},{100,-70},{100,-10},{29.88,-10},{29.88,53.1}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{93,-71},{100,-70},{100,-10},{29.88,-10},{29.88,53.1}}));
 
       connect(Master.outPort[3], T11.inPort) annotation (Line(
-          points={{-68.5,-8.6},{-62,-8.6},{-62,-18},{-50,-18}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-68.5,-8.6},{-62,-8.6},{-62,-18},{-50,-18}}));
       connect(T11.outPort, Master.inPort[2]) annotation (Line(
           points={{-50,-27},{-50,-32},{-34,-32},{-34,4},{-68,4},{-68,
-              2.22045e-016}},
-          color={0,0,0},
-          smooth=Smooth.None));
+              2.22045e-016}}));
 
       connect(Master.outPort[4], T12.inPort) annotation (Line(
-          points={{-69.5,-8.6},{-68,-26},{-138,-26},{-138,40}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-69.5,-8.6},{-68,-26},{-138,-26},{-138,40}}));
       connect(T12.outPort, NoAssignment.inPort[4]) annotation (Line(
-          points={{-138,49},{-138,116},{0,116},{0,76},{-2,76}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-138,49},{-138,116},{0,116},{0,76},{-2,76}}));
       connect(Slave.outPort[4], T13.inPort) annotation (Line(
-          points={{72.6,59.5},{92,59.5},{92,106},{46,106}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{72.6,59.5},{92,59.5},{92,106},{46,106}}));
       connect(T13.outPort, NoAssignment.inPort[5]) annotation (Line(
-          points={{37,106},{2,106},{2,76},{-1.42857,76}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{37,106},{2,106},{2,76},{-1.42857,76}}));
       connect(clock.y, timeInvariantLessOrEqual1.clockValue) annotation (Line(
           points={{-18,145},{-224,145},{-224,71.6},{-195.5,71.6}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(timeInvariantLessOrEqual2.clockValue, clock.y) annotation (Line(
           points={{-169.5,-44.4},{-170,-44},{-224,-44},{-224,146},{-18,146},{-18,145}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
 
       connect(T10.firePort, clock.u[1]) annotation (Line(
           points={{-78.2,-36},{-216,-36},{-216,123.9},{-20.55,123.9}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(T11.firePort, clock.u[2]) annotation (Line(
           points={{-54.2,-22},{-214,-22},{-214,123.9},{-18.85,123.9}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
 
       connect(clock1.y, timeInvariantLessOrEqual.clockValue) annotation (Line(
           points={{126,151},{142,151},{142,123.6},{182.5,123.6}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(T3.firePort, clock1.u[1]) annotation (Line(
           points={{32,62.2},{32,129.9},{123.733,129.9}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(T8.firePort, clock1.u[2]) annotation (Line(
           points={{102.2,24},{108,24},{108,129.9},{126,129.9}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(T7.firePort, clock1.u[3]) annotation (Line(
           points={{122.2,24},{130,24},{130,129.9},{128.267,129.9}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(Slave.activePort, timeInvariantLessOrEqual.conditionPort) annotation (
          Line(
           points={{68,62.72},{150,62.72},{150,116.4},{182.8,116.4}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
 
       connect(Master.activePort, timeInvariantLessOrEqual2.conditionPort)
         annotation (Line(
           points={{-72.72,-4},{-186,-4},{-186,-51.6},{-169.2,-51.6}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(AliveMessage.message_output_port, Out_Alive)
                                                       annotation (Line(
-          points={{-243,-77},{-309.5,-77},{-309.5,210},{-180,210}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-243,-77},{-309.5,-77},{-309.5,210},{-180,210}}));
       connect(AliveMessage.conditionPort[1], T11.firePort)
                                                       annotation (Line(
           points={{-222,-85.6},{-64,-85.6},{-64,-22},{-54.2,-22}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(MasterProposed.outPort[1], T2.inPort) annotation (Line(
-          points={{-76.6,59.3333},{-72,59.3333},{-72,26},{-68,26}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-76.6,59.3333},{-72,59.3333},{-72,26},{-68,26}}));
       connect(T2.outPort, Master.inPort[3]) annotation (Line(
-          points={{-68,17},{-68,2.22045e-016},{-69.3333,2.22045e-016}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-68,17},{-68,2.22045e-016},{-69.3333,2.22045e-016}}));
       connect(MasterProposed.outPort[2], T5.inPort) annotation (Line(
-          points={{-76.6,58},{-86,58},{-86,82},{-62,82}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-76.6,58},{-86,58},{-86,82},{-62,82}}));
       connect(T5.outPort, NoAssignment.inPort[6]) annotation (Line(
-          points={{-53,82},{-28,82},{-28,76},{-0.857143,76}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-53,82},{-28,82},{-28,76},{-0.857143,76}}));
       connect(confirm.mailbox_output_port[1], T2.transition_input_port[1])
         annotation (Line(
-          points={{-27,-71},{-27,24},{-64,24},{-63.1,24.12}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-27,-71},{-27,24},{-64,24},{-63.1,24.12}}));
       connect(timeInvariantLessOrEqual1.conditionPort, MasterProposed.activePort)
         annotation (Line(
           points={{-195.2,64.4},{-133.6,64.4},{-133.6,53.28},{-72,53.28}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(MasterProposed.outPort[3], T14.inPort) annotation (Line(
-          points={{-76.6,56.6667},{-92,56.6667},{-92,100},{-60,100}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-76.6,56.6667},{-92,56.6667},{-92,100},{-60,100}}));
       connect(T14.outPort, NoAssignment.inPort[7]) annotation (Line(
-          points={{-51,100},{-8,100},{-8,76},{-0.285714,76}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-51,100},{-8,100},{-8,76},{-0.285714,76}}));
       connect(T5.transition_input_port[1], YouSlave.mailbox_output_port[3])
         annotation (Line(
-          points={{-60.12,77.1},{-60,-98},{94,-98},{94,-70.3333},{93,-70.3333}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-60.12,77.1},{-60,-98},{94,-98},{94,-70.3333},{93,-70.3333}}));
       connect(T3.firePort, ConfirmMessage.conditionPort[2]) annotation (Line(
           points={{32,62.2},{42,62.2},{42,41.4},{214,41.4}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       annotation (Diagram(coordinateSystem(extent={{-320,-120},{280,220}},
               preserveAspectRatio=true), graphics), Icon(coordinateSystem(
               extent={{-320,-120},{280,220}})),
@@ -5847,29 +5230,29 @@ This class implements the behavior of the role Peer in the &quot;Master-Slave-As
 </p>
 
 <p>
-The peer has the following parameters (The paramter names may differ in the Realtimestatechart and in the Modelica Model. So if there exist two names for the same parameter, both are listed as \"name in Realtimestatechart\"/\"name in Modelica\":</p>
+The peer has the following parameters (The parameter names may differ in the Realtimestatechart and in the Modelica Model. So if there exist two names for the same parameter, both are listed as \"name in Realtimestatechart\"/\"name in Modelica\":</p>
 
 <dl>
   <dt> $tries:</dt>
-  <dd> Specifies the number of times that a peer that wants to act as a master tries to establish this assignment, i. e. the number of times that the master peer sends an alive() message to the slave. If there is no response after       	$tries times and the master is already \"period\" times in the master state, then the current assignment is cancelled and the master and slave peers go to there initial states. 
+  <dd> Specifies the number of times that a peer that wants to act as a master tries to establish this assignment, i. e. the number of times that the master peer sends an alive() message to the slave. If there is no response after       	$tries times and the master is already \"period\" times in the master state, then the current assignment is cancelled and the master and slave peers go to there initial states.
   </dd>
-  
-  
+
+
   <dt>$waittime:</dt>
    <dd>
 	The time a peer waits until it initiates a Master-Slave Assignment with itself as master.
    </dd>
 
    <dt>$timeout2/$timeoutSlave:</dt>
-    <dd>Specifies the time that the slave peer stays at most in the \"slave\" state. If the slave peer  has not received any youSlave() or alive() message from the master peer, it changes after $timeout2 time units its state to the   		\"NoAssignment\" state. 
+    <dd>Specifies the time that the slave peer stays at most in the \"slave\" state. If the slave peer  has not received any youSlave() or alive() message from the master peer, it changes after $timeout2 time units its state to the   		\"NoAssignment\" state.
    </dd>
 
-  <dd>$timeout1/$timeoutMasterProposed:</dd> 
+  <dd>$timeout1/$timeoutMasterProposed:</dd>
     <dt>
-      Specifies the time the peer that tries to be the master peer waits for a reply of the slave peer. If there is no reply after $timeout1 time units, the assignment was not successfull and the peer changes its state to the 			\"NoAssignment\" state.
+      Specifies the time the peer that tries to be the master peer waits for a reply of the slave peer. If there is no reply after $timeout1 time units, the assignment was not successful and the peer changes its state to the 			\"NoAssignment\" state.
     </dt>
 
-  <dd>$period:</dd> 
+  <dd>$period:</dd>
     <dt>
      A peer must leave the Master state after $period time units. This can be done either by sending an alive() message to the slave, which will keep the current assignment (only possible if the number of alive() messages is smaller than $tries), or by sending a noSlave() message, which cancels the current assignment(always possible). Furthermore, the state is left if there are no more tries for sending an alive() message left.
     </dt>
@@ -5895,25 +5278,25 @@ The peer has the following parameters (The paramter names may differ in the Real
 <body>
 <h3> Master_Slave_Assignment </h3>
 
-<p> 
+<p>
 This pattern is used if two systems can dynamically change between one state in which
 they have equal rights and another state in which one is the master and the other one is
 the slave.
 </p>
 
-<p> 
+<p>
 A test is specified at: <a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Examples.PatternTest.Master_Slave_Assignment_Test\">PatternTest.Master-Slave-Assignment-Test</a>
 </p>
 
 <h4>Context</h4>
 
-<p> 
+<p>
 Equal, independent systems want to cooperate.
 </p>
 
 <h4>Problem</h4>
 
-<p> 
+<p>
 A system wants to cooperate with another system. During this time, they depend
 on each other and a safety-critical situation occurs, if they remain self-determined.
 Furthermore, the communication channel may be unreliable and the systems and the
@@ -5933,7 +5316,7 @@ position.
 
 <h4> Structure </h4>
 
-<p> 
+<p>
 There are two peer roles, because they have the identical behavior. Each role can become the master or slave at run-time. Both roles are in/out
 roles and have the same message interfaces for sending and receiving.
 Thus, both peers may send the messages youSlave, confirm, noSlave, alive, and alive2 to
@@ -5942,7 +5325,7 @@ The time parameters of a peer are $timeout1, $timeout2, and $period. The connect
 may lose messages. The delay for sending a message is defined by the time parameters
 $delay-min and $delay-max.
 </p>
- 
+
 <p>
 <img src=\"images/Master_Slave_Assignment/MasterSlavePattern.jpg\"  alt =\"\"/>
 </p>
@@ -6023,7 +5406,6 @@ fallen out.
         use_activePort=true)                          annotation (Placement(
             transformation(
             extent={{-4,-4},{4,4}},
-            rotation=0,
             origin={-14,-34})));
       RealTimeCoordinationLibrary.RealTimeCoordination.Step
                                        YourTurn(nIn=2, nOut=3,
@@ -6032,7 +5414,6 @@ fallen out.
       RealTimeCoordinationLibrary.RealTimeCoordination.TimeElements.Clock
                                                      clock(nu=4)
         annotation (Placement(transformation(extent={{-10,-10},{10,10}},
-            rotation=0,
             origin={34,80})));
       RealTimeCoordinationLibrary.RealTimeCoordination.Mailbox
                                           mailbox(nIn=1, nOut=2,
@@ -6113,7 +5494,6 @@ fallen out.
       RealTimeCoordinationLibrary.RealTimeCoordination.TimeElements.TimeInvariant.TimeInvariantLessOrEqual
         timeInvariantLessOrEqual(bound=timeout + 1)
         annotation (Placement(transformation(extent={{-4,-4},{4,4}},
-            rotation=0,
             origin={2,-32})));
       RealTimeCoordinationLibrary.RealTimeCoordination.MessageInterface.OutputDelegationPort
                                                                         OutTurn(
@@ -6142,148 +5522,93 @@ fallen out.
     equation
       connect(InTurn, mailbox.mailbox_input_port[1]) annotation (Line(
           points={{-102,-8},{-113.5,-8},{-113.5,13},{-105,13}},
-          color={0,0,255},
-          smooth=Smooth.None));
+          color={0,0,255}));
       connect(TimedOut.outPort[1], T5.inPort) annotation (Line(
-          points={{22,4.6},{22,18}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{22,4.6},{22,18}}));
       connect(T5.outPort, Inactive.inPort[1]) annotation (Line(
-          points={{22,27},{22,58},{-17.3333,58}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{22,27},{22,58},{-17.3333,58}}));
       connect(T1.outPort, MyTurn.inPort[1]) annotation (Line(
-          points={{-3,10},{-3,-30},{-15,-30}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-3,10},{-3,-30},{-15,-30}}));
       connect(MyTurn.outPort[3], T3.inPort) annotation (Line(
-          points={{-12.6667,-38.6},{-62.7,-38.6},{-62.7,-16},{-64,-16}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-12.6667,-38.6},{-62.7,-38.6},{-62.7,-16},{-64,-16}}));
       connect(T3.outPort, YourTurn.inPort[1]) annotation (Line(
-          points={{-64,-7},{-64,-4},{-35,-4}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-64,-7},{-64,-4},{-35,-4}}));
       connect(YourTurn.outPort[2], T4.inPort) annotation (Line(
-          points={{-34,-12.6},{-34,-26},{-32,-26}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-34,-12.6},{-34,-26},{-32,-26}}));
       connect(T4.outPort, MyTurn.inPort[2]) annotation (Line(
-          points={{-23,-26},{-23,-16},{-13,-16},{-13,-30}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-23,-26},{-23,-16},{-13,-16},{-13,-30}}));
       connect(MyTurn.outPort[1], T6.inPort) annotation (Line(
-          points={{-15.3333,-38.6},{-16,-38.6},{-16,-58},{10,-58}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-15.3333,-38.6},{-16,-38.6},{-16,-58},{10,-58}}));
       connect(T6.outPort, TimedOut.inPort[1]) annotation (Line(
-          points={{10,-49},{10,-40},{18,-40},{18,-4},{23,-4}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{10,-49},{10,-40},{18,-40},{18,-4},{23,-4}}));
       connect(YourTurn.outPort[1], T7.inPort) annotation (Line(
-          points={{-35.3333,-12.6},{-40,-12.6},{-40,-64},{60,-64},{60,-52}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-35.3333,-12.6},{-40,-12.6},{-40,-64},{60,-64},{60,-52}}));
       connect(T7.outPort, TimedOut.inPort[2]) annotation (Line(
-          points={{60,-43},{60,-4},{21,-4}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{60,-43},{60,-4},{21,-4}}));
       connect(T2.outPort, YourTurn.inPort[2]) annotation (Line(
-          points={{-32,3},{-32,2},{-33,2},{-33,-4}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-32,3},{-32,2},{-33,2},{-33,-4}}));
       connect(T2.firePort, message.conditionPort[1]) annotation (Line(
           points={{-36.2,8},{-46,8},{-46,-86.6},{-74,-86.6}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(mailbox.mailbox_output_port[1], T1.transition_input_port[1])
         annotation (Line(
-          points={{-87,12.5},{-39.5,12.5},{-39.5,5.1},{-10.12,5.1}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-87,12.5},{-39.5,12.5},{-39.5,5.1},{-10.12,5.1}}));
       connect(mailbox.mailbox_output_port[2], T4.transition_input_port[1])
         annotation (Line(
-          points={{-87,13.5},{-87,-43.5},{-30.12,-43.5},{-30.12,-21.1}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-87,13.5},{-87,-43.5},{-30.12,-43.5},{-30.12,-21.1}}));
       connect(T3.firePort, message.conditionPort[2]) annotation (Line(
           points={{-59.8,-12},{-48,-12},{-48,-84.6},{-74,-84.6}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(clock.y, timeInvariantLessOrEqual.clockValue) annotation (Line(
           points={{45,80},{50,80},{50,-28},{24,-28},{24,-28.56},{-2.6,-28.56},{
               -2.6,-30.56}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(timeInvariantLessOrEqual.conditionPort, MyTurn.activePort)
         annotation (Line(
           points={{-2.48,-33.44},{-2.48,-33.8},{-9.28,-33.8},{-9.28,-34}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(message.message_output_port, OutTurn) annotation (Line(
-          points={{-53,-77},{-26,-77},{-26,-78},{0,-78},{0,-76},{96,-76}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-53,-77},{-26,-77},{-26,-78},{0,-78},{0,-76},{96,-76}}));
       connect(clock.y, timeInvariantLessOrEqual1.clockValue) annotation (Line(
           points={{45,80},{54,80},{54,79.6},{62.5,79.6}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(YourTurn.activePort, timeInvariantLessOrEqual1.conditionPort)
         annotation (Line(
           points={{-29.28,-8},{2,-8},{2,14},{24,14},{24,72.4},{62.8,72.4}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(MyTurn.outPort[2], T10.inPort) annotation (Line(
-          points={{-14,-38.6},{-14,-38.6},{-14,-42},{6,-42},{6,-20}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-14,-38.6},{-14,-38.6},{-14,-42},{6,-42},{6,-20}}));
       connect(T10.outPort, Inactive.inPort[2]) annotation (Line(
-          points={{6,-11},{6,58},{-16,58}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{6,-11},{6,58},{-16,58}}));
       connect(T3.firePort, clock.u[1]) annotation (Line(
           points={{-59.8,-12},{-58,-12},{-58,82.55},{23.9,82.55}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(T4.firePort, clock.u[2]) annotation (Line(
           points={{-28,-30.2},{-84,-30.2},{-84,80.85},{23.9,80.85}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(T1.firePort, clock.u[3]) annotation (Line(
           points={{-8,14.2},{0,14.2},{0,79.15},{23.9,79.15}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(T2.firePort, clock.u[4]) annotation (Line(
           points={{-36.2,8},{-50,8},{-50,77.45},{23.9,77.45}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(T12.outPort, Inactive.inPort[3]) annotation (Line(
-          points={{94,-3},{94,64},{-14.6667,64},{-14.6667,58}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{94,-3},{94,64},{-14.6667,64},{-14.6667,58}}));
       connect(YourTurn.outPort[3], T12.inPort) annotation (Line(
-          points={{-32.6667,-12.6},{-32.6667,-20},{94,-20},{94,-12}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-32.6667,-12.6},{-32.6667,-20},{94,-20},{94,-12}}));
       connect(Inactive.outPort[1], T2.inPort) annotation (Line(
-          points={{-17,49.4},{-24,49.4},{-24,12},{-32,12}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-17,49.4},{-24,49.4},{-24,12},{-32,12}}));
       connect(Inactive.outPort[2], T1.inPort) annotation (Line(
-          points={{-15,49.4},{-15,29.7},{-12,29.7},{-12,10}},
-          color={0,0,0},
-          smooth=Smooth.None));
-      annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
-                -100},{100,100}}),
-                          graphics), Documentation(info="<!DOCTYPE html>
+          points={{-15,49.4},{-15,29.7},{-12,29.7},{-12,10}}));
+      annotation ( Documentation(info="<!DOCTYPE html>
 <html>
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.Turn_Transmission.Turn_Transmission_Partner</title></head>
 <body>
 <h3> Turn-Transmission Partner </h3>
-<p>This class implements the behavior of the role partner of the Turn-Transmission-Pattern. This is the only role of the pattern. In order to distinguish between the two partners in this section, they are called partner1 and partner2. Both, partner1 or partner2, may start the cooperation. Assuming partner1 wants to start the cooperation, then it sends the message turn() to partner2 and changes its state to 'YourTurn', which means that partner1 is not actively solving this task anymore but gives it turn to partner1. Consequently, by receiving the turn() message from partner1, partner2 is now the acitve partner and changes its state to 'MyTurn'. Now both partners may change their 'roles' between 'MyTurn' and 'YourTurn'sequentially, such that they are always in the corresponding 'counterstate'. If a partner decides to end the cooperation, either because the task is fullfilled or in case of a failure, it can always change its state back to inactive. Furthermore if a partner does not receive any message from the counterpart, then after a certain amount of time units it changes it changes its state back to inactive via the timeout transition. 
+<p>This class implements the behavior of the role partner of the Turn-Transmission-Pattern. This is the only role of the pattern. In order to distinguish between the two partners in this section, they are called partner1 and partner2. Both, partner1 or partner2, may start the cooperation. Assuming partner1 wants to start the cooperation, then it sends the message turn() to partner2 and changes its state to 'YourTurn', which means that partner1 is not actively solving this task anymore but gives it turn to partner1. Consequently, by receiving the turn() message from partner1, partner2 is now the acitve partner and changes its state to 'MyTurn'. Now both partners may change their 'roles' between 'MyTurn' and 'YourTurn'sequentially, such that they are always in the corresponding 'counterstate'. If a partner decides to end the cooperation, either because the task is fulfilled or in case of a failure, it can always change its state back to inactive. Furthermore if a partner does not receive any message from the counterpart, then after a certain amount of time units it changes it changes its state back to inactive via the timeout transition.
 
- More information concerning the pattern can be found 
-&quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Turn_Transmission\">here</a>&quot; 
+ More information concerning the pattern can be found
+&quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Turn_Transmission\">here</a>&quot;
 The corresponding Realtime Statechart is shown in the following figure: </p>
 <p><img src=\"images/Turn_Transmission/Behavior.jpg\" alt=\"\" ></p>
 <p><small>Figure 1: Realtimestatechart, showing the behavior of the partner</small></p>
@@ -6301,20 +5626,20 @@ The corresponding Realtime Statechart is shown in the following figure: </p>
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.UsersGuide.Elements.Turn_Transmission</title></head>
 <body>
 <h3> Turn-Transmission Pattern </h3>
-<p> 
+<p>
 This pattern synchronizes the behavior of two systems in such a way, that never two systems are active at the same time. But both systems may be inactive at the same time.
 </p>
-<p> 
+<p>
 Examples are specified at: <a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Examples.ExamplesForPatternUse.\"></a>
 A test is specified at: <a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Examples.PatternTest.Master_Slave_Assignment_Test\">PatternTest.Master-Slave-Assignment-Test</a>
 </p>
 <h4> Context </h4>
-<p> 
+<p>
 Two systems are cooperating in a safety crititcal environment, where both systems may not be active at the same time.
 </p>
 
 <h4> Problem </h4>
-<p> 
+<p>
 Both systems want to fulfill a task together. In order to accieve this, they have to be active sequentially. So, when active, one system always waits until the other is finished and vice versa.
 </p>
 
@@ -6326,16 +5651,16 @@ Define a pattern which ensures that both systems may never be active at the same
 
 
 <h4> Structure </h4>
-<p> 
+<p>
 The pattern consists of the role partner, which is a in/out role. The message the partners exchange can be seen in the message interface. The partner may send the message turn() to the other partner and vice versa. The connector must not loose messages. The delay for sending a message is defined by the time parameters $delay-min and $delay-max.
-</p> 
+</p>
 <p><img src=\"images/Turn_Transmission/Structure.jpg\"  alt =\"\"></p>
 <p><small>Figure 1: Structure of the Turn-Transmission Pattern</small></p>
 <p><img src=\"images/Turn_Transmission/Interfaces.jpg\"  alt =\"\"></p>
 <p><small>Figure 2: Interfaces of the Turn-Transmission Pattern</small></p>
 <h4> Behavior </h4>
 <p>
-In order to distinguish between the two partners in this section, they are called partner1 and partner2. Both, partner1 or partner2, may start the cooperation. Assuming partner1 wants to start the cooperation, then it sends the message turn() to partner2 and changes its state to 'YourTurn', which means that partner1 is not actively solving this task anymore but gives it turn to partner1. Consequently, by receiving the turn() message from partner1, partner2 is now the acitve partner and changes its state to 'MyTurn'. Now both partners may change their 'roles' between 'MyTurn' and 'YourTurn'sequentially, such that they are always in the corresponding 'counterstate'. If a partner decides to end the cooperation, either because the task is fullfilled or in case of a failure, it can always change its state back to inactive. Furthermore if a partner does not receive any message from the counterpart, then after a certain amount of time units it changes it changes its state back to inactive via the timeout transition. 
+In order to distinguish between the two partners in this section, they are called partner1 and partner2. Both, partner1 or partner2, may start the cooperation. Assuming partner1 wants to start the cooperation, then it sends the message turn() to partner2 and changes its state to 'YourTurn', which means that partner1 is not actively solving this task anymore but gives it turn to partner1. Consequently, by receiving the turn() message from partner1, partner2 is now the acitve partner and changes its state to 'MyTurn'. Now both partners may change their 'roles' between 'MyTurn' and 'YourTurn'sequentially, such that they are always in the corresponding 'counterstate'. If a partner decides to end the cooperation, either because the task is fulfilled or in case of a failure, it can always change its state back to inactive. Furthermore if a partner does not receive any message from the counterpart, then after a certain amount of time units it changes it changes its state back to inactive via the timeout transition.
 </p>
 
 <p><img src=\"images/Turn_Transmission/Behavior.jpg\"  alt =\"\"></p>
@@ -6418,85 +5743,58 @@ In order to distinguish between the two partners in this section, they are calle
         annotation (Placement(transformation(extent={{52,136},{72,156}})));
     equation
       connect(LimiRedeemed.outPort[1], T4.inPort) annotation (Line(
-          points={{28,23.4},{28,2},{-26,2}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{28,23.4},{28,2},{-26,2}}));
       connect(T2.outPort, LimiRedeemed.inPort[1]) annotation (Line(
-          points={{-25,32},{27,32}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-25,32},{27,32}}));
       connect(T3.outPort, LimiRedeemed.inPort[2]) annotation (Line(
-          points={{28,47},{28,32},{29,32}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{28,47},{28,32},{29,32}}));
       connect(T1.outPort, LimitViolated.inPort[1]) annotation (Line(
-          points={{-90,53},{-90,42},{-78,42},{-78,31}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-90,53},{-90,42},{-78,42},{-78,31}}));
       connect(LimitViolated.outPort[1], T2.inPort) annotation (Line(
-          points={{-69.4,32},{-34,32}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-69.4,32},{-34,32}}));
       connect(T4.outPort, LimitViolated.inPort[2]) annotation (Line(
-          points={{-35,2},{-96,2},{-96,33},{-78,33}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-35,2},{-96,2},{-96,33},{-78,33}}));
       connect(LimitViolated_Message.message_output_port, Out_Limit_Violated)
         annotation (Line(
-          points={{-143,71},{-155.5,71},{-155.5,74},{-162,74}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-143,71},{-155.5,71},{-155.5,74},{-162,74}}));
       connect(Limit_Redeemed_Message.message_output_port, Out_LimitRedeemed)
         annotation (Line(
-          points={{85,71},{106.5,71},{106.5,70},{120,70}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{85,71},{106.5,71},{106.5,70},{120,70}}));
       connect(T3.firePort, Limit_Redeemed_Message.conditionPort[1]) annotation (
           Line(
           points={{32.2,52},{50,52},{50,61.4},{64,61.4}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(T4.firePort, LimitViolated_Message.conditionPort[1]) annotation (Line(
           points={{-30,-2.2},{-116,-2.2},{-116,61.4},{-122,61.4}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(T2.firePort, Limit_Redeemed_Message.conditionPort[2]) annotation (
           Line(
           points={{-30,36.2},{-30,63.4},{64,63.4}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(T1.firePort, LimitViolated_Message.conditionPort[2]) annotation (Line(
           points={{-94.2,58},{-108,58},{-108,63.4},{-122,63.4}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(MeasuringLimit.outPort[1], T1.inPort) annotation (Line(
-          points={{-27,121.4},{-30,118},{-38,118},{-38,74},{-90,74},{-90,62}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-27,121.4},{-30,118},{-38,118},{-38,74},{-90,74},{-90,62}}));
       connect(MeasuringLimit.outPort[2], T3.inPort) annotation (Line(
-          points={{-25,121.4},{-22,118},{-22,74},{28,74},{28,56}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-25,121.4},{-22,118},{-22,74},{28,74},{28,56}}));
       connect(MeasuringLimit.activePort, timeInvariantLessOrEqual.conditionPort)
         annotation (Line(
           points={{-21.28,126},{14,126},{14,142.4},{50.8,142.4}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(MeasuringLimit.activePort, clock.u[1]) annotation (Line(
           points={{-21.28,126},{-6,126},{-6,154},{7.9,154}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(clock.y, timeInvariantLessOrEqual.clockValue) annotation (Line(
           points={{29,154},{40,154},{40,149.6},{50.5,149.6}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       annotation (
         Documentation(info="<!DOCTYPE html>
 <html>
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.Limit_Observation.Provider</title></head>
 <body>
 <h3> Provider </h3>
-This class implements the role Provider of the Limit-Observation-Pattern. The provider is responsible for collecting numerical information. The observer wants to know, wether this information violated a certain limit or not. Therefore the provider sends the limitViolated() message to the observer, if the information violates a certain limit, and it sends the limitRedeemed() message to the observer, if the violation has stopped.More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Limit_Observation\">here</a>&quot;. <p>The behavoir can be seen in the following statechart. 
+This class implements the role Provider of the Limit-Observation-Pattern. The provider is responsible for collecting numerical information. The observer wants to know, whether this information violated a certain limit or not. Therefore the provider sends the limitViolated() message to the observer, if the information violates a certain limit, and it sends the limitRedeemed() message to the observer, if the violation has stopped.More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Limit_Observation\">here</a>&quot;. <p>The behavoir can be seen in the following statechart.
 The provider has the parameter $worktime, which specifies the number of time units, that the initial measurement of the numerical information shuold need at most. </p>
 <p><img src=\"images/Limit-Observation/parameters_provider.jpg\"alt = \"\"></p>
 <p><small>Figure 1: Parameters of the provider </small></p>
@@ -6580,69 +5878,41 @@ The provider has the parameter $worktime, which specifies the number of time uni
     equation
       connect(LimitRedeemed.outPort[1], T4.inPort)
                                                   annotation (Line(
-          points={{48,-6.6},{48,-28},{-6,-28}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{48,-6.6},{48,-28},{-6,-28}}));
       connect(T2.outPort, LimitRedeemed.inPort[1])
                                                   annotation (Line(
-          points={{-5,2},{21,2},{21,2},{47,2}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-5,2},{21,2},{21,2},{47,2}}));
       connect(Waiting.outPort[1], T3.inPort) annotation (Line(
-          points={{-7,55.4},{-2,54},{-2,48},{48,48},{48,26}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-7,55.4},{-2,54},{-2,48},{48,48},{48,26}}));
       connect(T3.outPort, LimitRedeemed.inPort[2])
                                                   annotation (Line(
-          points={{48,17},{48,2},{49,2}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{48,17},{48,2},{49,2}}));
       connect(Waiting.outPort[2], T1.inPort) annotation (Line(
-          points={{-5,55.4},{-10,54},{-10,48},{-70,48},{-70,32}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-5,55.4},{-10,54},{-10,48},{-70,48},{-70,32}}));
       connect(T1.outPort, LimitViolated.inPort[1]) annotation (Line(
-          points={{-70,23},{-70,12},{-58,12},{-58,1}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-70,23},{-70,12},{-58,12},{-58,1}}));
       connect(LimitViolated.outPort[1], T2.inPort) annotation (Line(
-          points={{-49.4,2},{-40,2},{-40,2},{-32,2},{-32,2},{-14,2}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-49.4,2},{-40,2},{-40,2},{-32,2},{-32,2},{-14,2}}));
       connect(T4.outPort, LimitViolated.inPort[2]) annotation (Line(
-          points={{-15,-28},{-76,-28},{-76,3},{-58,3}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-15,-28},{-76,-28},{-76,3},{-58,3}}));
       connect(T3.transition_input_port[1], MB_LimitRedeemed.mailbox_output_port[
         1]) annotation (Line(
-          points={{52.9,24.12},{69.45,24.12},{69.45,40.5},{75,40.5}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{52.9,24.12},{69.45,24.12},{69.45,40.5},{75,40.5}}));
       connect(MB_LimitRedeemed.mailbox_input_port[1], In_LimitRedeemed)
         annotation (Line(
-          points={{93,41},{105.5,41},{105.5,32},{120,32}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{93,41},{105.5,41},{105.5,32},{120,32}}));
       connect(MB_LimitViolated.mailbox_input_port[1], In_LimitViolated)
         annotation (Line(
-          points={{-123,33},{-129.5,33},{-129.5,34},{-142,34}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-123,33},{-129.5,33},{-129.5,34},{-142,34}}));
       connect(T4.transition_input_port[1], MB_LimitViolated.mailbox_output_port[
         1]) annotation (Line(
-          points={{-7.88,-32.9},{-97.94,-32.9},{-97.94,32.5},{-105,32.5}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-7.88,-32.9},{-97.94,-32.9},{-97.94,32.5},{-105,32.5}}));
       connect(T1.transition_input_port[1], MB_LimitViolated.mailbox_output_port[
         2]) annotation (Line(
-          points={{-74.9,30.12},{-89.45,30.12},{-89.45,33.5},{-105,33.5}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-74.9,30.12},{-89.45,30.12},{-89.45,33.5},{-105,33.5}}));
       connect(T2.transition_input_port[1], MB_LimitRedeemed.mailbox_output_port[
         2]) annotation (Line(
-          points={{-12.12,6.9},{-11.06,6.9},{-11.06,41.5},{75,41.5}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-12.12,6.9},{-11.06,6.9},{-11.06,41.5},{75,41.5}}));
       annotation (
         Diagram(coordinateSystem(extent={{-140,-100},{120,100}},
               preserveAspectRatio=false),graphics),
@@ -6652,7 +5922,7 @@ The provider has the parameter $worktime, which specifies the number of time uni
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.Limit_Observation.Observer</title></head>
 <body>
 <h3> Observer </h3>
-This class implements the role Provider of the Limit-Observation-Pattern. The provider is responsible for collecting numerical information. The observer wants to know, wether this information violated a certain limit or not. Therefore the provider sends the limitViolated() message to the observer, if the information violates a certain limit, and it sends the limitRedeemed() message to the observer, if the violation has stopped.More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Limit_Observation\">here</a>&quot;. <p>The behavoir can be seen in the following statechart. 
+This class implements the role Provider of the Limit-Observation-Pattern. The provider is responsible for collecting numerical information. The observer wants to know, whether this information violated a certain limit or not. Therefore the provider sends the limitViolated() message to the observer, if the information violates a certain limit, and it sends the limitRedeemed() message to the observer, if the violation has stopped.More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Limit_Observation\">here</a>&quot;. <p>The behavoir can be seen in the following statechart.
 The observer has no parameters. </p>
 <p><img src=\"images/Limit-Observation/Observer-Behavior.jpg\" alt = \"\"></p>
 <p><small>Figure 1: Realtimestatechart, showing the behavior of the observer role </small></p>
@@ -6664,20 +5934,20 @@ The observer has no parameters. </p>
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.UsersGuide.Elements.Limit_Observation</title></head>
 <body>
 <H3> Limit Observation</H3>
-<p> 
+<p>
 This pattern is used to communicate if a certain value violates a defined limit or not.
 </p>
-<p> 
+<p>
 Examples are specified at: <a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Examples.ExamplesForPatternUse.Limit_Observation\">ExamplesForPatternUse.Limit-Observation</a>.
 A test is specified at: <a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Examples.PatternTest.Limit_Observation_Test\">PatternTest.Limit-Observation-Test</a>
 </p>
 <h4> Context </h4>
-<p> 
+<p>
 Information exchange between participants.
 </p>
 
 <h4> Problem </h4>
-<p> 
+<p>
 Two participants exist within a system. One collects numerical information,
 the other wants the know them. In particular, he wants to know if the numerical information
 violates a certain limit or not.
@@ -6694,7 +5964,7 @@ In addition, the pattern warranted a disjunction of the observation and the proc
 and analysis of the environment situation.
 </p>
 <h4> Structure </h4>
-<p> 
+<p>
 The pattern consists of the roles provider and observer.
 The role provider is an out-role; the role observer is an in-role.
 Which message each role can receive and send is shown in the message interfaces. The provider may send the messages limitViolated and limitRedeemed to
@@ -6702,7 +5972,7 @@ the observer.
 The connector must not lose messages. The time parameter of the role provider is
 $worktime. The delay for sending a message is defined by the time parameters $delaymin
 and $delay-max.
-</p> 
+</p>
 <p><img src=\"images/Limit-Observation/Structure.jpg\"  alt =\"\"></p>
 <p><small>Figure 1: Structure of the Limit Observation Pattern</small></p>
 <p><img src=\"images/Limit-Observation/Interfaces.jpg\" alt =\"\"></p>
@@ -6817,7 +6087,6 @@ if value redeems the limit.
                                           mailbox_done(nOut=1, nIn=1)
         annotation (Placement(transformation(
             extent={{-10,-10},{10,10}},
-            rotation=0,
             origin={-66,142})));
       RealTimeCoordinationLibrary.RealTimeCoordination.MessageInterface.InputDelegationPort
         In_Done                             annotation (Placement(
@@ -6833,94 +6102,57 @@ if value redeems the limit.
         annotation (Placement(transformation(extent={{36,132},{16,152}})));
     equation
       connect(Idle.outPort[1], T1.inPort) annotation (Line(
-          points={{-76,79.4},{-76,70},{-20.4,70}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-76,79.4},{-76,70},{-20.4,70}}));
       connect(T1.outPort, Waiting.inPort[1]) annotation (Line(
-          points={{-11.4,70},{32,70},{32,78}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-11.4,70},{32,70},{32,78}}));
       connect(Waiting.outPort[1], T4.inPort) annotation (Line(
-          points={{40.6,76.6667},{46,76.6667},{46,22},{-10,22}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{40.6,76.6667},{46,76.6667},{46,22},{-10,22}}));
       connect(Waiting.outPort[2], T3.inPort) annotation (Line(
-          points={{40.6,78},{66,78},{66,114},{-12,114}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{40.6,78},{66,78},{66,114},{-12,114}}));
       connect(T2.outPort, Idle.inPort[1]) annotation (Line(
-          points={{-21,96},{-77.3333,96},{-77.3333,88}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-21,96},{-77.3333,96},{-77.3333,88}}));
       connect(T3.outPort, Idle.inPort[2]) annotation (Line(
-          points={{-21,114},{-76,114},{-76,88}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-21,114},{-76,114},{-76,88}}));
       connect(Waiting.outPort[3], T2.inPort) annotation (Line(
-          points={{40.6,79.3333},{60,79.3333},{60,96},{-12,96}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{40.6,79.3333},{60,79.3333},{60,96},{-12,96}}));
       connect(T4.outPort, Failsafe.inPort[1]) annotation (Line(
-          points={{-19,22},{-100,22},{-100,26}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-19,22},{-100,22},{-100,26}}));
       connect(Failsafe.outPort[1], T5.inPort) annotation (Line(
-          points={{-100,34.6},{-100,54},{-98,54}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-100,34.6},{-100,54},{-98,54}}));
       connect(T5.outPort, Idle.inPort[3]) annotation (Line(
-          points={{-98,63},{-98,88},{-74.6667,88}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-98,63},{-98,88},{-74.6667,88}}));
       connect(T5.firePort, Continue_Message.conditionPort[1])
                                                            annotation (Line(
           points={{-102.2,58},{-120,58},{-120,58.4},{-122,58.4}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(T1.firePort, Order_Message.conditionPort[1])    annotation (Line(
           points={{-18.4,65.4},{64,65.4},{64,28.4},{90,28.4}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(Continue_Message.message_output_port, Out_Continue)
                                                             annotation (Line(
-          points={{-143,67},{-143,67.5},{-180,67.5},{-180,68}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-143,67},{-143,67.5},{-180,67.5},{-180,68}}));
       connect(Order_Message.message_output_port, Out_Order)       annotation (Line(
-          points={{111,37},{111,37.5},{142,37.5},{142,40}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{111,37},{111,37.5},{142,37.5},{142,40}}));
       connect(T4.transition_input_port[1], mailbox_Fail.mailbox_output_port[1])
         annotation (Line(
-          points={{-11.88,17.1},{-11.88,4.55},{-11,4.55},{-11,-1}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-11.88,17.1},{-11.88,4.55},{-11,4.55},{-11,-1}}));
       connect(mailbox_Fail.mailbox_input_port[1], In_Fail) annotation (Line(
-          points={{-29,-1},{-29,-18.5},{-30,-18.5},{-30,-36}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-29,-1},{-29,-18.5},{-30,-18.5},{-30,-36}}));
       connect(T3.transition_input_port[1], mailbox_done.mailbox_output_port[1])
         annotation (Line(
-          points={{-13.88,118.9},{-13.88,137.45},{-57,137.45},{-57,141}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-13.88,118.9},{-13.88,137.45},{-57,137.45},{-57,141}}));
       connect(mailbox_done.mailbox_input_port[1], In_Done) annotation (Line(
-          points={{-75,141},{-180,142}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-75,141},{-180,142}}));
       connect(T1.firePort, clock.u[1]) annotation (Line(
           points={{-18.4,65.4},{100,65.4},{100,99.9},{102,99.9}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(clock.y, timeInvariantLessOrEqual.clockValue) annotation (Line(
           points={{102,121},{102,145.6},{37.5,145.6}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(Waiting.activePort, timeInvariantLessOrEqual.conditionPort)
         annotation (Line(
           points={{36,82.72},{37.2,82.72},{37.2,138.4}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       annotation (Diagram(coordinateSystem(extent={{-180,-40},{140,160}},
               preserveAspectRatio=true), graphics), Icon(coordinateSystem(extent={{-180,
                 -40},{140,160}})),
@@ -6929,12 +6161,12 @@ if value redeems the limit.
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.Fail_Safe_Delegation.Safe_Delegation_Master</title></head>
 <body>
 <h3>Safe_Delegation_Master</h3>
-<p>This class implements the role Master of the Fail-Safe-Delgation-Pattern. The master component wants to delegate a task to the slave component, being responsible for executing the task. The slave component can report the task execuition with either &quot;done&quot; or &quot;fail&quot;, informing the master wether the delegation was successful or not. More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Fail_Safe_Delegation\">here</a>&quot;. </p>
+<p>This class implements the role Master of the Fail-Safe-Delgation-Pattern. The master component wants to delegate a task to the slave component, being responsible for executing the task. The slave component can report the task execuition with either &quot;done&quot; or &quot;fail&quot;, informing the master whether the delegation was successful or not. More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Fail_Safe_Delegation\">here</a>&quot;. </p>
 <p>The behavoir can be seen in the following statechart. </p>
 <p><img src=\"images/Fail_Safe_Delegation/Behavior_Master.jpg\" alt=\"\"/></p>
 <p><small>Figure 1:  Realtimestatechart showing the behavior of the role master</small></p>
-<p>The Master has a paramter $timeout, which is specifies the time the master may stay at most in the state of &apos;Waiting&apos;, e. g. it specifies the maximum time the Master waits for a reply of the slave after ordering the delegation. </p>
-<p><img src=\"images/Fail_Safe_Delegation/Paramater_Master.jpg\" alt=\"\"/></p>
+<p>The Master has a parameter $timeout, which is specifies the time the master may stay at most in the state of &apos;Waiting&apos;, e. g. it specifies the maximum time the Master waits for a reply of the slave after ordering the delegation. </p>
+<p><img src=\"images/Fail_Safe_Delegation/Parameter_Master.jpg\" alt=\"\"/></p>
 <p><small>Figure 2: Parameters of the role master.</small></p>
 </body>
 </html>"));
@@ -7032,101 +6264,61 @@ if value redeems the limit.
 
     equation
       connect(Working.outPort[1], T2.inPort) annotation (Line(
-          points={{36.6,49},{58,49},{58,68},{-4,68}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{36.6,49},{58,49},{58,68},{-4,68}}));
       connect(T2.outPort, Idle.inPort[1]) annotation (Line(
-          points={{-13,68},{-36,68},{-36,64},{-59,64}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-13,68},{-36,68},{-36,64},{-59,64}}));
       connect(Working.outPort[2], T3.inPort) annotation (Line(
-          points={{36.6,47},{50,46},{50,14}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{36.6,47},{50,46},{50,14}}));
       connect(T3.outPort, Failsafe.inPort[1]) annotation (Line(
-          points={{50,5},{50,2},{22,2},{22,3},{-8,3}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{50,5},{50,2},{22,2},{22,3},{-8,3}}));
       connect(Failsafe.outPort[1], T5.inPort) annotation (Line(
-          points={{-16.6,3},{-32.4,3},{-32.4,-36}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-16.6,3},{-32.4,3},{-32.4,-36}}));
       connect(T5.outPort, Failsafe.inPort[2]) annotation (Line(
-          points={{-23.4,-36},{2,-36},{2,1},{-8,1}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-23.4,-36},{2,-36},{2,1},{-8,1}}));
       connect(T4.outPort, Idle.inPort[2]) annotation (Line(
-          points={{-74,15},{-74,76},{-56,76},{-56,64},{-57,64}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-74,15},{-74,76},{-56,76},{-56,64},{-57,64}}));
       connect(Idle.outPort[1], T1.inPort) annotation (Line(
-          points={{-58,55.4},{-58,48},{-8.4,48}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-58,55.4},{-58,48},{-8.4,48}}));
       connect(T1.outPort, Working.inPort[1]) annotation (Line(
-          points={{0.6,48},{28,48}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{0.6,48},{28,48}}));
       connect(Failsafe.outPort[2], T4.inPort) annotation (Line(
-          points={{-16.6,1},{-74,1},{-74,6}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-16.6,1},{-74,1},{-74,6}}));
       connect(mailbox_Order.mailbox_output_port[1], T5.transition_input_port[1])
         annotation (Line(
-          points={{-117,26.5},{-115.5,26.5},{-115.5,-40.02},{-26.04,-40.02}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-117,26.5},{-115.5,26.5},{-115.5,-40.02},{-26.04,-40.02}}));
       connect(T1.transition_input_port[1], mailbox_Order.mailbox_output_port[2])
         annotation (Line(
-          points={{-2.04,52.02},{-117,52.02},{-117,27.5}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-2.04,52.02},{-117,52.02},{-117,27.5}}));
       connect(mailbox_Order.mailbox_input_port[1], In_Order) annotation (Line(
-          points={{-135,27},{-156.5,27},{-156.5,84},{-182,84}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-135,27},{-156.5,27},{-156.5,84},{-182,84}}));
       connect(T4.transition_input_port[1], mailbox_Continue.mailbox_output_port[1])
         annotation (Line(
-          points={{-78.9,7.88},{-99.45,7.88},{-99.45,-1},{-119,-1}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-78.9,7.88},{-99.45,7.88},{-99.45,-1},{-119,-1}}));
       connect(mailbox_Continue.mailbox_input_port[1], In_Continue) annotation (Line(
-          points={{-137,-1},{-178,-1}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-137,-1},{-178,-1}}));
       connect(T2.firePort, message.conditionPort[1]) annotation (Line(
           points={{-8,72.2},{-16,72.2},{-16,92.4},{-14,92.4}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(message.message_output_port, Out_Done) annotation (Line(
-          points={{7,101},{33.5,101},{33.5,98},{140,98}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{7,101},{33.5,101},{33.5,98},{140,98}}));
       connect(T5.firePort, message1.conditionPort[1]) annotation (Line(
           points={{-30.4,-31.4},{-4,-31.4},{-4,-32.6},{70,-32.6}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(T3.firePort, message1.conditionPort[2]) annotation (Line(
           points={{54.2,10},{62,10},{62,-30.6},{70,-30.6}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(message1.message_output_port, Out_Fail) annotation (Line(
-          points={{91,-23},{104,-23},{104,-22},{142,-22}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{91,-23},{104,-23},{104,-22},{142,-22}}));
       connect(Working.activePort, timeInvariantLessOrEqual.conditionPort)
         annotation (Line(
           points={{32,43.28},{8,43.28},{8,23.6},{18.8,23.6}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(T1.firePort, clock.u[1]) annotation (Line(
           points={{-6.4,43.4},{-40,43.4},{-40,24},{-30.1,24}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(clock.y, timeInvariantLessOrEqual.clockValue) annotation (Line(
           points={{-9,24},{6,24},{6,16.4},{18.5,16.4}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       annotation (Diagram(coordinateSystem(extent={{-180,-100},{140,140}},
               preserveAspectRatio=true), graphics), Icon(coordinateSystem(extent={{-180,
                 -100},{140,140}})),
@@ -7135,12 +6327,12 @@ if value redeems the limit.
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.Fail_Safe_Delegation.Safe_Delegation_Slave</title></head>
 <body>
 <h3>Safe_Delegation_Master</h3>
-<p>This class implements the role Master of the Fail-Safe-Delgation-Pattern. TThis class implements the behavior of the role Delegation_Slave in the &quot;Fail-Operational Delegation&quot; pattern. The master component wants to delegate a task to the slave component, being responsible for executing the task. The slave component can report the task execuition with either &quot;done&quot; or &quot;fail&quot;, informing the master wether the delegation was successful or not. More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Fail_Safe_Delegation\">here</a>&quot;. </p>
+<p>This class implements the role Master of the Fail-Safe-Delgation-Pattern. TThis class implements the behavior of the role Delegation_Slave in the &quot;Fail-Operational Delegation&quot; pattern. The master component wants to delegate a task to the slave component, being responsible for executing the task. The slave component can report the task execuition with either &quot;done&quot; or &quot;fail&quot;, informing the master whether the delegation was successful or not. More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Fail_Safe_Delegation\">here</a>&quot;. </p>
 <p>The behavior can be seen in the following statechart. </p>
 <p><img src=\"images/Fail_Safe_Delegation/Behavior_Slave.jpg\" alt =\"\"/></p>
 <p><small>Figure 1:  Realtimestatechart showing the behavior of the role slave</small></p>
-<p>The slave has a paramter $worktime, which specifies the time the slave may stay at most in the state of &apos;Working&apos;, e. g. it specifies the maximum time the Slave may be working on the task. </p>
-<p><img src=\"images/Fail_Safe_Delegation/Paramater_Slave.jpg\" alt =\"\"/></p>
+<p>The slave has a parameter $worktime, which specifies the time the slave may stay at most in the state of &apos;Working&apos;, e. g. it specifies the maximum time the Slave may be working on the task. </p>
+<p><img src=\"images/Fail_Safe_Delegation/Parameter_Slave.jpg\" alt =\"\"/></p>
 <p><small>Figure 2: Parmaters of the role slave.</small></p>
 </body>
 </html>"));
@@ -7157,7 +6349,7 @@ if value redeems the limit.
 This pattern realizes a delegation of a task from a role master to a role slave. The slave executes the task in a certain time and answers regarding success or failure. If the execution fails, no other task may be delegated until the master ensures that the failure has been corrected. Moreover, only one delegation at a time is allowed.
 </p>
 
-<p> 
+<p>
 Examples are specified at: <a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Examples.ExamplesForPatternUse.Fail_Safe_Delegation\">ExamplesForPatternUse.Fail-Safe-Delegation</a>.
 A test is specified at: <a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Examples.PatternTest.Fail_Safe_Delegation_Test\">PatternTest.Fail-Safe-Delegation-Test</a>
 </p>
@@ -7238,13 +6430,11 @@ The role master has the initial state Idle. From this state the master can send 
         nOut=2,
         use_activePort=true) annotation (Placement(transformation(
             extent={{4,-4},{-4,4}},
-            rotation=0,
             origin={-28,44})));
       RealTimeCoordinationLibrary.RealTimeCoordination.Step
                                        CollaborationActive(nIn=1, nOut=2) annotation (
           Placement(transformation(
             extent={{-4,-4},{4,4}},
-            rotation=0,
             origin={-28,-22})));
       RealTimeCoordination.SelfTransition    T1(use_messageReceive=true,
           numberOfMessageReceive=1,
@@ -7253,7 +6443,6 @@ The role master has the initial state Idle. From this state the master can send 
         use_firePort=true,
         afterTime=1e-8)             annotation (Placement(transformation(
             extent={{-4,-4},{4,4}},
-            rotation=0,
             origin={-28,62})));
       RealTimeCoordinationLibrary.RealTimeCoordination.Transition
                                              T2(use_firePort=true,
@@ -7269,7 +6458,6 @@ The role master has the initial state Idle. From this state the master can send 
         use_syncSend=false,
         afterTime=1e-8)             annotation (Placement(transformation(
             extent={{-4,4},{4,-4}},
-            rotation=0,
             origin={-58,8})));
       RealTimeCoordinationLibrary.RealTimeCoordination.Mailbox
                                           ProposalBox(
@@ -7325,119 +6513,80 @@ The role master has the initial state Idle. From this state the master can send 
     equation
 
       connect(Idle.outPort[1], T1.inPort)    annotation (Line(
-          points={{-28,75.4},{-28,66.4}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-28,75.4},{-28,66.4}}));
       connect(T1.outPort, EvaluatueProposal.inPort[1]) annotation (Line(
-          points={{-28,57.4},{-28,52.7},{-28,48},{-27,48}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-28,57.4},{-28,52.7},{-28,48},{-27,48}}));
       connect(EvaluatueProposal.outPort[1], T2.inPort) annotation (Line(
-          points={{-27,39.4},{-26,38},{-26,4}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-27,39.4},{-26,38},{-26,4}}));
       connect(T2.outPort, CollaborationActive.inPort[1]) annotation (Line(
-          points={{-26,-5},{-26,-18},{-28,-18}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-26,-5},{-26,-18},{-28,-18}}));
       connect(CollaborationActive.outPort[1], T3.inPort) annotation (Line(
-          points={{-29,-26.6},{-58,-26.6},{-58,4}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-29,-26.6},{-58,-26.6},{-58,4}}));
       connect(T3.outPort, Idle.inPort[1])    annotation (Line(
-          points={{-58,13},{-58,60},{-42,60},{-42,84},{-29,84}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-58,13},{-58,60},{-42,60},{-42,84},{-29,84}}));
       connect(InProposal, ProposalBox.mailbox_input_port[1])
         annotation (Line(
           points={{-100,34},{-88.5,34},{-88.5,35},{-79,35}},
-          color={0,0,255},
-          smooth=Smooth.None));
+          color={0,0,255}));
       connect(ProposalBox.mailbox_output_port[1], T1.transition_input_port[1])
         annotation (Line(
-          points={{-61,34.5},{-32.02,34.5},{-32.02,60.04}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-61,34.5},{-32.02,34.5},{-32.02,60.04}}));
       connect(InDeact, DeactBox.mailbox_input_port[1])
         annotation (Line(
           points={{-100,10},{-94,10},{-94,7},{-87,7}},
-          color={0,0,255},
-          smooth=Smooth.None));
+          color={0,0,255}));
       connect(DeactBox.mailbox_output_port[1], T3.transition_input_port[1])
         annotation (Line(
-          points={{-69,7},{-69,7.5},{-62.9,7.5},{-62.9,5.88}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-69,7},{-69,7.5},{-62.9,7.5},{-62.9,5.88}}));
       connect(T2.firePort, Accept.conditionPort[1])             annotation (Line(
           points={{-21.8,0},{48,0},{48,0.4},{62,0.4}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(Accept.message_output_port, OutAccept)
         annotation (Line(
-          points={{83,9},{82,9},{82,6},{102,6}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{83,9},{82,9},{82,6},{102,6}}));
       connect(Reject.message_output_port, OutReject)
         annotation (Line(
-          points={{61,81},{80.5,81},{80.5,52},{104,52}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{61,81},{80.5,81},{80.5,52},{104,52}}));
       connect(EvaluatueProposal.outPort[2],T4. inPort) annotation (Line(
-          points={{-29,39.4},{-24,39.4},{-24,30},{-8,30},{-8,42}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-29,39.4},{-24,39.4},{-24,30},{-8,30},{-8,42}}));
       connect(T4.outPort, Idle.inPort[2])    annotation (Line(
-          points={{-8,51},{-8,88},{-27,88},{-27,84}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-8,51},{-8,88},{-27,88},{-27,84}}));
       connect(T4.firePort, Reject.conditionPort[1])             annotation (
           Line(
           points={{-3.8,46},{28,46},{28,72.4},{40,72.4}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(EvaluatueProposal.activePort, timeInvariantLessOrEqual.conditionPort)
         annotation (Line(
           points={{-32.72,44},{-54,44},{-54,12.4},{-9.2,12.4}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(T1.firePort, evalTime.u[1]) annotation (Line(
           points={{-23.4,64.4},{-52,64.4},{-52,22},{-48.1,22}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(evalTime.y, timeInvariantLessOrEqual.clockValue) annotation (
           Line(
           points={{-27,22},{-18,22},{-18,19.6},{-9.5,19.6}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(CollaborationActive.outPort[2], T5.inPort) annotation (Line(
-          points={{-27,-26.6},{-2,-26.6},{-2,-38},{26,-38}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-27,-26.6},{-2,-26.6},{-2,-38},{26,-38}}));
       connect(ProposalBox.mailbox_output_port[2], T5.transition_input_port[1])
         annotation (Line(
-          points={{-61,35.5},{-59.5,35.5},{-59.5,-36.12},{21.1,-36.12}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-61,35.5},{-59.5,35.5},{-59.5,-36.12},{21.1,-36.12}}));
       connect(T5.outPort, EvaluatueProposal.inPort[2]) annotation (Line(
-          points={{26,-29},{26,48},{-29,48}},
-          color={0,0,0},
-          smooth=Smooth.None));
-      annotation (Diagram(coordinateSystem(preserveAspectRatio=true,  extent={{-100,
-                -100},{100,100}}),
-                          graphics), Documentation(info="<!DOCTYPE html>
+          points={{26,-29},{26,48},{-29,48}}));
+      annotation ( Documentation(info="<!DOCTYPE html>
 <html>
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.Synchronized_Collaboration.Collaboration_Slave</title></head>
 <body>
 <h3> Collaboration_Slave </h3>
-<p>This class implements the behavior of the role Slave of the Synchronized-Collaboration Pattern. The master wants to collaborate with the slave in order to fulfill a certain task. The slave receives the proposal and has to determine, wether it wants to collaborate with the master or not. The evalution result is reported to the master. If the collaboration is accepted by the slave, both (master and slave) change their state to 'CollaborationActive'. Only the master can decide to quit the collaboration.
+<p>This class implements the behavior of the role Slave of the Synchronized-Collaboration Pattern. The master wants to collaborate with the slave in order to fulfill a certain task. The slave receives the proposal and has to determine, whether it wants to collaborate with the master or not. The evalution result is reported to the master. If the collaboration is accepted by the slave, both (master and slave) change their state to 'CollaborationActive'. Only the master can decide to quit the collaboration.
 
- More information concerning the pattern can be found 
-&quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.SynchronizedCollaboration\">here</a>&quot; 
+ More information concerning the pattern can be found
+&quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.SynchronizedCollaboration\">here</a>&quot;
 The corresponding Realtime Statechart is shown in the following figure: </p>
 <p><img src=\"images/Synchronized_Collaboration/Behavior_Slave.jpg\" alt=\"\"/> </p>
 <p><small>Figure 1: Realtimestatechart, showing the behavior of the slave role </small></p>
 <p>The slave has a parameter $evaluationtime, specifying the time that the slave may need at most to evaluate the collaboration proposal. </p>
-<p><img src=\"images/Synchronized_Collaboration/Paramaters_Slave.jpg\" alt=\"\"/> </p>
+<p><img src=\"images/Synchronized_Collaboration/Parameters_Slave.jpg\" alt=\"\"/> </p>
 <p><small>Figure 2: Realtimestatechart, showing the parameters of the slave role </small></p>
 </body>
 </html>"));
@@ -7451,14 +6600,12 @@ The corresponding Realtime Statechart is shown in the following figure: </p>
         initialStep=true)                              annotation (Placement(
             transformation(
             extent={{-4,-4},{4,4}},
-            rotation=0,
             origin={-60,62})));
       Modelica_StateGraph2.Step Waiting(
         nOut=3,
         nIn=1,
         use_activePort=true) annotation (Placement(transformation(
             extent={{-4,-4},{4,4}},
-            rotation=0,
             origin={-62,30})));
       RealTimeCoordinationLibrary.RealTimeCoordination.Transition
                                              T8(use_messageReceive=true,
@@ -7466,12 +6613,10 @@ The corresponding Realtime Statechart is shown in the following figure: </p>
         use_after=true,
         afterTime=1e-8)                  annotation (Placement(transformation(
             extent={{-4,-4},{4,4}},
-            rotation=0,
             origin={-78,94})));
       Modelica_StateGraph2.Step CollaborationActive(nIn=1, nOut=1) annotation (
           Placement(transformation(
             extent={{-4,-4},{4,4}},
-            rotation=0,
             origin={-62,-40})));
       RealTimeCoordinationLibrary.RealTimeCoordination.Transition T10(
         use_after=true,
@@ -7480,7 +6625,6 @@ The corresponding Realtime Statechart is shown in the following figure: </p>
         use_syncSend=false,
         afterTime=1e-8)
         annotation (Placement(transformation(extent={{-4,-4},{4,4}},
-            rotation=0,
             origin={-60,-20})));
       RealTimeCoordinationLibrary.RealTimeCoordination.Transition
                                              T9(use_firePort=true,
@@ -7503,7 +6647,6 @@ The corresponding Realtime Statechart is shown in the following figure: </p>
                                           Proposal(nIn=1)           annotation (Placement(
             transformation(
             extent={{-10,-10},{10,10}},
-            rotation=0,
             origin={60,60})));
       RealTimeCoordinationLibrary.RealTimeCoordination.MessageInterface.OutputDelegationPort
                                                                         OutProposal
@@ -7512,7 +6655,6 @@ The corresponding Realtime Statechart is shown in the following figure: </p>
                                           RejectBox(nIn=1, nOut=1)          annotation (
           Placement(transformation(
             extent={{-7,-5},{7,5}},
-            rotation=0,
             origin={-93,93})));
       RealTimeCoordinationLibrary.RealTimeCoordination.MessageInterface.InputDelegationPort
                                                                        InReject
@@ -7524,7 +6666,6 @@ The corresponding Realtime Statechart is shown in the following figure: </p>
         condition=true)                                     annotation (Placement(
             transformation(
             extent={{-4,-4},{4,4}},
-            rotation=0,
             origin={-62,46})));
       RealTimeCoordinationLibrary.RealTimeCoordination.Mailbox
                                           AcceptBox(nIn=1, nOut=1)          annotation (
@@ -7554,125 +6695,87 @@ The corresponding Realtime Statechart is shown in the following figure: </p>
         annotation (Placement(transformation(extent={{14,22},{34,42}})));
     equation
       connect(Waiting.outPort[1],T8. inPort) annotation (Line(
-          points={{-63.3333,25.4},{-52,25.4},{-52,20},{38,20},{38,98},{-78,98}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-63.3333,25.4},{-52,25.4},{-52,20},{38,20},{38,98},{-78,98}}));
       connect(T8.outPort, Idle.inPort[1])    annotation (Line(
-          points={{-78,89},{-72,89},{-72,66},{-60.5333,66}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-78,89},{-72,89},{-72,66},{-60.5333,66}}));
       connect(T10.outPort, CollaborationActive.inPort[1])
                                                          annotation (Line(
-          points={{-60,-25},{-60,-36},{-62,-36}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-60,-25},{-60,-36},{-62,-36}}));
       connect(CollaborationActive.outPort[1],T9. inPort) annotation (Line(
-          points={{-62,-44.6},{-80,-44.6},{-80,24}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-62,-44.6},{-80,-44.6},{-80,24}}));
       connect(T9.outPort, Idle.inPort[2])    annotation (Line(
-          points={{-80,33},{-80,66},{-60,66}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-80,33},{-80,66},{-60,66}}));
       connect(Waiting.outPort[2],T7. inPort) annotation (Line(
-          points={{-62,25.4},{-62,14},{-24,14},{-24,64}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-62,25.4},{-62,14},{-24,14},{-24,64}}));
       connect(T7.outPort, Idle.inPort[3])    annotation (Line(
-          points={{-24,73},{-24,94},{-54,94},{-54,66},{-59.4667,66}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-24,73},{-24,94},{-54,94},{-54,66},{-59.4667,66}}));
       connect(Proposal.message_output_port, OutProposal)
         annotation (Line(
-          points={{69,59},{77.5,59},{77.5,60},{100,60}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{69,59},{77.5,59},{77.5,60},{100,60}}));
       connect(RejectBox.mailbox_input_port[1], InReject)
         annotation (Line(
           points={{-99.3,92.5},{-110,92.5},{-110,82},{-108,82},{-108,74},{
-              -102,74}},
-          color={0,0,0},
-          smooth=Smooth.None));
+              -102,74}}));
       connect(Idle.outPort[1],T6. inPort)    annotation (Line(
-          points={{-59.98,57.86},{-59.98,54},{-62,54},{-62,50.4}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-59.98,57.86},{-59.98,54},{-62,54},{-62,50.4}}));
       connect(T6.outPort, Waiting.inPort[1]) annotation (Line(
-          points={{-62,41.4},{-62,34}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-62,41.4},{-62,34}}));
       connect(T6.firePort, Proposal.conditionPort[1])           annotation (Line(
           points={{-57.4,48.4},{28,48.4},{28,50.4},{48,50.4}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(RejectBox.mailbox_output_port[1],T8. transition_input_port[1])
         annotation (Line(
           points={{-86.7,92.5},{-86,92.5},{-86,84},{-84,84},{-84,96.12},{
-              -82.9,96.12}},
-          color={0,0,0},
-          smooth=Smooth.None));
+              -82.9,96.12}}));
       connect(InAccept, AcceptBox.mailbox_input_port[1])
         annotation (Line(
           points={{-100,-40},{-114,-40},{-114,-17},{-109,-17}},
-          color={0,0,255},
-          smooth=Smooth.None));
+          color={0,0,255}));
       connect(T9.firePort, Deact.conditionPort[1])        annotation (Line(
           points={{-84.2,28},{-92,28},{-92,28.4}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(Deact.message_output_port, OutDeact)                      annotation (
          Line(
           points={{-113,37},{-126,37},{-126,-90},{96,-90},{96,16},{98,16},{98,
-              14},{102,14}},
-          color={0,0,0},
-          smooth=Smooth.None));
+              14},{102,14}}));
       connect(T10.transition_input_port[1], AcceptBox.mailbox_output_port[1])
             annotation (Line(
-          points={{-64.9,-17.88},{-84,-17.88},{-84,-17},{-91,-17}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-64.9,-17.88},{-84,-17.88},{-84,-17},{-91,-17}}));
       connect(Waiting.outPort[3], T10.inPort)
                                              annotation (Line(
-          points={{-60.6667,25.4},{-60.6667,-16},{-60,-16}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-60.6667,25.4},{-60.6667,-16},{-60,-16}}));
       connect(T6.firePort, Clock.u[1]) annotation (Line(
           points={{-57.4,48.4},{-26,48.4},{-26,40},{-20.1,40}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(Clock.y, timeInvariantLessOrEqual.clockValue) annotation (Line(
           points={{1,40},{-8,40},{-8,35.6},{12.5,35.6}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(Waiting.activePort, timeInvariantLessOrEqual.conditionPort)
         annotation (Line(
           points={{-57.28,30},{-28,30},{-28,28.4},{12.8,28.4}},
-          color={255,0,255},
-          smooth=Smooth.None));
-      annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
-                -100},{100,100}}),
-                          graphics), Documentation(info="<!DOCTYPE html>
+          color={255,0,255}));
+      annotation ( Documentation(info="<!DOCTYPE html>
 <html>
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.Synchronized_Collaboration.Collaboration_Master</title></head>
 <body>
 <h3> Collaboration_Master </h3>
-<p>This class implements the behavior of the role Master of the Synchronized-Collaboration Pattern. The master wants to collaborate with the slave in order to fulfill a certain task. The slave receives the proposal and has to determine, wether it wants to collaborate with the master or not. The evalution result is reported to the master. If the collaboration is accepted by the slave, both (master and slave) change their state to 'CollaborationActive'. Only the master can decide to quit the collaboration.
+<p>This class implements the behavior of the role Master of the Synchronized-Collaboration Pattern. The master wants to collaborate with the slave in order to fulfill a certain task. The slave receives the proposal and has to determine, whether it wants to collaborate with the master or not. The evalution result is reported to the master. If the collaboration is accepted by the slave, both (master and slave) change their state to 'CollaborationActive'. Only the master can decide to quit the collaboration.
 
- More information concerning the pattern can be found 
-&quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.SynchronizedCollaboration\">here</a>&quot; 
+ More information concerning the pattern can be found
+&quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.SynchronizedCollaboration\">here</a>&quot;
 The corresponding Realtime Statechart is shown in the following figure: </p>
 <p><img src=\"images/Synchronized_Collaboration/Behavior_Master.jpg\" alt = \"\"/> </p>
 <p><small>Figure 1: Realtimestatechart, showing the behavior of the master role </small></p>
 
 <p>The master has a parameter $timeout, specifying the time that the master waits at most for the report of the slave. </p>
-<p><img src=\"images/Synchronized_Collaboration/Paramaters_Master.jpg\" alt =\"\"/> </p>
+<p><img src=\"images/Synchronized_Collaboration/Parameters_Master.jpg\" alt =\"\"/> </p>
 <p><small>Figure 2: Realtimestatechart, showing the parameters of the master role </small></p>
 </body>
 </html>"));
     end Collaboration_Master;
     annotation (Documentation(info="<html>
 <h3> Synchronized-Collaboration Pattern </h3>
-<p> 
+<p>
 This pattern synchronizes the activation and deactivation of a collaboration of two systems.
 The pattern assumes that a safety-critical situation appears if the system, which initialized
 the activation, is in collaboration mode and the other system is not in collaboration
@@ -7680,13 +6783,13 @@ mode. Therefore, the pattern ensures that this situation never happens.
 </p>
 
 <h4> Context </h4>
-<p> 
+<p>
 Two independent systems can collaborate in a safety-critical environment,
 though cooperation adds more hazards.
 </p>
 
 <h4> Problem </h4>
-<p> 
+<p>
 If one system believes they are working together, but the other one does not
 know this, this may create a safety-critical situation for the first system. This must be
 avoided. This problem occurs, if the communication is asynchronous or the communication
@@ -7707,7 +6810,7 @@ no longer useful.
 
 
 <h4> Structure </h4>
-<p> 
+<p>
 The pattern consists of the two roles master and slave and a connector. Both roles are in/out roles. Which message each role can receive and send is
 shown in the message interfaces. The master may send the messages activationProposal
 and deactivation to the slave. The slave may send the messages activationAccepted
@@ -7715,7 +6818,7 @@ and activationRejected to the master. The time parameter of the role master
 is $timeout, the time parameter of role slave is $eval-time. The connector may lose
 messages. The delay for sending a message is defined by the time parameters $delay-min
 and $delay-max.
-</p> 
+</p>
 <p><img src=\"images/Synchronized_Collaboration/Structure.jpg\" alt=\"\" ></p>
 <p><small>Figure 1: Structure of the Synchronized-Collaboration Pattern</small></p>
 <p><img src=\"images/Synchronized_Collaboration/Interfaces.jpg\" alt=\"\" ></p>
@@ -7790,38 +6893,24 @@ deactivate the collaboration. He informs the slave so that he also deactivates i
         annotation (Placement(transformation(extent={{114,26},{134,46}})));
     equation
       connect(Blocked.outPort[1], T1.inPort) annotation (Line(
-          points={{-24.6,64},{-66,64},{-66,42}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-24.6,64},{-66,64},{-66,42}}));
       connect(T1.outPort, Free.inPort[1]) annotation (Line(
-          points={{-66,33},{-66,12},{-16,12}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-66,33},{-66,12},{-16,12}}));
       connect(Free.outPort[1], T2.inPort) annotation (Line(
-          points={{-7.4,12},{42,12},{42,32}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-7.4,12},{42,12},{42,32}}));
       connect(Blocked.inPort[1], T2.outPort) annotation (Line(
-          points={{-16,64},{42,64},{42,41}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-16,64},{42,64},{42,41}}));
       connect(T1.firePort, Free_Message.conditionPort[1]) annotation (Line(
           points={{-70.2,38},{-86,38},{-86,34.4},{-90,34.4}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(Free_Message.message_output_port, Out_Free) annotation (Line(
-          points={{-111,43},{-139.5,43},{-139.5,44},{-138,44}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-111,43},{-139.5,43},{-139.5,44},{-138,44}}));
       connect(T2.firePort, Blocked_Message.conditionPort[1]) annotation (Line(
           points={{46.2,36},{58,36},{58,30.4},{62,30.4}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(Blocked_Message.message_output_port, Out_Blocked) annotation (
           Line(
-          points={{83,39},{106.5,39},{106.5,36},{124,36}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{83,39},{106.5,39},{106.5,36},{124,36}}));
       annotation (
         Diagram(coordinateSystem(extent={{-140,-100},{120,100}},
               preserveAspectRatio=false),graphics),
@@ -7831,7 +6920,7 @@ deactivate the collaboration. He informs the slave so that he also deactivates i
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.Block_Execution.Guard</title></head>
 <body>
 <h3> Guard </h3>
-This class implements the behavior of the role guard of the Block-Execution-Pattern. The guard controls the exection of a certain task, which is done by a different component, which implements the executor role. It can start and stop the exectution by sending the free() and the block() message to the executor. More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Block_Execution\">here</a>&quot;. <p>The behavoir can be seen in the following statechart. 
+This class implements the behavior of the role guard of the Block-Execution-Pattern. The guard controls the execution of a certain task, which is done by a different component, which implements the executor role. It can start and stop the exectution by sending the free() and the block() message to the executor. More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Block_Execution\">here</a>&quot;. <p>The behavoir can be seen in the following statechart.
 The guard has no parameters. </p>
 <p><img src=\"images/Block-Execution/Guard-Behavior.jpg\" alt =\"\" ></p>
 <p><small>Figure 1: Realtimestatechart, showing the behavior of the producer role </small></p>
@@ -7892,40 +6981,24 @@ The guard has no parameters. </p>
         annotation (Placement(transformation(extent={{110,46},{130,66}})));
     equation
       connect(Blocked.outPort[1], T1.inPort) annotation (Line(
-          points={{-6.6,74},{-54,74},{-54,62}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-6.6,74},{-54,74},{-54,62}}));
       connect(T1.outPort, Free.inPort[1]) annotation (Line(
-          points={{-54,53},{-54,32},{-10,32}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-54,53},{-54,32},{-10,32}}));
       connect(Free.outPort[1], T2.inPort) annotation (Line(
-          points={{-1.4,32},{42,32},{42,54}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-1.4,32},{42,32},{42,54}}));
       connect(Mailbox_Free.mailbox_output_port[1], T1.transition_input_port[1])
         annotation (Line(
-          points={{-77,61},{-73.5,61},{-73.5,60.12},{-58.9,60.12}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-77,61},{-73.5,61},{-73.5,60.12},{-58.9,60.12}}));
       connect(T2.transition_input_port[1], Mailbox_Blocked.mailbox_output_port[
         1]) annotation (Line(
-          points={{46.9,55.88},{68.45,55.88},{68.45,57},{71,57}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{46.9,55.88},{68.45,55.88},{68.45,57},{71,57}}));
       connect(Mailbox_Free.mailbox_input_port[1], In_Free) annotation (Line(
-          points={{-95,61},{-108.5,61},{-108.5,62},{-120,62}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-95,61},{-108.5,61},{-108.5,62},{-120,62}}));
       connect(Mailbox_Blocked.mailbox_input_port[1], In_Blocked) annotation (
           Line(
-          points={{89,57},{104.5,57},{104.5,56},{120,56}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{89,57},{104.5,57},{104.5,56},{120,56}}));
       connect(T2.outPort, Blocked.inPort[1]) annotation (Line(
-          points={{42,63},{42,74},{2,74}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{42,63},{42,74},{2,74}}));
       annotation (
         Diagram(coordinateSystem(extent={{-120,-100},{120,100}},
               preserveAspectRatio=false),graphics),
@@ -7935,7 +7008,7 @@ The guard has no parameters. </p>
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.Block_Execution.Executor</title></head>
 <body>
 <h3> Executor </h3>
-This class implements the behavior of the role executor of the Block-Execution-Pattern. The executor is responsible for executing a certain task. The execution is controlled by a component which implements the gurad role. The guard can start and stop the exectution by sending the free() and the block() message to the executor. More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Block_Execution\">here</a>&quot;. <p>The behavoir can be seen in the following statechart. 
+This class implements the behavior of the role executor of the Block-Execution-Pattern. The executor is responsible for executing a certain task. The execution is controlled by a component which implements the gurad role. The guard can start and stop the exectution by sending the free() and the block() message to the executor. More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Block_Execution\">here</a>&quot;. <p>The behavoir can be seen in the following statechart.
 The executor has no parameters. </p>
 <p><img src=\"images/Block-Execution/Executor-Behavior.jpg\" alt = \"\"></p>
 <p><small>Figure 1: Realtimestatechart, showing the behavior of the executor role </small></p>
@@ -7947,18 +7020,18 @@ The executor has no parameters. </p>
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.UsersGuide.Elements.Block_Execution</title></head>
 <body>
 <H3> Block_Execution</H3>
-<p> 
+<p>
 This pattern coordinates a blocking of actions, e.g., due to safety-critical reasons. Also known as Start-Stop, and
 Guard.
 </p>
 Examples are specified at: <a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Examples.ExamplesForPatternUse.BlockExecution\">ExamplesForPatternUse.Block-Execution</a>
 <h4> Context </h4>
-<p> 
+<p>
 A system operates under changing conditions.
 </p>
 
 <h4> Problem </h4>
-<p> 
+<p>
 A system executes a certain task that must be stopped, e.g. if a safety-critical
 station appears or if it is not necessary that it operates.
 </p>
@@ -7974,13 +7047,13 @@ has to explore the situation.
 
 
 <h4> Structure </h4>
-<p> 
+<p>
 The pattern consists of the roles guard and executor. The
 role guard is an out-role; the role executor is an in-role.
 Which message each role can receive and send is shown in the message interfaces. The guard may send the messages free and block to the executor.
 The connector must not lose messages. The delay for sending a message is defined by
 the time parameters $delay-min and $delay-max.
-</p> 
+</p>
 <p><img src=\"images/Block-Execution/Structure.jpg\" alt=\"\" ></p>
 <p><small>Figure 1: Structure of the Block-Execution Pattern</small></p>
 <p><img src=\"images/Block-Execution/Interfaces.jpg\" alt=\"\"></p>
@@ -8044,42 +7117,30 @@ stops its work.
             origin={-48,30})));
     equation
       connect(Data_Message.message_output_port, Out_Data)        annotation (Line(
-          points={{41,21},{45.5,21},{45.5,20},{104,20}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{41,21},{45.5,21},{45.5,20},{104,20}}));
       connect(PeriodicSending.activePort, timeInvariantLessOrEqual.conditionPort)
         annotation (Line(
           points={{-76.72,44},{-106,44},{-106,-33.6},{-83.2,-33.6}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(timeInvariantLessOrEqual.clockValue, clock.y) annotation (Line(
           points={{-83.5,-26.4},{-84,-26},{-98,-26},{-98,8},{-75,8}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(PeriodicSending.outPort[1], T1.inPort) annotation (Line(
-          points={{-72,39.4},{-62,39.4},{-62,30},{-52.4,30}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-72,39.4},{-62,39.4},{-62,30},{-52.4,30}}));
       connect(T1.outPort, PeriodicSending.inPort[1]) annotation (Line(
-          points={{-43.4,30},{-28,30},{-28,48},{-72,48}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-43.4,30},{-28,30},{-28,48},{-72,48}}));
       connect(T1.firePort, clock.u[1]) annotation (Line(
           points={{-50.4,25.4},{-50.4,16.7},{-53.9,16.7},{-53.9,8}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(T1.firePort, Data_Message.conditionPort[1]) annotation (Line(
           points={{-50.4,25.4},{-15.2,25.4},{-15.2,12.4},{20,12.4}},
-          color={255,0,255},
-          smooth=Smooth.None));
-      annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{
-                -100,-100},{100,100}}),
-                          graphics), Documentation(info="<!DOCTYPE html>
+          color={255,0,255}));
+      annotation ( Documentation(info="<!DOCTYPE html>
 <html>
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.Periodic_Transmission.Sender</title></head>
 <body>
 <h3> Sender </h3>
-This class implements the role Sender of the Periodic-Transmission Pattern. 
+This class implements the role Sender of the Periodic-Transmission Pattern.
 The sender sends every $period time units a message data() to the receiver. The receiver receives this message periodically. If the receiver gets no message from the sender, the message was lost or the receiver has fallen out. In this case the receiver has to react in a certain way in order to prevent this safety critical situation.
 
 More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Periodic_Transmission\">here</a>&quot;.
@@ -8105,7 +7166,6 @@ More information concerning the pattern can be found &quot;<a href=\"modelica://
         use_activePort=true) if enabled
                 annotation (Placement(transformation(
             extent={{4,-4},{-4,4}},
-            rotation=0,
             origin={-16,56})));
       RealTimeCoordinationLibrary.RealTimeCoordination.Step
                                        Timeout(
@@ -8113,7 +7173,6 @@ More information concerning the pattern can be found &quot;<a href=\"modelica://
         nOut=1,
         nIn=1) if enabled annotation (Placement(transformation(
             extent={{-4,-4},{4,4}},
-            rotation=0,
             origin={-14,-4})));
       RealTimeCoordinationLibrary.RealTimeCoordination.Transition
                                              T1(use_after=true, afterTime=timeout) if enabled
@@ -8156,68 +7215,44 @@ More information concerning the pattern can be found &quot;<a href=\"modelica://
     equation
       connect(T3.outPort, PeriodicReceiving.inPort[1]) annotation (Line(
           points={{-14,-34.6},{-14,-44},{-84,-44},{-84,76},{-18,76},{-18,60},
-              {-15,60}},
-          color={0,0,0},
-          smooth=Smooth.None));
+              {-15,60}}));
       connect(Timeout.outPort[1], T3.inPort) annotation (Line(
-          points={{-14,-8.6},{-14,-25.6}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-14,-8.6},{-14,-25.6}}));
       connect(T1.outPort, Timeout.inPort[1]) annotation (Line(
-          points={{-14,21},{-14,2.22045e-016}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-14,21},{-14,2.22045e-016}}));
       connect(PeriodicReceiving.outPort[1], T1.inPort) annotation (Line(
-          points={{-15,51.4},{-15,30},{-14,30}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-15,51.4},{-15,30},{-14,30}}));
       connect(PeriodicReceiving.activePort, timeInvariantLessOrEqual.conditionPort)
         annotation (Line(
           points={{-20.72,56},{-72,56},{-72,45.52},{-54.84,45.52}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(T3.firePort, clock.u[1]) annotation (Line(
           points={{-18.6,-27.6},{-58,-27.6},{-58,11.92},{-59.36,11.92}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(clock.y, timeInvariantLessOrEqual.clockValue) annotation (Line(
           points={{-58,28.8},{-64,28.8},{-64,40.48},{-55.05,40.48}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(T3.transition_input_port[1], Mailbox_Data.mailbox_output_port[1])
         annotation (Line(
-          points={{-9.98,-31.96},{46.45,-31.96},{46.45,8.5},{55,8.5}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-9.98,-31.96},{46.45,-31.96},{46.45,8.5},{55,8.5}}));
       connect(Mailbox_Data.mailbox_input_port[1], In_Data) annotation (Line(
-          points={{73,9},{84.5,9},{84.5,8},{104,8}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{73,9},{84.5,9},{84.5,8},{104,8}}));
       connect(PeriodicReceiving.outPort[2], T2.inPort) annotation (Line(
-          points={{-17,51.4},{0,51.4},{0,54},{17.6,54}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-17,51.4},{0,51.4},{0,54},{17.6,54}}));
       connect(T2.outPort, PeriodicReceiving.inPort[2]) annotation (Line(
-          points={{26.6,54},{48,54},{48,70},{16,70},{16,60},{-17,60}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{26.6,54},{48,54},{48,70},{16,70},{16,60},{-17,60}}));
       connect(T2.transition_input_port[1], Mailbox_Data.mailbox_output_port[2])
         annotation (Line(
-          points={{23.96,49.98},{23.96,29.99},{55,29.99},{55,9.5}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{23.96,49.98},{23.96,29.99},{55,29.99},{55,9.5}}));
       connect(T2.firePort, clock.u[2]) annotation (Line(
           points={{19.6,58.6},{38.8,58.6},{38.8,11.92},{-56.64,11.92}},
-          color={255,0,255},
-          smooth=Smooth.None));
-      annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{
-                -100,-100},{100,100}}),
-                          graphics), Documentation(info="<!DOCTYPE html>
+          color={255,0,255}));
+      annotation ( Documentation(info="<!DOCTYPE html>
 <html>
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.Periodic_Transmission.Receiver</title></head>
 <body>
 <h3> Sender </h3>
-This class implements the role Sender of the Periodic-Transmission Pattern. 
+This class implements the role Sender of the Periodic-Transmission Pattern.
 The sender sends every $period time units a message data() to the receiver. The receiver receives this message periodically. If the receiver gets no message from the sender, the message was lost or the receiver has fallen out. In this case the receiver has to react in a certain way in order to prevent this safety critical situation.
 More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Periodic_Transmission\">here</a>&quot;.
 <p> The provider has a parameter $timeout, which specifies number of time units the receiver waits for a message of the sender. If there was no message received during the time, the receiver changes its state to 'Timeout'.
@@ -8235,22 +7270,22 @@ After receiving the data() message, the receiver changes back to state 'Periodic
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.UsersGuide.Elements.Periodic_Transmission</title></head>
 <body>
 <H3> Periodic Transmission</H3>
-<p> 
+<p>
 This pattern can be used to periodically transmit information from a sender to a receiver.
 If the receiver does not get the information within a certain time, a specified
 behavior must be activated to prevent a safety-critical situation.
 </p>
-<p> 
+<p>
 Examples are specified at: <a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Examples.ExamplesForPatternUse.PeriodicTransmission\">ExamplesForPatternUse.Periodic-Transmission</a>.
 A test is specified at: <a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Examples.PatternTest.Periodic_Transmission_Test\">PatternTest.Periodic-Transmission-Test</a>
 </p>
 <h4> Context </h4>
-<p> 
+<p>
 Information exchange between two systems.
 </p>
 
 <h4> Problem </h4>
-<p> 
+<p>
 If the receiver does not get the information within a certain time, a safetycritical
 situation can occur. This must be prevented.
 </p>
@@ -8258,16 +7293,16 @@ situation can occur. This must be prevented.
 <h4> Solution </h4>
 <p>
 If the receiver does not get the information within a certain time, a specified
-behavior must be activated to prevent the safety-critical situation. 
+behavior must be activated to prevent the safety-critical situation.
 </p>
 <h4> Structure </h4>
-<p> 
+<p>
 The pattern consists of the two roles sender and receiver.
 sender is an in-role. receiver is an out-role. Which message each role can receive resp. send is defined in the message interface. Here, the sender may send the message data to the receiver.
 The time parameter of the role sender is $period, the time parameter of role slave is
 $timeout. The connector may lose messages. The delay for sending a message is defined
 by the time parameters $delay-min and $delay-max.
-</p> 
+</p>
 <p><img src=\"images/Periodic_Transmission/Structure.jpg\" alt=\"\" ></p>
 <p><small>Figure 1: Structure of the Periodic Transmission Pattern</small></p>
 <p><img src=\"images/Periodic_Transmission/Interfaces.jpg\" alt=\"\"></p>
@@ -8349,40 +7384,25 @@ receives a message data again, it changes back to state PeriodicReceiving.
         annotation (Placement(transformation(extent={{112,20},{132,40}})));
     equation
       connect(Producing.outPort[1], T1.inPort) annotation (Line(
-          points={{-34.6,68},{-52,68},{-52,34}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-34.6,68},{-52,68},{-52,34}}));
       connect(T1.outPort, ProducingBlocked.inPort[1]) annotation (Line(
-          points={{-52,25},{-52,-6},{-34,-6}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-52,25},{-52,-6},{-34,-6}}));
       connect(ProducingBlocked.outPort[1], T2.inPort) annotation (Line(
-          points={{-25.4,-6},{4,-6},{4,26}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-25.4,-6},{4,-6},{4,26}}));
       connect(T2.outPort, Producing.inPort[1]) annotation (Line(
-          points={{4,35},{4,68},{-26,68}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{4,35},{4,68},{-26,68}}));
       connect(T2.transition_input_port[1], Consumed.mailbox_output_port[1])
         annotation (Line(
-          points={{8.9,27.88},{8.45,27.88},{8.45,29},{25,29}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{8.9,27.88},{8.45,27.88},{8.45,29},{25,29}}));
       connect(Produced_Message.conditionPort[1], T1.firePort) annotation (
           Line(
           points={{-86,20.4},{-74,20.4},{-74,30},{-56.2,30}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(Consumed.mailbox_input_port[1], In_Consumed) annotation (Line(
-          points={{43,29},{122,30}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{43,29},{122,30}}));
       connect(Produced_Message.message_output_port, Out_Produced) annotation (
          Line(
-          points={{-107,29},{-141.5,29},{-141.5,30},{-140,30}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-107,29},{-141.5,29},{-141.5,30},{-140,30}}));
       annotation (
         Diagram(coordinateSystem(extent={{-140,-100},{120,100}},
               preserveAspectRatio=true), graphics),
@@ -8392,7 +7412,7 @@ receives a message data again, it changes back to state PeriodicReceiving.
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.Producer_Consumer.Producer</title></head>
 <body>
 <h3> Producer </h3>
-This class implements the behavior of the role producer of the Producer-Consumer-Pattern. The producer has reserved the critical section at first. By sending the produced() message it leaves the critical section and the consumer will reserve it. More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Producer_Consumer\">here</a>&quot;. <p>The behavoir can be seen in the following statechart. 
+This class implements the behavior of the role producer of the Producer-Consumer-Pattern. The producer has reserved the critical section at first. By sending the produced() message it leaves the critical section and the consumer will reserve it. More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Producer_Consumer\">here</a>&quot;. <p>The behavoir can be seen in the following statechart.
 The producer has no parameters. </p>
 <p><img src=\"images/Producer-Consumer/Producer-Behavior.jpg\" alt = \"\" ></p>
 <p><small>Figure 1: Realtimestatechart, showing the behavior of the producer role </small></p>
@@ -8451,39 +7471,24 @@ The producer has no parameters. </p>
         annotation (Placement(transformation(extent={{72,24},{92,44}})));
     equation
       connect(ConsumingBlocked.outPort[1], T1.inPort) annotation (Line(
-          points={{-10.6,70},{-42,70},{-42,42}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-10.6,70},{-42,70},{-42,42}}));
       connect(T1.outPort, Consuming.inPort[1]) annotation (Line(
-          points={{-42,33},{-42,4},{-12,4}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-42,33},{-42,4},{-12,4}}));
       connect(Consuming.outPort[1], T2.inPort) annotation (Line(
-          points={{-3.4,4},{42,4},{42,32}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-3.4,4},{42,4},{42,32}}));
       connect(T2.outPort, ConsumingBlocked.inPort[1]) annotation (Line(
-          points={{42,41},{42,70},{-2,70}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{42,41},{42,70},{-2,70}}));
       connect(Produced.mailbox_output_port[1], T1.transition_input_port[1])
         annotation (Line(
-          points={{-63,41},{-54.5,41},{-54.5,40.12},{-46.9,40.12}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-63,41},{-54.5,41},{-54.5,40.12},{-46.9,40.12}}));
       connect(Produced.mailbox_input_port[1], In_Produced) annotation (Line(
-          points={{-81,41},{-91.5,41},{-91.5,38},{-102,38}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{-81,41},{-91.5,41},{-91.5,38},{-102,38}}));
       connect(T2.firePort, ConsumedMessage.conditionPort[1]) annotation (Line(
           points={{46.2,36},{60,36},{60,24.4},{70,24.4}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(ConsumedMessage.message_output_port, Out_Consumed) annotation (
           Line(
-          points={{91,33},{103.5,33},{103.5,34},{118,34}},
-          color={0,0,0},
-          smooth=Smooth.None));
+          points={{91,33},{103.5,33},{103.5,34},{118,34}}));
       annotation (
         Diagram(coordinateSystem(extent={{-100,-100},{120,100}},
               preserveAspectRatio=true), graphics),
@@ -8493,7 +7498,7 @@ The producer has no parameters. </p>
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.Producer_Consumer.Consumer</title></head>
 <body>
 <h3> Consumer </h3>
-This class implements the behavior of the role consumer of the Producer-Consumer-Pattern. The producer has reserved the critical section at first. By sending the produced() message it leaves the critical section and the consumer will reserve it. The consumer can leave the critical section by sending the consumed() message, which enables the producer to reserve it. More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Producer_Consumer\">here</a>&quot;. <p>The behavoir can be seen in the following statechart. 
+This class implements the behavior of the role consumer of the Producer-Consumer-Pattern. The producer has reserved the critical section at first. By sending the produced() message it leaves the critical section and the consumer will reserve it. The consumer can leave the critical section by sending the consumed() message, which enables the producer to reserve it. More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Producer_Consumer\">here</a>&quot;. <p>The behavoir can be seen in the following statechart.
 The consumer has no parameters. </p>
 <p><img src=\"images/Producer-Consumer/Consumer-Behavior.jpg\" alt =\"\"></p>
 <p><small>Figure 1: Realtimestatechart, showing the behavior of the consumer role </small></p>
@@ -8505,21 +7510,21 @@ The consumer has no parameters. </p>
 <head><title>RealTimeCoordinationLibrary.CoordinationPattern.UsersGuide.Elements.Producer_Consumer</title></head>
 <body>
 <H3> Producer-Consumer</H3>
-<p> 
+<p>
 This pattern is used when two roles shall access a safety-critical section alternately,
 e.g., one produces goods, the other consumes them. The pattern guarantees that only one
 is in the critical section at the same time.
 </p>
-<p> 
+<p>
 Examples are specified at: <a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Examples.ExamplesForPatternUse.ProducerConsumer\">ExamplesForPatternUse.Producer-Consumer</a>.
 </p>
 <h4> Context </h4>
-<p> 
+<p>
 Working in a safety-critical section.
 </p>
 
 <h4> Problem </h4>
-<p> 
+<p>
 There exists a section where information or goods can be stored. The size of
 the section is 1. Furthermore, there exists two different systems. The one produces the
 information/good, the other consumes/clears it. The consumer may not act, if nothing is
@@ -8539,12 +7544,12 @@ the information/good.
 
 
 <h4> Structure </h4>
-<p> 
+<p>
 The pattern consist of two roles producer and consumer. Both roles are in/out-roles.
 Which message each role can receive and send is shown in the message interfaces. The producer may send the message produced to the consumer. The slave
 may send the message consumed to the producer. The connector must not lose messages. The delay for sending a message is defined by
 the time parameters $delay-min and $delay-max.
-</p> 
+</p>
 <p><img src=\"images/Producer-Consumer/Structure.jpg\" alt=\"\" ></p>
 <p><small>Figure 1: Structure of the Producer-Consumer Pattern</small></p>
 <p><img src=\"images/Producer-Consumer/Interfaces.jpg\" alt=\"\"></p>

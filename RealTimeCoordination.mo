@@ -170,23 +170,23 @@ based on the following references:</p>
 <P>[3] Lionel C. Briand and Alexander L. Wolf, editors. <I>International Conference on Software Engineering, ISCE 2007, Workshop on the Future of Software Engineering, FOSE 2007, May 23-25, 2007, Minneapolis, MN, USA</I>, 2007. </P>
 
 
-<p>[4] U. Donath, J. Haufe, T. Blochwitz, and T. Neidhold. A new approach for modeling and veri&#64257;cation of discrete control components within a Modelica environment. In <I>Proceedings of the 6th Modelica Conference, Bielefeld</I>, pages 269&ndash;276, 2008. 
+<p>[4] U. Donath, J. Haufe, T. Blochwitz, and T. Neidhold. A new approach for modeling and veri&#64257;cation of discrete control components within a Modelica environment. In <I>Proceedings of the 6th Modelica Conference, Bielefeld</I>, pages 269&ndash;276, 2008.
 
-<p>[5] Christof Ebert and Capers Jones. Embedded software: Facts, &#64257;gures, and future. <I>IEEE Computer</I>, 42(4):42&ndash; 52, 2009. 
+<p>[5] Christof Ebert and Capers Jones. Embedded software: Facts, &#64257;gures, and future. <I>IEEE Computer</I>, 42(4):42&ndash; 52, 2009.
 
-<p>[6] Peter Fritzson.         <I>Principles of Object-Oriented Modeling and Simulation with Modelica 2.1</I>. Wiley-IEEE Press, 1st edition, 2004. 
+<p>[6] Peter Fritzson.         <I>Principles of Object-Oriented Modeling and Simulation with Modelica 2.1</I>. Wiley-IEEE Press, 1st edition, 2004.
 
-<p>[7] Object Management Group. Omg uni&#64257;ed modeling language (omg uml), superstructure, v2.4.1. Technical report, 2011. 
+<p>[7] Object Management Group. Omg uni&#64257;ed modeling language (omg uml), superstructure, v2.4.1. Technical report, 2011.
 
-<p>[8] D. Harel.         Statecharts: A visual formalism for complex systems. <I>Science of computer programming</I>, 8(3):231&ndash;274, 1987. 
+<p>[8] D. Harel.         Statecharts: A visual formalism for complex systems. <I>Science of computer programming</I>, 8(3):231&ndash;274, 1987.
 
-<p>[9] C. Heinzemann, U. Pohlmann, J. Rieke, W. Sch&auml;fer, 
+<p>[9] C. Heinzemann, U. Pohlmann, J. Rieke, W. Sch&auml;fer,
 O. Sudmann, and M. Tichy. Generating simulink and state&#64258;ow models from software speci&#64257;cations. In <I>Proceedings of the International Design Conference, DESIGN 2012, Dubrovnik, Croatia</I>, May 2012. </P>
 
 <p>[10] S. Herbrechtsmeier,         U. Witkowski, and U. R&uuml;ckert. Bebot: A modular mobile miniature robot platform supporting hardware recon&#64257;guration and multistandard communication. In <I>Progress in Robotics, </I>
 <I>Communications in Computer and Information Science. Proceedings of the FIRA RoboWorld Congress 2009</I>, volume 44, pages 346&ndash;356, Incheon, Korea, 2009. Springer. </P>
 
-<p>[11] I. Kaiser, T. Kaulmann, J. Gausemeier, and U. Witkowski. Miniaturization of autonomous robots by the new technology molded interconnected devices (mid). In <I>Proceedings of the 4th International Symposium on Autonomous Minirobots for Research and Edutainment</I>, October 2007. </p> 
+<p>[11] I. Kaiser, T. Kaulmann, J. Gausemeier, and U. Witkowski. Miniaturization of autonomous robots by the new technology molded interconnected devices (mid). In <I>Proceedings of the 4th International Symposium on Autonomous Minirobots for Research and Edutainment</I>, October 2007. </p>
 <p>[12] C. C. Loh and A. Tr&auml;chtler.         Laser-sintered platform with optical sensor for a mobile robot used in cooperative load transport. In <I>Proceedings of the 37th Annual Conference on IEEE Industrial Electronics Society</I>, pages 888&ndash;893, November 2011. </P>
 
 <p>[13] M. Malmheden, Hilding Elmqvist, S.E. Mattsson,
@@ -194,7 +194,7 @@ D. Henriksson, and M. Otter. ModeGraph-A Modelica Library for Embedded Control B
 
 <p>[14] M. Otter, K-E. &Aring;rz&eacute;n, and I. Dressler. StateGraph&ndash;A Modelica Library for Hierarchical State Machines. In <I>Proceedings of the 4th International Modelica Conference (Modelica 2005), Hamburg, Germany</I>, 2005. </P>
 
-<p>[15] M. Otter, M. Malmheden, H. Elmqvist, S.E. Mattsson, 
+<p>[15] M. Otter, M. Malmheden, H. Elmqvist, S.E. Mattsson,
 
 <p>C. Johnsson, D. Syst&egrave;mes, and S.D. Lund. A new formalism for modeling of reactive and hybrid systems. In <I>Proceedings of the 7th Modelica&rsquo;2009 Conference, Como, Italy</I>, 2009. </p>
 
@@ -221,7 +221,7 @@ D. Henriksson, and M. Otter. ModeGraph-A Modelica Library for Embedded Control B
 <body>
 <p>
 Library <b>Real-Time Coordination</b> is a <b>free</b> Modelica package providing
-components to model <b>coordination</b> 
+components to model <b>coordination</b>
 systems in a convenient
 way. This package contains the <b>User's Guide</b> for
 the library and has the following content:
@@ -295,53 +295,34 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{-66,0},{-58,8}})));
       equation
         connect(step1.entry[1], step2.inPort[1]) annotation (Line(
-            points={{-19,76},{-39,76},{-39,42},{-62,42}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-19,76},{-39,76},{-39,42},{-62,42}}));
         connect(step1.entry[2], step3.inPort[1]) annotation (Line(
-            points={{-13,76},{4,76},{4,40},{28,40}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-13,76},{4,76},{4,40},{28,40}}));
         connect(step3.outPort[1], T2.inPort) annotation (Line(
-            points={{28,31.4},{28,14}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{28,31.4},{28,14}}));
         connect(T2.outPort, step5.inPort[1]) annotation (Line(
-            points={{28,5},{30,5},{30,-14}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{28,5},{30,5},{30,-14}}));
         connect(integerExpression.y, message.u_integers[1]) annotation (
             Line(
             points={{-103,40},{-74,40},{-74,16.2},{-47,16.2}},
-            color={255,127,0},
-            smooth=Smooth.None));
+            color={255,127,0}));
         connect(integerExpression1.y, message.u_integers[2]) annotation (
             Line(
             points={{-103,24},{-74,24},{-74,14.2},{-47,14.2}},
-            color={255,127,0},
-            smooth=Smooth.None));
+            color={255,127,0}));
         connect(step2.outPort[1], T1.inPort) annotation (Line(
-            points={{-62,33.4},{-62,8}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-62,33.4},{-62,8}}));
         connect(T1.outPort, step4.inPort[1]) annotation (Line(
-            points={{-62,-1},{-62,-14}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-62,-1},{-62,-14}}));
         connect(T1.firePort, message.conditionPort[1]) annotation (Line(
             points={{-57.8,4},{-52,4},{-52,-3.6},{-48,-3.6}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(message.message_output_port, mailbox.mailbox_input_port[
           1]) annotation (Line(
-            points={{-27,5},{-18.5,5},{-18.5,-1},{-11,-1}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-27,5},{-18.5,5},{-18.5,-1},{-11,-1}}));
         connect(mailbox.mailbox_output_port[1], T2.transition_input_port[1])
           annotation (Line(
-            points={{7,-1},{16.5,-1},{16.5,12.12},{23.1,12.12}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{7,-1},{16.5,-1},{16.5,12.12},{23.1,12.12}}));
         annotation (Icon(graphics={            Ellipse(extent={{-100,100},{100,
                     -100}},
                   lineColor={95,95,95},
@@ -352,7 +333,7 @@ end UsersGuide;
                 lineColor={0,0,255},
                 pattern=LinePattern.None,
                 fillColor={95,95,95},
-                fillPattern=FillPattern.Solid)}), Diagram(graphics));
+                fillPattern=FillPattern.Solid)}));
       end FirstExample;
 
       model SecondExample "Second example for testing the MailBox capacity."
@@ -410,74 +391,45 @@ end UsersGuide;
               origin={-84,2})));
       equation
         connect(step1.entry[1], step2.inPort[1]) annotation (Line(
-            points={{-19,76},{-39,76},{-39,42},{-63,42}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-19,76},{-39,76},{-39,42},{-63,42}}));
         connect(step1.entry[2], step3.inPort[1]) annotation (Line(
-            points={{-13,76},{4,76},{4,40},{28,40}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-13,76},{4,76},{4,40},{28,40}}));
         connect(step3.outPort[1], T2.inPort) annotation (Line(
-            points={{28,31.4},{28,14}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{28,31.4},{28,14}}));
         connect(T2.outPort, step5.inPort[1]) annotation (Line(
-            points={{28,5},{30,5},{30,-14}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{28,5},{30,5},{30,-14}}));
         connect(integerExpression.y, message.u_integers[1]) annotation (
             Line(
             points={{-103,40},{-74,40},{-74,16.2},{-43,16.2}},
-            color={255,127,0},
-            smooth=Smooth.None));
+            color={255,127,0}));
         connect(integerExpression1.y, message.u_integers[2]) annotation (
             Line(
             points={{-103,24},{-74,24},{-74,14.2},{-43,14.2}},
-            color={255,127,0},
-            smooth=Smooth.None));
+            color={255,127,0}));
         connect(step2.outPort[1], T1.inPort) annotation (Line(
-            points={{-62,33.4},{-62,6}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-62,33.4},{-62,6}}));
         connect(T1.outPort, step4.inPort[1]) annotation (Line(
-            points={{-62,-3},{-62,-14}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-62,-3},{-62,-14}}));
         connect(step5.outPort[1], T3.inPort) annotation (Line(
-            points={{30,-22.6},{32,-22.6},{32,-30}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{30,-22.6},{32,-22.6},{32,-30}}));
         connect(T3.outPort, step6.inPort[1]) annotation (Line(
-            points={{32,-39},{32,-46}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{32,-39},{32,-46}}));
         connect(step4.outPort[1], T4.inPort) annotation (Line(
-            points={{-62,-22.6},{-74,-22.6},{-74,-22},{-84,-22},{-84,-2}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-62,-22.6},{-74,-22.6},{-74,-22},{-84,-22},{-84,-2}}));
         connect(T4.outPort, step2.inPort[2]) annotation (Line(
-            points={{-84,7},{-84,52},{-61,52},{-61,42}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-84,7},{-84,52},{-61,52},{-61,42}}));
         connect(message.message_output_port, mailbox.mailbox_input_port[
           1]) annotation (Line(
-            points={{-23,5},{-16.5,5},{-16.5,-1},{-11,-1}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-23,5},{-16.5,5},{-16.5,-1},{-11,-1}}));
         connect(mailbox.mailbox_output_port[1], T2.transition_input_port[1])
           annotation (Line(
-            points={{7,-1.5},{16.5,-1.5},{16.5,12.12},{23.1,12.12}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{7,-1.5},{16.5,-1.5},{16.5,12.12},{23.1,12.12}}));
         connect(mailbox.mailbox_output_port[2], T3.transition_input_port[1])
           annotation (Line(
-            points={{7,-0.5},{7,-16.5},{27.1,-16.5},{27.1,-31.88}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{7,-0.5},{7,-16.5},{27.1,-16.5},{27.1,-31.88}}));
         connect(T1.firePort, message.conditionPort[1]) annotation (Line(
             points={{-57.8,2},{-50,2},{-50,-3.6},{-44,-3.6}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         annotation (Icon(graphics={            Ellipse(extent={{-100,100},{100,
                     -100}},
                   lineColor={95,95,95},
@@ -488,7 +440,7 @@ end UsersGuide;
                 lineColor={0,0,255},
                 pattern=LinePattern.None,
                 fillColor={95,95,95},
-                fillPattern=FillPattern.Solid)}), Diagram(graphics));
+                fillPattern=FillPattern.Solid)}));
       end SecondExample;
 
       model ThirdExample
@@ -573,121 +525,76 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{26,-34},{34,-26}})));
       equation
         connect(step1.entry[1], step2.inPort[1]) annotation (Line(
-            points={{3.33333,76},{-39,76},{-39,42},{-62,42}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{3.33333,76},{-39,76},{-39,42},{-62,42}}));
         connect(step1.entry[2], step3.inPort[1]) annotation (Line(
-            points={{9,76},{4,76},{4,40},{28,40}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{9,76},{4,76},{4,40},{28,40}}));
         connect(step3.outPort[1], T2.inPort) annotation (Line(
-            points={{28,31.4},{28,14}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{28,31.4},{28,14}}));
         connect(T2.outPort, step5.inPort[1]) annotation (Line(
-            points={{28,5},{30,5},{30,-14}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{28,5},{30,5},{30,-14}}));
         connect(integerExpression.y, message.u_integers[1]) annotation (
             Line(
             points={{-103,40},{-74,40},{-74,16.5333},{-47,16.5333}},
-            color={255,127,0},
-            smooth=Smooth.None));
+            color={255,127,0}));
         connect(integerExpression1.y, message.u_integers[2]) annotation (
             Line(
             points={{-103,24},{-74,24},{-74,15.2},{-47,15.2}},
-            color={255,127,0},
-            smooth=Smooth.None));
+            color={255,127,0}));
         connect(step2.outPort[1], T1.inPort) annotation (Line(
-            points={{-62,33.4},{-62,8}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-62,33.4},{-62,8}}));
         connect(T1.outPort, step4.inPort[1]) annotation (Line(
-            points={{-62,-1},{-62,-14}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-62,-1},{-62,-14}}));
         connect(integerExpression1.y, message.u_integers[3]) annotation (
             Line(
             points={{-103,24},{-76,24},{-76,13.8667},{-47,13.8667}},
-            color={255,127,0},
-            smooth=Smooth.None));
+            color={255,127,0}));
         connect(step1.entry[3], step6.inPort[1]) annotation (Line(
-            points={{14.6667,76},{74,76},{74,38},{74,38},{74,36},{74,36}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{14.6667,76},{74,76},{74,38},{74,38},{74,36},{74,36}}));
         connect(step6.outPort[1], T3.inPort) annotation (Line(
-            points={{74,27.4},{74,14}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{74,27.4},{74,14}}));
         connect(T3.outPort, step7.inPort[1]) annotation (Line(
-            points={{74,5},{78,5},{78,-14},{80,-14}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{74,5},{78,5},{78,-14},{80,-14}}));
         connect(step4.outPort[1], T4.inPort) annotation (Line(
-            points={{-62,-22.6},{-62,-34}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-62,-22.6},{-62,-34}}));
         connect(T4.outPort, step8.inPort[1]) annotation (Line(
-            points={{-62,-43},{-62,-50},{-60,-50}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-62,-43},{-62,-50},{-60,-50}}));
         connect(integerExpression2.y, message1.u_integers[1]) annotation (
             Line(
             points={{-81,-18},{-58,-18},{-58,-13.4667},{-35,-13.4667}},
-            color={255,127,0},
-            smooth=Smooth.None));
+            color={255,127,0}));
         connect(integerExpression3.y, message1.u_integers[2]) annotation (
             Line(
             points={{-83,-30},{-58,-30},{-58,-14.8},{-35,-14.8}},
-            color={255,127,0},
-            smooth=Smooth.None));
+            color={255,127,0}));
         connect(integerExpression3.y, message1.u_integers[3]) annotation (
             Line(
             points={{-83,-30},{-60,-30},{-60,-16.1333},{-35,-16.1333}},
-            color={255,127,0},
-            smooth=Smooth.None));
+            color={255,127,0}));
         connect(step5.outPort[1], T5.inPort) annotation (Line(
-            points={{30,-22.6},{30,-26}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{30,-22.6},{30,-26}}));
         connect(T5.outPort, step9.inPort[1]) annotation (Line(
-            points={{30,-35},{32,-35},{32,-40},{34,-40}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{30,-35},{32,-35},{32,-40},{34,-40}}));
         connect(message.message_output_port, mailbox.mailbox_input_port[
           1]) annotation (Line(
-            points={{-27,5},{-18.5,5},{-18.5,-1.5},{-11,-1.5}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-27,5},{-18.5,5},{-18.5,-1.5},{-11,-1.5}}));
         connect(message1.message_output_port, mailbox.mailbox_input_port[
           2]) annotation (Line(
-            points={{-15,-25},{-15,-12.5},{-11,-12.5},{-11,-0.5}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-15,-25},{-15,-12.5},{-11,-12.5},{-11,-0.5}}));
         connect(mailbox.mailbox_output_port[1], T5.transition_input_port[1])
           annotation (Line(
-            points={{7,-1.66667},{7,-13.5},{25.1,-13.5},{25.1,-27.88}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{7,-1.66667},{7,-13.5},{25.1,-13.5},{25.1,-27.88}}));
         connect(mailbox.mailbox_output_port[2], T3.transition_input_port[1])
           annotation (Line(
-            points={{7,-1},{38.5,-1},{38.5,12.12},{69.1,12.12}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{7,-1},{38.5,-1},{38.5,12.12},{69.1,12.12}}));
         connect(mailbox.mailbox_output_port[3], T2.transition_input_port[1])
           annotation (Line(
-            points={{7,-0.333333},{16.5,-0.333333},{16.5,12.12},{23.1,12.12}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{7,-0.333333},{16.5,-0.333333},{16.5,12.12},{23.1,12.12}}));
         connect(T1.firePort, message.conditionPort[1]) annotation (Line(
             points={{-57.8,4},{-52,4},{-52,-3.6},{-48,-3.6}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(T4.firePort, message1.conditionPort[1]) annotation (Line(
             points={{-57.8,-38},{-46,-38},{-46,-33.6},{-36,-33.6}},
-            color={255,0,255},
-            smooth=Smooth.None));
-        annotation (Icon(graphics),               Diagram(graphics));
+            color={255,0,255}));
       end ThirdExample;
 
       model SyncExample
@@ -745,68 +652,40 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{62,0},{70,8}})));
       equation
         connect(step2.inPort[1], step1.entry[1]) annotation (Line(
-            points={{-80,58},{-56,58},{-56,66.7},{-38.9,66.7}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-80,58},{-56,58},{-56,66.7},{-38.9,66.7}}));
         connect(step3.inPort[1], step1.entry[2]) annotation (Line(
-            points={{-14,58},{-26,58},{-26,66.7},{-33.1,66.7}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-14,58},{-26,58},{-26,66.7},{-33.1,66.7}}));
         connect(step2.outPort[1], T1.inPort) annotation (Line(
-            points={{-80,49.4},{-80,38},{-78,38}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-80,49.4},{-80,38},{-78,38}}));
         connect(T1.outPort, step4.inPort[1]) annotation (Line(
-            points={{-78,29},{-76,29},{-76,22}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-78,29},{-76,29},{-76,22}}));
         connect(T1.firePort, message.conditionPort[1]) annotation (Line(
             points={{-73.8,34},{-58,34},{-58,-7.6},{-56,-7.6}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(T3.outPort, step6.inPort[1]) annotation (Line(
-            points={{0,7},{0,-2}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{0,7},{0,-2}}));
         connect(mailbox.mailbox_output_port[1], T3.transition_input_port[1])
           annotation (Line(
-            points={{-9,-1},{-9,12.5},{-4.9,12.5},{-4.9,14.12}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-9,-1},{-9,12.5},{-4.9,12.5},{-4.9,14.12}}));
         connect(step8.entry[1], step1.inPort[1]) annotation (Line(
-            points={{-7.95,88},{-18,88},{-18,72},{-36,72}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-7.95,88},{-18,88},{-18,72},{-36,72}}));
         connect(step8.entry[2], step5.inPort[1]) annotation (Line(
-            points={{1.95,88},{34,88},{34,64},{70,64}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{1.95,88},{34,88},{34,64},{70,64}}));
         connect(step9.outPort[1], T2.inPort) annotation (Line(
-            points={{68,39.4},{68,33.7},{66,33.7},{66,28}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{68,39.4},{68,33.7},{66,33.7},{66,28}}));
         connect(step5.entry[1], step9.inPort[1]) annotation (Line(
-            points={{70,58.7},{70,48},{68,48}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{70,58.7},{70,48},{68,48}}));
         connect(T2.outPort, step10.inPort[1]) annotation (Line(
-            points={{66,19},{66,8}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{66,19},{66,8}}));
         connect(step3.outPort[1], T3.inPort) annotation (Line(
-            points={{-14,49.4},{-14,32.7},{0,32.7},{0,16}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-14,49.4},{-14,32.7},{0,32.7},{0,16}}));
         connect(message.message_output_port, mailbox.mailbox_input_port[
           1]) annotation (Line(
-            points={{-35,1},{-31,1},{-31,-1},{-27,-1}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-35,1},{-31,1},{-31,-1},{-27,-1}}));
         connect(T3.receiver[1], T2.sender[1]) annotation (Line(
             points={{-2.82,16.02},{32.59,16.02},{32.59,28.06},{68.6,28.06}},
-            color={255,128,0},
-            smooth=Smooth.None));
-        annotation (Diagram(graphics), Icon(graphics={
+            color={255,128,0}));
+        annotation ( Icon(graphics={
                                                Ellipse(extent={{-90,110},{110,
                     -90}},
                   lineColor={95,95,95},
@@ -875,68 +754,40 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{62,0},{70,8}})));
       equation
         connect(step2.inPort[1], step1.entry[1]) annotation (Line(
-            points={{-80,58},{-56,58},{-56,66.7},{-38.9,66.7}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-80,58},{-56,58},{-56,66.7},{-38.9,66.7}}));
         connect(step3.inPort[1], step1.entry[2]) annotation (Line(
-            points={{-14,58},{-26,58},{-26,66.7},{-33.1,66.7}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-14,58},{-26,58},{-26,66.7},{-33.1,66.7}}));
         connect(step2.outPort[1], T1.inPort) annotation (Line(
-            points={{-80,49.4},{-80,38},{-78,38}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-80,49.4},{-80,38},{-78,38}}));
         connect(T1.outPort, step4.inPort[1]) annotation (Line(
-            points={{-78,29},{-76,29},{-76,22}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-78,29},{-76,29},{-76,22}}));
         connect(T1.firePort, message.conditionPort[1]) annotation (Line(
             points={{-73.8,34},{-58,34},{-58,-7.6},{-56,-7.6}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(T3.outPort, step6.inPort[1]) annotation (Line(
-            points={{0,7},{0,-2}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{0,7},{0,-2}}));
         connect(mailbox.mailbox_output_port[1], T3.transition_input_port[1])
           annotation (Line(
-            points={{-9,-1},{-9,12.5},{-4.9,12.5},{-4.9,14.12}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-9,-1},{-9,12.5},{-4.9,12.5},{-4.9,14.12}}));
         connect(step8.entry[1], step1.inPort[1]) annotation (Line(
-            points={{-7.95,88},{-18,88},{-18,72},{-36,72}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-7.95,88},{-18,88},{-18,72},{-36,72}}));
         connect(step8.entry[2], step5.inPort[1]) annotation (Line(
-            points={{1.95,88},{34,88},{34,64},{70,64}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{1.95,88},{34,88},{34,64},{70,64}}));
         connect(step9.outPort[1], T2.inPort) annotation (Line(
-            points={{68,39.4},{68,33.7},{66,33.7},{66,28}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{68,39.4},{68,33.7},{66,33.7},{66,28}}));
         connect(step5.entry[1], step9.inPort[1]) annotation (Line(
-            points={{70,58.7},{70,48},{68,48}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{70,58.7},{70,48},{68,48}}));
         connect(T2.outPort, step10.inPort[1]) annotation (Line(
-            points={{66,19},{66,8}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{66,19},{66,8}}));
         connect(step3.outPort[1], T3.inPort) annotation (Line(
-            points={{-14,49.4},{-14,32.7},{0,32.7},{0,16}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-14,49.4},{-14,32.7},{0,32.7},{0,16}}));
         connect(message.message_output_port, mailbox.mailbox_input_port[
           1]) annotation (Line(
-            points={{-35,1},{-31,1},{-31,-1},{-27,-1}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-35,1},{-31,1},{-31,-1},{-27,-1}}));
         connect(T2.receiver[1], T3.sender[1]) annotation (Line(
             points={{63.18,28.02},{32.59,28.02},{32.59,16.06},{2.6,16.06}},
-            color={255,128,0},
-            smooth=Smooth.None));
-        annotation (Diagram(graphics), Icon(graphics={
+            color={255,128,0}));
+        annotation ( Icon(graphics={
                                                Ellipse(extent={{-90,110},{110,
                     -90}},
                   lineColor={95,95,95},
@@ -1021,90 +872,53 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{70,-82},{78,-74}})));
       equation
         connect(step2.inPort[1], step1.entry[1]) annotation (Line(
-            points={{-80,58},{-56,58},{-56,66.7},{-38.9,66.7}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-80,58},{-56,58},{-56,66.7},{-38.9,66.7}}));
         connect(step3.inPort[1], step1.entry[2]) annotation (Line(
-            points={{-14,58},{-26,58},{-26,66.7},{-33.1,66.7}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-14,58},{-26,58},{-26,66.7},{-33.1,66.7}}));
         connect(step2.outPort[1], T1.inPort) annotation (Line(
-            points={{-80,49.4},{-80,38},{-78,38}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-80,49.4},{-80,38},{-78,38}}));
         connect(T1.outPort, step4.inPort[1]) annotation (Line(
-            points={{-78,29},{-76,29},{-76,22}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-78,29},{-76,29},{-76,22}}));
         connect(T1.firePort, message.conditionPort[1]) annotation (Line(
             points={{-73.8,34},{-58,34},{-58,-7.6},{-56,-7.6}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(T3.outPort, step6.inPort[1]) annotation (Line(
-            points={{0,7},{0,-2}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{0,7},{0,-2}}));
         connect(mailbox.mailbox_output_port[1], T3.transition_input_port[1])
           annotation (Line(
-            points={{-9,-1},{-9,12.5},{-4.9,12.5},{-4.9,14.12}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-9,-1},{-9,12.5},{-4.9,12.5},{-4.9,14.12}}));
         connect(step8.entry[1], step1.inPort[1]) annotation (Line(
-            points={{8.13333,89.9},{-18,89.9},{-18,72},{-36,72}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{8.13333,89.9},{-18,89.9},{-18,72},{-36,72}}));
         connect(step8.entry[2], step5.inPort[1]) annotation (Line(
-            points={{16,89.9},{34,89.9},{34,64},{71,64}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{16,89.9},{34,89.9},{34,64},{71,64}}));
         connect(step9.outPort[1], T2.inPort) annotation (Line(
-            points={{68,39.4},{68,33.7},{66,33.7},{66,28}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{68,39.4},{68,33.7},{66,33.7},{66,28}}));
         connect(step5.entry[1], step9.inPort[1]) annotation (Line(
-            points={{71,60.5},{71,48},{68,48}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{71,60.5},{71,48},{68,48}}));
         connect(T2.outPort, step10.inPort[1]) annotation (Line(
-            points={{66,19},{66,8}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{66,19},{66,8}}));
         connect(step3.outPort[1], T3.inPort) annotation (Line(
-            points={{-14,49.4},{-14,32.7},{0,32.7},{0,16}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-14,49.4},{-14,32.7},{0,32.7},{0,16}}));
         connect(message.message_output_port, mailbox.mailbox_input_port[
           1]) annotation (Line(
-            points={{-35,1},{-31,1},{-31,-1},{-27,-1}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-35,1},{-31,1},{-31,-1},{-27,-1}}));
         connect(step11.outPort[1], T4.inPort)
                                              annotation (Line(
-            points={{76,-42.6},{76,-48.3},{74,-48.3},{74,-54}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{76,-42.6},{76,-48.3},{74,-48.3},{74,-54}}));
         connect(step7.entry[1], step11.inPort[1])
                                                  annotation (Line(
-            points={{75,-25.5},{75,-34},{76,-34}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{75,-25.5},{75,-34},{76,-34}}));
         connect(T4.outPort,step12. inPort[1]) annotation (Line(
-            points={{74,-63},{74,-74}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{74,-63},{74,-74}}));
         connect(T4.receiver[1], T3.sender[1]) annotation (Line(
             points={{71.18,-53.98},{71.18,-18.99},{2.24,-18.99},{2.24,16.06}},
-            color={255,128,0},
-            smooth=Smooth.None));
+            color={255,128,0}));
         connect(step7.inPort[1], step8.entry[3]) annotation (Line(
-            points={{75,-22},{48,-22},{48,89.9},{23.8667,89.9}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{75,-22},{48,-22},{48,89.9},{23.8667,89.9}}));
         connect(T2.receiver[1], T3.sender[2]) annotation (Line(
             points={{63.18,28.02},{33.59,28.02},{33.59,16.06},{2.96,16.06}},
-            color={255,128,0},
-            smooth=Smooth.None));
-        annotation (Diagram(graphics), Icon(graphics={
+            color={255,128,0}));
+        annotation ( Icon(graphics={
                                                Ellipse(extent={{-90,110},{110,
                     -90}},
                   lineColor={95,95,95},
@@ -1205,107 +1019,62 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{-4,2},{4,10}})));
       equation
         connect(step2.inPort[1], step1.entry[1]) annotation (Line(
-            points={{-106,58},{-82,58},{-82,66.6},{-51.6,66.6}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-106,58},{-82,58},{-82,66.6},{-51.6,66.6}}));
         connect(step3.inPort[1], step1.entry[2]) annotation (Line(
-            points={{-40,58},{-52,58},{-52,66.6},{-47,66.6}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-40,58},{-52,58},{-52,66.6},{-47,66.6}}));
         connect(step2.outPort[1], T1.inPort) annotation (Line(
-            points={{-106,49.4},{-106,38},{-104,38}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-106,49.4},{-106,38},{-104,38}}));
         connect(T1.outPort, step4.inPort[1]) annotation (Line(
-            points={{-104,29},{-102,29},{-102,22}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-104,29},{-102,29},{-102,22}}));
         connect(T1.firePort, message.conditionPort[1]) annotation (Line(
             points={{-99.8,34},{-84,34},{-84,-7.6},{-82,-7.6}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(T3.outPort, step6.inPort[1]) annotation (Line(
-            points={{-26,7},{-26,4},{-28,4},{-28,2},{-20,2},{-20,-14}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-26,7},{-26,4},{-28,4},{-28,2},{-20,2},{-20,-14}}));
         connect(mailbox.mailbox_output_port[1], T3.transition_input_port[1])
           annotation (Line(
-            points={{-35,-1.5},{-35,12.5},{-30.9,12.5},{-30.9,14.12}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-35,-1.5},{-35,12.5},{-30.9,12.5},{-30.9,14.12}}));
         connect(step8.entry[1], step1.inPort[1]) annotation (Line(
-            points={{8.13333,89.9},{-18,89.9},{-18,72},{-47,72}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{8.13333,89.9},{-18,89.9},{-18,72},{-47,72}}));
         connect(step8.entry[2], step5.inPort[1]) annotation (Line(
-            points={{16,89.9},{34,89.9},{34,64},{71,64}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{16,89.9},{34,89.9},{34,64},{71,64}}));
         connect(step9.outPort[1], T2.inPort) annotation (Line(
-            points={{68,39.4},{68,33.7},{66,33.7},{66,28}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{68,39.4},{68,33.7},{66,33.7},{66,28}}));
         connect(step5.entry[1], step9.inPort[1]) annotation (Line(
-            points={{71,60.5},{71,48},{68,48}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{71,60.5},{71,48},{68,48}}));
         connect(T2.outPort, step10.inPort[1]) annotation (Line(
-            points={{66,19},{66,8}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{66,19},{66,8}}));
         connect(step3.outPort[1], T3.inPort) annotation (Line(
-            points={{-40,49.4},{-40,32.7},{-26,32.7},{-26,16}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-40,49.4},{-40,32.7},{-26,32.7},{-26,16}}));
         connect(message.message_output_port, mailbox.mailbox_input_port[
           1]) annotation (Line(
-            points={{-61,1},{-57,1},{-57,-1},{-53,-1}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-61,1},{-57,1},{-57,-1},{-53,-1}}));
         connect(step11.outPort[1], T4.inPort)
                                              annotation (Line(
-            points={{76,-42.6},{76,-48.3},{74,-48.3},{74,-54}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{76,-42.6},{76,-48.3},{74,-48.3},{74,-54}}));
         connect(step7.entry[1], step11.inPort[1])
                                                  annotation (Line(
-            points={{75,-25.5},{75,-34},{76,-34}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{75,-25.5},{75,-34},{76,-34}}));
         connect(T4.outPort,step12. inPort[1]) annotation (Line(
-            points={{74,-63},{74,-74}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{74,-63},{74,-74}}));
         connect(step7.inPort[1], step8.entry[3]) annotation (Line(
-            points={{75,-22},{48,-22},{48,89.9},{23.8667,89.9}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{75,-22},{48,-22},{48,89.9},{23.8667,89.9}}));
         connect(T2.receiver[1], T3.sender[1]) annotation (Line(
             points={{63.18,28.02},{33.59,28.02},{33.59,16.06},{-23.4,16.06}},
-            color={255,128,0},
-            smooth=Smooth.None));
+            color={255,128,0}));
         connect(step1.entry[3], step13.inPort[1]) annotation (Line(
-            points={{-42.4,66.6},{-30.5,66.6},{-30.5,52},{-14,52}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-42.4,66.6},{-30.5,66.6},{-30.5,52},{-14,52}}));
         connect(step13.outPort[1], T5.inPort) annotation (Line(
-            points={{-14,43.4},{-8,43.4},{-8,10},{0,10}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-14,43.4},{-8,43.4},{-8,10},{0,10}}));
         connect(T5.sender[1], T4.receiver[1]) annotation (Line(
             points={{2.6,10.06},{36.3,10.06},{36.3,-53.98},{71.18,-53.98}},
-            color={255,128,0},
-            smooth=Smooth.None));
+            color={255,128,0}));
         connect(T5.transition_input_port[1], mailbox.mailbox_output_port[2])
           annotation (Line(
-            points={{-4.9,8.12},{-19.45,8.12},{-19.45,-0.5},{-35,-0.5}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-4.9,8.12},{-19.45,8.12},{-19.45,-0.5},{-35,-0.5}}));
         connect(T5.outPort, step14.inPort[1]) annotation (Line(
-            points={{0,1},{4,1},{4,-12},{6,-12}},
-            color={0,0,0},
-            smooth=Smooth.None));
-        annotation (Diagram(graphics), Icon(graphics={
+            points={{0,1},{4,1},{4,-12},{6,-12}}));
+        annotation ( Icon(graphics={
                                                Ellipse(extent={{-90,110},{110,
                     -90}},
                   lineColor={95,95,95},
@@ -1404,107 +1173,62 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{-4,2},{4,10}})));
       equation
         connect(step2.inPort[1], step1.entry[1]) annotation (Line(
-            points={{-106,58},{-82,58},{-82,66.6},{-51.6,66.6}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-106,58},{-82,58},{-82,66.6},{-51.6,66.6}}));
         connect(step3.inPort[1], step1.entry[2]) annotation (Line(
-            points={{-40,58},{-52,58},{-52,66.6},{-47,66.6}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-40,58},{-52,58},{-52,66.6},{-47,66.6}}));
         connect(step2.outPort[1], T1.inPort) annotation (Line(
-            points={{-106,49.4},{-106,38},{-104,38}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-106,49.4},{-106,38},{-104,38}}));
         connect(T1.outPort, step4.inPort[1]) annotation (Line(
-            points={{-104,29},{-102,29},{-102,22}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-104,29},{-102,29},{-102,22}}));
         connect(T1.firePort, message.conditionPort[1]) annotation (Line(
             points={{-99.8,34},{-84,34},{-84,-7.6},{-82,-7.6}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(T3.outPort, step6.inPort[1]) annotation (Line(
-            points={{-26,7},{-26,4},{-28,4},{-28,2},{-20,2},{-20,-14}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-26,7},{-26,4},{-28,4},{-28,2},{-20,2},{-20,-14}}));
         connect(mailbox.mailbox_output_port[1], T3.transition_input_port[1])
           annotation (Line(
-            points={{-35,-1.5},{-35,12.5},{-30.9,12.5},{-30.9,14.12}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-35,-1.5},{-35,12.5},{-30.9,12.5},{-30.9,14.12}}));
         connect(step8.entry[1], step1.inPort[1]) annotation (Line(
-            points={{8.13333,89.9},{-18,89.9},{-18,72},{-47,72}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{8.13333,89.9},{-18,89.9},{-18,72},{-47,72}}));
         connect(step8.entry[2], step5.inPort[1]) annotation (Line(
-            points={{16,89.9},{34,89.9},{34,64},{71,64}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{16,89.9},{34,89.9},{34,64},{71,64}}));
         connect(step9.outPort[1], T2.inPort) annotation (Line(
-            points={{68,39.4},{68,33.7},{66,33.7},{66,28}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{68,39.4},{68,33.7},{66,33.7},{66,28}}));
         connect(step5.entry[1], step9.inPort[1]) annotation (Line(
-            points={{71,60.5},{71,48},{68,48}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{71,60.5},{71,48},{68,48}}));
         connect(T2.outPort, step10.inPort[1]) annotation (Line(
-            points={{66,19},{66,8}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{66,19},{66,8}}));
         connect(step3.outPort[1], T3.inPort) annotation (Line(
-            points={{-40,49.4},{-40,32.7},{-26,32.7},{-26,16}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-40,49.4},{-40,32.7},{-26,32.7},{-26,16}}));
         connect(message.message_output_port, mailbox.mailbox_input_port[
           1]) annotation (Line(
-            points={{-61,1},{-57,1},{-57,-1},{-53,-1}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-61,1},{-57,1},{-57,-1},{-53,-1}}));
         connect(step11.outPort[1], T4.inPort)
                                              annotation (Line(
-            points={{76,-42.6},{76,-48.3},{74,-48.3},{74,-54}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{76,-42.6},{76,-48.3},{74,-48.3},{74,-54}}));
         connect(step7.entry[1], step11.inPort[1])
                                                  annotation (Line(
-            points={{75,-25.5},{75,-34},{76,-34}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{75,-25.5},{75,-34},{76,-34}}));
         connect(T4.outPort,step12. inPort[1]) annotation (Line(
-            points={{74,-63},{74,-74}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{74,-63},{74,-74}}));
         connect(step7.inPort[1], step8.entry[3]) annotation (Line(
-            points={{75,-22},{48,-22},{48,89.9},{23.8667,89.9}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{75,-22},{48,-22},{48,89.9},{23.8667,89.9}}));
         connect(step1.entry[3], step13.inPort[1]) annotation (Line(
-            points={{-42.4,66.6},{-30.5,66.6},{-30.5,52},{-14,52}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-42.4,66.6},{-30.5,66.6},{-30.5,52},{-14,52}}));
         connect(step13.outPort[1], T5.inPort) annotation (Line(
-            points={{-14,43.4},{-8,43.4},{-8,10},{0,10}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-14,43.4},{-8,43.4},{-8,10},{0,10}}));
         connect(T5.transition_input_port[1], mailbox.mailbox_output_port[2])
           annotation (Line(
-            points={{-4.9,8.12},{-19.45,8.12},{-19.45,-0.5},{-35,-0.5}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-4.9,8.12},{-19.45,8.12},{-19.45,-0.5},{-35,-0.5}}));
         connect(T5.outPort, step14.inPort[1]) annotation (Line(
-            points={{0,1},{4,1},{4,-12},{6,-12}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{0,1},{4,1},{4,-12},{6,-12}}));
         connect(T3.receiver[1], T2.sender[1]) annotation (Line(
             points={{-28.82,16.02},{20.59,16.02},{20.59,28.06},{68.6,28.06}},
-            color={255,128,0},
-            smooth=Smooth.None));
+            color={255,128,0}));
         connect(T5.receiver[1], T4.sender[1]) annotation (Line(
             points={{-2.82,10.02},{37.59,10.02},{37.59,-53.94},{76.6,-53.94}},
-            color={255,128,0},
-            smooth=Smooth.None));
-        annotation (Diagram(graphics), Icon(graphics={
+            color={255,128,0}));
+        annotation ( Icon(graphics={
                                                Ellipse(extent={{-90,110},{110,
                     -90}},
                   lineColor={95,95,95},
@@ -1583,81 +1307,50 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{-86,30},{-78,38}})));
       equation
         connect(step2.inPort[1], step1.entry[1]) annotation (Line(
-            points={{-80,58},{-56,58},{-56,66.7},{-59.9,66.7}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-80,58},{-56,58},{-56,66.7},{-59.9,66.7}}));
         connect(step3.inPort[1], step1.entry[2]) annotation (Line(
-            points={{-14,58},{-26,58},{-26,66.7},{-52.1,66.7}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-14,58},{-26,58},{-26,66.7},{-52.1,66.7}}));
         connect(T3.outPort, step6.inPort[1]) annotation (Line(
-            points={{0,7},{0,-2}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{0,7},{0,-2}}));
         connect(mailbox.mailbox_output_port[1], T3.transition_input_port[1])
           annotation (Line(
-            points={{-9,-1},{-9,12.5},{-4.9,12.5},{-4.9,14.12}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-9,-1},{-9,12.5},{-4.9,12.5},{-4.9,14.12}}));
         connect(step8.entry[1], step1.inPort[1]) annotation (Line(
-            points={{-31.05,88.2},{-18,88.2},{-18,72},{-56,72}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-31.05,88.2},{-18,88.2},{-18,72},{-56,72}}));
         connect(step8.entry[2], step5.inPort[1]) annotation (Line(
-            points={{-18.95,88.2},{34,88.2},{34,64},{70,64}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-18.95,88.2},{34,88.2},{34,64},{70,64}}));
         connect(step9.outPort[1], T2.inPort) annotation (Line(
-            points={{68,39.4},{68,33.7},{66,33.7},{66,28}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{68,39.4},{68,33.7},{66,33.7},{66,28}}));
         connect(step5.entry[1], step9.inPort[1]) annotation (Line(
-            points={{70,58.7},{70,48},{68,48}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{70,58.7},{70,48},{68,48}}));
         connect(T2.outPort, step10.inPort[1]) annotation (Line(
-            points={{66,19},{66,8}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{66,19},{66,8}}));
         connect(step3.outPort[1], T3.inPort) annotation (Line(
-            points={{-14,49.4},{-14,32.7},{0,32.7},{0,16}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-14,49.4},{-14,32.7},{0,32.7},{0,16}}));
         connect(message.message_output_port, mailbox.mailbox_input_port[
           1]) annotation (Line(
-            points={{-35,1},{-31,1},{-31,-1},{-27,-1}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-35,1},{-31,1},{-31,-1},{-27,-1}}));
         connect(T3.receiver[1], T2.sender[1]) annotation (Line(
             points={{-2.82,16.02},{32.59,16.02},{32.59,28.06},{68.6,28.06}},
-            color={255,128,0},
-            smooth=Smooth.None));
+            color={255,128,0}));
         connect(step2.activePort, clock.u[1]) annotation (Line(
             points={{-75.28,54},{-68,54},{-68,48},{-62.1,48}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(step2.outPort[1], T1.inPort) annotation (Line(
-            points={{-80,49.4},{-82,49.4},{-82,38}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-80,49.4},{-82,49.4},{-82,38}}));
         connect(T1.outPort, step4.inPort[1]) annotation (Line(
-            points={{-82,29},{-82,22}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-82,29},{-82,22}}));
         connect(T1.firePort, message.conditionPort[1]) annotation (Line(
             points={{-77.8,34},{-66,34},{-66,-7.6},{-56,-7.6}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(clockConditionGreater.clockValue, clock.y) annotation (Line(
             points={{-43.5,35.2},{-43.5,41.6},{-41,41.6},{-41,48}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(clockConditionGreater.firePort, T3.conditionPort) annotation (
             Line(
             points={{-20.5,35},{-20.5,23.5},{-5,23.5},{-5,12}},
-            color={255,0,255},
-            smooth=Smooth.None));
-        annotation (Diagram(graphics), Icon(graphics={
+            color={255,0,255}));
+        annotation ( Icon(graphics={
                                                Ellipse(extent={{-90,110},{110,
                     -90}},
                   lineColor={95,95,95},
@@ -1688,10 +1381,7 @@ end UsersGuide;
         equation
           connect(senderComponent1.delegationPort1, receiverComponent1.delegationPort)
             annotation (Line(
-              points={{-49,-3.2},{-35.5,-3.2},{-35.5,-5.6},{-21,-5.6}},
-              color={0,0,0},
-              smooth=Smooth.None));
-          annotation (Diagram(graphics));
+              points={{-49,-3.2},{-35.5,-3.2},{-35.5,-5.6},{-21,-5.6}}));
         end system;
 
         model senderComponent
@@ -1734,31 +1424,19 @@ end UsersGuide;
               origin={-8,18})));
         equation
           connect(T1.outPort, Step2.inPort[1])   annotation (Line(
-              points={{-1,42},{14,42},{14,46},{26,46}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{-1,42},{14,42},{14,46},{26,46}}));
           connect(Step1.outPort[1], T1.inPort)    annotation (Line(
-              points={{-43.4,46},{-26,46},{-26,42},{-10,42}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{-43.4,46},{-26,46},{-26,42},{-10,42}}));
           connect(T1.firePort, message.conditionPort[1]) annotation (Line(
               points={{-6,46.2},{-6,62.24},{-5.2,62.24}},
-              color={255,0,255},
-              smooth=Smooth.None));
+              color={255,0,255}));
           connect(message.message_output_port, delegationPort1)
             annotation (Line(
-              points={{7.4,67.4},{48.7,67.4},{48.7,68},{90,68}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{7.4,67.4},{48.7,67.4},{48.7,68},{90,68}}));
         connect(Step2.outPort[1], T2.inPort) annotation (Line(
-            points={{34.6,46},{46,46},{46,18},{-4,18}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{34.6,46},{46,46},{46,18},{-4,18}}));
         connect(T2.outPort, Step1.inPort[1]) annotation (Line(
-            points={{-13,18},{-74,18},{-74,46},{-52,46}},
-            color={0,0,0},
-            smooth=Smooth.None));
-          annotation (Diagram(graphics));
+            points={{-13,18},{-74,18},{-74,46},{-52,46}}));
         end senderComponent;
 
         model receiverComponent
@@ -1801,24 +1479,15 @@ end UsersGuide;
             annotation (Placement(transformation(extent={{-100,54},{-80,74}})));
         equation
           connect(Step1.outPort[1], T2.inPort)    annotation (Line(
-              points={{-51.4,20},{-20,20}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{-51.4,20},{-20,20}}));
           connect(T2.outPort, Step2.inPort[1])      annotation (Line(
-              points={{-11,20},{22,20}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{-11,20},{22,20}}));
           connect(mailbox.mailbox_input_port[1], delegationPort) annotation (
               Line(
-              points={{-81.2,-10.8},{-81.2,26.4},{-90,26.4},{-90,64}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{-81.2,-10.8},{-81.2,26.4},{-90,26.4},{-90,64}}));
           connect(mailbox.mailbox_output_port[1], T2.transition_input_port[1])
             annotation (Line(
-              points={{-66.8,-10.8},{-42.4,-10.8},{-42.4,15.1},{-18.12,15.1}},
-              color={0,0,0},
-              smooth=Smooth.None));
-          annotation (Diagram(graphics));
+              points={{-66.8,-10.8},{-42.4,-10.8},{-42.4,15.1},{-18.12,15.1}}));
         end receiverComponent;
       end FirstExample;
 
@@ -1836,10 +1505,7 @@ end UsersGuide;
         equation
           connect(senderComponent1.delegationPort1, receiverComponent1.delegationPort)
             annotation (Line(
-              points={{-49,-3.2},{-34.5,-3.2},{-34.5,-5.6},{-21,-5.6}},
-              color={0,0,0},
-              smooth=Smooth.None));
-          annotation (Diagram(graphics));
+              points={{-49,-3.2},{-34.5,-3.2},{-34.5,-5.6},{-21,-5.6}}));
         end system;
 
         model senderComponent
@@ -1878,32 +1544,21 @@ end UsersGuide;
             annotation (Placement(transformation(extent={{80,58},{100,78}})));
         equation
           connect(T1.outPort, Step2.inPort[1])   annotation (Line(
-              points={{-3,46},{26,46}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{-3,46},{26,46}}));
           connect(Step1.outPort[1], T1.inPort)    annotation (Line(
-              points={{-43.4,46},{-12,46}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{-43.4,46},{-12,46}}));
           connect(integerExpression.y, message.u_integers[1]) annotation (Line(
               points={{-27,84},{-16,84},{-16,74.12},{-4.6,74.12}},
-              color={255,127,0},
-              smooth=Smooth.None));
+              color={255,127,0}));
           connect(integerExpression1.y, message.u_integers[2]) annotation (Line(
               points={{-29,70},{-16,70},{-16,72.92},{-4.6,72.92}},
-              color={255,127,0},
-              smooth=Smooth.None));
+              color={255,127,0}));
           connect(message.message_output_port, delegationPort1)
             annotation (Line(
-              points={{7.4,67.4},{44.7,67.4},{44.7,68},{90,68}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{7.4,67.4},{44.7,67.4},{44.7,68},{90,68}}));
           connect(T1.firePort, message.conditionPort[1]) annotation (Line(
               points={{-8,50.2},{-6,50.2},{-6,62.24},{-5.2,62.24}},
-              color={255,0,255},
-              smooth=Smooth.None));
-          annotation (Diagram(coordinateSystem(preserveAspectRatio=false,
-                  extent={{-100,-100},{100,100}})));
+              color={255,0,255}));
         end senderComponent;
 
         model receiverComponent
@@ -1944,25 +1599,15 @@ end UsersGuide;
             annotation (Placement(transformation(extent={{-100,54},{-80,74}})));
         equation
           connect(Step1.outPort[1], T2.inPort)    annotation (Line(
-              points={{-51.4,20},{-20,20}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{-51.4,20},{-20,20}}));
           connect(T2.outPort, Step2.inPort[1])      annotation (Line(
-              points={{-11,20},{22,20}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{-11,20},{22,20}}));
           connect(mailbox.mailbox_input_port[1], delegationPort) annotation (
               Line(
-              points={{-81.2,-10.8},{-81.2,25.4},{-90,25.4},{-90,64}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{-81.2,-10.8},{-81.2,25.4},{-90,25.4},{-90,64}}));
           connect(mailbox.mailbox_output_port[1], T2.transition_input_port[1])
             annotation (Line(
-              points={{-66.8,-10.8},{-42.4,-10.8},{-42.4,15.1},{-18.12,15.1}},
-              color={0,0,0},
-              smooth=Smooth.None));
-          annotation (Diagram(coordinateSystem(preserveAspectRatio=false,
-                  extent={{-100,-100},{100,100}})));
+              points={{-66.8,-10.8},{-42.4,-10.8},{-42.4,15.1},{-18.12,15.1}}));
         end receiverComponent;
       end SecondExample;
 
@@ -2021,55 +1666,33 @@ end UsersGuide;
               origin={58,8})));
       equation
         connect(step1.entry[1], step2.inPort[1]) annotation (Line(
-            points={{-19,76},{-39,76},{-39,42},{-62,42}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-19,76},{-39,76},{-39,42},{-62,42}}));
         connect(step1.entry[2], step3.inPort[1]) annotation (Line(
-            points={{-13,76},{4,76},{4,40},{27,40}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-13,76},{4,76},{4,40},{27,40}}));
         connect(step3.outPort[1], T2.inPort) annotation (Line(
-            points={{28,31.4},{28,14}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{28,31.4},{28,14}}));
         connect(step2.outPort[1], T1.inPort) annotation (Line(
-            points={{-62,33.4},{-62,16}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-62,33.4},{-62,16}}));
         connect(T2.outPort, step5.inPort[1]) annotation (Line(
-            points={{28,5},{30,5},{30,-14}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{28,5},{30,5},{30,-14}}));
         connect(T1.outPort, step4.inPort[1]) annotation (Line(
-            points={{-62,7},{-62,-14}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-62,7},{-62,-14}}));
         connect(T2.receiver[1], T1.sender[1]) annotation (Line(
             points={{25.18,14.02},{-16.41,14.02},{-16.41,16.06},{-59.4,16.06}},
-            color={255,128,0},
-            smooth=Smooth.None));
+            color={255,128,0}));
 
         connect(step4.outPort[1], T3.inPort) annotation (Line(
-            points={{-62,-22.6},{-62,-38}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-62,-22.6},{-62,-38}}));
         connect(T3.outPort, step6.inPort[1]) annotation (Line(
-            points={{-62,-47},{-62,-56}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-62,-47},{-62,-56}}));
 
         connect(step5.outPort[1], T4.inPort) annotation (Line(
-            points={{30,-22.6},{30,-30},{58,-30},{58,4}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{30,-22.6},{30,-30},{58,-30},{58,4}}));
         connect(T4.outPort, step3.inPort[2]) annotation (Line(
-            points={{58,13},{58,56},{29,56},{29,40}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{58,13},{58,56},{29,56},{29,40}}));
         connect(T3.receiver[1], T4.sender[1]) annotation (Line(
             points={{-64.82,-37.98},{-4.41,-37.98},{-4.41,3.94},{55.4,3.94}},
-            color={255,128,0},
-            smooth=Smooth.None));
+            color={255,128,0}));
         annotation (Icon(graphics={            Ellipse(extent={{-100,100},{100,
                     -100}},
                   lineColor={95,95,95},
@@ -2080,7 +1703,7 @@ end UsersGuide;
                 lineColor={0,0,255},
                 pattern=LinePattern.None,
                 fillColor={95,95,95},
-                fillPattern=FillPattern.Solid)}), Diagram(graphics));
+                fillPattern=FillPattern.Solid)}));
       end FirstExample;
 
       model SecondExample
@@ -2162,87 +1785,51 @@ end UsersGuide;
       equation
 
         connect(step21.entry[1], step1.inPort[1]) annotation (Line(
-            points={{-9.65,81.9},{-28,81.9},{-28,80},{-54,80}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-9.65,81.9},{-28,81.9},{-28,80},{-54,80}}));
         connect(step21.entry[2], step6.inPort[1]) annotation (Line(
-            points={{-4.55,81.9},{28,81.9},{28,80},{54,80}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-4.55,81.9},{28,81.9},{28,80},{54,80}}));
         connect(step21.entry[3], step11.inPort[1]) annotation (Line(
-            points={{0.55,81.9},{-6,81.9},{-6,-22},{-56,-22}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{0.55,81.9},{-6,81.9},{-6,-22},{-56,-22}}));
         connect(step21.entry[4], step16.inPort[1]) annotation (Line(
-            points={{5.65,81.9},{4,81.9},{4,-22},{54,-22}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{5.65,81.9},{4,81.9},{4,-22},{54,-22}}));
         connect(step1.entry[1], step2.inPort[1]) annotation (Line(
-            points={{-54,76.1},{-68,76.1},{-68,66},{-78,66}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-54,76.1},{-68,76.1},{-68,66},{-78,66}}));
         connect(T1.sender[1], T3.receiver[1]) annotation (Line(
             points={{-73.76,44.06},{-21.7,44.06},{-21.7,43.67},{29.18,43.67}},
-            color={255,128,0},
-            smooth=Smooth.None));
+            color={255,128,0}));
         connect(step16.entry[1], step3.inPort[1]) annotation (Line(
-            points={{54,-25.9},{44,-25.9},{44,-38},{32,-38}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{54,-25.9},{44,-25.9},{44,-38},{32,-38}}));
         connect(step3.outPort[1], T7.inPort) annotation (Line(
-            points={{32,-46.6},{32,-58}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{32,-46.6},{32,-58}}));
         connect(T7.outPort, step19.inPort[1]) annotation (Line(
-            points={{32,-67},{32,-76}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{32,-67},{32,-76}}));
         connect(T5.sender[1], T7.receiver[1]) annotation (Line(
             points={{-75.76,-57.94},{-20,-57.94},{-20,-58},{4,-58},{4,-58.33},{
                 29.18,-58.33}},
-            color={255,128,0},
-            smooth=Smooth.None));
+            color={255,128,0}));
         connect(step12.outPort[1], T5.inPort) annotation (Line(
-            points={{-80,-44.6},{-80,-51.3},{-78,-51.3},{-78,-58}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-80,-44.6},{-80,-51.3},{-78,-51.3},{-78,-58}}));
         connect(step11.entry[1], step12.inPort[1]) annotation (Line(
-            points={{-56,-25.9},{-68,-25.9},{-68,-36},{-80,-36}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-56,-25.9},{-68,-25.9},{-68,-36},{-80,-36}}));
         connect(T5.outPort, step14.inPort[1]) annotation (Line(
-            points={{-78,-67},{-78,-76}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-78,-67},{-78,-76}}));
         connect(step2.outPort[1], T1.inPort) annotation (Line(
-            points={{-78,57.4},{-78,49.7},{-76,49.7},{-76,44}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-78,57.4},{-78,49.7},{-76,49.7},{-76,44}}));
         connect(T1.outPort, step4.inPort[1]) annotation (Line(
-            points={{-76,35},{-76,26}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-76,35},{-76,26}}));
         connect(step6.entry[1], step7.inPort[1]) annotation (Line(
-            points={{54,76.1},{42,76.1},{42,66},{30,66}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{54,76.1},{42,76.1},{42,66},{30,66}}));
         connect(step7.outPort[1], T3.inPort) annotation (Line(
-            points={{30,57.4},{32,57.4},{32,44}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{30,57.4},{32,57.4},{32,44}}));
         connect(T3.outPort, step9.inPort[1]) annotation (Line(
-            points={{32,35},{32,26}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{32,35},{32,26}}));
         connect(T5.sender[2], T3.receiver[2]) annotation (Line(
             points={{-75.04,-57.94},{-23.7,-57.94},{-23.7,44.37},{29.18,44.37}},
-            color={255,128,0},
-            smooth=Smooth.None));
+            color={255,128,0}));
 
         connect(T1.sender[2], T7.receiver[2]) annotation (Line(
             points={{-73.04,44.06},{-73.04,-6.97},{29.18,-6.97},{29.18,-57.63}},
-            color={255,128,0},
-            smooth=Smooth.None));
+            color={255,128,0}));
 
         annotation (Icon(graphics={            Ellipse(extent={{-100,100},{100,
                     -100}},
@@ -2254,7 +1841,7 @@ end UsersGuide;
                 lineColor={0,0,255},
                 pattern=LinePattern.None,
                 fillColor={95,95,95},
-                fillPattern=FillPattern.Solid)}), Diagram(graphics));
+                fillPattern=FillPattern.Solid)}));
       end SecondExample;
 
       model ThirdExample
@@ -2340,86 +1927,51 @@ end UsersGuide;
       equation
 
         connect(step1.entry[1], step2.inPort[1]) annotation (Line(
-            points={{-62,81.6},{-62,78},{-64,78},{-64,76}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-62,81.6},{-62,78},{-64,78},{-64,76}}));
         connect(step2.outPort[1], T1.inPort) annotation (Line(
-            points={{-64,67.4},{-64,64}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-64,67.4},{-64,64}}));
         connect(T1.outPort, step4.inPort[1]) annotation (Line(
-            points={{-64,55},{-64,50}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-64,55},{-64,50}}));
         connect(step3.entry[1],step5. inPort[1]) annotation (Line(
-            points={{-62,25.6},{-62,22},{-64,22},{-64,20}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-62,25.6},{-62,22},{-64,22},{-64,20}}));
         connect(step5.outPort[1],T2. inPort) annotation (Line(
-            points={{-64,11.4},{-64,8}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-64,11.4},{-64,8}}));
         connect(T2.outPort,step6. inPort[1]) annotation (Line(
-            points={{-64,-1},{-64,-6}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-64,-1},{-64,-6}}));
         connect(step7.entry[1],step8. inPort[1]) annotation (Line(
-            points={{-60,-40.4},{-60,-44},{-62,-44},{-62,-46}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-60,-40.4},{-60,-44},{-62,-44},{-62,-46}}));
         connect(step8.outPort[1],T3. inPort) annotation (Line(
-            points={{-62,-54.6},{-62,-58}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-62,-54.6},{-62,-58}}));
         connect(T3.outPort,step9. inPort[1]) annotation (Line(
-            points={{-62,-67},{-62,-72}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-62,-67},{-62,-72}}));
         connect(step10.entry[1], step11.inPort[1])
                                                  annotation (Line(
-            points={{52,15.6},{52,12},{50,12},{50,10}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{52,15.6},{52,12},{50,12},{50,10}}));
         connect(step11.outPort[1], T4.inPort)
                                              annotation (Line(
-            points={{50,1.4},{50,-2}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{50,1.4},{50,-2}}));
         connect(T4.outPort, step12.inPort[1])
                                              annotation (Line(
-            points={{50,-11},{50,-16}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{50,-11},{50,-16}}));
         connect(step21.entry[1], step1.inPort[1]) annotation (Line(
-            points={{-9.65,81.9},{-32,81.9},{-32,84},{-62,84}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-9.65,81.9},{-32,81.9},{-32,84},{-62,84}}));
         connect(step21.entry[2], step3.inPort[1]) annotation (Line(
-            points={{-4.55,81.9},{-32,81.9},{-32,28},{-62,28}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-4.55,81.9},{-32,81.9},{-32,28},{-62,28}}));
         connect(step21.entry[3], step7.inPort[1]) annotation (Line(
-            points={{0.55,81.9},{-30,81.9},{-30,-38},{-60,-38}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{0.55,81.9},{-30,81.9},{-30,-38},{-60,-38}}));
         connect(step21.entry[4], step10.inPort[1]) annotation (Line(
-            points={{5.65,81.9},{26,81.9},{26,18},{52,18}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{5.65,81.9},{26,81.9},{26,18},{52,18}}));
 
         connect(T3.sender[1], T4.receiver[1]) annotation (Line(
             points={{-59.4,-57.94},{-12.7,-57.94},{-12.7,-2.44667},{47.18,
               -2.44667}},
-            color={255,128,0},
-            smooth=Smooth.None));
+            color={255,128,0}));
         connect(T2.sender[1], T4.receiver[2]) annotation (Line(
             points={{-61.4,8.06},{-6.7,8.06},{-6.7,-1.98},{47.18,-1.98}},
-            color={255,128,0},
-            smooth=Smooth.None));
+            color={255,128,0}));
         connect(T1.sender[1], T4.receiver[3]) annotation (Line(
             points={{-61.4,64.06},{-6.7,64.06},{-6.7,-1.51333},{47.18,-1.51333}},
-            color={255,128,0},
-            smooth=Smooth.None));
+            color={255,128,0}));
 
         annotation (Icon(graphics={            Ellipse(extent={{-100,100},{100,
                     -100}},
@@ -2431,7 +1983,7 @@ end UsersGuide;
                 lineColor={0,0,255},
                 pattern=LinePattern.None,
                 fillColor={95,95,95},
-                fillPattern=FillPattern.Solid)}), Diagram(graphics));
+                fillPattern=FillPattern.Solid)}));
       end ThirdExample;
 
       model ForthExample
@@ -2511,85 +2063,50 @@ end UsersGuide;
       equation
 
         connect(step3.entry[1],step5. inPort[1]) annotation (Line(
-            points={{-62,25.6},{-62,22},{-64,22},{-64,20}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-62,25.6},{-62,22},{-64,22},{-64,20}}));
         connect(step5.outPort[1],T2. inPort) annotation (Line(
-            points={{-64,11.4},{-64,8}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-64,11.4},{-64,8}}));
         connect(T2.outPort,step6. inPort[1]) annotation (Line(
-            points={{-64,-1},{-64,-6}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-64,-1},{-64,-6}}));
         connect(step10.entry[1], step11.inPort[1])
                                                  annotation (Line(
-            points={{52,15.6},{52,12},{50,12},{50,10}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{52,15.6},{52,12},{50,12},{50,10}}));
         connect(step11.outPort[1], T4.inPort)
                                              annotation (Line(
-            points={{50,1.4},{50,-2}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{50,1.4},{50,-2}}));
         connect(T4.outPort, step12.inPort[1])
                                              annotation (Line(
-            points={{50,-11},{50,-16}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{50,-11},{50,-16}}));
         connect(step21.entry[1], step3.inPort[1]) annotation (Line(
-            points={{-9.65,81.9},{-32,81.9},{-32,28},{-62,28}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-9.65,81.9},{-32,81.9},{-32,28},{-62,28}}));
         connect(step21.entry[2], step10.inPort[1]) annotation (Line(
-            points={{-4.55,81.9},{26,81.9},{26,18},{52,18}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-4.55,81.9},{26,81.9},{26,18},{52,18}}));
 
         connect(step1.entry[1], step2.inPort[1]) annotation (Line(
-            points={{52,-44.4},{52,-48},{50,-48},{50,-50}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{52,-44.4},{52,-48},{50,-48},{50,-50}}));
         connect(step2.outPort[1], T1.inPort) annotation (Line(
-            points={{50,-58.6},{50,-62}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{50,-58.6},{50,-62}}));
         connect(T1.outPort, step4.inPort[1]) annotation (Line(
-            points={{50,-71},{50,-76}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{50,-71},{50,-76}}));
         connect(step7.entry[1], step8.inPort[1]) annotation (Line(
-            points={{56,75.6},{56,72},{54,72},{54,70}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{56,75.6},{56,72},{54,72},{54,70}}));
         connect(step8.outPort[1], T3.inPort) annotation (Line(
-            points={{54,61.4},{54,58},{52,58}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{54,61.4},{54,58},{52,58}}));
         connect(T3.outPort, step9.inPort[1]) annotation (Line(
-            points={{52,49},{52,46},{54,46},{54,44}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{52,49},{52,46},{54,46},{54,44}}));
         connect(T2.sender[1], T1.receiver[1]) annotation (Line(
             points={{-61.88,8.06},{-6.7,8.06},{-6.7,-61.98},{47.18,-61.98}},
-            color={255,128,0},
-            smooth=Smooth.None));
+            color={255,128,0}));
         connect(step21.entry[3], step7.inPort[1]) annotation (Line(
-            points={{0.55,81.9},{28,81.9},{28,78},{56,78}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{0.55,81.9},{28,81.9},{28,78},{56,78}}));
         connect(step21.entry[4], step1.inPort[1]) annotation (Line(
-            points={{5.65,81.9},{26,81.9},{26,-42},{52,-42}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{5.65,81.9},{26,81.9},{26,-42},{52,-42}}));
         connect(T2.sender[2], T3.receiver[1]) annotation (Line(
             points={{-61.4,8.06},{-4.7,8.06},{-4.7,58.02},{49.18,58.02}},
-            color={255,128,0},
-            smooth=Smooth.None));
+            color={255,128,0}));
         connect(T2.sender[3], T4.receiver[1]) annotation (Line(
             points={{-60.92,8.06},{-6.7,8.06},{-6.7,-1.98},{47.18,-1.98}},
-            color={255,128,0},
-            smooth=Smooth.None));
+            color={255,128,0}));
         annotation (Icon(graphics={            Ellipse(extent={{-100,100},{100,
                     -100}},
                   lineColor={95,95,95},
@@ -2600,7 +2117,7 @@ end UsersGuide;
                 lineColor={0,0,255},
                 pattern=LinePattern.None,
                 fillColor={95,95,95},
-                fillPattern=FillPattern.Solid)}), Diagram(graphics));
+                fillPattern=FillPattern.Solid)}));
       end ForthExample;
     end Synchronization;
 
@@ -2633,34 +2150,21 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{-46,-12},{-38,-4}})));
       equation
         connect(step3.outPort[1], T2.inPort) annotation (Line(
-            points={{28,31.4},{28,8}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{28,31.4},{28,8}}));
         connect(T2.outPort, step4.inPort[1]) annotation (Line(
-            points={{28,-1},{28,-12},{30,-12},{30,-22}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{28,-1},{28,-12},{30,-12},{30,-22}}));
         connect(step1.entry[1], step3.inPort[1]) annotation (Line(
-            points={{-7,88},{12,88},{12,40},{28,40}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-7,88},{12,88},{12,40},{28,40}}));
         connect(step2.outPort[1], T1.inPort) annotation (Line(
-            points={{-42,39.4},{-42,28}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-42,39.4},{-42,28}}));
         connect(T1.outPort, step5.inPort[1]) annotation (Line(
-            points={{-42,19},{-42,-4}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-42,19},{-42,-4}}));
         connect(step1.entry[2], step2.inPort[1]) annotation (Line(
-            points={{-1,88},{-24,88},{-24,48},{-42,48}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-1,88},{-24,88},{-24,48},{-42,48}}));
         connect(step5.activePort, T2.conditionPort) annotation (Line(
             points={{-37.28,-8},{-6,-8},{-6,4},{23,4}},
-            color={255,0,255},
-            smooth=Smooth.None));
-        annotation (Diagram(graphics), Icon(graphics={
+            color={255,0,255}));
+        annotation ( Icon(graphics={
                                                Ellipse(extent={{-100,100},{100,
                     -100}},
                   lineColor={95,95,95},
@@ -2706,33 +2210,22 @@ end UsersGuide;
       equation
         connect(clock.y, showValue.numberPort) annotation (Line(
             points={{19,60},{42.5,60}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(step1.outPort[1], T1.inPort) annotation (Line(
-            points={{-48,65.4},{-48,54.7},{-42,54.7},{-42,44}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-48,65.4},{-48,54.7},{-42,54.7},{-42,44}}));
         connect(T1.outPort, step2.inPort[1]) annotation (Line(
-            points={{-42,35},{-42,16}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-42,35},{-42,16}}));
         connect(step2.outPort[1], T2.inPort) annotation (Line(
-            points={{-42,7.4},{-42,-14},{-40,-14}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-42,7.4},{-42,-14},{-40,-14}}));
         connect(T2.outPort, step3.inPort[1]) annotation (Line(
-            points={{-40,-23},{-40,-42},{-38,-42}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-40,-23},{-40,-42},{-38,-42}}));
         connect(step1.activePort, clock.u[1]) annotation (Line(
             points={{-43.28,70},{-22,70},{-22,61.7},{-2.1,61.7}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(T2.firePort, clock.u[2]) annotation (Line(
             points={{-35.8,-18},{-18,-18},{-18,58.3},{-2.1,58.3}},
-            color={255,0,255},
-            smooth=Smooth.None));
-        annotation (Diagram(graphics), Icon(graphics={
+            color={255,0,255}));
+        annotation ( Icon(graphics={
                                                Ellipse(extent={{-100,100},{100,
                     -100}},
                   lineColor={95,95,95},
@@ -2787,42 +2280,29 @@ end UsersGuide;
       equation
         connect(clock.y, showValue.numberPort) annotation (Line(
             points={{19,60},{42.5,60}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(step1.outPort[1], T1.inPort) annotation (Line(
-            points={{-48,65.4},{-48,54.7},{-42,54.7},{-42,44}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-48,65.4},{-48,54.7},{-42,54.7},{-42,44}}));
         connect(T1.outPort, step2.inPort[1]) annotation (Line(
-            points={{-42,35},{-42,16}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-42,35},{-42,16}}));
         connect(step2.outPort[1], T2.inPort) annotation (Line(
-            points={{-42,7.4},{-42,-14},{-40,-14}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-42,7.4},{-42,-14},{-40,-14}}));
         connect(T2.outPort, step3.inPort[1]) annotation (Line(
-            points={{-40,-23},{-40,-42},{-38,-42}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-40,-23},{-40,-42},{-38,-42}}));
         connect(step1.activePort, clock.u[1]) annotation (Line(
             points={{-43.28,70},{-22,70},{-22,61.7},{-2.1,61.7}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(T2.firePort, clock.u[2]) annotation (Line(
             points={{-35.8,-18},{-18,-18},{-18,58.3},{-2.1,58.3}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(clock.y, timeInvariantSmallerLess.clockValue) annotation (Line(
             points={{19,60},{26,60},{26,19.76},{31.6,19.76}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(step2.activePort, timeInvariantSmallerLess.conditionPort)
           annotation (Line(
             points={{-37.28,12},{-1.6,12},{-1.6,8.24},{32.08,8.24}},
-            color={255,0,255},
-            smooth=Smooth.None));
-        annotation (Diagram(graphics), Icon(graphics={
+            color={255,0,255}));
+        annotation ( Icon(graphics={
                                                Ellipse(extent={{-100,100},{100,
                     -100}},
                   lineColor={95,95,95},
@@ -2887,73 +2367,47 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{24,34},{44,54}})));
       equation
         connect(step1.outPort[1], T1.inPort) annotation (Line(
-            points={{-48,65.4},{-48,54.7},{-42,54.7},{-42,44}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-48,65.4},{-48,54.7},{-42,54.7},{-42,44}}));
         connect(T1.outPort, step2.inPort[1]) annotation (Line(
-            points={{-42,35},{-42,16}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-42,35},{-42,16}}));
         connect(step2.outPort[1], T2.inPort) annotation (Line(
-            points={{-42,7.4},{-42,-14},{-40,-14}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-42,7.4},{-42,-14},{-40,-14}}));
         connect(T2.outPort, step3.inPort[1]) annotation (Line(
-            points={{-40,-23},{-40,-42},{-38,-42}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-40,-23},{-40,-42},{-38,-42}}));
         connect(step1.activePort, clock.u[1]) annotation (Line(
             points={{-43.28,70},{-22,70},{-22,29.7},{-4.1,29.7}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(T2.firePort, clock.u[2]) annotation (Line(
             points={{-35.8,-18},{-18,-18},{-18,26.3},{-4.1,26.3}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(step4.outPort[1], T3.inPort) annotation (Line(
-            points={{78,47.4},{80,47.4},{80,32}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{78,47.4},{80,47.4},{80,32}}));
         connect(T3.outPort, step5.inPort[1]) annotation (Line(
-            points={{80,23},{80,6}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{80,23},{80,6}}));
         connect(step6.entry[1], step1.inPort[1]) annotation (Line(
-            points={{-4.9,89.9},{-24,89.9},{-24,74},{-48,74}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-4.9,89.9},{-24,89.9},{-24,74},{-48,74}}));
         connect(step6.entry[2], step4.inPort[1]) annotation (Line(
-            points={{4.9,89.9},{40,89.9},{40,56},{78,56}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{4.9,89.9},{40,89.9},{40,56},{78,56}}));
         connect(clock.y, clockConditionLessEqual.clockValue) annotation (Line(
             points={{17,28},{18,28},{18,-10.8},{28.5,-10.8}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(step5.outPort[1], T4.inPort) annotation (Line(
-            points={{80,-2.6},{80,-16}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{80,-2.6},{80,-16}}));
         connect(T4.outPort, step7.inPort[1]) annotation (Line(
-            points={{80,-25},{80,-42}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{80,-25},{80,-42}}));
         connect(clockConditionLessEqual.firePort, T4.conditionPort) annotation (
            Line(
             points={{51.5,-11},{62.75,-11},{62.75,-20},{75,-20}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(clockConditionGreaterOrEqual.firePort, T3.conditionPort)
           annotation (Line(
             points={{45.5,45},{59.75,45},{59.75,28},{75,28}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(clock.y, clockConditionGreaterOrEqual.clockValue) annotation (
             Line(
             points={{17,28},{20,28},{20,45.2},{22.5,45.2}},
-            color={0,0,127},
-            smooth=Smooth.None));
-        annotation (Diagram(graphics), Icon(graphics={
+            color={0,0,127}));
+        annotation ( Icon(graphics={
                                                Ellipse(extent={{-100,100},{100,
                     -100}},
                   lineColor={95,95,95},
@@ -2978,7 +2432,6 @@ end UsersGuide;
           annotation (Placement(transformation(extent={{-98,-96},{104,96}})));
         Modelica_StateGraph2.Step NoConvoyV(nIn=5, nOut=4)
           annotation (Placement(transformation(extent={{-4,4},{4,-4}},
-              rotation=0,
               origin={68,58})));
         RealTimeCoordinationLibrary.RealTimeCoordination.Step
                                          FrontConvoy(nIn=1, nOut=1)
@@ -3047,7 +2500,6 @@ end UsersGuide;
                                          rear(nIn=3, nOut=3)
                                               annotation (Placement(transformation(
               extent={{-4,-4},{4,4}},
-              rotation=0,
               origin={76,8})));
         RealTimeCoordinationLibrary.RealTimeCoordination.Transition
                                                T5(
@@ -3055,7 +2507,6 @@ end UsersGuide;
           syncChannelName="rearConvoy",
           numberOfSyncReceive=1) annotation (Placement(transformation(
               extent={{-4,-4},{4,4}},
-              rotation=0,
               origin={70,34})));
         RealTimeCoordinationLibrary.RealTimeCoordination.Step
                                          RearConvoy(nIn=1, nOut=1)
@@ -3186,7 +2637,6 @@ end UsersGuide;
         RealTimeCoordinationLibrary.RealTimeCoordination.Message
                                             halt(nIn=1)
           annotation (Placement(transformation(extent={{-6,-5},{6,5}},
-              rotation=0,
               origin={42,-67})));
         output
           RealTimeCoordinationLibrary.RealTimeCoordination.MessageInterface.DelegationPort
@@ -3225,7 +2675,6 @@ end UsersGuide;
         condition=pre(speed) > 0)
                  annotation (Placement(transformation(
               extent={{4,-4},{-4,4}},
-              rotation=0,
               origin={124,60})));
         RealTimeCoordinationLibrary.RealTimeCoordination.SelfTransition
                                                T14(
@@ -3235,7 +2684,6 @@ end UsersGuide;
         condition=pre(speed) == 0)
                  annotation (Placement(transformation(
               extent={{-4,-4},{4,4}},
-              rotation=0,
               origin={40,62})));
         Modelica.Blocks.MathBoolean.Not nor1 annotation (Placement(transformation(
               extent={{-4,-4},{4,4}},
@@ -3313,290 +2761,173 @@ end UsersGuide;
       equation
 
         connect(step1.entry[1], NoConvoy.inPort[1]) annotation (Line(
-            points={{-2.05,86.4},{-56,86.4},{-56,58},{-57.5,58}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-2.05,86.4},{-56,86.4},{-56,58},{-57.5,58}}));
         connect(step1.entry[2], NoConvoyV.inPort[1]) annotation (Line(
-            points={{8.05,86.4},{48,86.4},{48,50},{66,50},{66,54},{66.4,54}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{8.05,86.4},{48,86.4},{48,50},{66,50},{66,54},{66.4,54}}));
         connect(T2.outPort, FrontConvoy.inPort[1]) annotation (Line(
-            points={{-54,27},{-54,-6},{-70,-6}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-54,27},{-54,-6},{-70,-6}}));
         connect(InStartConvoyDel, startConvBox.mailbox_input_port[1])
                                                                  annotation (Line(
-            points={{-94,-7},{-94,9.6},{-91.2,9.6}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-94,-7},{-94,9.6},{-91.2,9.6}}));
         connect(startConvBox.mailbox_output_port[1], T2.transition_input_port[1])
           annotation (Line(
-            points={{-76.8,9.6},{-76.8,19.5},{-58.9,19.5},{-58.9,34.12}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-76.8,9.6},{-76.8,19.5},{-58.9,19.5},{-58.9,34.12}}));
         connect(T1.firePort, startConvoy.conditionPort[1]) annotation (Line(
             points={{-30.2,32},{-32,32},{-32,64.24},{-60.4,64.24}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(T1.outPort, ConvoyProposed.inPort[1]) annotation (Line(
-            points={{-26,27},{-26,10},{-48,10},{-48,-8},{-42,-8}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-26,27},{-26,10},{-48,10},{-48,-8},{-42,-8}}));
         connect(startConvoy.message_output_port, OutStartConvoyDel) annotation (
             Line(
-            points={{-77.2,69.4},{-90,70},{-90,66},{-93,66}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-77.2,69.4},{-90,70},{-90,66},{-93,66}}));
         connect(NoConvoy.outPort[1], T1.inPort) annotation (Line(
-            points={{-57,49.4},{-26,49.4},{-26,36}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-57,49.4},{-26,49.4},{-26,36}}));
         connect(NoConvoy.outPort[2], T2.inPort) annotation (Line(
-            points={{-55,49.4},{-55,36},{-54,36}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-55,49.4},{-55,36},{-54,36}}));
         connect(NoConvoyV.outPort[1], T3.inPort) annotation (Line(
-            points={{66.5,62.6},{56,62},{56,38}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{66.5,62.6},{56,62},{56,38}}));
         connect(T3.outPort, front.inPort[1]) annotation (Line(
-            points={{56,29},{56,-24},{42.6667,-24}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{56,29},{56,-24},{42.6667,-24}}));
         connect(T2.sender[1], T3.receiver[1]) annotation (Line(
             points={{-51.4,36.06},{-48,36.06},{-48,38},{2,38},{2,38.02},{53.18,
               38.02}},
             color={255,128,0},
-            smooth=Smooth.None,
             visible=sync_visible));
         connect(T4.outPort, NoConvoy.inPort[2]) annotation (Line(
-            points={{-6,37},{-6,58},{-56.5,58}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-6,37},{-6,58},{-56.5,58}}));
         connect(T5.outPort, rear.inPort[1]) annotation (Line(
-            points={{70,29},{70,22},{74,22},{74,12},{74.6667,12}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{70,29},{70,22},{74,22},{74,12},{74.6667,12}}));
         connect(NoConvoyV.outPort[2], T5.inPort) annotation (Line(
-            points={{67.5,62.6},{80,62},{82,62},{82,38},{70,38}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{67.5,62.6},{80,62},{82,62},{82,38},{70,38}}));
         connect(ConvoyProposed.outPort[1], T6.inPort) annotation (Line(
-            points={{-43,0.6},{-43,2.7},{-18,2.7},{-18,-6}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-43,0.6},{-43,2.7},{-18,2.7},{-18,-6}}));
         connect(ConvoyProposed.outPort[2], T4.inPort) annotation (Line(
-            points={{-41,0.6},{-41,6},{-6,6},{-6,28}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-41,0.6},{-41,6},{-6,6},{-6,28}}));
         connect(T6.outPort, RearConvoy.inPort[1]) annotation (Line(
-            points={{-9,-6},{-2,-6}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-9,-6},{-2,-6}}));
         connect(T6.sender[1], T5.receiver[1]) annotation (Line(
             points={{-18.06,-3.4},{-18,22},{64,22},{64,38.02},{67.18,38.02}},
             color={255,128,0},
-            smooth=Smooth.None,
             visible=sync_visible));
         connect(T2.firePort, confirm.conditionPort[1]) annotation (Line(
             points={{-49.8,32},{-50,32},{-50,6},{-50.6,6},{-50.6,-35.84}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(confirm.message_output_port, OutConfirm) annotation (Line(
-            points={{-65.3,-32.4},{-65.3,-31},{-94,-31}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-65.3,-32.4},{-65.3,-31},{-94,-31}}));
         connect(InConfirm, confirmBox.mailbox_input_port[1])
                                                            annotation (Line(
-            points={{-25,-97},{-36.5,-97},{-36.5,-64.4},{-33.2,-64.4}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-25,-97},{-36.5,-97},{-36.5,-64.4},{-33.2,-64.4}}));
         connect(confirmBox.mailbox_output_port[1], T6.transition_input_port[1])
           annotation (Line(
-            points={{-18.8,-64.4},{-16.12,-64.4},{-16.12,-10.9}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-18.8,-64.4},{-16.12,-64.4},{-16.12,-10.9}}));
         connect(RearConvoy.outPort[1], T7.inPort) annotation (Line(
-            points={{6.6,-6},{14,-6},{14,28}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{6.6,-6},{14,-6},{14,28}}));
         connect(T7.outPort, NoConvoy.inPort[3]) annotation (Line(
-            points={{14,37},{14,58},{-55.5,58}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{14,37},{14,58},{-55.5,58}}));
         connect(T7.firePort, endConvoy.conditionPort[1]) annotation (Line(
             points={{18.2,32},{18,32},{18,-50},{8,-50},{8,-65.76},{10.6,-65.76}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(endConvoy.message_output_port, outEndConvoy) annotation (Line(
-            points={{25.3,-60.6},{25.3,-97},{6,-97}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{25.3,-60.6},{25.3,-97},{6,-97}}));
         connect(T8.inPort, FrontConvoy.outPort[1]) annotation (Line(
-            points={{-68,38},{-68,2.6},{-70,2.6}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-68,38},{-68,2.6},{-70,2.6}}));
         connect(T8.outPort, NoConvoy.inPort[4]) annotation (Line(
-            points={{-68,47},{-68,58},{-54.5,58}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-68,47},{-68,58},{-54.5,58}}));
         connect(inEndConvoy, endConvoyBox.mailbox_input_port[1]) annotation (Line(
-            points={{-94,26},{-95.1,26},{-95.1,39.6}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-94,26},{-95.1,26},{-95.1,39.6}}));
         connect(endConvoyBox.mailbox_output_port[1], T8.transition_input_port[1])
           annotation (Line(
-            points={{-78.9,39.6},{-78.9,39.88},{-72.9,39.88}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-78.9,39.6},{-78.9,39.88},{-72.9,39.88}}));
         connect(T9.inPort, front.outPort[1]) annotation (Line(
             points={{40,30},{40,8},{46,8},{46,-16},{44,-16},{44,-15.4},{42.6667,
-                -15.4}},
-            color={0,0,0},
-            smooth=Smooth.None));
+                -15.4}}));
         connect(T9.outPort, NoConvoyV.inPort[2]) annotation (Line(
-            points={{40,39},{40,46},{66,46},{66,54},{67.2,54}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{40,39},{40,46},{66,46},{66,54},{67.2,54}}));
         connect(T8.sender[1], T9.receiver[1]) annotation (Line(
             points={{-65.4,37.94},{-65.4,20},{-122,20},{-122,88},{42.82,88},{
               42.82,29.98}},
             color={255,128,0},
-            smooth=Smooth.None,
             visible=false));
 
         connect(rear.outPort[1], T10.inPort) annotation (Line(
-            points={{74.6667,3.4},{74,3.4},{74,-4},{62,-4}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{74.6667,3.4},{74,3.4},{74,-4},{62,-4}}));
         connect(T10.outPort, NoConvoyV.inPort[3]) annotation (Line(
-            points={{62,5},{62,42},{68,42},{68,54}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{62,5},{62,42},{68,42},{68,54}}));
         connect(T10.conditionPort, stop) annotation (Line(
             points={{67,-6.12323e-016},{68,0},{68,20},{86,20},{86,102},{76,102}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(T7.receiver[1], T10.sender[1]) annotation (Line(
             points={{11.18,27.98},{11.18,-10},{59.4,-10},{59.4,-4.06}},
             color={255,128,0},
-            smooth=Smooth.None,
             visible=sync_visible));
         connect(front.outPort[2], T11.inPort) annotation (Line(
-            points={{44,-15.4},{44,-14},{36,-14},{36,-54.4},{42,-54.4}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{44,-15.4},{44,-14},{36,-14},{36,-54.4},{42,-54.4}}));
         connect(T11.outPort, front.inPort[2]) annotation (Line(
-            points={{42,-45.4},{42,-30},{44,-30},{44,-24}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{42,-45.4},{42,-30},{44,-30},{44,-24}}));
         connect(T11.conditionPort, stop) annotation (Line(
             points={{47,-52.4},{90,-52.4},{90,102},{76,102}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(T11.firePort, halt.conditionPort[1]) annotation (Line(
             points={{37.4,-52.4},{32,-52.4},{32,-71.8},{34.8,-71.8}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(halt.message_output_port, outHalt) annotation (Line(
-            points={{47.4,-67.5},{50.7,-67.5},{50.7,-97},{38,-97}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{47.4,-67.5},{50.7,-67.5},{50.7,-97},{38,-97}}));
         connect(haltBox.mailbox_input_port[1], InHalt) annotation (Line(
-            points={{93.4,-13.3},{102,-13.3},{102,-12},{104,-12}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{93.4,-13.3},{102,-13.3},{102,-12},{104,-12}}));
         connect(rear.outPort[2], T12.inPort) annotation (Line(
-            points={{76,3.4},{76,-8},{75.6,-8}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{76,3.4},{76,-8},{75.6,-8}}));
         connect(T12.outPort, rear.inPort[2]) annotation (Line(
-            points={{84.6,-8},{84.6,12},{76,12}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{84.6,-8},{84.6,12},{76,12}}));
         connect(T12.transition_input_port[1], haltBox.mailbox_output_port[1])
           annotation (Line(
-            points={{81.96,-12.02},{82.6,-12.02},{82.6,-13.3}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{81.96,-12.02},{82.6,-12.02},{82.6,-13.3}}));
         connect(NoConvoyV.outPort[3], T13.inPort) annotation (Line(
-            points={{68.5,62.6},{70,62},{70,64.4},{124,64.4}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{68.5,62.6},{70,62},{70,64.4},{124,64.4}}));
         connect(T13.outPort, NoConvoyV.inPort[4]) annotation (Line(
-            points={{124,55.4},{124,54},{68.8,54}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{124,55.4},{124,54},{68.8,54}}));
         connect(T13.conditionPort, stop) annotation (Line(
             points={{129,62.4},{76,62.4},{76,102}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(NoConvoyV.outPort[4], T14.inPort) annotation (Line(
-            points={{69.5,62.6},{68,62},{68,66.4},{40,66.4}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{69.5,62.6},{68,62},{68,66.4},{40,66.4}}));
         connect(T14.outPort, NoConvoyV.inPort[5]) annotation (Line(
-            points={{40,57.4},{40,48},{66,48},{66,54},{69.6,54}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{40,57.4},{40,48},{66,48},{66,54},{69.6,54}}));
         connect(stop, nor1.u) annotation (Line(
             points={{76,102},{76,92},{123.6,92},{123.6,82}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(nor1.y, T14.conditionPort) annotation (Line(
             points={{113.2,82},{35,82},{35,64.4}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(confirm.u_integers[1], cruisingSpeed) annotation (Line(
             points={{-51.3,-28.32},{62,-28.32},{62,103},{63,103}},
-            color={255,128,0},
-            smooth=Smooth.None));
+            color={255,128,0}));
         connect(T15.inPort, front.outPort[3]) annotation (Line(
-            points={{72.4,-24},{78,-24},{78,-15.4},{45.3333,-15.4}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{72.4,-24},{78,-24},{78,-15.4},{45.3333,-15.4}}));
         connect(T15.outPort, front.inPort[3]) annotation (Line(
-            points={{63.4,-24},{45.3333,-24}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{63.4,-24},{45.3333,-24}}));
         connect(T15.conditionPort, nor1.y) annotation (Line(
             points={{70.4,-19},{94,-19},{94,80},{98,80},{98,82},{113.2,82}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(drive.message_output_port, outDrive) annotation (Line(
-            points={{93.4,-32.6},{96,-32.6},{96,-43},{104,-43}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{93.4,-32.6},{96,-32.6},{96,-43},{104,-43}}));
         connect(T15.firePort, drive.conditionPort[1]) annotation (Line(
             points={{70.4,-28.6},{70.4,-37.76},{80.8,-37.76}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(rear.outPort[3], T16.inPort) annotation (Line(
-            points={{77.3333,3.4},{102.4,3.4},{102.4,16}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{77.3333,3.4},{102.4,3.4},{102.4,16}}));
         connect(T16.outPort, rear.inPort[3]) annotation (Line(
-            points={{93.4,16},{77.3333,16},{77.3333,12}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{93.4,16},{77.3333,16},{77.3333,12}}));
         connect(T16.transition_input_port[1], driveBox.mailbox_output_port[1])
           annotation (Line(
-            points={{96.04,20.02},{102,20.02},{102,27.8},{92.5,27.8}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{96.04,20.02},{102,20.02},{102,27.8},{92.5,27.8}}));
         connect(driveBox.mailbox_input_port[1], inDrive1) annotation (Line(
-            points={{101.5,27.8},{101.5,30.9},{102,30.9},{102,40}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{101.5,27.8},{101.5,30.9},{102,30.9},{102,40}}));
         connect(nor1.y, T1.conditionPort) annotation (Line(
             points={{113.2,82},{-18,82},{-18,32},{-21,32}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(outHalt, outHalt) annotation (Line(
-            points={{38,-97},{38,-97}},
-            color={0,0,0},
-            smooth=Smooth.None));
-        annotation (Diagram(graphics), Icon(graphics={Bitmap(
+            points={{38,-97},{38,-97}}));
+        annotation ( Icon(graphics={Bitmap(
                 extent={{-74,86},{80,-84}},
                 imageSource=
                     "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"
@@ -3661,7 +2992,6 @@ this class contains a timing constraint that the state PlatoonProposed is no lon
         Modelica.Blocks.Sources.IntegerExpression integerExpression1(y=4) annotation (
             Placement(transformation(
               extent={{-3,-3},{3,3}},
-              rotation=0,
               origin={23,45})));
         Modelica.Blocks.Sources.BooleanPulse booleanPulse(
           width=50,
@@ -3729,105 +3059,73 @@ this class contains a timing constraint that the state PlatoonProposed is no lon
         connect(front.OutStartConvoyDel, rear.InStartConvoyDel)          annotation (
             Line(
             points={{-35.33,34.56},{-24,34.56},{-24,22},{-18,22},{-18,21.16},{
-                -10.56,21.16}},
-            color={0,0,0},
-            smooth=Smooth.None));
+                -10.56,21.16}}));
         connect(front.InStartConvoyDel, rear.OutStartConvoyDel)          annotation (
             Line(
-            points={{-35.14,22.88},{-26,22.88},{-26,29.92},{-10.32,29.92}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-35.14,22.88},{-26,22.88},{-26,29.92},{-10.32,29.92}}));
         connect(realExpression.y, front.frontDistance) annotation (Line(
             points={{-45.7,50},{-46,50},{-46,40},{-45.59,40}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(front.InConfirm, rear.OutConfirm)          annotation (Line(
-            points={{-48.25,8.48},{-48.25,2},{-20,2},{-20,18.28},{-10.56,18.28}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-48.25,8.48},{-48.25,2},{-20,2},{-20,18.28},{-10.56,18.28}}));
 
         connect(front.OutConfirm, rear.InConfirm)          annotation (Line(
-            points={{-35.14,19.04},{-28,19.04},{-28,6},{6,6},{6,10.36}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-35.14,19.04},{-28,19.04},{-28,6},{6,6},{6,10.36}}));
 
         connect(front.inEndConvoy, rear.outEndConvoy)          annotation (Line(
             points={{-35.14,28.16},{-30,28.16},{-30,4},{14,4},{14,10},{13.68,10},
-                {13.68,10.48}},
-            color={0,0,0},
-            smooth=Smooth.None));
+                {13.68,10.48}}));
         connect(rear.inEndConvoy, front.outEndConvoy)          annotation (Line(
-            points={{-10.56,25.12},{-12,25.12},{-12,0},{-54.33,0},{-54.33,8.64}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-10.56,25.12},{-12,25.12},{-12,0},{-54.33,0},{-54.33,8.64}}));
         connect(stop.y, front.stop)            annotation (Line(
             points={{-71,47.7},{-71,40.32},{-67.44,40.32}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(front.outHalt, rear.InHalt) annotation (Line(
             points={{-60.22,8.48},{-60.22,56},{48,56},{48,22},{38,22},{38,20.56},
-                {36.96,20.56}},
-            color={0,0,0},
-            smooth=Smooth.None));
+                {36.96,20.56}}));
         connect(rear.outHalt, front.InHalt) annotation (Line(
-            points={{21.12,10.36},{21.12,-4},{-78,-4},{-78,22.08},{-72.76,22.08}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{21.12,10.36},{21.12,-4},{-78,-4},{-78,22.08},{-72.76,22.08}}));
         connect(integerExpression.y, front.cruisingSpeed) annotation (Line(
             points={{-64,45.6},{-64,40.48},{-64.97,40.48}},
-            color={255,127,0},
-            smooth=Smooth.None));
+            color={255,127,0}));
         connect(integerExpression1.y, rear.cruisingSpeed) annotation (Line(
             points={{26.3,45},{28,45},{28,34.36},{27.12,34.36}},
-            color={255,127,0},
-            smooth=Smooth.None));
+            color={255,127,0}));
         connect(front.inDrive1, rear.outDrive) annotation (Line(
             points={{-72.38,30.4},{-82,30.4},{-82,-6},{42,-6},{42,16.84},{36.96,
-              16.84}},
-            color={0,0,0},
-            smooth=Smooth.None));
+              16.84}}));
         connect(front.outDrive, rear.inDrive1) annotation (Line(
             points={{-72.76,17.12},{-78,17.12},{-78,58},{42,58},{42,26.8},{
-                36.48,26.8}},
-            color={0,0,0},
-            smooth=Smooth.None));
+                36.48,26.8}}));
         connect(booleanPulse.y, rear.stop) annotation (Line(
             points={{33.8,40},{29.5,40},{29.5,34.24},{30.24,34.24}},
-            color={255,0,255},
-            smooth=Smooth.None));
+            color={255,0,255}));
         connect(rear.speed, robot_V3a.omegaL_des) annotation (Line(
             points={{31.2,10},{31.2,8},{32,8},{32,-22},{37,-22}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(rear.speed, robot_V3a.omegaR_des) annotation (Line(
             points={{31.2,10},{58,10},{58,-10},{66,-10},{66,-22},{65,-22}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(front.speed, Front_robot_V3a1.omegaL_des)
                                                     annotation (Line(
             points={{-68.2,8},{-68.2,-12},{-35,-12},{-35,-22}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(distance1.y, rear.frontDistance) annotation (Line(
             points={{11.6,-52.6},{11.6,-56},{72,-56},{72,50},{2,50},{2,34},{
                 2.64,34}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(Front_robot_V3a1.Frame, distance1.xpos1) annotation (Line(
             points={{-49,-28},{-16,-28},{-16,-32},{17.8,-32}},
             color={95,95,95},
-            thickness=0.5,
-            smooth=Smooth.None));
+            thickness=0.5));
         connect(robot_V3a.Frame, distance1.xpos2) annotation (Line(
             points={{51,-28},{34,-28},{34,-32},{8,-32}},
             color={95,95,95},
-            thickness=0.5,
-            smooth=Smooth.None));
+            thickness=0.5));
         connect(front.speed, Front_robot_V3a1.omegaR_des) annotation (Line(
             points={{-68.2,8},{-68,8},{-68,-22},{-63,-22}},
-            color={0,0,127},
-            smooth=Smooth.None));
-        annotation (Diagram(graphics), experiment(StopTime=60),
+            color={0,0,127}));
+        annotation ( experiment(StopTime=60),
           Documentation(info="<html>
 <p>The test platform used in this work is a wheeled mobile robot known as BeBot [7]. It is a miniature mobile robot developed at Heinz Nixdorf Institute and has been used in various research projects, e.g., [8]. The BeBot is powered by two DC-motors with integrated encoder.
 </p>
@@ -3902,7 +3200,6 @@ The brake-message is transmitted to the rear driving Be Bot that is going to bra
             points={{-62,-57.6667},{-46,-58},{-46,-58},{-28,-62},{-28,2},{2,2}},
             color={0,0,127},
             smooth=Smooth.Bezier));
-        annotation (Diagram(graphics));
       end distance;
 
       package Parts "Parts of BeBot"
@@ -3988,87 +3285,60 @@ The brake-message is transmitted to the rear driving Be Bot that is going to bra
         equation
           connect(signalVoltage.p, resistor.p) annotation (Line(
               points={{-20,5},{-20,10},{-14,10}},
-              color={0,0,255},
-              smooth=Smooth.None));
+              color={0,0,255}));
           connect(resistor.n, inductor.p) annotation (Line(
               points={{-4,10},{4,10}},
-              color={0,0,255},
-              smooth=Smooth.None));
+              color={0,0,255}));
           connect(inductor.n, emf.p) annotation (Line(
               points={{14,10},{20,10},{20,5}},
-              color={0,0,255},
-              smooth=Smooth.None));
+              color={0,0,255}));
           connect(currentSensor.n, emf.n) annotation (Line(
               points={{5,-10},{20,-10},{20,-5}},
-              color={0,0,255},
-              smooth=Smooth.None));
+              color={0,0,255}));
 
           connect(currentSensor.i, Current) annotation (Line(
               points={{0,-15},{0,-40},{106,-40}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(idealPlanetary.ring, lossyPlanetary.sun) annotation (Line(
-              points={{60,0},{68,0}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{60,0},{68,0}}));
           connect(lossyPlanetary.ring, Flange) annotation (Line(
-              points={{78,0},{100,0}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{78,0},{100,0}}));
           connect(idealPlanetary.carrier, fixed.flange) annotation (Line(
-              points={{50,-2},{48,-2},{48,-20},{59,-20}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{50,-2},{48,-2},{48,-20},{59,-20}}));
           connect(lossyPlanetary.planet, fixed.flange) annotation (Line(
-              points={{68,-2},{66,-2},{66,-20},{59,-20}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{68,-2},{66,-2},{66,-20},{59,-20}}));
           w = der(Flange.phi);
           a = der(w);
 
           connect(ground.p, signalVoltage.n) annotation (Line(
               points={{-20,-20},{-20,-5}},
-              color={0,0,255},
-              smooth=Smooth.None));
+              color={0,0,255}));
           connect(ground.p, currentSensor.p) annotation (Line(
               points={{-20,-20},{-20,-10},{-5,-10}},
-              color={0,0,255},
-              smooth=Smooth.None));
+              color={0,0,255}));
 
           connect(fb.u1, DesSp)   annotation (Line(
               points={{-76,4.89859e-016},{-86,4.89859e-016},{-86,0},{-100,0}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(SpSen.w, fb.u2) annotation (Line(
               points={{-5.5,40},{-72,40},{-72,4}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(SpSen.flange, lossyPlanetary.ring) annotation (Line(
-              points={{5,40},{88,40},{88,0},{78,0}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{5,40},{88,40},{88,0},{78,0}}));
           connect(limPI.y, signalVoltage.v) annotation (Line(
               points={{-39.5,0},{-26.5,0},{-26.5,2.14313e-016},{-23.5,
                   2.14313e-016}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(fb.y, limPI.u) annotation (Line(
               points={{-67.5,-5.51091e-016},{-54.75,-5.51091e-016},{-54.75,0},{
                   -51,0}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
 
           connect(inertia_StCoFric1.flange_a, emf.flange) annotation (Line(
-              points={{35,0},{25,0}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{35,0},{25,0}}));
           connect(inertia_StCoFric1.flange_b, idealPlanetary.sun) annotation (Line(
-              points={{45,0},{50,0}},
-              color={0,0,0},
-              smooth=Smooth.None));
-          annotation (Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,
-                  -100},{100,100}}),
-                              graphics), Icon(coordinateSystem(preserveAspectRatio=true,
+              points={{45,0},{50,0}}));
+          annotation ( Icon(coordinateSystem(preserveAspectRatio=true,
                   extent={{-100,-100},{100,100}}),
                                               graphics={
                 Rectangle(
@@ -4103,8 +3373,6 @@ The brake-message is transmitted to the rear driving Be Bot that is going to bra
                   textString="%name"),
                 Line(
                   points={{90,-40},{80,-40}},
-                  color={0,0,0},
-                  smooth=Smooth.None,
                   thickness=1)}),
                 Documentation(info="<html>
 <head>
@@ -4227,7 +3495,7 @@ When limit is exceeded, the integrator is clamped.
 </pre>
 </body>
 </html>
-"),     Diagram(graphics), Icon(graphics={
+"), Icon(graphics={
                                         Rectangle(
                 extent={{-100,-100},{100,100}},
                 lineColor={0,0,127},
@@ -4252,8 +3520,7 @@ When limit is exceeded, the integrator is clamped.
                 Line(points={{-80,-80},{-80,-20},{0,60}},color={0,0,127}),
                 Line(
                   points={{0,60},{60,60}},
-                  color={0,0,127},
-                  smooth=Smooth.None),
+                  color={0,0,127}),
                 Text(
                   extent={{-100,120},{100,100}},
                   lineColor={0,0,255},
@@ -4271,12 +3538,10 @@ When limit is exceeded, the integrator is clamped.
 
           Modelica.Mechanics.Rotational.Interfaces.Flange_a flange_a
             "Left flange of shaft"
-            annotation (Placement(transformation(extent={{-110,-10},{-90,10}},
-                  rotation=0)));
+            annotation (Placement(transformation(extent={{-110,-10},{-90,10}})));
           Modelica.Mechanics.Rotational.Interfaces.Flange_b flange_b
             "Right flange of shaft"
-            annotation (Placement(transformation(extent={{90,-10},{110,10}},
-                  rotation=0)));
+            annotation (Placement(transformation(extent={{90,-10},{110,10}})));
           //parameter SI.Torque M_fric=0.5 "Friction torque";
           // J_rotor = 1 gcm2, J_impulsscheibe = 0.09 gcm2
           parameter SI.Torque M_coulomb= 3e-4
@@ -4384,15 +3649,15 @@ V1.6 Viscous friction is added to the model. <br>
                   lineColor={0,0,0},
                   fillPattern=FillPattern.HorizontalCylinder,
                   fillColor={192,192,192}),
-                Line(points={{-80,-25},{-60,-25}}, color={0,0,0}),
-                Line(points={{60,-25},{80,-25}}, color={0,0,0}),
-                Line(points={{-70,-25},{-70,-70}}, color={0,0,0}),
-                Line(points={{70,-25},{70,-70}}, color={0,0,0}),
-                Line(points={{-80,25},{-60,25}}, color={0,0,0}),
-                Line(points={{60,25},{80,25}}, color={0,0,0}),
-                Line(points={{-70,45},{-70,25}}, color={0,0,0}),
-                Line(points={{70,45},{70,25}}, color={0,0,0}),
-                Line(points={{-70,-70},{70,-70}}, color={0,0,0}),
+                Line(points={{-80,-25},{-60,-25}}),
+                Line(points={{60,-25},{80,-25}}),
+                Line(points={{-70,-25},{-70,-70}}),
+                Line(points={{70,-25},{70,-70}}),
+                Line(points={{-80,25},{-60,25}}),
+                Line(points={{60,25},{80,25}}),
+                Line(points={{-70,45},{-70,25}}),
+                Line(points={{70,45},{70,25}}),
+                Line(points={{-70,-70},{70,-70}}),
                 Rectangle(
                   extent={{-50,50},{50,-50}},
                   lineColor={0,0,0},
@@ -4405,11 +3670,7 @@ V1.6 Viscous friction is added to the model. <br>
                 Text(
                   extent={{-150,-80},{150,-120}},
                   lineColor={0,0,0},
-                  textString="J=%J")}),
-            Diagram(coordinateSystem(
-                preserveAspectRatio=true,
-                extent={{-100,-100},{100,100}},
-                grid={1,1}), graphics));
+                  textString="J=%J")}));
         end inertia_StCoFric;
 
         model Robot_V3 "V3"
@@ -4487,40 +3748,31 @@ V1.6 Viscous friction is added to the model. <br>
           connect(wheelSet.frameMiddle, Frame) annotation (Line(
               points={{2,-10},{4,-10},{4,40},{0,40},{0,60}},
               color={95,95,95},
-              thickness=0.5,
-              smooth=Smooth.None));
+              thickness=0.5));
           connect(dCMotorCtrl_V4R.Flange, wheelSet.axis2) annotation (Line(
-              points={{20,1.22465e-015},{16,1.22465e-015},{16,0},{12,0}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{20,1.22465e-015},{16,1.22465e-015},{16,0},{12,0}}));
           connect(dCMotorCtrl_V4L.Flange, wheelSet.axis1) annotation (Line(
-              points={{-20,0},{-8,0}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{-20,0},{-8,0}}));
           connect(omegaL_des, dCMotorCtrl_V4L.DesSp) annotation (Line(
               points={{-140,0},{-38,0}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(dCMotorCtrl_V4R.DesSp, omegaR_des) annotation (Line(
               points={{38,-9.79717e-016},{82,-9.79717e-016},{82,0},{140,0}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(body.frame_a, wheelSet.frameMiddle) annotation (Line(
               points={{20,-40},{2,-40},{2,-10}},
               color={95,95,95},
-              thickness=0.5,
-              smooth=Smooth.None));
+              thickness=0.5));
           connect(fixedShape.frame_a, wheelSet.frameMiddle) annotation (Line(
               points={{20,-70},{2,-70},{2,-10}},
               color={95,95,95},
-              thickness=0.5,
-              smooth=Smooth.None));
+              thickness=0.5));
           annotation (
           Documentation(info="<html>
 <p>
 <i>Version 3.1 <br> Created 14.12.2010 <br> Last modified 11.04.2011 </i> <br><br>
 
-Model of robot with two wheels, actuated independantly by two DC motors. <br>
+Model of robot with two wheels, actuated independently by two DC motors. <br>
 The model is made up of following parts: <br>
 - DC Motor based on Faulhaber 1724 motor with a gear having a ratio of 14.4 <br>
 - Motor is attached to an inertia block which includes a friction model <br>
@@ -4570,16 +3822,13 @@ Version History
           // kinematic relationship
           Modelica.Mechanics.Rotational.Interfaces.Flange_a sun
             "Flange of sun shaft"
-            annotation (Placement(transformation(extent={{-110,-10},{-90,10}},
-                  rotation=0)));
+            annotation (Placement(transformation(extent={{-110,-10},{-90,10}})));
           Modelica.Mechanics.Rotational.Interfaces.Flange_a planet
             "Flange of carrier shaft"
-            annotation (Placement(transformation(extent={{-110,30},{-90,50}},
-                  rotation=0)));
+            annotation (Placement(transformation(extent={{-110,30},{-90,50}})));
           Modelica.Mechanics.Rotational.Interfaces.Flange_b ring
             "Flange of ring shaft"
-            annotation (Placement(transformation(extent={{90,-10},{110,10}}, rotation=
-                   0)));
+            annotation (Placement(transformation(extent={{90,-10},{110,10}})));
 
         equation
           w = der(ring.phi);
@@ -4660,11 +3909,11 @@ Generally, the teeth of the gears are related as follows (assuming number of tee
                   lineColor={0,0,0},
                   fillPattern=FillPattern.HorizontalCylinder,
                   fillColor={192,192,192}),
-                Line(points={{-90,40},{-70,40}}, color={0,0,0}),
-                Line(points={{-80,50},{-60,50}}, color={0,0,0}),
-                Line(points={{-70,50},{-70,40}}, color={0,0,0}),
-                Line(points={{-80,80},{-59,80}}, color={0,0,0}),
-                Line(points={{-70,100},{-70,80}}, color={0,0,0}),
+                Line(points={{-90,40},{-70,40}}),
+                Line(points={{-80,50},{-60,50}}),
+                Line(points={{-70,50},{-70,40}}),
+                Line(points={{-80,80},{-59,80}}),
+                Line(points={{-70,100},{-70,80}}),
                 Text(
                   extent={{-150,150},{150,110}},
                   textString="%name",
@@ -4717,11 +3966,11 @@ Generally, the teeth of the gears are related as follows (assuming number of tee
                   lineColor={0,0,0},
                   fillPattern=FillPattern.HorizontalCylinder,
                   fillColor={192,192,192}),
-                Line(points={{-90,40},{-70,40}}, color={0,0,0}),
-                Line(points={{-80,50},{-60,50}}, color={0,0,0}),
-                Line(points={{-70,50},{-70,40}}, color={0,0,0}),
-                Line(points={{-80,80},{-59,80}}, color={0,0,0}),
-                Line(points={{-70,90},{-70,80}}, color={0,0,0}),
+                Line(points={{-90,40},{-70,40}}),
+                Line(points={{-80,50},{-60,50}}),
+                Line(points={{-70,50},{-70,40}}),
+                Line(points={{-80,80},{-59,80}}),
+                Line(points={{-70,90},{-70,80}}),
                 Line(
                   points={{-26,-42},{-32,-2}},
                   pattern=LinePattern.Dot,
@@ -4747,7 +3996,7 @@ Generally, the teeth of the gears are related as follows (assuming number of tee
                   lineColor={128,128,128},
                   fillColor={128,128,128},
                   fillPattern=FillPattern.Solid),
-                Line(points={{-52,130},{28,130}}, color={0,0,0}),
+                Line(points={{-52,130},{28,130}}),
                 Line(
                   points={{-92,93},{-70,80}},
                   pattern=LinePattern.Dot,
@@ -4804,44 +4053,26 @@ Generally, the teeth of the gears are related as follows (assuming number of tee
           annotation (Placement(transformation(extent={{54,-22},{66,-12}})));
         equation
           connect(step3.entry[1], step1.inPort[1]) annotation (Line(
-              points={{-1.6,89.3},{-29,89.3},{-29,72},{-62,72}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{-1.6,89.3},{-29,89.3},{-29,72},{-62,72}}));
           connect(step3.entry[2], step4.inPort[1]) annotation (Line(
-              points={{9.6,89.3},{27,89.3},{27,62},{50,62}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{9.6,89.3},{27,89.3},{27,62},{50,62}}));
           connect(step4.outPort[1], T1.inPort) annotation (Line(
-              points={{50,53.4},{52,53.4},{52,36},{54,36}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{50,53.4},{52,53.4},{52,36},{54,36}}));
           connect(T1.outPort, step5.inPort[1]) annotation (Line(
-              points={{54,27},{54,16},{52,16}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{54,27},{54,16},{52,16}}));
         connect(step1.outPort[1], transistion2_1.inPort) annotation (Line(
-            points={{-62,63.4},{-60,63.4},{-60,20.6},{-54,20.6}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-62,63.4},{-60,63.4},{-60,20.6},{-54,20.6}}));
         connect(transistion2_1.outPort, step2.inPort[1]) annotation (Line(
-            points={{-54,7.1},{-64,7.1},{-64,-38},{-68,-38}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-54,7.1},{-64,7.1},{-64,-38},{-68,-38}}));
         connect(step5.outPort[1], transistion2_2.inPort) annotation (Line(
-            points={{52,7.4},{54,7.4},{54,-11.5},{60,-11.5}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{52,7.4},{54,7.4},{54,-11.5},{60,-11.5}}));
         connect(transistion2_2.outPort, step6.inPort[1]) annotation (Line(
-            points={{60,-22.75},{60,-64}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{60,-22.75},{60,-64}}));
 
           connect(transistion2_1.sender[1], transistion2_2.receiver[1]) annotation (
               Line(
               points={{-50.1,20.09},{2.95,20.09},{2.95,-11.975},{55.77,-11.975}},
-              color={255,128,0},
-              smooth=Smooth.None));
-          annotation (Diagram(graphics));
+              color={255,128,0}));
         end TestSynchronousCommunicationMain;
 
       end ExampleSynchronousCommunication;
@@ -4856,10 +4087,7 @@ Generally, the teeth of the gears are related as follows (assuming number of tee
         equation
         connect(sender.outputDelegationPort, receiver.inputDelegationPort)
           annotation (Line(
-            points={{-62.2,72},{-20,72},{-20,71.4},{22.2,71.4}},
-            color={0,0,0},
-            smooth=Smooth.None));
-        annotation (Diagram(graphics));
+            points={{-62.2,72},{-20,72},{-20,71.4},{22.2,71.4}}));
         end TestAsynchCommMain;
 
         model Sender
@@ -4905,35 +4133,24 @@ Generally, the teeth of the gears are related as follows (assuming number of tee
                 origin={30,122})));
         equation
           connect(step1.outPort[1], T1.inPort) annotation (Line(
-              points={{-28,71.4},{-28,44.4}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{-28,71.4},{-28,44.4}}));
           connect(T1.firePort, message.conditionPort[1]) annotation (Line(
               points={{-23.4,42.4},{-6.7,42.4},{-6.7,54},{26.4,54}},
-              color={255,0,255},
-              smooth=Smooth.None));
+              color={255,0,255}));
           connect(message.message_output_port, outputDelegationPort) annotation (Line(
-              points={{35,33},{64.5,33},{64.5,40},{98,40}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{35,33},{64.5,33},{64.5,40},{98,40}}));
           connect(integerExpression.y, message.u_integers[1]) annotation (Line(
               points={{66,111},{66,82},{45.2,82},{45.2,53}},
-              color={255,127,0},
-              smooth=Smooth.None));
+              color={255,127,0}));
           connect(booleanExpression.y, message.u_booleans[1]) annotation (Line(
               points={{42,109},{40.6,109},{40.6,53}},
-              color={255,0,255},
-              smooth=Smooth.None));
+              color={255,0,255}));
           connect(realExpression.y, message.u_reals[1]) annotation (Line(
               points={{30,111},{32,111},{32,53},{36,53}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
         connect(T1.outPort, step1.inPort[1]) annotation (Line(
             points={{-28,35.4},{-30,35.4},{-30,20},{-58,20},{-58,88},{-28,88},{
-                -28,80}},
-            color={0,0,0},
-            smooth=Smooth.None));
-          annotation (Diagram(graphics));
+                -28,80}}));
         end Sender;
 
         model Receiver
@@ -4980,23 +4197,15 @@ Generally, the teeth of the gears are related as follows (assuming number of tee
 
         equation
           connect(step1.outPort[1], T1.inPort) annotation (Line(
-              points={{-4,67.4},{0,67.4},{0,42.4},{6,42.4}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{-4,67.4},{0,67.4},{0,42.4},{6,42.4}}));
           connect(mailbox.mailbox_output_port[1], T1.transition_input_port[1])
             annotation (Line(
-              points={{-23,37},{-10.5,37},{-10.5,36.04},{1.98,36.04}},
-              color={0,0,0},
-              smooth=Smooth.None));
+              points={{-23,37},{-10.5,37},{-10.5,36.04},{1.98,36.04}}));
           connect(inputDelegationPort, mailbox.mailbox_input_port[1]) annotation (Line(
               points={{-78,34},{-60,34},{-60,37},{-41,37}},
-              color={0,0,255},
-              smooth=Smooth.None));
+              color={0,0,255}));
         connect(T1.outPort, step1.inPort[1]) annotation (Line(
-            points={{6,33.4},{6,24},{30,24},{30,84},{-4,84},{-4,76}},
-            color={0,0,0},
-            smooth=Smooth.None));
-          annotation (Diagram(graphics));
+            points={{6,33.4},{6,24},{30,24},{30,84},{-4,84},{-4,76}}));
         end Receiver;
       end ExampleAnsynchronousMessage;
 
@@ -5019,14 +4228,10 @@ Generally, the teeth of the gears are related as follows (assuming number of tee
               origin={-8,34})));
         equation
         connect(step1.outPort[1], T1.inPort) annotation (Line(
-            points={{-38,55.4},{-38,33.7},{-12.4,33.7},{-12.4,34}},
-            color={0,0,0},
-            smooth=Smooth.None));
+            points={{-38,55.4},{-38,33.7},{-12.4,33.7},{-12.4,34}}));
         connect(T1.outPort, step1.inPort[1]) annotation (Line(
-            points={{-3.4,34},{26,34},{26,64},{-38,64}},
-            color={0,0,0},
-            smooth=Smooth.None));
-        annotation (Diagram(graphics), experiment(StopTime=10));
+            points={{-3.4,34},{26,34},{26,64},{-38,64}}));
+        annotation ( experiment(StopTime=10));
         end TestSelfTransitionMain;
       end ExampleSelfTransition;
     end SelfTransition;
@@ -5169,7 +4374,6 @@ the line 'nOut=...' in the text layer where this step is declared.
      end if;
   end for;
   annotation (defaultComponentName="step1",
-    Coordsys(grid=[1,1], component=[20,20]),
       Documentation(info="<!DOCTYPE html>
 <html>
 <head><title>RealTimeCoordinationLibrary.RealTimeCoordination.Step</title></head>
@@ -5263,7 +4467,6 @@ in the tutorial.
         Line(
           visible=initialStep,
           points={{-235,181},{-137,181},{-90,90}},
-          color={0,0,0},
           smooth=Smooth.Bezier),
         Ellipse(
           visible=initialStep,
@@ -5275,16 +4478,11 @@ in the tutorial.
           visible=initialStep,
           points={{-95,140},{-90,90},{-126,124},{-95,140}},
           lineColor={0,0,0},
-          smooth=Smooth.None,
           fillColor={0,0,0},
           fillPattern=FillPattern.Solid),
         Ellipse(extent={{-20,18},{16,-17}},lineColor={255,255,255},fillColor=DynamicSelect({255,255,255}, if wasActive > 0.5 then {0,0,0}
                else {255,255,255}),
-          fillPattern=FillPattern.Solid)}),
-    Diagram(
-      coordinateSystem(extent={{-100,-100},{100,100}}, preserveAspectRatio=true,
-        initialScale=0.04,
-        grid={1,1}),        graphics));
+          fillPattern=FillPattern.Solid)}));
 end Step;
 
 model SelfTransition
@@ -5361,11 +4559,11 @@ output Boolean fire = T1.fire "= true, if transition fires";
   Internal.Interfaces.Synchron.receiver    receiver[
       numberOfSyncReceive] if use_syncReceive
       "receive port for synchronization channel"
-    annotation (Placement(visible=true, transformation(extent={{-77,100},{-57,120}}),
+    annotation (Placement(transformation(extent={{-77,100},{-57,120}}),
         iconTransformation(extent={{-88,83},{-53,118}})));
   Internal.Interfaces.Synchron.sender    sender[
       numberOfSyncSend] if use_syncSend "send port for synchronization channel"
-    annotation (Placement(visible=true,transformation(extent={{55,101},
+    annotation (Placement(transformation(extent={{55,101},
             {75,121}}),
         iconTransformation(extent={{47,84},{83,119}})));
   Internal.Interfaces.Asynchron.transition_input_port
@@ -5379,56 +4577,42 @@ output Boolean fire = T1.fire "= true, if transition fires";
       iconTransformation(extent={{-123,-69},{-78,-29}})));
 equation
   connect(T1.outPort, step1.inPort[1]) annotation (Line(
-      points={{0,50},{0,34}},
-      color={0,0,0},
-      smooth=Smooth.None));
+      points={{0,50},{0,34}}));
   connect(step1.outPort[1], T2.inPort) annotation (Line(
-      points={{0,16.8},{0,0}},
-      color={0,0,0},
-      smooth=Smooth.None));
+      points={{0,16.8},{0,0}}));
   connect(inPort, T1.inPort) annotation (Line(
-      points={{0,110},{0,68}},
-      color={0,0,0},
-      smooth=Smooth.None));
+      points={{0,110},{0,68}}));
   connect(T2.outPort, outPort) annotation (Line(
-      points={{0,-18},{0,-115}},
-      color={0,0,0},
-      smooth=Smooth.None));
+      points={{0,-18},{0,-115}}));
 if (use_firePort) then
 connect(T1.firePort, firePort) annotation (Line(
       points={{8.4,60},{115,60}},
-      color={255,0,255},
-      smooth=Smooth.None));
+      color={255,0,255}));
 end if;
 if (use_conditionPort) then
  connect(conditionPort, T1.conditionPort) annotation (Line(
       points={{-125,60},{-10,60}},
-      color={255,0,255},
-      smooth=Smooth.None));
+      color={255,0,255}));
 
 end if;
 if (use_syncSend) then
 connect(sender, T1.sender) annotation (Line(
       points={{65,111},{33.5,111},{33.5,68.12},{5.2,68.12}},
-      color={255,128,0},
-      smooth=Smooth.None));
+      color={255,128,0}));
 end if;
 if
   (use_syncReceive) then
  connect(receiver, T1.receiver) annotation (Line(
       points={{-67,110},{-38.5,110},{-38.5,68.04},{-5.64,68.04}},
-      color={255,128,0},
-      smooth=Smooth.None));
+      color={255,128,0}));
 end if;
 if (use_messageReceive) then
 connect(transition_input_port, T1.transition_input_port) annotation (Line(
-      points={{-100.5,-49},{-100.5,64},{-10,64},{-9.8,64.24}},
-      color={0,0,0},
-      smooth=Smooth.None));
+      points={{-100.5,-49},{-100.5,64},{-10,64},{-9.8,64.24}}));
 
 end if;
 
-  annotation (Diagram(graphics),defaultComponentName="T1", Icon(coordinateSystem(extent={{-100,
+  annotation (defaultComponentName="T1", Icon(coordinateSystem(extent={{-100,
             -100},{100,100}},                                                                                   initialScale=0.04,   preserveAspectRatio=true,
         grid={1,1}),graphics={
         Text(
@@ -5436,8 +4620,7 @@ end if;
           extent={{-200,10},{200,-10}},
           lineColor={255,0,0},
           textString="after(%afterTime)",
-          origin={210,-70},
-          rotation=0),
+          origin={210,-70}),
         Rectangle(
           extent={{-100,50},{100,70}},
           lineColor={0,0,0},
@@ -5454,17 +4637,14 @@ end if;
         Line(points={{0,-50},{0,-68}}, color={255,0,0}),
         Line(points={{0,-84},{0,-110}}, color={255,0,0}),
         Line(
-          points={{-70,-50},{70,-50}},
-          color={0,0,0},
-          smooth=Smooth.None),
-        Line(points={{0,-30},{0,-50}}, color={0,0,0}),
-        Line(points={{0,93},{0,30}}, color={0,0,0}),
+          points={{-70,-50},{70,-50}}),
+        Line(points={{0,-30},{0,-50}}),
+        Line(points={{0,93},{0,30}}),
         Text(
           extent={{-150,-15},{150,15}},
           textString="%name",
           lineColor={0,0,255},
-          origin={153,13},
-          rotation=0),
+          origin={153,13}),
         Text(
           extent={{-300,-15},{300,15}},
           lineColor=DynamicSelect({128,128,128}, if condition > 0.5 then {0,255,
@@ -5573,7 +4753,7 @@ model Transition
                                                                     receiver[
       numberOfSyncReceive] if use_syncReceive
       "receive port for synchronization channel"
-    annotation (Placement(visible=true, transformation(extent={{-71,90},{-51,110}}),
+    annotation (Placement(transformation(extent={{-71,90},{-51,110}}),
         iconTransformation(extent={{-88,83},{-53,118}})));
 
   RealTimeCoordinationLibrary.RealTimeCoordination.Internal.Interfaces.Asynchron.transition_input_port
@@ -5666,7 +4846,7 @@ equation
 
   for i in 1:numberOfMessageReceive loop
     // Determine if the transition is ready to receive a message
-    // 1. All transition conditions must be fufilled (preFire = true)
+    // 1. All transition conditions must be fulfilled (preFire = true)
     // 2. The Mailbox must have a message
     // 3. If also a synchronization needs to be performed, both transitions must be ready to fire
     localtransition_input_port[i].active = preFire and localtransition_input_port[i].hasMessage
@@ -5710,8 +4890,7 @@ equation
           extent={{-200,10},{200,-10}},
           lineColor={255,0,0},
           textString="after(%afterTime)",
-          origin={210,-70},
-          rotation=0),
+          origin={210,-70}),
         Line(
           visible=use_after,
           points={{0,-12.5},{0,-30}},
@@ -5726,14 +4905,12 @@ equation
           color={255,0,0}),
         Line(
           visible=not use_after,
-          points={{0,0},{0,-100}},
-          color={0,0,0}),
+          points={{0,0},{0,-100}}),
         Text(
           extent={{-150,-15},{150,15}},
           textString="%name",
           lineColor={0,0,255},
-          origin={160,75},
-          rotation=0),
+          origin={160,75}),
         Rectangle(
           extent={{-100,-15},{100,15}},
           lineColor={0,0,0},
@@ -5741,7 +4918,7 @@ equation
                else {0,0,0}),
           fillPattern=FillPattern.Solid,
           radius=10),
-        Line(points={{0,90},{0,12}}, color={0,0,0}),
+        Line(points={{0,90},{0,12}}),
         Text(
           extent={{-300,-15},{300,15}},
           lineColor=DynamicSelect({128,128,128}, if condition > 0.5 then {0,255,
@@ -5759,8 +4936,7 @@ equation
         Line(
           visible=not loopCheck,
           points={{0,-15},{0,-100}},
-          color={255,0,0},
-          smooth=Smooth.None),
+          color={255,0,0}),
         Text(
          visible=use_syncSend,
           extent={{-100,68},{100,36}},
@@ -5781,11 +4957,7 @@ equation
 <p>We use this parameters to syncronize the firing of parallel transitions as described in &quot;<a href=\"modelica://RealTimeCoordinationLibrary.RealTimeCoordination.UsersGuide.Elements.Synchronization\">Synchronization</a>&quot; and to receive asynchronous messages as described in &quot;<a href=\"modelica://RealTimeCoordinationLibrary.RealTimeCoordination.UsersGuide.Elements.Message_Mailbox\">Message and Mailbox</a>&quot;.</p>
 <p><img src=\"modelica://RealTimeCoordinationLibrary/images/transition.jpg\" alt =\"\"/></p>
 </body>
-</html>"),
-    Diagram(coordinateSystem(
-        preserveAspectRatio=true,
-        extent={{-100,-100},{100,100}},
-        grid={1,1}), graphics));
+</html>"));
 end Transition;
 
  model Message
@@ -5857,49 +5029,36 @@ end Transition;
       //end if;
       message_output_port.fire = Modelica_StateGraph2.Blocks.BooleanFunctions.anyTrue(conditionPort);
 
-   annotation (Diagram(graphics), Icon(graphics={Rectangle(
+   annotation ( Icon(graphics={Rectangle(
            extent={{-84,40},{76,-76}},
            lineColor={0,0,0},
            fillPattern=FillPattern.Solid,
            fillColor={255,255,255}), Polygon(
            points={{-84,40},{-8,100},{76,40},{-84,40}},
-           smooth=Smooth.None,
            fillPattern=FillPattern.Solid,
            fillColor={255,255,255},
             lineColor={0,0,0}),
          Polygon(
            points={{-84,40},{-26,-18},{18,-18},{76,40},{-16,40},{-14,40},{-84,40}},
            lineColor={0,0,0},
-           smooth=Smooth.None,
            fillColor={255,255,85},
            fillPattern=FillPattern.Solid),
          Polygon(
            points={{-72,28},{-82,58},{22,88},{52,16},{18,-18},{-26,-18},{-46,2},{
                -72,28}},
            lineColor={0,0,0},
-           smooth=Smooth.None,
            fillColor={215,215,215},
            fillPattern=FillPattern.Solid),
          Line(
-           points={{-66,36},{14,56},{16,56}},
-           color={0,0,0},
-           smooth=Smooth.None),
+           points={{-66,36},{14,56},{16,56}}),
          Line(
-           points={{-60,24},{16,42}},
-           color={0,0,0},
-           smooth=Smooth.None),
+           points={{-60,24},{16,42}}),
          Line(
-           points={{-52,14},{18,30}},
-           color={0,0,0},
-           smooth=Smooth.None),
+           points={{-52,14},{18,30}}),
          Line(
-           points={{-64,48},{-42,54},{-40,54}},
-           color={0,0,0},
-           smooth=Smooth.None),
+           points={{-64,48},{-42,54},{-40,54}}),
          Line(
-           points={{-36,4},{36,22}},
-           color={0,0,0},
-           smooth=Smooth.None),
+           points={{-36,4},{36,22}}),
          Text(
            extent={{-74,-30},{68,-66}},
            lineColor={0,0,255},
@@ -5945,7 +5104,7 @@ end Transition;
    parameter Integer numberOfMessageReals(min=0)=0
       "number of real parameters of a message";
 
-   parameter Boolean overwriteMessageWhenBufferIsFull = false "Determines the behavior in case of message buffer overflow. If this parameter is set to 'true', the message with longest storage period is 
+   parameter Boolean overwriteMessageWhenBufferIsFull = false "Determines the behavior in case of message buffer overflow. If this parameter is set to 'true', the message with longest storage period is
   deleted and the incoming message is euqeued. If this parameter is set to 'false', the incoming messages are dropped.";
 
    RealTimeCoordinationLibrary.RealTimeCoordination.Internal.Interfaces.Asynchron.mailbox_output_port
@@ -5982,7 +5141,7 @@ end Transition;
    Real realTemp[nOut*numberOfMessageReals];
    Real timeTemp[nOut];
    Boolean booleanTemp[nOut*numberOfMessageBooleans];
-   Integer instaceIdTemp[nOut];
+   Integer instanceIdTemp[nOut];
    Integer ownerIdTemp[nOut];
 
   //Temp variables which are used to test if the messageInstance is already in the queue.
@@ -6110,7 +5269,7 @@ end Transition;
            time_q.tail,
            time_q.head);
 
-        (instanceId_q.vec,instaceIdTemp[i],instanceId_q.tail,instanceId_q.head)
+        (instanceId_q.vec,instanceIdTemp[i],instanceId_q.tail,instanceId_q.head)
           :=
           RealTimeCoordinationLibrary.RealTimeCoordination.Internal.Interfaces.Asynchron.IntQueue.dequeue(
            instanceId_q.vec,
@@ -6243,7 +5402,7 @@ end Transition;
        end if;
     end for;
 
-   annotation (Diagram(graphics), Icon(graphics={
+   annotation ( Icon(graphics={
          Rectangle(
            extent={{-80,60},{80,-100}},
            lineColor={0,0,0},
@@ -6261,19 +5420,16 @@ end Transition;
            points={{-16,-4},{-40,20},{20,80},{60,40},{16,-4},{-16,-4},{-16,-4},{-16,
                -4}},
            lineColor={0,0,0},
-           smooth=Smooth.None,
            fillColor={255,255,255},
            fillPattern=FillPattern.Solid),
          Polygon(
            points={{60,40},{16,40},{2,26},{2,-4},{16,-4},{60,40}},
            lineColor={0,0,0},
-           smooth=Smooth.None,
            fillColor={255,255,255},
            fillPattern=FillPattern.Solid),
          Polygon(
            points={{-40,20},{16,28},{20,80},{-40,20}},
            lineColor={0,0,0},
-           smooth=Smooth.None,
            fillColor={255,255,255},
            fillPattern=FillPattern.Solid),
          Text(
@@ -6313,14 +5469,13 @@ end Transition;
               "reals[1]"),                                                             choice(redeclare Real reals[2]
               "reals[2]")));
 
-        annotation (Diagram(graphics), Icon(graphics={Rectangle(
+        annotation ( Icon(graphics={Rectangle(
                 extent={{-100,80},{100,-82}},
                 lineColor={0,0,0},
                 fillPattern=FillPattern.Solid,
                 fillColor={255,255,255}), Polygon(
                 points={{-100,80},{0,0},{100,80},{-100,80}},
                 lineColor={0,0,0},
-                smooth=Smooth.None,
                 fillPattern=FillPattern.Solid,
                 fillColor={200,200,200}),
               Text(
@@ -6330,7 +5485,7 @@ end Transition;
     end DelegationPort;
 
     connector InputDelegationPort = input DelegationPort;
-    connector OutputDelegationPort =output DelegationPort    annotation (Diagram(graphics), Icon(graphics={Rectangle(
+    connector OutputDelegationPort =output DelegationPort    annotation ( Icon(graphics={Rectangle(
                 extent={{-100,80},{100,-82}},
                 lineColor={0,0,0},
                 fillPattern=FillPattern.Solid,
@@ -6341,12 +5496,10 @@ end Transition;
                 textString="%name"),      Polygon(
                 points={{-100,80},{0,0},{100,80},{-100,80}},
                 lineColor={0,0,0},
-                smooth=Smooth.None,
                 fillPattern=FillPattern.Solid,
                 fillColor={200,200,200}), Polygon(
                 points={{-82,74},{0,10},{82,74},{-82,74}},
                 lineColor={0,0,0},
-                smooth=Smooth.None,
                 fillPattern=FillPattern.Solid,
                 fillColor={255,255,255})}));
   end MessageInterface;
@@ -6360,7 +5513,7 @@ end Transition;
       Modelica.Blocks.Interfaces.RealOutput y "Value of Real output"
         annotation (                            Dialog(group=
               "Time varying output signal"), Placement(transformation(extent={{
-                100,-10},{120,10}}, rotation=0)));
+                100,-10},{120,10}})));
       Modelica.Blocks.Interfaces.BooleanVectorInput u[nu]
         annotation (Placement(transformation(extent={{-120,70},{-80,-70}}),
             iconTransformation(extent={{-114,34},{-88,-34}})));
@@ -6430,18 +5583,12 @@ end Transition;
               points={{-5,4},{-8,12},{-5,22},{-2,12},{-5,4}},
               lineColor={0,0,255},
               fillPattern=FillPattern.Solid,
-               fillColor={0,0,255},
-              smooth=Smooth.None),
+               fillColor={0,0,255}),
             Polygon(
               points={{-2,2},{2,4},{10,2},{2,0},{-2,2}},
               lineColor={0,0,255},
                fillColor={0,0,255},
-              fillPattern=FillPattern.Solid,
-              smooth=Smooth.None)}),
-        Diagram(coordinateSystem(
-            preserveAspectRatio=true,
-            extent={{-100,-100},{100,100}},
-            grid={2,2}), graphics),
+              fillPattern=FillPattern.Solid)}),
         Documentation(info="<!DOCTYPE html>
 <html>
 <head><title>RealTimeCoordinationLibrary.RealTimeCoordination.TimeElements.Clock</title></head>
@@ -6473,7 +5620,6 @@ Variable <b>y</b> is both a variable and a connector.
           "Number to be shown in diagram layer if use_numberPort = true"
           annotation (Placement(transformation(extent={{-130,-15},{-100,15}}),
               iconTransformation(extent={{-15,-15},{15,15}},
-              rotation=0,
               origin={-115,36})));
       Boolean localCondition;
 
@@ -6514,10 +5660,6 @@ Variable <b>y</b> is both a variable and a connector.
                      else {255,255,255}),
                 fillPattern=FillPattern.Solid,
                 radius=60)}),
-          Diagram(coordinateSystem(
-              preserveAspectRatio=true,
-              extent={{-100,-100},{100,100}},
-              grid={2,2}), graphics),
           Documentation(info="<html>
 <p>
 The (time varying) Real output signal of this block can be defined in its
@@ -6582,10 +5724,6 @@ Variable <b>y</b> is both a variable and a connector.
                 extent={{-138,-50},{152,-90}},
                 textString="%name",
                 lineColor={0,0,255})}),
-          Diagram(coordinateSystem(
-              preserveAspectRatio=true,
-              extent={{-100,-100},{100,100}},
-              grid={2,2}), graphics),
           Documentation(info="<html>
 <p>
 The (time varying) Real output signal of this block can be defined in its
@@ -6648,13 +5786,11 @@ Variable <b>y</b> is both a variable and a connector.
                 radius=10,
                 origin={68.25,27.25},
                 rotation=90),
-              Line(points={{0,5},{0,-5}},  color={0,0,0},
-                origin={64,28},
+              Line(points={{0,5},{0,-5}},  origin={64,28},
                 rotation=90),
               Line(
                 visible=not use_after,
                 points={{0,4},{0,-4}},
-                color={0,0,0},
                 origin={74,28},
                 rotation=90),
               Text(
@@ -6664,10 +5800,6 @@ Variable <b>y</b> is both a variable and a connector.
                 origin={-14,29},
                 rotation=360,
                 textString="Constraint")}),
-          Diagram(coordinateSystem(
-              preserveAspectRatio=true,
-              extent={{-100,-100},{100,100}},
-              grid={2,2}), graphics),
           Documentation(info="<!DOCTYPE html>
 <html>
 <head><title>RealTimeCoordinationLibrary.RealTimeCoordination.TimeElements.ClockConstraintLess</title></head>
@@ -6733,13 +5865,11 @@ Variable <b>y</b> is both a variable and a connector.
                 radius=10,
                 origin={78.25,29.25},
                 rotation=90),
-              Line(points={{0,5},{0,-5}},  color={0,0,0},
-                origin={74,30},
+              Line(points={{0,5},{0,-5}},  origin={74,30},
                 rotation=90),
               Line(
                 visible=not use_after,
                 points={{0,4},{0,-4}},
-                color={0,0,0},
                 origin={84,30},
                 rotation=90),
               Text(
@@ -6749,10 +5879,6 @@ Variable <b>y</b> is both a variable and a connector.
                 origin={-4,33},
                 rotation=360,
                 textString="Constraint")}),
-          Diagram(coordinateSystem(
-              preserveAspectRatio=true,
-              extent={{-100,-100},{100,100}},
-              grid={2,2}), graphics),
           Documentation(info="<!DOCTYPE html>
 <html>
 <head><title>RealTimeCoordinationLibrary.RealTimeCoordination.TimeElements.ClockConstraintLessOrEqual</title></head>
@@ -6818,13 +5944,11 @@ Variable <b>y</b> is both a variable and a connector.
                 radius=10,
                 origin={78.25,29.25},
                 rotation=90),
-              Line(points={{0,5},{0,-5}},  color={0,0,0},
-                origin={74,30},
+              Line(points={{0,5},{0,-5}},  origin={74,30},
                 rotation=90),
               Line(
                 visible=not use_after,
                 points={{0,4},{0,-4}},
-                color={0,0,0},
                 origin={84,30},
                 rotation=90),
               Text(
@@ -6834,10 +5958,6 @@ Variable <b>y</b> is both a variable and a connector.
                 origin={-4,33},
                 rotation=360,
                 textString="Constraint")}),
-          Diagram(coordinateSystem(
-              preserveAspectRatio=true,
-              extent={{-100,-100},{100,100}},
-              grid={2,2}), graphics),
           Documentation(info="<!DOCTYPE html>
 <html>
 <head><title>RealTimeCoordinationLibrary.RealTimeCoordination.TimeElements.ClockConstraintGreater</title></head>
@@ -6904,13 +6024,11 @@ Variable <b>y</b> is both a variable and a connector.
                 radius=10,
                 origin={78.25,29.25},
                 rotation=90),
-              Line(points={{0,5},{0,-5}},  color={0,0,0},
-                origin={74,30},
+              Line(points={{0,5},{0,-5}},  origin={74,30},
                 rotation=90),
               Line(
                 visible=not use_after,
                 points={{0,4},{0,-4}},
-                color={0,0,0},
                 origin={84,30},
                 rotation=90),
               Text(
@@ -6920,10 +6038,6 @@ Variable <b>y</b> is both a variable and a connector.
                 origin={-4,33},
                 rotation=360,
                 textString="Constraint")}),
-          Diagram(coordinateSystem(
-              preserveAspectRatio=true,
-              extent={{-100,-100},{100,100}},
-              grid={2,2}), graphics),
           Documentation(info="<!DOCTYPE html>
 <html>
 <head><title>RealTimeCoordinationLibrary.RealTimeCoordination.TimeElements.ClockConstraintGreaterOrEqual</title></head>
@@ -7153,7 +6267,6 @@ package Internal "Internal utility models (should usually not be used by user)"
               e := vecIn[headIn]; // dequeue element at headIn-index
            end if;
        end readQueue;
-       annotation (Diagram(graphics));
      end Queue;
 
      connector port
@@ -7176,7 +6289,6 @@ package Internal "Internal utility models (should usually not be used by user)"
                fillColor={255,255,255}), Polygon(
                points={{-100,80},{0,0},{100,80},{-100,80}},
                lineColor={0,0,0},
-               smooth=Smooth.None,
                fillPattern=FillPattern.Solid,
                fillColor={255,255,255})}));
      end mailbox_output_port;
@@ -7194,7 +6306,6 @@ package Internal "Internal utility models (should usually not be used by user)"
                   fillColor={255,255,85}), Polygon(
                   points={{-100,80},{0,0},{100,80},{-100,80}},
                   lineColor={0,0,0},
-                  smooth=Smooth.None,
                   fillPattern=FillPattern.Solid,
                   fillColor={255,255,85})}));
      end transition_input_port;
@@ -7203,14 +6314,13 @@ package Internal "Internal utility models (should usually not be used by user)"
         extends port;
         Boolean fire;
         Integer instanceId;
-          annotation (Diagram(graphics), Icon(graphics={Rectangle(
+          annotation ( Icon(graphics={Rectangle(
                   extent={{-100,80},{100,-82}},
                   lineColor={0,0,0},
                   fillPattern=FillPattern.Solid,
                   fillColor={255,255,255}), Polygon(
                   points={{-100,80},{0,0},{100,80},{-100,80}},
                   lineColor={0,0,0},
-                  smooth=Smooth.None,
                   fillPattern=FillPattern.Solid,
                   fillColor={255,255,255})}));
       end message_output_port;
@@ -7226,7 +6336,6 @@ package Internal "Internal utility models (should usually not be used by user)"
                   fillColor={255,255,85}), Polygon(
                   points={{-100,80},{0,0},{100,80},{-100,80}},
                   lineColor={0,0,0},
-                  smooth=Smooth.None,
                   fillPattern=FillPattern.Solid,
                   fillColor={255,255,85})}));
       end mailbox_input_port;

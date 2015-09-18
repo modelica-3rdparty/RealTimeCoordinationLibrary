@@ -1,4 +1,4 @@
-# RealTimeCoordinationLibrary
+﻿# RealTimeCoordinationLibrary
 
 The `RealTimeCoordinationLibrary` contains an extension to the StateGraph2 library that enables modeling asynchronous and synchronous communication and rich real-time constraints for complex coordination protocols.
 
@@ -34,7 +34,7 @@ Download [Latest development version](../../archive/master.zip)
  * `firePort = fire` &rarr; `firePort = pre(fire)` *(Avoid algebraic loop when two outgoing transitions of a state send and receive a message)*
 
 * [Version v1.0 (2012-05-21)](../../archive/v1.0.zip)
- * [Modelica library award (2nd prize) at the Modelica conference 2012](https://www.modelica.org/publications/newsletters/2012-3#item164) 
+ * [Modelica library award (2nd prize) at the Modelica conference 2012](https://www.modelica.org/publications/newsletters/2012-3#item164)
  * Initial version, uses Modelica Standard Library 3.2
    - First version of the real-time coordination library based on StateGraph2, Modelica.StateGraph and the prototype ModeGraph library from Martin Malmheden.
 
@@ -56,16 +56,16 @@ it can be redistributed and/or modified under the terms of the [Modelica License
  > Phone: +49 5251 5465-174<br>
  > Fax: +49 5251 5465-102<br>
  > Room: 02-48
- 
+
  Additional contributors:
-  
+
   > [Stefan Dziwok] (mailto:xell@upb.de)<br>
   > Research Fellow<br>
   > Heinz Nixdorf Institute<br>
   > Software Engineering Group<br>
   > Zukunftsmeile 1<br>
   > 33102 Paderborn<br>
-  
+
  Student assistants:
   > Boris Wolf<br>
   > Sebastian Thiele
