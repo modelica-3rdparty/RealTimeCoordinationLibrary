@@ -60,7 +60,7 @@ defined by the time parameters $delay-min and $delay-max.
 </p>
 
 <p>
-<img width = \"706\" height = \"405\" src=\"images/Fail_Operational_Delegation/Structure_Fail-OperationalDelegation.jpg\" alt =\"\"/>
+<img width = \"706\" height = \"405\" src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Fail_Operational_Delegation/Structure_Fail-OperationalDelegation.jpg\" alt =\"\"/>
 </p>
 
 <p>
@@ -91,8 +91,8 @@ back to Inactive, too.
 </p>
 
 <p>
-<img src=\"images/Fail_Operational_Delegation/RTS_Fail-OperationalDelegation_Master.jpg\"  alt =\"\"/>
-<img src=\"images/Fail_Operational_Delegation/RTS_Fail-OperationalDelegation_Slave.jpg\" alt =\"\"/>
+<img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Fail_Operational_Delegation/RTS_Fail-OperationalDelegation_Master.jpg\"  alt =\"\"/>
+<img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Fail_Operational_Delegation/RTS_Fail-OperationalDelegation_Slave.jpg\" alt =\"\"/>
 </p>
 
 <p>
@@ -161,7 +161,7 @@ $delay-min and $delay-max.
 </p>
 
 <p>
-<img src=\"images/Master_Slave_Assignment/MasterSlavePattern.jpg\"  alt =\"\"/>
+<img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Master_Slave_Assignment/MasterSlavePattern.jpg\"  alt =\"\"/>
 </p>
 
 <p>
@@ -169,7 +169,7 @@ $delay-min and $delay-max.
 </p>
 
 <p>
-<img src=\"images/Master_Slave_Assignment/MasterSlaveInterface.jpg\" alt =\"\"/>
+<img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Master_Slave_Assignment/MasterSlaveInterface.jpg\" alt =\"\"/>
 </p>
 
 <p>
@@ -207,7 +207,7 @@ fallen out.
 </p>
 
 <p>
-<img src=\"images/Master_Slave_Assignment/MasterSlaveBehavior.jpg\" alt =\"\"/>
+<img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Master_Slave_Assignment/MasterSlaveBehavior.jpg\" alt =\"\"/>
 </p>
 
 <p>
@@ -253,16 +253,16 @@ Define a pattern which ensures that both systems may never be active at the same
 <p>
 The pattern consists of the role partner, which is a in/out role. The message the partners exchange can be seen in the message interface. The partner may send the message turn() to the other partner and vice versa. The connector must not loose messages. The delay for sending a message is defined by the time parameters $delay-min and $delay-max.
 </p>
-<p><img src=\"images/Turn_Transmission/Structure.jpg\" alt =\"\" ></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Turn_Transmission/Structure.jpg\" alt =\"\" ></p>
 <p><small>Figure 1: Structure of the Turn-Transmission Pattern</small></p>
-<p><img src=\"images/Turn_Transmission/Interfaces.jpg\" alt =\"\" ></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Turn_Transmission/Interfaces.jpg\" alt =\"\" ></p>
 <p><small>Figure 2: Interfaces of the Turn-Transmission Pattern</small></p>
 <h4> Behavior </h4>
 <p>
 In order to distinguish between the two partners in this section, they are called partner1 and partner2. Both, partner1 or partner2, may start the cooperation. Assuming partner1 wants to start the cooperation, then it sends the message turn() to partner2 and changes its state to 'YourTurn', which means that partner1 is not actively solving this task anymore but gives it turn to partner1. Consequently, by receiving the turn() message from partner1, partner2 is now the acitve partner and changes its state to 'MyTurn'. Now both partners may change their 'roles' between 'MyTurn' and 'YourTurn'sequentially, such that they are always in the corresponding 'counterstate'. If a partner decides to end the cooperation, either because the task is fulfilled or in case of a failure, it can always change its state back to inactive. Furthermore if a partner does not receive any message from the counterpart, then after a certain amount of time units it changes it changes its state back to inactive via the timeout transition.
 </p>
 
-<p><img src=\"images/Turn_Transmission/Behavior.jpg\" alt =\"\" ></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Turn_Transmission/Behavior.jpg\" alt =\"\" ></p>
 <p><small>Figure 3: Realtimestatechart, showing the behavior of the partner</small></p>
 </body>
 </html>
@@ -315,9 +315,9 @@ The connector must not lose messages. The time parameter of the role provider is
 $worktime. The delay for sending a message is defined by the time parameters $delaymin
 and $delay-max.
 </p>
-<p><img src=\"images/Limit-Observation/Structure.jpg\" alt =\"\" ></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Limit-Observation/Structure.jpg\" alt =\"\" ></p>
 <p><small>Figure 1: Structure of the Limit Observation Pattern</small></p>
-<p><img src=\"images/Limit-Observation/Interfaces.jpg\" alt =\"\"></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Limit-Observation/Interfaces.jpg\" alt =\"\"></p>
 <p><small>Figure 2: Interfaces of the Limit Observation Pattern</small></p>
 
 <h4> Behavior </h4>
@@ -337,7 +337,7 @@ provider if the limit is violated or redeemed. It reacts on the messages of the 
 and changes to state LimitExceeded if the value exceeds the limit or to LimitRedeemed
 if value redeems the limit.
 </p>
-<p><img src=\"images/Limit-Observation/Limit-Observation-Behavior.jpg\" alt =\"\" ></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Limit-Observation/Limit-Observation-Behavior.jpg\" alt =\"\" ></p>
 <p><small>Figure 3: Realtimestatecharts of the Limit-Observation Pattern, showing the behavior of the observer and provider role </small></p>
 
 </body>
@@ -387,7 +387,7 @@ The pattern consists of the two roles master and slave. Both roles are in/out ro
 </p>
 
 <p>
-<img src=\"images/Fail_Safe_Delegation/Structure.jpg\" alt=\"\"/>
+<img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Fail_Safe_Delegation/Structure.jpg\" alt=\"\"/>
 </p>
 
 <p>
@@ -397,7 +397,7 @@ Figure 1: Structure of Fail Safe Delegation
 </p>
 
 <p>
-<img src=\"images/Fail_Safe_Delegation/Interfaces.jpg\" alt=\"\"/>
+<img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Fail_Safe_Delegation/Interfaces.jpg\" alt=\"\"/>
 </p>
 
 <p>
@@ -411,7 +411,7 @@ The role master has the initial state Idle. From this state the master can send 
 </p>
 
 <p>
-	<img src=\"images/Fail_Safe_Delegation/Behavior.jpg\" alt =\"\"/>
+	<img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Fail_Safe_Delegation/Behavior.jpg\" alt =\"\"/>
 </p>
 
 <p>
@@ -463,9 +463,9 @@ Which message each role can receive and send is shown in the message interfaces.
 The connector must not lose messages. The delay for sending a message is defined by
 the time parameters $delay-min and $delay-max.
 </p>
-<p><img src=\"images/Block-Execution/Structure.jpg\" alt =\"\" ></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Block-Execution/Structure.jpg\" alt =\"\" ></p>
 <p><small>Figure 1: Structure of the Block-Execution Pattern</small></p>
-<p><img src=\"images/Block-Execution/Interfaces.jpg\" alt =\"\"></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Block-Execution/Interfaces.jpg\" alt =\"\"></p>
 <p><small>Figure 2: Interfaces of the Block-Execution Pattern</small></p>
 
 <h4> Behavior </h4>
@@ -479,7 +479,7 @@ executor receives the message free, it change to state Free and starts its work.
 executor is in state Free and receives the message block, it changes to state Block and
 stops its work.
 </p>
-<p><img src=\"images/Block-Execution/Block-Execution-Behavior.jpg\" alt =\"\" ></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Block-Execution/Block-Execution-Behavior.jpg\" alt =\"\" ></p>
 <p><small>Figure 3: Realtimestatecharts, showing the behavior of the guard and executor role </small></p>
 </body>
 </html>"));
@@ -538,9 +538,9 @@ is $timeout, the time parameter of role slave is $eval-time. The connector may l
 messages. The delay for sending a message is defined by the time parameters $delay-min
 and $delay-max.
 </p>
-<p><img src=\"images/Synchronized_Collaboration/Structure.jpg\" alt =\"\" ></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Synchronized_Collaboration/Structure.jpg\" alt =\"\" ></p>
 <p><small>Figure 1: Structure of the Synchronized-Collaboration Pattern</small></p>
-<p><img src=\"images/Synchronized_Collaboration/Interfaces.jpg\"  alt =\"\"></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Synchronized_Collaboration/Interfaces.jpg\"  alt =\"\"></p>
 <p><small>Figure 2: Interfaces of the Synchronized-Collaboration Pattern</small></p>
 <h4> Behavior </h4>
 <p>
@@ -554,7 +554,7 @@ lost), he cancels its waiting and may send a new proposal. Only the master can d
 deactivate the collaboration. He informs the slave so that he also deactivates it.
 </p>
 
-<p><img src=\"images/Synchronized_Collaboration/Behavior.jpg\" alt =\"\" ></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Synchronized_Collaboration/Behavior.jpg\" alt =\"\" ></p>
 <p><small>Figure 3: Realtimestatecharts of the Master and Slave</small></p>
 </body>
 </html>
@@ -601,9 +601,9 @@ The time parameter of the role sender is $period, the time parameter of role sla
 $timeout. The connector may lose messages. The delay for sending a message is defined
 by the time parameters $delay-min and $delay-max.
 </p>
-<p><img src=\"images/Periodic_Transmission/Structure.jpg\" alt =\"\" ></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Periodic_Transmission/Structure.jpg\" alt =\"\" ></p>
 <p><small>Figure 1: Structure of the Periodic Transmission Pattern</small></p>
-<p><img src=\"images/Periodic_Transmission/Interfaces.jpg\" alt =\"\"></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Periodic_Transmission/Interfaces.jpg\" alt =\"\"></p>
 <p><small>Figure 2: Interfaces of the Periodic Transmission Pattern</small></p>
 
 <h4> Behavior </h4>
@@ -616,7 +616,7 @@ the message data got lost or the sender falls out, the receiver changes to state
 activates a certain behavior to avoid the safety-critical situation. As soon as the receiver
 receives a message data again, it changes back to state PeriodicReceiving.
 </p>
-<p><img src=\"images/Periodic_Transmission/Behavior.jpg\"  alt =\"\"></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Periodic_Transmission/Behavior.jpg\"  alt =\"\"></p>
 <p><small>Figure 3: Realtimestatecharts, showing the behavior of the sender and receiver role </small></p>
 </body>
 </html>"));
@@ -669,9 +669,9 @@ Which message each role can receive and send is shown in the message interfaces.
 may send the message consumed to the producer. The connector must not lose messages. The delay for sending a message is defined by
 the time parameters $delay-min and $delay-max.
 </p>
-<p><img src=\"images/Producer-Consumer/Structure.jpg\"  alt =\"\"></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Producer-Consumer/Structure.jpg\"  alt =\"\"></p>
 <p><small>Figure 1: Structure of the Producer-Consumer Pattern</small></p>
-<p><img src=\"images/Producer-Consumer/Interfaces.jpg\" alt =\"\"></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Producer-Consumer/Interfaces.jpg\" alt =\"\"></p>
 <p><small>Figure 2: Interfaces of the Producer-Consumer Pattern</small></p>
 
 <h4> Behavior </h4>
@@ -683,7 +683,7 @@ the message produced, it knows the producer has leaved the critical section and 
 enter it by itself. If the producer receives the messages consumed, the consumer has
 leaved the critical section and the producer can enter it again.
 </p>
-<p><img src=\"images/Producer-Consumer/Producer-Consumer-Behavior.jpg\" alt =\"\" ></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Producer-Consumer/Producer-Consumer-Behavior.jpg\" alt =\"\" ></p>
 <p><small>Figure 3: Realtimestatecharts, showing the behavior of the producer and consumer role </small></p>
 </body>
 </html>"));
@@ -1667,7 +1667,7 @@ Documentation(info="<html>
 <body>
 <h3>scenario description</h3>
 Two bebots drive in a line, so there is a RearBebot and a FrontBebot. So that no accident happens the FrontBebot periodically measures the distance between both bebots. If the distance crosses a certain security critical limit, the FrontBebot will send a message to the RearBebot with the command to slow down. If the RearBebot receives this message of the FrontBebot, it will break. The acceleration functions of both bebots can be changed in order to see different scenarios. An example process is illustrated in the following diagram:
-<p><img src=\"modelica://RealTimeCoordinationLibrary/images/Limit-Observation/examplesForPatternUse/example1/scenario.jpg\"/></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Limit-Observation/examplesForPatternUse/example1/scenario.jpg\"/></p>
 </body>
 </html>"));
         end FinalSystemMain;
@@ -2677,7 +2677,7 @@ BlockExecution.FinalSystemMain
 </head>
 <body>
 <p>A bebot is driving on track sections that are ordered in a circle. Every track section is controlled by a TrackSectionControl. The TrackSectionControl and the bebot can communicate via messages. </p>
-<p><img src=\"modelica://RealTimeCoordinationLibrary/images/Block-Execution/examplesForPatternUse/example1/scenario.jpg\" alt =\"\"/></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Block-Execution/examplesForPatternUse/example1/scenario.jpg\" alt =\"\"/></p>
 <p>It is possible, that an accident on a track section occurs. In this case the track section control sends a message to the bebot, that there is an accident on this section. If the bebot is currently driving on the affected section, it stops, if its on a different section, the bebot continues driving.</p>
 </body>
 </html>"));
@@ -4497,10 +4497,10 @@ end Examples;
 <body>
 <h3> Delegation_Master </h3>
 <p>This class implements the behavior of the role Delegation_Master in the &quot;Fail-Operational Delegation&quot; pattern. The master component wants to delegate a task to the slave component, being responsible for executing the task. The slave component can report the task execuition with either &quot;done&quot; or &quot;fail&quot;, informing the master whether the delegation was successful or not. More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Fail_Operational_Delegation\">here</a>&quot; The corresponding Realtime Statechart is shown in the following figure: </p>
-<p><img src=\"images/Fail_Operational_Delegation/RTS_Fail-OperationalDelegation_Master.jpg\" alt =\"\"/> </p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Fail_Operational_Delegation/RTS_Fail-OperationalDelegation_Master.jpg\" alt =\"\"/> </p>
 <p><small>Figure 1: Realtimestatechart, showing the behavior of the master role </small></p>
 <p>The master has a parameter &quot;timeout&quot;, specifying the time that the master waits for a reply of the slave (which can be either &quot;fail&quot; or &quot;done&quot; in case of a failure or a success resp.). </p>
-<p><img src=\"images/Fail_Operational_Delegation/Parameters_Master.jpg\" alt = \"\"/> </p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Fail_Operational_Delegation/Parameters_Master.jpg\" alt = \"\"/> </p>
 <p><small>Figure 2: Realtimestatechart, showing the parameters of the master role </small></p>
 </body>
 </html>
@@ -4629,10 +4629,10 @@ end Examples;
 <body>
 <h3> Delegation_Slave </h3>
 <p>This class implements the behavior of the role Delegation_Slave in the &quot;Fail-Operational Delegation&quot; pattern. The master component wants to delegate a task to the slave component, being responsible for executing the task. The slave component can report the task execuition with either &quot;done&quot; or &quot;fail&quot;, informing the master whether the delegation was successful or not. More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Fail_Operational_Delegation\">here</a>&quot; The corresponding Realtime Statechart is shown in the following figure: </p>
-<p><img src=\"images/Fail_Operational_Delegation/RTS_Fail-OperationalDelegation_Slave.jpg\" alt =\"\"/> </p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Fail_Operational_Delegation/RTS_Fail-OperationalDelegation_Slave.jpg\" alt =\"\"/> </p>
 <p><small>Figure 1: Realtimestatechart, showing the behavior of the slave role </small></p>
 <p>The slave has a parameter &quot;worktime&quot;, specifying the maximum amount of time that the slave may use to execute the task. </p>
-<p><img src=\"images/Fail_Operational_Delegation/Parameters_Slave.jpg\" alt =\"\"/> </p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Fail_Operational_Delegation/Parameters_Slave.jpg\" alt =\"\"/> </p>
 <p><small>Figure 2: Realtimestatechart, showing the parameters of the slave role </small></p>
 </body>
 </html>"));
@@ -4689,7 +4689,7 @@ defined by the time parameters $delay-min and $delay-max.
 </p>
 
 <p>
-<img width = \"706\" height = \"405\" src=\"images/Fail_Operational_Delegation/Structure_Fail-OperationalDelegation.jpg\" alt =\"\"/>
+<img width = \"706\" height = \"405\" src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Fail_Operational_Delegation/Structure_Fail-OperationalDelegation.jpg\" alt =\"\"/>
 </p>
 
 <p>
@@ -4720,8 +4720,8 @@ back to Inactive, too.
 </p>
 
 <p>
-<img src=\"images/Fail_Operational_Delegation/RTS_Fail-OperationalDelegation_Master.jpg\"  alt =\"\"/>
-<img src=\"images/Fail_Operational_Delegation/RTS_Fail-OperationalDelegation_Slave.jpg\" alt =\"\"/>
+<img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Fail_Operational_Delegation/RTS_Fail-OperationalDelegation_Master.jpg\"  alt =\"\"/>
+<img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Fail_Operational_Delegation/RTS_Fail-OperationalDelegation_Slave.jpg\" alt =\"\"/>
 </p>
 
 <p>
@@ -5223,7 +5223,7 @@ This class implements the behavior of the role Peer in the &quot;Master-Slave-As
 </p>
 
 <p>
-<img src=\"images/Master_Slave_Assignment/MasterSlaveBehavior.jpg\" alt = \"\"/>
+<img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Master_Slave_Assignment/MasterSlaveBehavior.jpg\" alt = \"\"/>
 </p>
 <p>
 <small>Figure 1: Realtimestatechart, showing the behavior of the peer role </small>
@@ -5262,7 +5262,7 @@ The peer has the following parameters (The parameter names may differ in the Rea
 
 
 <p>
-<img src=\"images/Master_Slave_Assignment/ParametersPeer.jpg\" alt =\"\"/>
+<img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Master_Slave_Assignment/ParametersPeer.jpg\" alt =\"\"/>
 </p>
 
 <p>
@@ -5327,7 +5327,7 @@ $delay-min and $delay-max.
 </p>
 
 <p>
-<img src=\"images/Master_Slave_Assignment/MasterSlavePattern.jpg\"  alt =\"\"/>
+<img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Master_Slave_Assignment/MasterSlavePattern.jpg\"  alt =\"\"/>
 </p>
 
 <p>
@@ -5335,7 +5335,7 @@ $delay-min and $delay-max.
 </p>
 
 <p>
-<img src=\"images/Master_Slave_Assignment/MasterSlaveInterface.jpg\" alt =\"\"/>
+<img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Master_Slave_Assignment/MasterSlaveInterface.jpg\" alt =\"\"/>
 </p>
 
 <p>
@@ -5373,7 +5373,7 @@ fallen out.
 </p>
 
 <p>
-<img src=\"images/Master_Slave_Assignment/MasterSlaveBehavior.jpg\" alt =\"\"/>
+<img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Master_Slave_Assignment/MasterSlaveBehavior.jpg\" alt =\"\"/>
 </p>
 
 <p>
@@ -5610,13 +5610,13 @@ fallen out.
  More information concerning the pattern can be found
 &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Turn_Transmission\">here</a>&quot;
 The corresponding Realtime Statechart is shown in the following figure: </p>
-<p><img src=\"images/Turn_Transmission/Behavior.jpg\" alt=\"\" ></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Turn_Transmission/Behavior.jpg\" alt=\"\" ></p>
 <p><small>Figure 1: Realtimestatechart, showing the behavior of the partner</small></p>
 
 
 
 <p>The partner has a parameter $timeout, specifying the maximum amount of time units that the partner waits for the message of the other partner. </p>
-<p><img src=\"images/Turn_Transmission/Parameters.jpg\" alt = \"\"/> </p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Turn_Transmission/Parameters.jpg\" alt = \"\"/> </p>
 <p><small>Figure 2: Realtimestatechart, showing the parameters of the partner role </small></p>
 </body>
 </html>"));
@@ -5654,16 +5654,16 @@ Define a pattern which ensures that both systems may never be active at the same
 <p>
 The pattern consists of the role partner, which is a in/out role. The message the partners exchange can be seen in the message interface. The partner may send the message turn() to the other partner and vice versa. The connector must not loose messages. The delay for sending a message is defined by the time parameters $delay-min and $delay-max.
 </p>
-<p><img src=\"images/Turn_Transmission/Structure.jpg\"  alt =\"\"></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Turn_Transmission/Structure.jpg\"  alt =\"\"></p>
 <p><small>Figure 1: Structure of the Turn-Transmission Pattern</small></p>
-<p><img src=\"images/Turn_Transmission/Interfaces.jpg\"  alt =\"\"></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Turn_Transmission/Interfaces.jpg\"  alt =\"\"></p>
 <p><small>Figure 2: Interfaces of the Turn-Transmission Pattern</small></p>
 <h4> Behavior </h4>
 <p>
 In order to distinguish between the two partners in this section, they are called partner1 and partner2. Both, partner1 or partner2, may start the cooperation. Assuming partner1 wants to start the cooperation, then it sends the message turn() to partner2 and changes its state to 'YourTurn', which means that partner1 is not actively solving this task anymore but gives it turn to partner1. Consequently, by receiving the turn() message from partner1, partner2 is now the acitve partner and changes its state to 'MyTurn'. Now both partners may change their 'roles' between 'MyTurn' and 'YourTurn'sequentially, such that they are always in the corresponding 'counterstate'. If a partner decides to end the cooperation, either because the task is fulfilled or in case of a failure, it can always change its state back to inactive. Furthermore if a partner does not receive any message from the counterpart, then after a certain amount of time units it changes it changes its state back to inactive via the timeout transition.
 </p>
 
-<p><img src=\"images/Turn_Transmission/Behavior.jpg\"  alt =\"\"></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Turn_Transmission/Behavior.jpg\"  alt =\"\"></p>
 <p><small>Figure 3: Realtimestatechart, showing the behavior of the partner</small></p>
 </body>
 </html>
@@ -5796,9 +5796,9 @@ In order to distinguish between the two partners in this section, they are calle
 <h3> Provider </h3>
 This class implements the role Provider of the Limit-Observation-Pattern. The provider is responsible for collecting numerical information. The observer wants to know, whether this information violated a certain limit or not. Therefore the provider sends the limitViolated() message to the observer, if the information violates a certain limit, and it sends the limitRedeemed() message to the observer, if the violation has stopped.More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Limit_Observation\">here</a>&quot;. <p>The behavoir can be seen in the following statechart.
 The provider has the parameter $worktime, which specifies the number of time units, that the initial measurement of the numerical information shuold need at most. </p>
-<p><img src=\"images/Limit-Observation/parameters_provider.jpg\"alt = \"\"></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Limit-Observation/parameters_provider.jpg\"alt = \"\"></p>
 <p><small>Figure 1: Parameters of the provider </small></p>
-<p><img src=\"images/Limit-Observation/Provider-Behavior.jpg\" alt = \"\"></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Limit-Observation/Provider-Behavior.jpg\" alt = \"\"></p>
 <p><small>Figure 2: Realtimestatechart, showing the behavior of the provider role </small></p>
 </body>
 </html>"),
@@ -5924,7 +5924,7 @@ The provider has the parameter $worktime, which specifies the number of time uni
 <h3> Observer </h3>
 This class implements the role Provider of the Limit-Observation-Pattern. The provider is responsible for collecting numerical information. The observer wants to know, whether this information violated a certain limit or not. Therefore the provider sends the limitViolated() message to the observer, if the information violates a certain limit, and it sends the limitRedeemed() message to the observer, if the violation has stopped.More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Limit_Observation\">here</a>&quot;. <p>The behavoir can be seen in the following statechart.
 The observer has no parameters. </p>
-<p><img src=\"images/Limit-Observation/Observer-Behavior.jpg\" alt = \"\"></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Limit-Observation/Observer-Behavior.jpg\" alt = \"\"></p>
 <p><small>Figure 1: Realtimestatechart, showing the behavior of the observer role </small></p>
 </body>
 </html>"));
@@ -5973,9 +5973,9 @@ The connector must not lose messages. The time parameter of the role provider is
 $worktime. The delay for sending a message is defined by the time parameters $delaymin
 and $delay-max.
 </p>
-<p><img src=\"images/Limit-Observation/Structure.jpg\"  alt =\"\"></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Limit-Observation/Structure.jpg\"  alt =\"\"></p>
 <p><small>Figure 1: Structure of the Limit Observation Pattern</small></p>
-<p><img src=\"images/Limit-Observation/Interfaces.jpg\" alt =\"\"></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Limit-Observation/Interfaces.jpg\" alt =\"\"></p>
 <p><small>Figure 2: Interfaces of the Limit Observation Pattern</small></p>
 
 <h4> Behavior </h4>
@@ -5995,7 +5995,7 @@ provider if the limit is violated or redeemed. It reacts on the messages of the 
 and changes to state LimitExceeded if the value exceeds the limit or to LimitRedeemed
 if value redeems the limit.
 </p>
-<p><img src=\"images/Limit-Observation/Limit-Observation-Behavior.jpg\" alt =\"\" ></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Limit-Observation/Limit-Observation-Behavior.jpg\" alt =\"\" ></p>
 <p><small>Figure 3: Realtimestatecharts of the Limit-Observation Pattern, showing the behavior of the observer and provider role </small></p>
 
 </body>
@@ -6163,10 +6163,10 @@ if value redeems the limit.
 <h3>Safe_Delegation_Master</h3>
 <p>This class implements the role Master of the Fail-Safe-Delgation-Pattern. The master component wants to delegate a task to the slave component, being responsible for executing the task. The slave component can report the task execuition with either &quot;done&quot; or &quot;fail&quot;, informing the master whether the delegation was successful or not. More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Fail_Safe_Delegation\">here</a>&quot;. </p>
 <p>The behavoir can be seen in the following statechart. </p>
-<p><img src=\"images/Fail_Safe_Delegation/Behavior_Master.jpg\" alt=\"\"/></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Fail_Safe_Delegation/Behavior_Master.jpg\" alt=\"\"/></p>
 <p><small>Figure 1:  Realtimestatechart showing the behavior of the role master</small></p>
 <p>The Master has a parameter $timeout, which is specifies the time the master may stay at most in the state of &apos;Waiting&apos;, e. g. it specifies the maximum time the Master waits for a reply of the slave after ordering the delegation. </p>
-<p><img src=\"images/Fail_Safe_Delegation/Parameter_Master.jpg\" alt=\"\"/></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Fail_Safe_Delegation/Parameter_Master.jpg\" alt=\"\"/></p>
 <p><small>Figure 2: Parameters of the role master.</small></p>
 </body>
 </html>"));
@@ -6329,10 +6329,10 @@ if value redeems the limit.
 <h3>Safe_Delegation_Master</h3>
 <p>This class implements the role Master of the Fail-Safe-Delgation-Pattern. TThis class implements the behavior of the role Delegation_Slave in the &quot;Fail-Operational Delegation&quot; pattern. The master component wants to delegate a task to the slave component, being responsible for executing the task. The slave component can report the task execuition with either &quot;done&quot; or &quot;fail&quot;, informing the master whether the delegation was successful or not. More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Fail_Safe_Delegation\">here</a>&quot;. </p>
 <p>The behavior can be seen in the following statechart. </p>
-<p><img src=\"images/Fail_Safe_Delegation/Behavior_Slave.jpg\" alt =\"\"/></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Fail_Safe_Delegation/Behavior_Slave.jpg\" alt =\"\"/></p>
 <p><small>Figure 1:  Realtimestatechart showing the behavior of the role slave</small></p>
 <p>The slave has a parameter $worktime, which specifies the time the slave may stay at most in the state of &apos;Working&apos;, e. g. it specifies the maximum time the Slave may be working on the task. </p>
-<p><img src=\"images/Fail_Safe_Delegation/Parameter_Slave.jpg\" alt =\"\"/></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Fail_Safe_Delegation/Parameter_Slave.jpg\" alt =\"\"/></p>
 <p><small>Figure 2: Parmaters of the role slave.</small></p>
 </body>
 </html>"));
@@ -6379,7 +6379,7 @@ The pattern consists of the two roles master and slave. Both roles are in/out ro
 </p>
 
 <p>
-<img src=\"images/Fail_Safe_Delegation/Structure.jpg\" alt=\"\"/>
+<img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Fail_Safe_Delegation/Structure.jpg\" alt=\"\"/>
 </p>
 
 <p>
@@ -6389,7 +6389,7 @@ Figure 1: Structure of Fail Safe Delegation
 </p>
 
 <p>
-<img src=\"images/Fail_Safe_Delegation/Interfaces.jpg\" alt=\"\"/>
+<img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Fail_Safe_Delegation/Interfaces.jpg\" alt=\"\"/>
 </p>
 
 <p>
@@ -6403,7 +6403,7 @@ The role master has the initial state Idle. From this state the master can send 
 </p>
 
 <p>
-	<img src=\"images/Fail_Safe_Delegation/Behavior.jpg\" alt =\"\"/>
+	<img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Fail_Safe_Delegation/Behavior.jpg\" alt =\"\"/>
 </p>
 
 <p>
@@ -6583,10 +6583,10 @@ The role master has the initial state Idle. From this state the master can send 
  More information concerning the pattern can be found
 &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.SynchronizedCollaboration\">here</a>&quot;
 The corresponding Realtime Statechart is shown in the following figure: </p>
-<p><img src=\"images/Synchronized_Collaboration/Behavior_Slave.jpg\" alt=\"\"/> </p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Synchronized_Collaboration/Behavior_Slave.jpg\" alt=\"\"/> </p>
 <p><small>Figure 1: Realtimestatechart, showing the behavior of the slave role </small></p>
 <p>The slave has a parameter $evaluationtime, specifying the time that the slave may need at most to evaluate the collaboration proposal. </p>
-<p><img src=\"images/Synchronized_Collaboration/Parameters_Slave.jpg\" alt=\"\"/> </p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Synchronized_Collaboration/Parameters_Slave.jpg\" alt=\"\"/> </p>
 <p><small>Figure 2: Realtimestatechart, showing the parameters of the slave role </small></p>
 </body>
 </html>"));
@@ -6764,11 +6764,11 @@ The corresponding Realtime Statechart is shown in the following figure: </p>
  More information concerning the pattern can be found
 &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.SynchronizedCollaboration\">here</a>&quot;
 The corresponding Realtime Statechart is shown in the following figure: </p>
-<p><img src=\"images/Synchronized_Collaboration/Behavior_Master.jpg\" alt = \"\"/> </p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Synchronized_Collaboration/Behavior_Master.jpg\" alt = \"\"/> </p>
 <p><small>Figure 1: Realtimestatechart, showing the behavior of the master role </small></p>
 
 <p>The master has a parameter $timeout, specifying the time that the master waits at most for the report of the slave. </p>
-<p><img src=\"images/Synchronized_Collaboration/Parameters_Master.jpg\" alt =\"\"/> </p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Synchronized_Collaboration/Parameters_Master.jpg\" alt =\"\"/> </p>
 <p><small>Figure 2: Realtimestatechart, showing the parameters of the master role </small></p>
 </body>
 </html>"));
@@ -6819,9 +6819,9 @@ is $timeout, the time parameter of role slave is $eval-time. The connector may l
 messages. The delay for sending a message is defined by the time parameters $delay-min
 and $delay-max.
 </p>
-<p><img src=\"images/Synchronized_Collaboration/Structure.jpg\" alt=\"\" ></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Synchronized_Collaboration/Structure.jpg\" alt=\"\" ></p>
 <p><small>Figure 1: Structure of the Synchronized-Collaboration Pattern</small></p>
-<p><img src=\"images/Synchronized_Collaboration/Interfaces.jpg\" alt=\"\" ></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Synchronized_Collaboration/Interfaces.jpg\" alt=\"\" ></p>
 <p><small>Figure 2: Interfaces of the Synchronized-Collaboration Pattern</small></p>
 <h4> Behavior </h4>
 <p>
@@ -6835,7 +6835,7 @@ lost), he cancels its waiting and may send a new proposal. Only the master can d
 deactivate the collaboration. He informs the slave so that he also deactivates it.
 </p>
 
-<p><img src=\"images/Synchronized_Collaboration/Behavior.jpg\" alt=\"\" ></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Synchronized_Collaboration/Behavior.jpg\" alt=\"\" ></p>
 <p><small>Figure 3: Realtimestatecharts of the Master and Slave</small></p>
 </html>
 "));
@@ -6922,7 +6922,7 @@ deactivate the collaboration. He informs the slave so that he also deactivates i
 <h3> Guard </h3>
 This class implements the behavior of the role guard of the Block-Execution-Pattern. The guard controls the execution of a certain task, which is done by a different component, which implements the executor role. It can start and stop the exectution by sending the free() and the block() message to the executor. More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Block_Execution\">here</a>&quot;. <p>The behavoir can be seen in the following statechart.
 The guard has no parameters. </p>
-<p><img src=\"images/Block-Execution/Guard-Behavior.jpg\" alt =\"\" ></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Block-Execution/Guard-Behavior.jpg\" alt =\"\" ></p>
 <p><small>Figure 1: Realtimestatechart, showing the behavior of the producer role </small></p>
 </body>
 </html>"));
@@ -7010,7 +7010,7 @@ The guard has no parameters. </p>
 <h3> Executor </h3>
 This class implements the behavior of the role executor of the Block-Execution-Pattern. The executor is responsible for executing a certain task. The execution is controlled by a component which implements the gurad role. The guard can start and stop the exectution by sending the free() and the block() message to the executor. More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Block_Execution\">here</a>&quot;. <p>The behavoir can be seen in the following statechart.
 The executor has no parameters. </p>
-<p><img src=\"images/Block-Execution/Executor-Behavior.jpg\" alt = \"\"></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Block-Execution/Executor-Behavior.jpg\" alt = \"\"></p>
 <p><small>Figure 1: Realtimestatechart, showing the behavior of the executor role </small></p>
 </body>
 </html>"));
@@ -7054,9 +7054,9 @@ Which message each role can receive and send is shown in the message interfaces.
 The connector must not lose messages. The delay for sending a message is defined by
 the time parameters $delay-min and $delay-max.
 </p>
-<p><img src=\"images/Block-Execution/Structure.jpg\" alt=\"\" ></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Block-Execution/Structure.jpg\" alt=\"\" ></p>
 <p><small>Figure 1: Structure of the Block-Execution Pattern</small></p>
-<p><img src=\"images/Block-Execution/Interfaces.jpg\" alt=\"\"></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Block-Execution/Interfaces.jpg\" alt=\"\"></p>
 <p><small>Figure 2: Interfaces of the Block-Execution Pattern</small></p>
 
 <h4> Behavior </h4>
@@ -7070,7 +7070,7 @@ executor receives the message free, it change to state Free and starts its work.
 executor is in state Free and receives the message block, it changes to state Block and
 stops its work.
 </p>
-<p><img src=\"images/Block-Execution/Block-Execution-Behavior.jpg\" alt=\"\" ></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Block-Execution/Block-Execution-Behavior.jpg\" alt=\"\" ></p>
 <p><small>Figure 3: Realtimestatecharts, showing the behavior of the guard and executor role </small></p>
 </body>
 </html>"));
@@ -7146,10 +7146,10 @@ The sender sends every $period time units a message data() to the receiver. The 
 More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Periodic_Transmission\">here</a>&quot;.
 
 <p> The provider has the parameter $period, which specifies the period, in which the sender sends the data() message to the receiver. </p>
-<p><img src=\"images/Periodic_Transmission/parameters_sender.jpg\" alt=\"\"></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Periodic_Transmission/parameters_sender.jpg\" alt=\"\"></p>
 <p><small>Figure 1: Parameters of the sender </small></p>
 <p>The behavior can be seen in the following statechart.</p>
-<p><img src=\"images/Periodic_Transmission/Behavior_Sender.jpg\" alt=\"\"></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Periodic_Transmission/Behavior_Sender.jpg\" alt=\"\"></p>
 <p><small>Figure 2: Realtimestatechart, showing the behavior of the sender role </small></p>
 </body>
 </html>"));
@@ -7257,10 +7257,10 @@ The sender sends every $period time units a message data() to the receiver. The 
 More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Periodic_Transmission\">here</a>&quot;.
 <p> The provider has a parameter $timeout, which specifies number of time units the receiver waits for a message of the sender. If there was no message received during the time, the receiver changes its state to 'Timeout'.
 After receiving the data() message, the receiver changes back to state 'PeriodicReceiving'. </p>
-<p><img src=\"images/Periodic_Transmission/parameters_receiver.jpg\" alt = \"\"></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Periodic_Transmission/parameters_receiver.jpg\" alt = \"\"></p>
 <p><small>Figure 1: Parameters of the sender </small></p>
 <p>The behavior can be seen in the following statechart.</p>
-<p><img src=\"images/Periodic_Transmission/Behavior_Receiver.jpg\" alt = \"\"></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Periodic_Transmission/Behavior_Receiver.jpg\" alt = \"\"></p>
 <p><small>Figure 2: Realtimestatechart, showing the behavior of the receiver role </small></p>
 </body>
 </html>"));
@@ -7303,9 +7303,9 @@ The time parameter of the role sender is $period, the time parameter of role sla
 $timeout. The connector may lose messages. The delay for sending a message is defined
 by the time parameters $delay-min and $delay-max.
 </p>
-<p><img src=\"images/Periodic_Transmission/Structure.jpg\" alt=\"\" ></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Periodic_Transmission/Structure.jpg\" alt=\"\" ></p>
 <p><small>Figure 1: Structure of the Periodic Transmission Pattern</small></p>
-<p><img src=\"images/Periodic_Transmission/Interfaces.jpg\" alt=\"\"></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Periodic_Transmission/Interfaces.jpg\" alt=\"\"></p>
 <p><small>Figure 2: Interfaces of the Periodic Transmission Pattern</small></p>
 
 <h4> Behavior </h4>
@@ -7318,7 +7318,7 @@ the message data got lost or the sender falls out, the receiver changes to state
 activates a certain behavior to avoid the safety-critical situation. As soon as the receiver
 receives a message data again, it changes back to state PeriodicReceiving.
 </p>
-<p><img src=\"images/Periodic_Transmission/Behavior.jpg\"  alt=\"\"></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Periodic_Transmission/Behavior.jpg\"  alt=\"\"></p>
 <p><small>Figure 3: Realtimestatecharts, showing the behavior of the sender and receiver role </small></p>
 </body>
 </html>"));
@@ -7414,7 +7414,7 @@ receives a message data again, it changes back to state PeriodicReceiving.
 <h3> Producer </h3>
 This class implements the behavior of the role producer of the Producer-Consumer-Pattern. The producer has reserved the critical section at first. By sending the produced() message it leaves the critical section and the consumer will reserve it. More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Producer_Consumer\">here</a>&quot;. <p>The behavoir can be seen in the following statechart.
 The producer has no parameters. </p>
-<p><img src=\"images/Producer-Consumer/Producer-Behavior.jpg\" alt = \"\" ></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Producer-Consumer/Producer-Behavior.jpg\" alt = \"\" ></p>
 <p><small>Figure 1: Realtimestatechart, showing the behavior of the producer role </small></p>
 </body>
 </html>"));
@@ -7500,7 +7500,7 @@ The producer has no parameters. </p>
 <h3> Consumer </h3>
 This class implements the behavior of the role consumer of the Producer-Consumer-Pattern. The producer has reserved the critical section at first. By sending the produced() message it leaves the critical section and the consumer will reserve it. The consumer can leave the critical section by sending the consumed() message, which enables the producer to reserve it. More information concerning the pattern can be found &quot;<a href=\"modelica://RealTimeCoordinationLibrary.CoordinationPattern.Producer_Consumer\">here</a>&quot;. <p>The behavoir can be seen in the following statechart.
 The consumer has no parameters. </p>
-<p><img src=\"images/Producer-Consumer/Consumer-Behavior.jpg\" alt =\"\"></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Producer-Consumer/Consumer-Behavior.jpg\" alt =\"\"></p>
 <p><small>Figure 1: Realtimestatechart, showing the behavior of the consumer role </small></p>
 </body>
 </html>"));
@@ -7550,9 +7550,9 @@ Which message each role can receive and send is shown in the message interfaces.
 may send the message consumed to the producer. The connector must not lose messages. The delay for sending a message is defined by
 the time parameters $delay-min and $delay-max.
 </p>
-<p><img src=\"images/Producer-Consumer/Structure.jpg\" alt=\"\" ></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Producer-Consumer/Structure.jpg\" alt=\"\" ></p>
 <p><small>Figure 1: Structure of the Producer-Consumer Pattern</small></p>
-<p><img src=\"images/Producer-Consumer/Interfaces.jpg\" alt=\"\"></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Producer-Consumer/Interfaces.jpg\" alt=\"\"></p>
 <p><small>Figure 2: Interfaces of the Producer-Consumer Pattern</small></p>
 
 <h4> Behavior </h4>
@@ -7564,7 +7564,7 @@ the message produced, it knows the producer has leaved the critical section and 
 enter it by itself. If the producer receives the messages consumed, the consumer has
 leaved the critical section and the producer can enter it again.
 </p>
-<p><img src=\"images/Producer-Consumer/Producer-Consumer-Behavior.jpg\" alt=\"\" ></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/Producer-Consumer/Producer-Consumer-Behavior.jpg\" alt=\"\" ></p>
 <p><small>Figure 3: Realtimestatecharts, showing the behavior of the producer and consumer role </small></p>
 </body>
 </html>"));

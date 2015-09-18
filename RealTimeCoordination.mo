@@ -13,19 +13,19 @@ extends Modelica.Icons.Information;
 <body>
 <p>Examples are specified at: &quot;<a href=\"modelica://RealTimeCoordinationLibrary.RealTimeCoordination.Examples.AsynchronousCommunication\">Examples.AsynchronousCommunication</a>&quot; and &quot;<a href=\"modelica://RealTimeCoordinationLibrary.RealTimeCoordination.Examples.InteractingComponents\">Examples.InteractingComponents</a>&quot;.</p>
 <p>We use messages to model asynchronous communication between different state graphs. Message defines the type of asynchronous messages.</p>
-<p><img src=\"modelica://RealTimeCoordinationLibrary/images/message.jpg\" alt =\"\"/></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/message.jpg\" alt =\"\"/></p>
 <p>A message has parameters that transfer information from its sender to its receiver. The signature of the message type defines which parameter the message has. The parameters have a call by value semantics. The sender transition binds concrete values to the parameters that can be accessed by the receiver transition. In StateGraph2 models, the defined messages can be used as raise messages by a sender transition. A raise message is a message which is raised when a transition fires. A raise message is sent via the associated output delegation port of the State Graph2 class. This port is connected to an input delegation port which itself has a StateGraph2 model and a receiver mailbox and a receiver transition.</p>
-<p><img src=\"modelica://RealTimeCoordinationLibrary/images/messageExample.jpg\" alt =\"\"/></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/messageExample.jpg\" alt =\"\"/></p>
 <p>In StateGraph2 models, we use the messages defined within the receiver input delegation port, mailbox and receiver transition as trigger messages. A trigger message is a message which can enable a transition when it is available and all other required conditions for enabling a transition are true.</p>
-<p><img src=\"modelica://RealTimeCoordinationLibrary/images/triggerMessage.jpg\" alt =\"\"/></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/triggerMessage.jpg\" alt =\"\"/></p>
 <p>The mailbox of the StateGraph2 model stores incoming messages. The mailbox is a FIFO queue. The queue size is determined by the parameter <b>queueSize</b>.</p>
 <p>Furthermore, the user must specify how many Integer, Boolean, and Real parameters the messages have. Therefore, the parameters <b>numberofMessageIntegers</b>, <b>numberOfMessageBooleans</b>, and <b>numberOfMessageReals</b> must be set. </p>
-<p><img src=\"modelica://RealTimeCoordinationLibrary/images/mailbox.jpg\" alt =\"\"/> </p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/mailbox.jpg\" alt =\"\"/> </p>
 <p>When a transition uses a message to fire then this message is dispatched and deleted from the mailbox. </p>
 <p>For each message only one transition can fire and dispatch the message. Messages have no specified duration of life. This means, they remain in the mailbox until they are dispatched or the mailbox is full. The handling of a mailbox overflow is handled by a assert function. </p>
-<p><img src=\"modelica://RealTimeCoordinationLibrary/images/receive.jpg\" alt =\"\"/></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/receive.jpg\" alt =\"\"/></p>
 <p>The receiver transition must set the check box <b>use_messageReceive</b>.</p>
-<p><img src=\"modelica://RealTimeCoordinationLibrary/images/transitionReceive.jpg\" alt =\"\"/></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/transitionReceive.jpg\" alt =\"\"/></p>
 </body>
 </html>
 "));
@@ -39,11 +39,11 @@ extends Modelica.Icons.Information;
 <body>
 <p>Examples are specified at: &quot;<a href=\"modelica://RealTimeCoordinationLibrary.RealTimeCoordination.Examples.Synchronization\">Examples.Synchronization</a>&quot;.</p>
 <p>A common use case when modeling orthogonal regions is to allow two regions to change their state only in an atomic way. This means either both transitions are allowed to fire or both transition are not allowed to fire. Sending and receiving synchronizations via synchronization channels synchronize the firing of transitions of parallel regions. A synchronization channel has to be specified at a common ancestor state of the parallel regions and serves as the type for the synchronizations using it.</p>
-<p><img src=\"modelica://RealTimeCoordinationLibrary/images/sync.jpg\" alt =\"\"/></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/sync.jpg\" alt =\"\"/></p>
 <p>Sending a synchronization via the synchronization channel from one <b>sender transition</b> </p>
-<p><img src=\"modelica://RealTimeCoordinationLibrary/images/syncSendDialog.jpg\" alt =\"\"/></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/syncSendDialog.jpg\" alt =\"\"/></p>
 <p>to a <b>receiver transition</b> performs a synchronization. We allow only a receiving synchronization or sending synchronization per transition.</p>
-<p><img src=\"modelica://RealTimeCoordinationLibrary/images/syncReceiveDialog.jpg\" alt =\"\"/></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/syncReceiveDialog.jpg\" alt =\"\"/></p>
 <p>A synchronization affects the prioritization and execution order of parallel transitions as described in the following. The sender transition is executed before the receiver transition because a synchronization is directed from sender to receiver. This may violate region priorities when the sender transition is in a region with a lower priority than the region of the receiver transition because without the sending and the receiving of synchronizations between them the transition in the region with the higher priority would be executed first. </p>
 </body>
 </html>
@@ -61,7 +61,7 @@ extends Modelica.Icons.Information;
 <p>We changed the transition of StateGraph2 as follows. Instead of <i>delayTransition </i>and<i> waitTime</i> we added the <b>use_after </b>and<b> afterTime </b>parameters. The after time construct differs from the delay time in the original version of the StateGraph2 library in that at least the after time must have expired to let the transition fire. In contrast, the semantics of the delay time is that exactly the after time must have expired in order to let the transition fire. We introduced the after time semantics because it might happen that for two transitions that need to synchronize the time instants in which they are allowed to fire might not match due to their delay time.</p>
 <p>We extended the transition of StateGraph2 as follows. We added the parameters <b>use_syncSend</b>,<b> use_syncReceive</b>,<b> use_messageReceive</b>,<b> numberOfMessageIntegers</b>,<b> numberOfMessageBooleans</b>,<b> numberOfMessageReals</b>, and<b> syncChannelName</b>. </p>
 <p>We use these parameters to synchronize the firing of parallel transitions as described in &quot;<a href=\"modelica://RealTimeCoordinationLibrary.RealTimeCoordination.UsersGuide.Elements.Synchronization\">Synchronization</a>&quot; and to receive asynchronous messages as described in &quot;<a href=\"modelica://RealTimeCoordinationLibrary.RealTimeCoordination.UsersGuide.Elements.Message_Mailbox\">Message and Mailbox</a>&quot;.</p>
-<p><img src=\"modelica://RealTimeCoordinationLibrary/images/transition.jpg\" alt =\"\"/></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/transition.jpg\" alt =\"\"/></p>
 </body>
 </html>
 "));
@@ -75,7 +75,7 @@ extends Modelica.Icons.Information;
 <body>
 <p>Examples are specified at: &quot;<a href=\"modelica://RealTimeCoordinationLibrary.RealTimeCoordination.Examples.Clock\">Examples.Clock</a>&quot;.</p>
 <p>A StateGraph2 model has a finite number of clocks. A clock models the elapsing of time during the execution of a system. Time elapses continuously, not in discrete steps. A clock can be reset to zero when it&apos;s input port <i>u</i>. The time value represented by a clock is relative to the last point in time when the clock has been reset. </p>
-<p><img src=\"modelica://RealTimeCoordinationLibrary/images/clock.jpg\" alt =\"\"/></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/clock.jpg\" alt =\"\"/></p>
 </body>
 </html>
 "));
@@ -95,7 +95,7 @@ An invariant is an inequation that specifies an upper <b>bound</b> on a clock, e
 </p>
 
 <p>
-<img src=\"modelica://RealTimeCoordinationLibrary/images/invariant.jpg\" alt =\"\"/>
+<img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/invariant.jpg\" alt =\"\"/>
 </p>
 </body>
 </html>
@@ -110,7 +110,7 @@ An invariant is an inequation that specifies an upper <b>bound</b> on a clock, e
 <body>
 <p>Examples are specified at: &quot;<a href=\"modelica://RealTimeCoordinationLibrary.RealTimeCoordination.Examples.ClockConstraint\">Examples.ClockConstraint</a>&quot;.</p>
 <p>A clock constraint might be any kind of inequation specifying a <b>bound</b> on a certain clock, e.g., c &gt; 2, c &gt;= 5, c &lt; 2, c &lt;= 5, where c is a <a href=\"modelica://RealTimeCoordinationLibrary.RealTimeCoordination.UsersGuide.Elements.Clock\">Clock</a>. Clock constraints are assigned to transitions in order to restrict the time span in which a transition is allowed to fire.</p>
-<p><img src=\"modelica://RealTimeCoordinationLibrary/images/clockCondition.jpg\" alt =\"\"/></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/clockCondition.jpg\" alt =\"\"/></p>
 </body>
 </html>
 "));
@@ -125,7 +125,7 @@ An invariant is an inequation that specifies an upper <b>bound</b> on a clock, e
 <p>Examples are specified at: &quot;<a href=\"modelica://RealTimeCoordinationLibrary.RealTimeCoordination.Examples.InteractingComponents\">Examples.InteractingComponents</a>&quot;.</p>
 <p>If two extended StateGraph2 models are included in different component instances they might still communicate asynchronously across the boundaries of these component instances with the help of delegation ports. Therefore, one component defines an output delegation port and the other defines an input delegation port. Both delegation ports are connected. Then, the component instance containing the message type connects the message type to the output delegation ports and the component instance containing the Mailbox instance connects the Mailbox instance to the input delegation port. </p>
 <p>It is necessary that instances of DelegationPort redeclare the variables Integers, Booleans and Reals with the required array size as shown in the Figure below. Connected DelegationPorts must always have the same redeclaration. </p>
-<p><br/><img src=\"modelica://RealTimeCoordinationLibrary/images/DelegationPort.jpg\" alt =\"\"/></p>
+<p><br/><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/DelegationPort.jpg\" alt =\"\"/></p>
 </body>
 </html>"));
     end DelegationPort;
@@ -4671,7 +4671,7 @@ We use these parameters to synchronize the firing of parallel transitions as des
 </p>
 
 <p>
-<img src=\"modelica://RealTimeCoordinationLibrary/images/selftransition.jpg\" alt =\"selfTransition\"/>
+<img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/selftransition.jpg\" alt =\"selfTransition\"/>
 </p>
 </body>
 </html>"));
@@ -4955,7 +4955,7 @@ equation
 <p>We changed the transition of StateGraph2 as follows. Instead of <i>delayTransition </i>and<i> delayTime</i> we added the <b>use_after </b>and<b> afterTime </b>parameter. The after time construct differs from the delay time in the original version of the StateGraph2 library in that at least the after time must have expired to let the transition fire. In contrast, the semantics of the delay time is that exactly the after time must have expired in order to let the transition fire. We introduced the after time semantics because it might happen that for two transitions that need to synchronize the time instants in which they are allowed to fire might not match due to their delay time.</p>
 <p>We extended the transition of StateGraph2 as follows. We added the parameters <b>use_syncSend, use_syncReceive, use_messageReceive, numberOfMessageIntegers, numberOfMessageBooleans, numberOfMessageReals, and syncChannelName</b>. </p>
 <p>We use this parameters to syncronize the firing of parallel transitions as described in &quot;<a href=\"modelica://RealTimeCoordinationLibrary.RealTimeCoordination.UsersGuide.Elements.Synchronization\">Synchronization</a>&quot; and to receive asynchronous messages as described in &quot;<a href=\"modelica://RealTimeCoordinationLibrary.RealTimeCoordination.UsersGuide.Elements.Message_Mailbox\">Message and Mailbox</a>&quot;.</p>
-<p><img src=\"modelica://RealTimeCoordinationLibrary/images/transition.jpg\" alt =\"\"/></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/transition.jpg\" alt =\"\"/></p>
 </body>
 </html>"));
 end Transition;
@@ -5068,7 +5068,7 @@ end Transition;
 <head><title>RealTimeCoordinationLibrary.RealTimeCoordination.Message</title></head>
 <body>
 <p>We use messages to model asynchronous communication between different state graphs. Message define the type of asynchronous messages.</p>
-<p><img src=\"modelica://RealTimeCoordinationLibrary/images/message.jpg\" alt =\"\"/></p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/message.jpg\" alt =\"\"/></p>
 <p>A message has parameters which transfer information from its sender to its receiver. The signature of the message type defines which parameter the message has. The parameters have a call by value semantics. The sender transition binds concrete values to the parameters which can be accessed by the receiver transition. In State Graph the defined messages can be used as raise message-events by a sender transition. A raise message-event is a message-event which is raised when a transition fires. A raise message-event is sent via the associated output delegation port of the State Graph2 class. This port is connected to an input delegation port which itself has a State Graph2 model and a receiver mailbox and a receiver transition.</p>
 </body>
 </html>"));
@@ -5442,7 +5442,7 @@ end Transition;
 <body>
 <p>The mailbox of the State Graph2 model stores incoming message-events. The mailbox is a FIFO queue. The queue size is determined by the parameter <b>queueSize</b>.</p>
 <p>Futher the user must specify how many integer, boolean, and real parameters the messages which should be buffered have. Therefore, the parameters <b>numberofMessageIntegers</b>, <b>numberOfMessageBooleans</b>, and <b>numberOfMessageReals</b> must be set. </p>
-<p><img src=\"modelica://RealTimeCoordinationLibrary/images/mailbox.jpg\" alt =\"\"/> </p>
+<p><img src=\"modelica://RealTimeCoordinationLibrary/Resources/images/mailbox.jpg\" alt =\"\"/> </p>
 </body>
 </html>"));
  end Mailbox;
