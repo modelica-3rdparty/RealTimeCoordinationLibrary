@@ -7,7 +7,7 @@ We present a Modelica library for modeling communication under hard real-time co
 
 Adequate modeling constructs for synchronous as well as asynchronous communication and for real-time behavior are essential for modern embedded systems. Here, we consider synchronous and asynchronous communication to be a message-based communication where the former means that the sender always waits as long as the receiver is not able to consume the message. The latter means that the sender does not wait on a reaction of the receiver and proceeds with its execution that, in particular, might include sending further messages. For asynchronous communication, this implies that the receiver has to have a message buffer which is sufficiently large to prevent loss of messages.
 
-![screenshot](images/screenshot.png)
+![screenshot](Resources/images/screenshot.png)
 
 For the modeling of synchronous communication, we extended transitions by synchronization ports (sync ports). Sync ports sub-divide into sender sync ports and receiver sync ports. A sender sync port of one transition is connected to a receiver sync port of another transition by a synchronization connector.
 
