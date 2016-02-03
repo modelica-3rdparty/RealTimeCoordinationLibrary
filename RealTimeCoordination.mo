@@ -3415,7 +3415,7 @@ V1.3 <br>
 <td valign=\"top\">8600</td><td valign=\"top\">rpm</td>
 </tr>
 <tr>
-<td valign=\"top\">No-load current (with shaft ø 1,5 mm)</td>
+<td valign=\"top\">No-load current (with shaft &oslash; 1.5 mm)</td>
 <td valign=\"top\">0.02</td><td valign=\"top\">A</td>
 </tr>
 <tr>
